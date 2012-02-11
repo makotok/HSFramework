@@ -4,21 +4,18 @@
 ----------------------------------------------------------------
 -- 依存関係の順に参照
 
--- 共通
+-- base liblary
 require "hs/Class"
 require "hs/Log"
 require "hs/Runtime"
 require "hs/Globals"
-
--- Event系クラス
+require "hs/UString"
 require "hs/Event"
 require "hs/EventListener"
 require "hs/EventDispatcher"
-
--- InputManager
 require "hs/InputManager"
 
--- 描画系クラス
+-- display classes
 require "hs/Transform"
 require "hs/Texture"
 require "hs/DisplayObject"
@@ -36,7 +33,7 @@ require "hs/VBoxLayout"
 require "hs/HBoxLayout"
 
 ----------------------------------------------------------------
--- HSFrameworkクラス定義
+-- HSFramework
 ----------------------------------------------------------------
 HSFramework = {}
 

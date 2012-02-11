@@ -16,11 +16,11 @@ end
 -- len演算子
 ---------------------------------------
 function UString:__len()
-    return self._len
+    return self.len()
 end
 
 ---------------------------------------
--- len演算子
+-- tostring演算子
 ---------------------------------------
 function UString:__tostring()
     return self._utf8
@@ -98,7 +98,7 @@ end
 
 function UString._getLen(utf8)
     local i = 0
-    for v in UString.each(utf8) do
+    for v in UString:each(utf8) do
         i = i + 1
     end
     return i    
@@ -116,7 +116,7 @@ end
 ---------------------------------------
 function UString:sub(i, j)
     if j == nil then
-        j = #self
+        j = self:len()
     end
 
     local count = 0
@@ -125,7 +125,7 @@ function UString:sub(i, j)
     for v in self:each() do
         count = count + 1
         if count >= i then
-            text = text + v
+            text = text .. v
         end
         if count >= j then
             break
