@@ -6,10 +6,10 @@
 SpriteSheet = DisplayObject()
 
 -- プロパティ定義
-DisplayObject:setPropertyDef("frame", "setFrame", "getFrame")
-DisplayObject:setPropertyDef("frameWidth", "setFrameWidth", "getFrameWidth")
-DisplayObject:setPropertyDef("frameHeight", "setFrameHeight", "getFrameHeight")
-DisplayObject:setPropertyDef("texture", "setTexture", "getTexture")
+SpriteSheet:setPropertyName("frame")
+SpriteSheet:setPropertyName("frameWidth")
+SpriteSheet:setPropertyName("frameHeight")
+SpriteSheet:setPropertyName("texture")
 
 ---------------------------------------
 -- コンストラクタです

@@ -6,10 +6,8 @@
 Layer = Group()
 
 -- プロパティ定義
-Layer:setPropertyDef("camera", "setCamera", "getCamera")
-
--- getter
-Layer:setGetter("renderPass", "getRenderPass")
+Layer:setPropertyName("camera")
+Layer:setPropertyName("renderPass")
 
 ---------------------------------------
 -- コンストラクタです

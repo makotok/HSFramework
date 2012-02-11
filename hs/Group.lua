@@ -6,11 +6,9 @@
 Group = DisplayObject()
 
 -- プロパティ定義
-Group:setPropertyDef("layout", "setLayout", "getLayout")
-Group:setPropertyDef("background", "setBackground", "getBackground")
-
--- getters
-Group:setGetter("children", "getChildren")
+Group:setPropertyName("layout")
+Group:setPropertyName("background")
+Group:setPropertyName("children")
 
 ---------------------------------------
 -- コンストラクタです

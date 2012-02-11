@@ -42,12 +42,12 @@ end
 function PropertySupport:propertyChange(key, value)
     local object = getmetatable(self).__object
 
-    -- setter関数の参照
-    local setter = object:getSetter(key)
-
-    -- setter関数が存在する場合は、そちらを使用
-    if setter then
-        setter(self, value)
+    -- プロパティの場合はプロパティ関数を使用
+    if object:isProperty(key) then
+        local setter = object:getSetter(key)
+        if setter then
+            setter(self, value)
+        end
     else
         object[key] = value
     end
@@ -60,34 +60,62 @@ end
 function PropertySupport:propertyAccess(key)
     local object = getmetatable(self).__object
 
-    -- getter関数の参照
-    local getter = object:getGetter(key)
-
-    -- getter関数が存在する場合は、そちらを使用
-    if getter then
-        return getter(self)
+    -- プロパティの場合はプロパティ関数を使用
+    if object:isProperty(key) then
+        local getter = object:getGetter(key)
+        if getter then
+            return getter(self)
+        else
+            return nil
+        end
     else
         return object[key]
+    end
+end
+
+function PropertySupport:isProperty(key)
+    if self.__setters[key] then
+        return true
+    end
+    if self.__getters[key] then
+        return true
+    end
+    return false
+end
+
+---------------------------------------
+-- プロパティを定義します。
+-- 指定したプロパティ名をプロパティと認識します。
+---------------------------------------
+function PropertySupport:setPropertyNames(...)
+    for i, key in ipairs(...) do
+        if type(key) == "string" then
+            self:setPropertyName(key)
+        elseif type(key) == "table" then
+            self:setPropertyName(key.name, key.setter, key.getter)
+        end
     end
 end
 
 ---------------------------------------
 -- プロパティを定義します。
 -- プロパティ名とアクセスするsetter,getter名を設定します。
+-- nilの場合は自動的にget,setが設定されます。
 ---------------------------------------
-function PropertySupport:setPropertyDef(key, setterName, getterName)
+function PropertySupport:setPropertyName(key, setterName, getterName)
+    local headName = string.upper(key:sub(1, 1))
+    local upperName = key:len() > 1 and headName .. key:sub(2) or headName
+    
+    local setterName = setterName and setterName or "set" .. upperName
+    local getterName = getterName and getterName or "get" .. upperName
+    
     self.__setters[key] = setterName
     self.__getters[key] = getterName
 end
 
 ---------------------------------------
--- プロパティを定義します。
--- プロパティ名とアクセスするsetter名を設定します。
+-- 指定したプロパティ名のsetter関数を返します。
 ---------------------------------------
-function PropertySupport:setSetter(key, setterName)
-    self.__setters[key] = setterName
-end
-
 function PropertySupport:getSetter(key)
     local setterName = self.__setters[key]
     if setterName then
@@ -98,13 +126,8 @@ function PropertySupport:getSetter(key)
 end
 
 ---------------------------------------
--- プロパティを定義します。
--- プロパティ名とアクセスするgetter名を設定します。
+-- 指定したプロパティ名のgetter関数を返します。
 ---------------------------------------
-function PropertySupport:setGetter(key, getterName)
-    self.__getters[key] = getterName
-end
-
 function PropertySupport:getGetter(key)
     local getterName = self.__getters[key]
     if getterName then

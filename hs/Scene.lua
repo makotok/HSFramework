@@ -6,8 +6,8 @@
 Scene = EventDispatcher()
 
 -- getters
-Scene:setGetter("layers", "getLayers")
-Scene:setGetter("topLayer", "getTopLayer")
+Scene:setPropertyName("layers")
+Scene:setPropertyName("topLayer")
 
 ---------------------------------------
 -- コンストラクタです

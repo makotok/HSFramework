@@ -1,3 +1,24 @@
+--------------------------------------------------------------------------------
+-- クラスベースなオブジェクト指向を簡単に実現するためのクラスです。
+-- クラスの基本的な機能を有します。
+-- setmetatableによる継承ではなく、テーブルに展開する事でパフォーマンスが向上します。
+-- simpleclassを参考にしています。
+-- 
+-- example)
+-- ClassA = Class()
+-- function ClassA:init(a)
+--     print(a)
+-- end
+-- ClassB = ClassA()
+-- function ClassB:init(a, b)
+--     ClassB:super(self, a)
+--     print(b)
+-- end
+-- 
+-- local objA = ClassA:new("hello")
+-- local objB = ClassB:new("hello", "world")
+--
+--------------------------------------------------------------------------------
 
 
 Class = {}
@@ -36,10 +57,27 @@ function Class:init(...)
 end
 
 ---------------------------------------
+-- 親クラスのコンストラクタを呼びます。
+-- 
+-- example)
+-- function ClassA:init(a, b)
+--     ClassA:super(self, a, b)
+-- end
+---------------------------------------
+function Class:super(obj, ...)
+    if self.__base then
+        self.__base.init(obj, ...)
+    end
+end
+
+---------------------------------------
 -- インスタンスが指定したクラスのインスタンスか
 -- どうか判定を行います。
 ---------------------------------------
 function Class:instanceOf(class)
+    if self == class then
+        return true
+    end
     if self.__index == class then
         return true
     end

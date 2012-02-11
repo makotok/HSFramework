@@ -6,7 +6,7 @@
 Sprite = DisplayObject()
 
 -- プロパティ定義
-Sprite:setPropertyDef("texture", "setTexture", "getTexture")
+Sprite:setPropertyName("texture")
 
 ---------------------------------------
 -- コンストラクタです

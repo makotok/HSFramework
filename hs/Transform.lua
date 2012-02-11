@@ -9,19 +9,17 @@ require "hs/EventDispatcher"
 Transform = EventDispatcher()
 
 -- プロパティ定義
-Transform:setPropertyDef("x", "setX", "getX")
-Transform:setPropertyDef("y", "setY", "getY")
-Transform:setPropertyDef("worldX", "setWorldX", "getWorldX")
-Transform:setPropertyDef("worldY", "setWorldY", "getWorldY")
-Transform:setPropertyDef("pivotX", "setPivotX", "getPivotX")
-Transform:setPropertyDef("pivotY", "setPivotY", "getPivotY")
-Transform:setPropertyDef("rotation", "setRotation", "getRotation")
-Transform:setPropertyDef("scaleX", "setScaleX", "getScaleX")
-Transform:setPropertyDef("scaleY", "setScaleY", "getScaleY")
-Transform:setPropertyDef("parent", "setParent", "getParent")
-
--- getters
-Transform:setGetter("transformObj", "getTransformObj")
+Transform:setPropertyName("x")
+Transform:setPropertyName("y")
+Transform:setPropertyName("worldX")
+Transform:setPropertyName("worldY")
+Transform:setPropertyName("pivotX")
+Transform:setPropertyName("pivotY")
+Transform:setPropertyName("rotation")
+Transform:setPropertyName("scaleX")
+Transform:setPropertyName("scaleY")
+Transform:setPropertyName("parent")
+Transform:setPropertyName("transformObj")
 
 ---------------------------------------
 --- コンストラクタです
