@@ -23,7 +23,7 @@ table.copy({pTop = 0, pLeft = 0, pBottom = 0, pRight = 0}, group3)
 
 -- sprite1
 for i = 1, 3 do
-    local sprite = Sprite:new("samples/basics/cathead.png")
+    local sprite = Sprite:new("samples/images/cathead.png")
     sprite.width = 64
     sprite.height = 64
     sprite.parent = group2
@@ -31,7 +31,7 @@ end
 
 -- sprite2
 for i = 1, 3 do
-    local sprite = Sprite:new("samples/basics/cathead.png")
+    local sprite = Sprite:new("samples/images/cathead.png")
     sprite.width = 64
     sprite.height = 64
     sprite.parent = group3

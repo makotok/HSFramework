@@ -5,13 +5,13 @@ Application:openWindow("title", 480, 320)
 local scene = Scene:new()
 
 -- sprite1
-local sprite1 = Sprite:new("samples/basics/cathead.png")
+local sprite1 = Sprite:new("samples/images/cathead.png")
 sprite1.parent = scene
 sprite1.x = 10
 sprite1.y = 10
 
 -- spritesheet
-local sprite2 = SpriteSheet:new("samples/basics/actor.png", 3, 4)
+local sprite2 = SpriteSheet:new("samples/images/actor.png", 3, 4)
 sprite2.parent = scene
 sprite2:setLocation(20 + sprite1.width, 10)
 

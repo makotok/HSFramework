@@ -10,7 +10,7 @@ function SceneManager:init()
     
     -- イベントリスナーの設定
     InputManager:addListener(Event.TOUCH, self.onTouch, self)
-    InputManager:addListener(Event.KEYBORD, self.onTouch, self)
+    InputManager:addListener(Event.KEYBORD, self.onKeybord, self)
 end
 
 ---------------------------------------
@@ -91,7 +91,7 @@ end
 ---------------------------------------
 function SceneManager:onTouch(e)
     if self.currentScene and self.currentScene:isOpened() then
-        currentScene:onTouch(e)
+        self.currentScene:onTouch(e)
     end
 end
 

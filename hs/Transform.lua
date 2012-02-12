@@ -25,7 +25,7 @@ Transform:setPropertyName("transformObj")
 --- コンストラクタです
 ---------------------------------------
 function Transform:init()
-    EventDispatcher.init(self)
+    Transform:super(self)
 
     -- 変数
     self._transformObj = self:newTransformObj()
@@ -71,11 +71,12 @@ end
 ---------------------------------------
 -- ローカル座標を移動します。
 ---------------------------------------
-function Transform:moveLocation(x, y, sec, mode, completeHandler)
+function Transform:move(x, y, sec, mode, completeHandler)
     local action = self.transformObj:moveLoc(x, y, sec, mode)
     if completeHandler ~= nil then
         action:setListener(MOAIAction.EVENT_STOP, function(prop) completeHandler(self) end)
     end
+    return action
 end
 
 ---------------------------------------
@@ -112,8 +113,8 @@ end
 -- 座標を設定します。
 ---------------------------------------
 function Transform:setWorldLocation(x, y)
-    x = x - self.pivotX
-    y = y - self.pivotY
+    x = x + self.pivotX
+    y = y + self.pivotY
     self.transformObj:setLoc(x, y)
 end
 
@@ -122,8 +123,8 @@ end
 ---------------------------------------
 function Transform:getWorldLocation()
     local x, y = self.transformObj:getLoc()
-    x = x + self.pivotX
-    y = y + self.pivotY
+    x = x - self.pivotX
+    y = y - self.pivotY
     return x, y
 end
 
@@ -173,13 +174,14 @@ function Transform:getRotation()
 end
 
 ---------------------------------------
--- 回転量を移動します。
+-- 回転します。
 ---------------------------------------
-function Transform:moveRotation(rotation, sec, mode, completeHandler)
+function Transform:rotate(rotation, sec, mode, completeHandler)
     local action = self.transformObj:moveRot(rotation, sec, mode)
     if completeHandler then
         action:setListener(MOAIAction.EVENT_STOP, function() completeHandler(self) end)
     end
+    return action
 end
 
 
@@ -200,11 +202,12 @@ end
 ---------------------------------------
 -- 回転量を移動します。
 ---------------------------------------
-function Transform:moveScale(x, y, sec, mode, completeHandler)
+function Transform:scale(x, y, sec, mode, completeHandler)
     local action = self.transformObj:moveScl(x, y, sec, mode)
     if completeHandler then
         action:setListener(MOAIAction.EVENT_STOP, function() completeHandler(self) end)
     end
+    return action
 end
 
 ---------------------------------------

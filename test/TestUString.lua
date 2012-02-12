@@ -17,7 +17,6 @@ end
 
 function TestUString:test2_len()
     local str = UString:new("aあ")
-    --assertEquals(#str, 2)
     assertEquals(str:len(), 2)
 end
 
@@ -33,3 +32,9 @@ function TestUString:test4_sub()
     assertEquals(str:sub(4, 6), "あいう")
 end
 
+function TestUString:test5_subUString()
+    local str = UString:new("abcあいう")
+    assert(str:subUString(1):equals(UString:new("abcあいう")))
+    assert(str:subUString(3, 3):equals(UString:new("c")))
+    assert(str:subUString(4, 6):equals(UString:new("あいう")))
+end

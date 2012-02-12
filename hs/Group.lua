@@ -14,10 +14,11 @@ Group:setPropertyName("children")
 -- コンストラクタです
 ---------------------------------------
 function Group:init(width, height)
+    Group:super(self)
+    
     -- オブジェクト定義
     self._children = {}
     self._background = self:newBackground()
-    DisplayObject.init(self)
 
     -- 初期処理
     if width and height then

@@ -15,6 +15,7 @@ Event.MOVE = "move"
 Event.CLICK = "click"
 Event.CANCEL = "cancel"
 Event.KEYBORD = "keybord"
+Event.COMPLETE = "complete"
 
 Event.TOUCH = "touch"
 Event.TOUCH_DOWN = "touchDown"

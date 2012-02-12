@@ -213,3 +213,10 @@ function UString:toLower()
     return UString:new(text)
 end
 
+---------------------------------------
+-- 内部文字列が一致するか返します。
+-- @return 文字列が一致する場合true
+---------------------------------------
+function UString:equals(ustr)
+    return ustr._ustr == self._ustr
+end

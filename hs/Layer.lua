@@ -13,7 +13,7 @@ Layer:setPropertyName("renderPass")
 -- コンストラクタです
 ---------------------------------------
 function Layer:init()
-    Group.init(self)
+    Layer:super(self)
     self._renderPass = self:newRenderPass()
     self.camera = Transform:new()
 end

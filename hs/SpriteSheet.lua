@@ -15,7 +15,7 @@ SpriteSheet:setPropertyName("texture")
 -- コンストラクタです
 ---------------------------------------
 function SpriteSheet:init(texture, frameWidth, frameHeight, params)
-    DisplayObject.init(self)
+    SpriteSheet:super(self)
 
     -- オブジェクト定義
     self._frame = 1

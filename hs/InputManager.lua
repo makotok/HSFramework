@@ -56,7 +56,7 @@ end
 ---------------------------------------
 function InputManager.onTouch(eventType, idx, x, y, tapCount)
     -- event
-    local event = Event.new(Event.TOUCH, InputManager)
+    local event = Event:new(Event.TOUCH, InputManager)
     if eventType == MOAITouchSensor.TOUCH_DOWN then
         event.touchType = Event.DOWN
     elseif eventType == MOAITouchSensor.TOUCH_UP then

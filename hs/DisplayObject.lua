@@ -29,7 +29,7 @@ DisplayObject:setPropertyName("focus", "setFocus", "isFocus")
 --- コンストラクタです
 ---------------------------------------
 function DisplayObject:init()
-    EventDispatcher.init(self)
+    DisplayObject:super(self)
 
     -- 変数
     self.name = ""
@@ -91,6 +91,7 @@ function DisplayObject:setSize(width, height)
     self._height = height
     if self.deck then
         self.deck:setRect(0, 0, self.width, self.height)
+        self:centerPivot()
     end
 end
 
@@ -127,6 +128,16 @@ end
 ---------------------------------------
 function DisplayObject:getHeight()
     return self._height
+end
+
+---------------------------------------
+-- 中心点を中央に設定します。
+---------------------------------------
+function DisplayObject:centerPivot()
+    local w, h = self:getSize()
+    local px = w / 2
+    local py = h / 2
+    self:setPivot(px, py)
 end
 
 ---------------------------------------

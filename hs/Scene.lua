@@ -13,7 +13,7 @@ Scene:setPropertyName("topLayer")
 -- コンストラクタです
 ---------------------------------------
 function Scene:init()
-    EventDispatcher.init(self)
+    Scene:super(self)
 
     -- 変数
     self.name = ""

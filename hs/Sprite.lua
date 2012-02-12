@@ -12,7 +12,7 @@ Sprite:setPropertyName("texture")
 -- コンストラクタです
 ---------------------------------------
 function Sprite:init(texture, params)
-    DisplayObject.init(self)
+    Sprite:super(self)
 
     -- 初期化
     if texture then

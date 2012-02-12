@@ -31,6 +31,7 @@ require "hs/Application"
 require "hs/BoxLayout"
 require "hs/VBoxLayout"
 require "hs/HBoxLayout"
+require "hs/Animation"
 
 ----------------------------------------------------------------
 -- HSFramework
