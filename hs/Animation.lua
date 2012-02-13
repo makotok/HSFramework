@@ -220,12 +220,12 @@ end
 -- @param ... アニメーション
 ---------------------------------------
 function Animation:loop(count, onLoop, ...)
-
+    -- 未実装
 end
 
 ---------------------------------------
 -- 一定時間待機します。
--- TODO:未実装
+-- @param sec 待機時間
 ---------------------------------------
 function Animation:wait(sec)
     local timer = MOAITimer.new()
@@ -260,10 +260,9 @@ function Animation:play(params)
     if #self._commands == 0 then
         return self
     end
-    if params and params.onComplete then
+    if params then
         self._onComplete = params.onComplete
     end
-    
     Log.debug("Animation:play")
     self._running = true
     self._stoped = false
@@ -300,9 +299,8 @@ function Animation:_onCommandComplete()
     -- complete!
     else
         local event = Event:new(Event.COMPLETE, self)
-        if self._onComplete then
-            self._onComplete(event)
-        end
+        if self._onComplete then self._onComplete(event) end
+        self:onComplete(event)
         self:dispatchEvent(event)
     end
 end
@@ -320,6 +318,15 @@ function Animation:stop()
     self._stoped = true
     self._currentCommand.stop(self)    
     return self
+end
+
+---------------------------------------
+-- アニメーション完了時のイベント処理を行います。
+-- 継承して使用する事を想定します。
+-- @param event
+---------------------------------------
+function Animation:onComplete(event)
+
 end
 
 ---------------------------------------

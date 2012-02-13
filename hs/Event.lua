@@ -32,6 +32,11 @@ function Event:init(eventType, target)
     self.stoped = false
 end
 
-function Event:stopPropagation()
+function Event:setListener(callback, source)
+    self.callback = callback
+    self.source = source
+end
+
+function Event:stop()
     self.stoped = true
 end

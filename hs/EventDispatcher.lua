@@ -1,12 +1,13 @@
--- モジュール参照
-require "hs/PropertySupport"
-require "hs/Event"
-require "hs/EventListener"
+----------------------------------------------------------------
+-- イベント処理を行うための基本クラスです。
+-- イベントの発出した結果を、登録したイベントリスナがキャッチして
+-- イベント処理を行います。
+----------------------------------------------------------------
 
 EventDispatcher = PropertySupport()
 
 ---------------------------------------
---- コンストラクタです
+-- コンストラクタです
 ---------------------------------------
 function EventDispatcher:init()
     PropertySupport.init(self)
@@ -66,12 +67,24 @@ function EventDispatcher:hasListener(eventType, callback, source)
 end
 
 ---------------------------------------
---- イベントをディスパッチします
+-- イベントをディスパッチします
 ---------------------------------------
 function EventDispatcher:dispatchEvent(event)
+    event.stoped = false
     for key, obj in ipairs(self.listeners) do
         if obj.type == event.type then
+            event:setListener(obj.callback, obj.source)
             obj:call(event)
+            if event.stoped == true then
+                return
+            end
         end
     end
+end
+
+---------------------------------------
+-- イベントリスナをすべて削除します。
+---------------------------------------
+function EventDispatcher:clearListeners()
+    self.listeners = {}
 end

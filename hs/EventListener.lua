@@ -12,9 +12,7 @@ function EventListener:init(eventType, callback, source, priority)
     self.type = eventType
     self.callback = callback
     self.source = source
-    self.priority = EventListener.PRIORITY_MAX
-    
-    if priority then self.priority = priority end
+    self.priority = priority and priority or 0
 end
 
 function EventListener:call(event)
