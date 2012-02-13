@@ -13,16 +13,15 @@ Group:setPropertyName("children")
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function Group:init(width, height)
+function Group:init(params)
     Group:super(self)
     
     -- オブジェクト定義
     self._children = {}
     self._background = self:newBackground()
 
-    -- 初期処理
-    if width and height then
-        self:setSize(width, height)
+    if params then
+        table.copy(params, self)
     end
 end
 
@@ -102,6 +101,14 @@ function Group:setLayer(layer)
 end
 
 ---------------------------------------
+-- サイズを設定します。
+---------------------------------------
+function Group:setSize(width, height)
+    DisplayObject.setSize(self, width, height)
+    self.background:setSize(width, height)
+end
+
+---------------------------------------
 -- 背景オブジェクトを設定します。
 -- TODO:変更時の子の反映
 ---------------------------------------
@@ -174,6 +181,11 @@ end
 -- 子オブジェクトのレイアウトを更新します。
 ---------------------------------------
 function Group:updateLayout()
+    for i, child in ipairs(self.children) do
+        if child.updateLayout then
+            child:updateLayout()
+        end
+    end
     if self.layout then
         self.layout:update(self)
     end

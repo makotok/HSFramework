@@ -16,7 +16,7 @@ BoxLayout.DIRECTION_H = "horizotal"
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function BoxLayout:init()
+function BoxLayout:init(params)
     self.hAlign = BoxLayout.H_LEFT
     self.hGap = 5
     self.vAlign = BoxLayout.V_TOP
@@ -27,6 +27,10 @@ function BoxLayout:init()
     self.pRight = 5
     self.resizeParentEnabled = true
     self.direction = BoxLayout.DIRECTION_V
+    
+    if params then
+        table.copy(params, self)
+    end
 end
 
 ---------------------------------------

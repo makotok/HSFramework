@@ -2,49 +2,35 @@
 Application:openWindow("title", 480, 320)
 
 -- scene
-local scene = Scene:new()
+group_sample_scene = Scene:new()
+local scene = group_sample_scene
 
--- group1
-local group1 = Group:new()
-group1.layout = BoxLayout:new()
-group1.parent = scene
+-- groups
+local group1 = Group:new({layout = BoxLayout:new(), parent = scene})
+local group2 = Group:new({layout = HBoxLayout:new(), parent = group1})
+local group3 = Group:new({layout = VBoxLayout:new({pLeft = 0, pRight = 0}), parent = group2})
+local group4 = Group:new({layout = VBoxLayout:new({pLeft = 0, pRight = 0}), parent = group2})
+local group5 = Group:new({layout = VBoxLayout:new({pLeft = 0, pRight = 0}), parent = group2})
+local group6 = Group:new({layout = HBoxLayout:new(), parent = group1})
 
--- group2
-local group2 = Group:new()
-group2.layout = VBoxLayout:new()
-group2.parent = group1
-table.copy({pTop = 0, pLeft = 0, pBottom = 0, pRight = 0}, group2)
+group1.background:setPenColor(1, 1, 1):fillRect():setPenColor(0.5, 0.5, 0.5):setPenWidth(2):drawRect()
+group2.background:setPenColor(0, 1, 0):fillRect():setPenColor(0, 0.5, 0):setPenWidth(2):drawRect()
+group3.background:setPenColor(0, 0, 1):fillRect():setPenColor(0, 0, 0.5):setPenWidth(2):drawRect()
+group4.background:setPenColor(0, 0, 1):fillRect():setPenColor(0, 0, 0.5):setPenWidth(2):drawRect()
+group5.background:setPenColor(0, 0, 1):fillRect():setPenColor(0, 0, 0.5):setPenWidth(2):drawRect()
+group6.background:setPenColor(0, 1, 0):fillRect():setPenColor(0, 0.5, 0):setPenWidth(2):drawRect()
 
--- group3
-local group3 = Group:new()
-group3.layout = HBoxLayout:new()
-group3.parent = group1
-table.copy({pTop = 0, pLeft = 0, pBottom = 0, pRight = 0}, group3)
-
--- sprite1
+-- sprites
 for i = 1, 3 do
-    local sprite = Sprite:new("samples/images/cathead.png")
-    sprite.width = 64
-    sprite.height = 64
-    sprite.parent = group2
-end
-
--- sprite2
-for i = 1, 3 do
-    local sprite = Sprite:new("samples/images/cathead.png")
-    sprite.width = 64
-    sprite.height = 64
-    sprite.parent = group3
+    Sprite:new("samples/images/cathead.png", {width = 64, height = 64, parent = group3})
+    Sprite:new("samples/images/cathead.png", {width = 64, height = 64, parent = group4})
+    Sprite:new("samples/images/cathead.png", {width = 64, height = 64, parent = group5})
+    Graphics:new({width = 64, height = 64, parent = group6}):fillRect():setPenColor(0, 0, 0):drawLine(0, 0, 64, 64, 0, 64, 64, 0, 0, 0)
 end
 
 -- update layout
-group2:updateLayout()
-group3:updateLayout()
+-- TODO:enterFrameでなんとかしたい。
 group1:updateLayout()
 
+-- show scene
 scene:openScene()
-
--- debug print
-Log.debug("group1:" .. group1.x .. "," .. group1.y .. "," .. group1.width .. "," .. group1.height)
-Log.debug("group2:" .. group2.x .. "," .. group2.y .. "," .. group2.width .. "," .. group2.height)
-Log.debug("group3:" .. group3.x .. "," .. group3.y .. "," .. group3.width .. "," .. group3.height)

@@ -63,7 +63,6 @@ end
 -- 描画オブジェクトを追加します。
 ---------------------------------------
 function Layer:addProp(prop)
-    Log.debug("add prop!")
     self.renderPass:insertProp(prop)
 end
 
@@ -71,7 +70,6 @@ end
 -- 描画オブジェクトを削除します。
 ---------------------------------------
 function Layer:removeProp(prop)
-    Log.debug("remove prop!")
     self.renderPass:removeProp(prop)
 end
 
