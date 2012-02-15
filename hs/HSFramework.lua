@@ -6,6 +6,7 @@
 
 -- base liblary
 require "hs/Class"
+require "hs/PropertySupport"
 require "hs/Log"
 require "hs/Runtime"
 require "hs/Globals"
@@ -31,6 +32,7 @@ require "hs/Application"
 require "hs/BoxLayout"
 require "hs/VBoxLayout"
 require "hs/HBoxLayout"
+require "hs/EaseType"
 require "hs/Animation"
 
 ----------------------------------------------------------------

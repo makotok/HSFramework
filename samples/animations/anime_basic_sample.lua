@@ -20,12 +20,13 @@ function onCompleteAnimation(e)
 end
 
 -- animate
-local animation = Animation:new(sprite1)
-    :setLocation(0, 0):setRotation(0):setScale(1, 1)
-    :move(sprite1.width / 2, sprite1.height / 2, 1):wait(3)
+local animation = Animation:new(sprite1, 1)
+    :copy({x = 0, y = 0, rotation = 0, scaleX = 1, scaleY = 1})
+    :move(sprite1.width / 2, sprite1.height / 2)
+    :wait(3)
     :parallel(
-        Animation:new(sprite1):rotate(90, 1),
-        Animation:new(sprite1):scale(1, 1, 1)
+        Animation:new(sprite1, 1):rotate(90),
+        Animation:new(sprite1, 1):scale(1, 1)
     )
     
 function animate()

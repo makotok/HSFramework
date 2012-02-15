@@ -141,6 +141,52 @@ function DisplayObject:centerPivot()
 end
 
 ---------------------------------------
+-- 色をアニメーション遷移させます。
+---------------------------------------
+function DisplayObject:moveColor(red, green, blue, alpha, sec, mode, completeHandler)
+    local action = self.prop:moveColor(red, green, blue, alpha, mode)
+    if completeHandler ~= nil then
+        action:setListener(MOAIAction.EVENT_STOP, function(prop) completeHandler(self) end)
+    end
+    return action
+end
+
+---------------------------------------
+-- フェードインします。
+---------------------------------------
+function DisplayObject:fadeIn(sec, mode, completeHandler)
+    self.visible = true
+    self:setColor(0, 0, 0, 0)
+    local action = self.prop:moveColor(1, 1, 1, 1, sec, mode)
+    if completeHandler ~= nil then
+        action:setListener(MOAIAction.EVENT_STOP,
+            function(prop)
+                completeHandler(self)
+            end
+        )
+    end
+    return action
+end
+
+---------------------------------------
+-- フェードアウトします。
+---------------------------------------
+function DisplayObject:fadeOut(sec, mode, completeHandler)
+    self:setColor(1, 1, 1, 1)
+    self.visible = true
+    local action = self.prop:seekColor(0, 0, 0, 0, sec, mode)
+    if completeHandler ~= nil then
+        action:setListener(MOAIAction.EVENT_STOP,
+            function(prop)
+                self.visible = false
+                completeHandler(self)
+            end
+        )
+    end
+    return action
+end
+
+---------------------------------------
 -- 色を設定します。
 ---------------------------------------
 function DisplayObject:setColor(red, green, blue, alpha)

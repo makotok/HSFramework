@@ -16,7 +16,7 @@ sprite2.parent = scene
 sprite2:setLocation(20 + sprite1.width, 10)
 
 -- graphics
-local g = Graphics:new(50, 50)
+local g = Graphics:new({width = 50, height = 50})
 g.x = 10
 g.y = 20 + sprite1.height
 g.parent = scene
@@ -30,13 +30,9 @@ g:drawRect(0, 0, 50, 50)
 scene:openScene()
 
 -- move
-sprite1:moveLocation(50, 50, 1, nil,
+sprite1:move(50, 50, 1, nil,
     function(target)
-        Log.debug("move complete!", "")
+        target:fadeOut(1, nil, function(target) target:fadeIn(1) end)
     end
 )
 
--- debug
-Log.debug("sprite1:", sprite1.x, sprite1.y, sprite1.width, sprite1.height)
-Log.debug("sprite2:", sprite2.x, sprite2.y, sprite2.width, sprite2.height)
-Log.debug("graphics:", g.x, g.y, g.width, g.height)

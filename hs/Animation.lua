@@ -12,13 +12,19 @@ Animation:setPropertyName("running", "setRunning", "isRunning")
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function Animation:init(target)
+function Animation:init(target, sec, easeType)
     Scene:super(self)
     
     self._target = target
     self._commands = {}
+
+    self._second = sec and sec or 1
+    self._easeType = easeType
+    
     self._currentCommand = nil
     self._currentIndex = 0
+    self._currentSecond = sec
+    self._currentEaseType = easeType
     self._running = false
     self._stoped = false
 end
@@ -45,18 +51,13 @@ function Animation:setTarget(target)
 end
 
 ---------------------------------------
--- 対象オブジェクトを移動させます。
+-- アニメーションのプロパティを設定します。
 ---------------------------------------
-function Animation:move(moveX, moveY, sec, mode)
-    local action = nil
+function Animation:setting(src)
     local command = self:newCommand(
         function(obj, callback)
-            action = self.target:move(moveX, moveY, sec, mode, function() callback(obj) end)
-        end,
-        function(obj)
-            if action then
-                action:stop()
-            end
+            table.copy(src, self)
+            callback(obj)
         end
     )
     self:addCommand(command)
@@ -64,13 +65,34 @@ function Animation:move(moveX, moveY, sec, mode)
 end
 
 ---------------------------------------
--- 対象オブジェクトの座標を設定します。
+-- 対象オブジェクトのプロパティを設定します。
 ---------------------------------------
-function Animation:setLocation(x, y)
+function Animation:copy(src)
     local command = self:newCommand(
         function(obj, callback)
-            self.target:setLocation(x, y)
+            table.copy(src, self.target)
             callback(obj)
+        end
+    )
+    self:addCommand(command)
+    return self
+end
+
+---------------------------------------
+-- 対象オブジェクトを移動させます。
+---------------------------------------
+function Animation:move(moveX, moveY, sec, mode)
+    local action = nil
+    local command = self:newCommand(
+        function(obj, callback)
+            local tSec = self:_getCommandSecond(sec)
+            local tMode = self:_getCommandEaseType(mode)
+            action = self.target:move(moveX, moveY, tSec, tMode, function() callback(obj) end)
+        end,
+        function(obj)
+            if action then
+                action:stop()
+            end
         end
     )
     self:addCommand(command)
@@ -84,7 +106,9 @@ function Animation:rotate(rotation, sec, mode)
     local action = nil
     local command = self:newCommand(
         function(obj, callback)
-            action = self.target:rotate(rotation, sec, mode,  function() callback(obj) end)
+            local tSec = self:_getCommandSecond(sec)
+            local tMode = self:_getCommandEaseType(mode)
+            action = self.target:rotate(rotation, tSec, tMode,  function() callback(obj) end)
         end,
         function(obj)
             if action then
@@ -95,21 +119,6 @@ function Animation:rotate(rotation, sec, mode)
     self:addCommand(command)
     return self
 end
-
----------------------------------------
--- 対象オブジェクトの回転量を設定します。
----------------------------------------
-function Animation:setRotation(rotation)
-    local command = self:newCommand(
-        function(obj, callback)
-            self.target:setRotation(rotation)
-            callback(obj)
-        end
-    )
-    self:addCommand(command)
-    return self
-end
-
 
 ---------------------------------------
 -- 対象オブジェクトを拡大します。
@@ -118,7 +127,9 @@ function Animation:scale(scaleX, scaleY, sec, mode)
     local action = nil
     local command = self:newCommand(
         function(obj, callback)
-            action = self.target:scale(scaleX, scaleY, sec, mode, function() callback(obj) end)
+            local tSec = self:_getCommandSecond(sec)
+            local tMode = self:_getCommandEaseType(mode)
+            action = self.target:scale(scaleX, scaleY, tSec, tMode, function() callback(obj) end)
         end,
         function(obj)
             if action then
@@ -131,13 +142,62 @@ function Animation:scale(scaleX, scaleY, sec, mode)
 end
 
 ---------------------------------------
--- 対象オブジェクトの回転量を設定します。
+-- 対象オブジェクトをフェードインします。
 ---------------------------------------
-function Animation:setScale(scaleX, scaleY)
+function Animation:fadeIn(sec, mode)
+    local action = nil
     local command = self:newCommand(
         function(obj, callback)
-            self.target:setScale(scaleX, scaleY)
-            callback(obj)
+            local tSec = self:_getCommandSecond(sec)
+            local tMode = self:_getCommandEaseType(mode)
+            action = self.target:fadeIn(tSec, tMode, function() callback(obj) end)
+        end,
+        function(obj)
+            if action then
+                action:stop()
+            end
+        end
+    )
+    self:addCommand(command)
+    return self
+end
+
+---------------------------------------
+-- 対象オブジェクトをフェードアウトします。
+---------------------------------------
+function Animation:fadeOut(sec, mode)
+    local action = nil
+    local command = self:newCommand(
+        function(obj, callback)
+            local tSec = self:_getCommandSecond(sec)
+            local tMode = self:_getCommandEaseType(mode)
+            action = self.target:fadeOut(tSec, tMode, function() callback(obj) end)
+        end,
+        function(obj)
+            if action then
+                action:stop()
+            end
+        end
+    )
+    self:addCommand(command)
+    return self
+end
+
+---------------------------------------
+-- 対象オブジェクトをフェードアウトします。
+---------------------------------------
+function Animation:color(red, green, blue, alpha, sec, mode)
+    local action = nil
+    local command = self:newCommand(
+        function(obj, callback)
+            local tSec = self:_getCommandSecond(sec)
+            local tMode = self:_getCommandEaseType(mode)
+            action = self.target:moveColor(red, green, blue, alpha, tSec, tMode, function() callback(obj) end)
+        end,
+        function(obj)
+            if action then
+                action:stop()
+            end
         end
     )
     self:addCommand(command)
@@ -264,6 +324,8 @@ function Animation:play(params)
         self._onComplete = params.onComplete
     end
     Log.debug("Animation:play")
+    self._currentSecond = self._second
+    self._currentEaseType = self._easeType
     self._running = true
     self._stoped = false
     
@@ -291,8 +353,6 @@ function Animation:_onCommandComplete()
     if self._stoped then
         return
     end
-    Log.debug("Animation:onCommandComplete", "currentIndex:" .. self._currentIndex)
-    
     -- next command
     if self._currentIndex < #self._commands then
         self:_executeCommand(self._currentIndex + 1)
@@ -356,3 +416,12 @@ function Animation:newCommand(playFunc, stopFunc)
     local command = {play = playFunc, stop = stopFunc}
     return command
 end
+
+function Animation:_getCommandSecond(sec)
+    return sec and sec or self._currentSecond
+end
+
+function Animation:_getCommandEaseType(easeType)
+    return easeType and easeType or self._currentEaseType
+end
+
