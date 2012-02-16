@@ -18,11 +18,7 @@ sprite2:addListener(Event.FRAME_LOOP,
 )
 
 -- graphics
-local g = Graphics:new({width = 50, height = 50})
-g.x = 10
-g.y = 20 + sprite1.height
-g.parent = scene
-
+local g = Graphics:new({x = 10, y = 20, width = 50, height = 50, parent = scene})
 g:setPenColor(0, 1, 0, 1)
 g:fillRect(0, 0, 50, 50)
 g:setPenColor(1, 0, 0, 1)
