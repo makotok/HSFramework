@@ -16,6 +16,8 @@ Event.CLICK = "click"
 Event.CANCEL = "cancel"
 Event.KEYBORD = "keybord"
 Event.COMPLETE = "complete"
+Event.FRAME_LOOP = "frameLoop"
+Event.FRAME_STOP = "frameStop"
 
 Event.TOUCH = "touch"
 Event.TOUCH_DOWN = "touchDown"

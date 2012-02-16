@@ -6,16 +6,21 @@
 Animation = EventDispatcher()
 
 -- properties
-Animation:setPropertyName("target")
+Animation:setPropertyName("targets")
 Animation:setPropertyName("running", "setRunning", "isRunning")
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function Animation:init(target, sec, easeType)
+function Animation:init(targets, sec, easeType)
     Scene:super(self)
     
-    self._target = target
+    -- コンストラクタが存在する場合、配列に代入
+    if targets.new then
+        targets = {targets}
+    end
+    
+    self._targets = targets
     self._commands = {}
 
     self._second = sec and sec or 1
@@ -39,15 +44,8 @@ end
 ---------------------------------------
 -- 対象オブジェクトを返します。
 ---------------------------------------
-function Animation:getTarget()
-    return self._target
-end
-
----------------------------------------
--- 対象オブジェクトを設定します。
----------------------------------------
-function Animation:setTarget(target)
-    self._target = target
+function Animation:getTargets()
+    return self._targets
 end
 
 ---------------------------------------
@@ -70,8 +68,10 @@ end
 function Animation:copy(src)
     local command = self:newCommand(
         function(obj, callback)
-            table.copy(src, self.target)
-            callback(obj)
+            for i, target in ipairs(self.targets) do
+                table.copy(src, target)
+                callback(obj)
+            end
         end
     )
     self:addCommand(command)
@@ -82,19 +82,10 @@ end
 -- 対象オブジェクトを移動させます。
 ---------------------------------------
 function Animation:move(moveX, moveY, sec, mode)
-    local action = nil
-    local command = self:newCommand(
-        function(obj, callback)
-            local tSec = self:_getCommandSecond(sec)
-            local tMode = self:_getCommandEaseType(mode)
-            action = self.target:move(moveX, moveY, tSec, tMode, function() callback(obj) end)
-        end,
-        function(obj)
-            if action then
-                action:stop()
-            end
-        end
-    )
+    local actionFunc = function(target, tSec, tMode, completeHandler)
+        return target:move(moveX, moveY, tSec, tMode, completeHandler)
+    end
+    local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
     return self
 end
@@ -103,19 +94,10 @@ end
 -- 対象オブジェクトを回転させます。
 ---------------------------------------
 function Animation:rotate(rotation, sec, mode)
-    local action = nil
-    local command = self:newCommand(
-        function(obj, callback)
-            local tSec = self:_getCommandSecond(sec)
-            local tMode = self:_getCommandEaseType(mode)
-            action = self.target:rotate(rotation, tSec, tMode,  function() callback(obj) end)
-        end,
-        function(obj)
-            if action then
-                action:stop()
-            end
-        end
-    )
+    local actionFunc = function(target, tSec, tMode, completeHandler)
+        return target:rotate(rotation, tSec, tMode, completeHandler)
+    end
+    local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
     return self
 end
@@ -124,19 +106,10 @@ end
 -- 対象オブジェクトを拡大します。
 ---------------------------------------
 function Animation:scale(scaleX, scaleY, sec, mode)
-    local action = nil
-    local command = self:newCommand(
-        function(obj, callback)
-            local tSec = self:_getCommandSecond(sec)
-            local tMode = self:_getCommandEaseType(mode)
-            action = self.target:scale(scaleX, scaleY, tSec, tMode, function() callback(obj) end)
-        end,
-        function(obj)
-            if action then
-                action:stop()
-            end
-        end
-    )
+    local actionFunc = function(target, tSec, tMode, completeHandler)
+        return target:scale(scaleX, scaleY, tSec, tMode, completeHandler)
+    end
+    local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
     return self
 end
@@ -145,19 +118,10 @@ end
 -- 対象オブジェクトをフェードインします。
 ---------------------------------------
 function Animation:fadeIn(sec, mode)
-    local action = nil
-    local command = self:newCommand(
-        function(obj, callback)
-            local tSec = self:_getCommandSecond(sec)
-            local tMode = self:_getCommandEaseType(mode)
-            action = self.target:fadeIn(tSec, tMode, function() callback(obj) end)
-        end,
-        function(obj)
-            if action then
-                action:stop()
-            end
-        end
-    )
+    local actionFunc = function(target, tSec, tMode, completeHandler)
+        return target:fadeIn(tSec, tMode, completeHandler)
+    end
+    local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
     return self
 end
@@ -166,40 +130,22 @@ end
 -- 対象オブジェクトをフェードアウトします。
 ---------------------------------------
 function Animation:fadeOut(sec, mode)
-    local action = nil
-    local command = self:newCommand(
-        function(obj, callback)
-            local tSec = self:_getCommandSecond(sec)
-            local tMode = self:_getCommandEaseType(mode)
-            action = self.target:fadeOut(tSec, tMode, function() callback(obj) end)
-        end,
-        function(obj)
-            if action then
-                action:stop()
-            end
-        end
-    )
+    local actionFunc = function(target, tSec, tMode, completeHandler)
+        return target:fadeOut(tSec, tMode, completeHandler)
+    end
+    local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
     return self
 end
 
 ---------------------------------------
--- 対象オブジェクトをフェードアウトします。
+-- 対象オブジェクトの色をアニメーションします。
 ---------------------------------------
 function Animation:color(red, green, blue, alpha, sec, mode)
-    local action = nil
-    local command = self:newCommand(
-        function(obj, callback)
-            local tSec = self:_getCommandSecond(sec)
-            local tMode = self:_getCommandEaseType(mode)
-            action = self.target:moveColor(red, green, blue, alpha, tSec, tMode, function() callback(obj) end)
-        end,
-        function(obj)
-            if action then
-                action:stop()
-            end
-        end
-    )
+    local actionFunc = function(target, tSec, tMode, completeHandler)
+        return target:moveColor(red, blue, alpha, tSec, tMode, completeHandler)
+    end
+    local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
     return self
 end
@@ -358,7 +304,7 @@ function Animation:_onCommandComplete()
         self:_executeCommand(self._currentIndex + 1)
     -- complete!
     else
-        local event = Event:new(Event.COMPLETE, self)
+        local event = EventPool:getObject(Event.COMPLETE, self)
         if self._onComplete then self._onComplete(event) end
         self:onComplete(event)
         self:dispatchEvent(event)
@@ -366,7 +312,7 @@ function Animation:_onCommandComplete()
 end
 
 ---------------------------------------
--- アニメーションを開始します。
+-- アニメーションを停止します。
 ---------------------------------------
 function Animation:stop()
     if not self.running then
@@ -414,6 +360,55 @@ function Animation:newCommand(playFunc, stopFunc)
     stopFunc = stopFunc and stopFunc or emptyFunc
     
     local command = {play = playFunc, stop = stopFunc}
+    return command
+end
+
+---------------------------------------
+-- 非同期なアクションを伴う、
+-- アニメーション実行コマンドを生成します。
+-- @param funcName 関数名
+-- @param args sec, modeをのぞく引数
+-- @param sec 秒
+-- @param mode EaseType
+-- @return command コマンドテーブル
+---------------------------------------
+function Animation:newActionCommand(actionFunc, sec, mode)
+    local actions = nil
+    local command = self:newCommand(
+        -- play
+        function(obj, callback)
+            actions = {}
+            if #self.targets == 0 then
+                callback(obj)
+            end
+
+            -- 対象オブジェクトの引数
+            local tSec = self:_getCommandSecond(sec)
+            local tMode = self:_getCommandEaseType(mode)
+            
+            local max = #self.targets
+            local count = 0
+            
+            -- 完了ハンドラ
+            local completeHandler = function()
+                count = count + 1
+                if count >= max then
+                    callback(obj)
+                end
+            end
+            
+            for i, target in ipairs(self.targets) do
+                local action = actionFunc(target, tSec, tMode, completeHandler)
+                table.insert(actions, action)
+            end
+        end,
+        -- stop
+        function(obj)
+            for i, action in ipairs(actions) do
+                action:stop()
+            end
+        end
+    )
     return command
 end
 

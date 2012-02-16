@@ -11,6 +11,10 @@ require "hs/Log"
 require "hs/Runtime"
 require "hs/Globals"
 require "hs/UString"
+
+require "hs/ObjectPool"
+require "hs/EventPool"
+
 require "hs/Event"
 require "hs/EventListener"
 require "hs/EventDispatcher"

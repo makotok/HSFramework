@@ -68,6 +68,8 @@ end
 
 ---------------------------------------
 -- イベントをディスパッチします
+-- eventオブジェクトは回収されるため、
+-- 再利用する場合は、EventPoolから再取得してください。
 ---------------------------------------
 function EventDispatcher:dispatchEvent(event)
     event.stoped = false
@@ -76,10 +78,11 @@ function EventDispatcher:dispatchEvent(event)
             event:setListener(obj.callback, obj.source)
             obj:call(event)
             if event.stoped == true then
-                return
+                break
             end
         end
     end
+    EventPool:releaseObject(event)
 end
 
 ---------------------------------------

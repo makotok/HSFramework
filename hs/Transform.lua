@@ -72,6 +72,7 @@ end
 -- ローカル座標を移動します。
 ---------------------------------------
 function Transform:move(x, y, sec, mode, completeHandler)
+    Log.debug(x, y, mode)
     local action = self.transformObj:moveLoc(x, y, sec, mode)
     if completeHandler ~= nil then
         action:setListener(MOAIAction.EVENT_STOP, function(prop) completeHandler(self) end)

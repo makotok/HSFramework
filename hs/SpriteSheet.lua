@@ -19,8 +19,27 @@ function SpriteSheet:init(texture, frameWidth, frameHeight, params)
 
     -- オブジェクト定義
     self._frame = 1
+    self._frames = {}
+    self._frameCurve = MOAIAnimCurve.new()
+    self._frameAnim = MOAIAnim:new()
     self._frameWidth = 1
     self._frameHeight = 1
+    
+    -- イベントリスナの設定
+    self._frameAnim:setListener(MOAITimer.EVENT_TIMER_LOOP, 
+        function(prop)
+            local e = Event:new(Event.FRAME_LOOP, self)
+            self:onFrameLoop(e)
+            self:dispatchEvent(e)
+        end
+    )
+    self._frameAnim:setListener(MOAIAction.EVENT_STOP,
+        function(prop)
+            local e = Event:new(Event.FRAME_STOP, self)
+            self:onFrameStop(e)
+            self:dispatchEvent(e)
+        end
+    )
 
     -- テクスチャの設定
     if texture then
@@ -121,4 +140,56 @@ end
 ---------------------------------------
 function SpriteSheet:getFrame()
     return self._frame
+end
+
+---------------------------------------
+-- フレームアニメーションを行います。
+-- modeには、
+---------------------------------------
+function SpriteSheet:moveFrames(frames, sec, mode)
+    mode = mode and mode or MOAITimer.LOOP
+
+    local curve = self._frameCurve
+    curve:reserveKeys(#frames)
+    for i = 1, #frames do
+        curve:setKey ( i, sec * (i - 1), frames[i], MOAIEaseType.FLAT )
+    end
+
+    local anim = self._frameAnim
+    anim:reserveLinks(1)
+    anim:setMode(mode)
+    anim:setLink(1, curve, self.prop, MOAIProp2D.ATTR_INDEX )
+    anim:setCurve(curve)
+    
+    if anim:isBusy() then
+        anim:stop()
+    end
+    
+    anim:start()
+    return anim
+end
+
+function SpriteSheet:playFrames()
+
+end
+
+---------------------------------------
+-- フレームアニメーションを停止します。
+---------------------------------------
+function SpriteSheet:stopFrames()
+    self._frameAnim:stop()
+end
+
+---------------------------------------
+-- フレームアニメーションのループ時の処理を行います。
+---------------------------------------
+function SpriteSheet:onFrameLoop(event)
+
+end
+
+---------------------------------------
+-- フレームアニメーション停止時の処理を行います。
+---------------------------------------
+function SpriteSheet:onFrameStop(event)
+
 end
