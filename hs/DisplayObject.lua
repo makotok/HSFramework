@@ -256,19 +256,35 @@ function DisplayObject:getBlue()
 end
 
 ---------------------------------------
+-- 表示するか反映します。
+---------------------------------------
+function DisplayObject:updateVisible()
+    -- FIXME:MOAIProp2D Bug?
+    if self.prop then
+        self.prop:setVisible(self.visible)
+    end    
+end
+
+---------------------------------------
 -- 表示するか設定します。
 ---------------------------------------
 function DisplayObject:setVisible(visible)
     self._visible = visible
-    if self.prop then
-        self.prop:setVisible(visible)
-    end
+    self:updateVisible()
 end
 
 ---------------------------------------
 -- 表示するか返します。
 ---------------------------------------
 function DisplayObject:isVisible()
+    --[[
+    if self._visible == false then
+        return false
+    end
+    if self.parent then
+        return self.parent:isVisible()
+    end
+    --]]
     return self._visible
 end
 
@@ -304,6 +320,7 @@ end
 -- 親オブジェクトを設定します。
 -- 親オブジェクトはGroupである必要があります。
 -- nilを設定した場合、親オブジェクトはクリアされます。
+-- TODO:要リファクタリング
 ---------------------------------------
 function DisplayObject:setParent(parent)    
     -- sceneを指定された場合はtopLayerを取得
@@ -328,15 +345,25 @@ function DisplayObject:setParent(parent)
     end
     
     -- 座標等の連携
-    if parent == nil or parent:instanceOf(Layer) then
+    self:_setAttrLinkForParent()
+
+end
+
+function DisplayObject:_setAttrLinkForParent()
+    local parent = self.parent
+    if parent == nil then
         self.transformObj:setParent(nil)
+    elseif parent:instanceOf(Layer) then
+        self.prop:setAttrLink(MOAIColor.ATTR_R_COL, parent.prop, MOAIColor.ATTR_R_COL)
+        self.prop:setAttrLink(MOAIColor.ATTR_G_COL, parent.prop, MOAIColor.ATTR_G_COL)
+        self.prop:setAttrLink(MOAIColor.ATTR_B_COL, parent.prop, MOAIColor.ATTR_B_COL)
+        self.prop:setAttrLink(MOAIColor.ATTR_A_COL, parent.prop, MOAIColor.ATTR_A_COL)    
     else
         self.transformObj:setParent(parent.transformObj)
     end
     if self.physicsObject then
         self.transformObj:setParent(self.physicsObject)
     end
-
 end
 
 ---------------------------------------
@@ -345,7 +372,6 @@ end
 function DisplayObject:getParent(parent)
     return self._parent
 end
-
 
 ---------------------------------------
 -- 物理オブジェクトを設定します。

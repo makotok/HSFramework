@@ -16,6 +16,7 @@ function Layer:init()
     Layer:super(self)
     self._renderPass = self:newRenderPass()
     self.camera = Transform:new()
+    self.camera:setPivot(Application.stageWidth / 2, Application.stageHeight / 2)
 end
 
 ---------------------------------------
@@ -47,6 +48,14 @@ function Layer:setParent(parent)
     -- 親に追加
     self.prop._parent = parent
     if parent then
+        self.transformObj:setParent(parent.transformObj)
+        --[[
+        if self.prop ~= parent.prop then
+            self.prop:setAttrLink(MOAIColor.ATTR_R_COL, parent.prop, MOAIColor.ATTR_R_COL)
+            self.prop:setAttrLink(MOAIColor.ATTR_G_COL, parent.prop, MOAIColor.ATTR_G_COL)
+            self.prop:setAttrLink(MOAIColor.ATTR_B_COL, parent.prop, MOAIColor.ATTR_B_COL)
+            self.prop:setAttrLink(MOAIColor.ATTR_A_COL, parent.prop, MOAIColor.ATTR_A_COL)            
+        end--]]
         parent:addLayer(self)
     end
 end

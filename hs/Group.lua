@@ -109,6 +109,29 @@ function Group:setSize(width, height)
 end
 
 ---------------------------------------
+-- 表示するか反映します。
+---------------------------------------
+--[[
+function Group:updateVisible()
+    DisplayObject.updateVisible(self, visible)
+    self.background:updateVisible()
+    for i, child in ipairs(self.children) do
+        child:updateVisible()
+    end
+end
+--]]
+---------------------------------------
+-- 表示するか設定します。
+---------------------------------------
+function Group:setVisible(visible)
+    DisplayObject.setVisible(self, visible)
+    self.background.visible = visible
+    for i, child in ipairs(self.children) do
+        child.visible = visible
+    end
+end
+
+---------------------------------------
 -- 背景オブジェクトを設定します。
 -- TODO:変更時の子の反映
 ---------------------------------------

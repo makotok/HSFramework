@@ -13,7 +13,7 @@ Animation:setPropertyName("running", "setRunning", "isRunning")
 -- コンストラクタです
 ---------------------------------------
 function Animation:init(targets, sec, easeType)
-    Scene:super(self)
+    Animation:super(self)
     
     -- コンストラクタが存在する場合、配列に代入
     if targets.new then
