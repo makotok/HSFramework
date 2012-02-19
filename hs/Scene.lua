@@ -8,6 +8,7 @@ Scene = Transform()
 -- getters
 Scene:setPropertyName("layers")
 Scene:setPropertyName("topLayer")
+Scene:setPropertyName("opened", "setOpened", "isOpened")
 
 ---------------------------------------
 -- コンストラクタです
@@ -30,9 +31,13 @@ end
 -- シーンを開きます
 -- 引数の設定により、
 --
--- @param params effectプロパティを持つテーブル
+-- @param params 
 ---------------------------------------
 function Scene:openScene(params)
+    if self.opened or self._animation then
+        return
+    end
+
     -- 開いた時の処理
     local event = Event:new(Event.OPEN, self)
     self:onOpen(event)
@@ -44,12 +49,28 @@ function Scene:openScene(params)
     -- マネージャにスタック
     Application:addScene(self)
     self._opened = true
+    
+    if params and params.animation then
+        self._animation = params.animation
+        self._animation:play({onComplete =
+            function(e)
+                self._animation = nil
+                if params.onComplete then
+                    params.onComplete(e)
+                end
+            end}
+        )
+    end
 end
 
 ---------------------------------------
 -- シーンを閉じます
 ---------------------------------------
 function Scene:closeScene(params)
+    if not self.opened or self._animation then
+        return
+    end
+    
     -- 閉じた時の処理
     local event = Event:new(Event.CLOSE, self)
     self:onClose(event)
@@ -59,8 +80,23 @@ function Scene:closeScene(params)
     Log.debug(self.name .. ":onClose(event)")
 
     -- マネージャから削除
-    Application:removeScene(self)
-    self._opened = false
+    if params and params.animation then
+        self._animation = params.animation
+        self._animation:play({onComplete =
+            function(e)
+                Application:removeScene(self)
+                self._opened = false
+                self._animation = nil
+                if params.onComplete then
+                    params.onComplete(e)
+                end
+            end}
+        )
+    else
+        Application:removeScene(self)
+        self._opened = false
+    end
+    
 end
 
 ---------------------------------------

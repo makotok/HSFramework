@@ -306,6 +306,7 @@ function Animation:_onCommandComplete()
     else
         local event = EventPool:getObject(Event.COMPLETE, self)
         if self._onComplete then self._onComplete(event) end
+        self._running = false
         self:onComplete(event)
         self:dispatchEvent(event)
     end

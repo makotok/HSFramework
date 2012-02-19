@@ -17,7 +17,7 @@ end
 -- レンダラーパスの表示順を反映します。
 ---------------------------------------
 function SceneManager:refreshRenders()
-    MIAISim.clearRenderStack()
+    MOAISim.clearRenderStack()
     for i, scene in ipairs(self.scenes) do
         scene:showRenders()
     end
