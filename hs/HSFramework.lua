@@ -30,6 +30,9 @@ require "hs/Graphics"
 require "hs/Sprite"
 require "hs/SpriteSheet"
 require "hs/MapSprite"
+require "hs/TextLabel"
+require "hs/Font"
+require "hs/FontCache"
 require "hs/Scene"
 require "hs/SceneManager"
 require "hs/Window"
@@ -39,11 +42,14 @@ require "hs/VBoxLayout"
 require "hs/HBoxLayout"
 require "hs/EaseType"
 require "hs/Animation"
+require "hs/FPSMonitor"
 
 ----------------------------------------------------------------
 -- HSFramework
 ----------------------------------------------------------------
 HSFramework = {}
+
+HSFramework.VERSION = "0.2"
 
 ---------------------------------------
 --- フレームワークの初期化処理です
@@ -53,6 +59,8 @@ HSFramework = {}
 --- この関数の動作を変更する事で可能です。
 ---------------------------------------
 function HSFramework:initialize()
+    Log.info("Hana Saurus Framework loading...", "Version:" .. HSFramework.VERSION)
+
     InputManager:initialize()
     Application:initialize()
 end

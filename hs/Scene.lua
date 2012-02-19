@@ -28,8 +28,11 @@ end
 
 ---------------------------------------
 -- シーンを開きます
+-- 引数の設定により、
+--
+-- @param params effectプロパティを持つテーブル
 ---------------------------------------
-function Scene:openScene(effect)
+function Scene:openScene(params)
     -- 開いた時の処理
     local event = Event.new(Event.OPEN, self)
     self:onOpen(event)
@@ -46,7 +49,7 @@ end
 ---------------------------------------
 -- シーンを閉じます
 ---------------------------------------
-function Scene:closeScene(effect)
+function Scene:closeScene(params)
     -- 閉じた時の処理
     local event = Event.new(Event.CLOSE, self)
     self:onClose(event)
