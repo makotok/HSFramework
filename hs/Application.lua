@@ -21,6 +21,25 @@ Application:setPropertyName("stageHeight")
 function Application:initialize()
     self._window = Window:new()
     self._sceneManager = SceneManager:new()
+
+    if MOAIThread then
+        self._thread = MOAIThread.new()
+    else
+        self._thread = MOAICoroutine.new()
+    end
+    self._thread:run(function() self:enterFrame() end)
+end
+
+---------------------------------------
+-- フレーム毎の処理を行います。
+-- TODO:毎フレーム行うと遅いのかも・・・
+---------------------------------------
+function Application:enterFrame()
+    local event = Event:new(Event.ENTER_FRAME, self)
+    while true do
+        self:dispatchEvent(event)
+        coroutine.yield()
+    end
 end
 
 ---------------------------------------

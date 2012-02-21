@@ -24,21 +24,12 @@ group6.background:setPenColor(0, 1, 0):fillRect():setPenColor(0, 0.5, 0):setPenW
 for i = 1, 3 do
     Sprite:new("samples/images/cathead.png", {width = 64, height = 64, parent = group3})
     Sprite:new("samples/images/cathead.png", {width = 64, height = 64, parent = group4})
-    Sprite:new("samples/images/cathead.png", {width = 64, height = 64, parent = group5, visible = false})
+    Sprite:new("samples/images/cathead.png", {width = 64, height = 64, parent = group5})
     Graphics:new({width = 64, height = 64, parent = group6}):fillRect():setPenColor(0, 0, 0):drawLine(0, 0, 64, 64, 0, 64, 64, 0, 0, 0)
 end
 
-group2.visible = false
-
-
--- update layout
--- TODO:enterFrameでなんとかしたい。
-group1:updateLayout()
+-- Invalid layout
+--group3.autoLayout = false
 
 -- show scene
 scene:openScene()
-
-for i, v in ipairs(group5.children) do
-    print(v.visible)
-    v.prop:setVisible(false)
-end

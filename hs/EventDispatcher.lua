@@ -82,7 +82,7 @@ function EventDispatcher:dispatchEvent(event)
             end
         end
     end
-    EventPool:releaseObject(event)
+    --EventPool:releaseObject(event)
 end
 
 ---------------------------------------

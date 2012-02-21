@@ -1,7 +1,10 @@
 ----------------------------------------------------------------
 -- Sceneはシーングラフを構築するトップレベルコンテナです。
--- Sceneは複数のレイヤーを管理します。
+-- Sceneは複数のLayerを管理します。
 -- このクラスを使用して、画面を構築します。
+--
+-- デフォルトのレイヤー（topLayer）を持ちます。
+-- DisplayObjectの親に直接指定された場合、実際に追加される先はtopLayerになります。
 ----------------------------------------------------------------
 Scene = Transform()
 
@@ -103,14 +106,14 @@ end
 -- シーンを最前面に表示します。
 ---------------------------------------
 function Scene:orderToFront()
-    SceneManager:orderToFront(self)
+    Application.sceneManager:orderToFront(self)
 end
 
 ---------------------------------------
 -- シーンを最背面に表示します。
 ---------------------------------------
 function Scene:orderToBack()
-    SceneManager:orderToBack(self)
+    Application.sceneManager:orderToBack(self)
 end
 
 ---------------------------------------
@@ -189,8 +192,8 @@ end
 
 ---------------------------------------
 -- サイズを設定します。
--- デフォルト動作では、deckに対してrectを設定する為、
--- 必要により継承して動作を変更する事を期待します。
+-- 基本的にはstageのサイズのみを設定すべきであり、
+-- フレームワーク外部から設定すべきではありません。
 ---------------------------------------
 function Scene:setSize(width, height)
     self._width = width
@@ -247,6 +250,15 @@ end
 -- SceneにLayerはセットできません。
 ---------------------------------------
 function Scene:setLayer(layer)
+end
+
+---------------------------------------
+-- 子オブジェクトのレイアウトを更新します。
+---------------------------------------
+function Scene:updateLayout()
+    for i, layer in ipairs(self.layers) do
+        layer:updateLayout()
+    end
 end
 
 ---------------------------------------
@@ -379,6 +391,15 @@ end
 ---------------------------------------
 function Scene:isOpened()
     return self._opened
+end
+
+---------------------------------------
+-- フレーム毎の処理を行います。
+---------------------------------------
+function Scene:onEnterFrame(event)
+    for i, layer in ipairs(self.layers) do
+        layer:onEnterFrame(event)
+    end
 end
 
 ---------------------------------------

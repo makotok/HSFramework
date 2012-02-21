@@ -9,6 +9,7 @@ Group = DisplayObject()
 Group:setPropertyName("layout")
 Group:setPropertyName("background")
 Group:setPropertyName("children")
+Group:setPropertyName("autoLayout")
 
 ---------------------------------------
 -- コンストラクタです
@@ -19,6 +20,7 @@ function Group:init(params)
     -- オブジェクト定義
     self._children = {}
     self._background = self:newBackground()
+    self._autoLayout = true
 
     if params then
         table.copy(params, self)
@@ -60,6 +62,8 @@ function Group:addChild(child)
     table.insert(self.children, child)
     child.layer = self.layer
     child.parent = self
+
+    self:invalidateLayout()
 end
 
 ---------------------------------------
@@ -71,6 +75,7 @@ function Group:removeChild(child)
         table.remove(self.children, i)
         child.layer = nil
         child.parent = nil
+        self:invalidateLayout()
     end
 end
 
@@ -86,6 +91,18 @@ end
 ---------------------------------------
 function Group:getChildAt(i)
     return self._children[i]
+end
+
+---------------------------------------
+-- 一致する名前の子オブジェクトを返します。
+---------------------------------------
+function Group:findChildByName(name)
+    for i, child in ipairs(self.children) do
+        if child.name == name then
+            return child
+        end
+    end
+    return nil
 end
 
 ---------------------------------------
@@ -201,15 +218,71 @@ function Group:getLayout()
 end
 
 ---------------------------------------
+-- 自動的にレイアウトを調整するか設定します。
+---------------------------------------
+function Group:setAutoLayout(value)
+    self._autoLayout = value
+end
+
+---------------------------------------
+-- 自動的にレイアウトを調整するか返します。
+---------------------------------------
+function Group:getAutoLayout()
+    return self._autoLayout
+end
+
+---------------------------------------
+-- 表示オブジェクトの更新を予約します。
+---------------------------------------
+function Group:invalidateLayout()
+    self.layoutInvalidated = true
+end
+
+---------------------------------------
 -- 子オブジェクトのレイアウトを更新します。
 ---------------------------------------
-function Group:updateLayout()
+function Group:updateLayout(forceUpdate)
+    if not self.layoutInvalidated and not forceUpdate then
+        return
+    end
+    
     for i, child in ipairs(self.children) do
         if child.updateLayout then
             child:updateLayout()
         end
     end
-    if self.layout then
+    if self.layout and self.autoLayout then
         self.layout:update(self)
     end
+    self.layoutInvalidated = false
+    
+    Log.debug("Group:updateLayout", "layout updated!")
+end
+
+---------------------------------------
+-- 子オブジェクトの表示順を更新します。
+---------------------------------------
+function Group:updatePriority()
+    if not self.layer then
+        return
+    end
+    
+    local layer = self.layer
+    self.priority = layer.nextPriority()
+    
+    for i, child in ipairs(self.children) do
+        child:updatePriority()
+    end
+end
+
+---------------------------------------
+-- フレーム毎の処理を行います。
+-- invalidateDisplayList関数が呼ばれていた場合、
+-- updateDisplayList関数を実行します。
+---------------------------------------
+function Group:onEnterFrame(event)
+    for i, child in ipairs(self.children) do
+        child:onEnterFrame(event)
+    end
+    self:updateLayout()
 end

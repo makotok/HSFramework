@@ -11,6 +11,7 @@ function SceneManager:init()
     -- イベントリスナーの設定
     InputManager:addListener(Event.TOUCH, self.onTouch, self)
     InputManager:addListener(Event.KEYBORD, self.onKeybord, self)
+    Application:addListener(Event.ENTER_FRAME, self.onEnterFrame, self)
 end
 
 ---------------------------------------
@@ -100,6 +101,16 @@ end
 ---------------------------------------
 function SceneManager:onKeybord(e)
     if self.currentScene and self.currentScene:isOpened() then
-        currentScene:onKeybord(e)
+        self.currentScene:onKeybord(e)
+    end
+end
+
+---------------------------------------
+-- 毎フレームの処理を行います。
+---------------------------------------
+function SceneManager:onEnterFrame(e)
+    local currentScene = self.currentScene
+    if currentScene and currentScene:isOpened() then
+        currentScene:onEnterFrame(e)
     end
 end

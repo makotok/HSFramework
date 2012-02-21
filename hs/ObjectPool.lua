@@ -8,10 +8,24 @@ ObjectPool = Class()
 ---------------------------------------
 -- インスタンスの初期化処理を行います。
 ---------------------------------------
-function ObjectPool:init(factory, initial)
-    self._factory = factory
-    self._initial = initial
+function ObjectPool:init()
     self._pool = {}
+end
+
+---------------------------------------
+-- オブジェクトの生成関数です。
+-- 子クラスで継承して使用してください。
+---------------------------------------
+function ObjectPool:createObject(...)
+    return nil
+end
+
+---------------------------------------
+-- オブジェクトの初期化関数です。
+-- 子クラスで継承して使用してください。
+---------------------------------------
+function ObjectPool:initObject(obj, ...)
+
 end
 
 ---------------------------------------
@@ -23,14 +37,13 @@ end
 -- また、プールに存在する場合はinitial関数に渡されます。
 ---------------------------------------
 function ObjectPool:getObject(...)
-    local obj = self._pool[1]
-    
-    if obj then
+    if #self._pool > 0 then
+        local obj = self._pool[1]
         table.remove(self._pool, 1)
-        self._initial(obj, ...)
+        self:initObject(obj, ...)
         return obj
     else
-        return self._factory(...)
+        return self:createObject(...)
     end
 end
 

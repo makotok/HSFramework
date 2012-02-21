@@ -70,7 +70,19 @@ function DisplayObject:newTransformObj()
 end
 
 ---------------------------------------
--- 描画順を設定します。
+-- 子オブジェクトの表示順を更新します。
+---------------------------------------
+function DisplayObject:updatePriority()
+    if not self.layer then
+        return
+    end
+    
+    local layer = self.layer
+    self.priority = layer.nextPriority()
+end
+
+---------------------------------------
+-- 描画順を返します。
 ---------------------------------------
 function DisplayObject:setPriority(priority)
     self.prop:setPriority(priority)
@@ -79,7 +91,7 @@ end
 ---------------------------------------
 -- 描画順を返します。
 ---------------------------------------
-function DisplayObject:setPriority(priority)
+function DisplayObject:getPriority()
     return self.prop:getPriority()
 end
 
@@ -354,10 +366,13 @@ function DisplayObject:_setAttrLinkForParent()
     if parent == nil then
         self.transformObj:setParent(nil)
     elseif parent:instanceOf(Layer) then
+        --[[
+        TODO:リンクすると子が正常にいかない
         self.prop:setAttrLink(MOAIColor.ATTR_R_COL, parent.prop, MOAIColor.ATTR_R_COL)
         self.prop:setAttrLink(MOAIColor.ATTR_G_COL, parent.prop, MOAIColor.ATTR_G_COL)
         self.prop:setAttrLink(MOAIColor.ATTR_B_COL, parent.prop, MOAIColor.ATTR_B_COL)
-        self.prop:setAttrLink(MOAIColor.ATTR_A_COL, parent.prop, MOAIColor.ATTR_A_COL)    
+        self.prop:setAttrLink(MOAIColor.ATTR_A_COL, parent.prop, MOAIColor.ATTR_A_COL)
+        --]]
     else
         self.transformObj:setParent(parent.transformObj)
     end
@@ -452,3 +467,9 @@ function DisplayObject:getTransformObj()
     return self.prop
 end
 
+---------------------------------------
+-- フレーム毎の処理を行います。
+-- デフォルトでは、何も行いません。
+---------------------------------------
+function DisplayObject:onEnterFrame(event)
+end
