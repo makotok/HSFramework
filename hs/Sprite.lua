@@ -39,7 +39,7 @@ end
 ---------------------------------------
 function Sprite:setTexture(texture)
     if type(texture) == "string" then
-        texture = Texture:get(texture)
+        texture = TextureCache:get(texture)
     end
 
     local width, height = texture:getSize()

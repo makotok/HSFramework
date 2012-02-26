@@ -23,6 +23,7 @@ require "hs/InputManager"
 -- display classes
 require "hs/Transform"
 require "hs/Texture"
+require "hs/TextureCache"
 require "hs/DisplayObject"
 require "hs/Group"
 require "hs/Layer"

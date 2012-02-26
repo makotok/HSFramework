@@ -19,6 +19,7 @@ Layer:setPropertyName("lastPriority")
 function Layer:init(params)
     Layer:super(self)
     self._renderPass = self:newRenderPass()
+    self._partition = self.renderPass:getPartition()
     self._lastPriority = 0
     self.camera = Transform:new()
     self.camera:setPivot(Application.stageWidth / 2, Application.stageHeight / 2)
@@ -55,10 +56,15 @@ function Layer:setParent(parent)
     end
 
     -- 親に追加
-    self.prop._parent = parent
+    self._parent = parent
     if parent then
         self.transformObj:setParent(parent.transformObj)
         parent:addLayer(self)
+    end
+    
+    -- 子に反映
+    for i, child in ipairs(self.children) do
+        child.parent = parent
     end
 end
 
@@ -142,4 +148,95 @@ end
 ---------------------------------------
 function Layer:lastPriority()
     return self._lastPriority
+end
+
+---------------------------------------
+-- レイヤー内のワールド座標から、
+-- 存在するDisplayObjectリストを返します。
+---------------------------------------
+function Layer:getDisplayListForPoint(worldX, worldY)
+    local partition = self._partition
+    local array = {}
+    local props = {partition:sortedPropListForPoint(worldX, worldY)}
+    for i, prop in ipairs(props) do
+        for k, v in pairs(prop) do
+            if v._displayObject then
+                table.insert(array, v._displayObject)
+            end
+        end
+    end
+    return array
+end
+
+---------------------------------------
+-- レイヤーのタッチする処理を行います。
+---------------------------------------
+function Layer:onTouchDown(event)
+    local worldX, worldY = self.renderPass:wndToWorld(event.x, event.y)
+    local displayList = self:getDisplayListForPoint(worldX, worldY)
+    self._touchDownDisplayList = displayList
+    local max = #displayList
+
+    self._touchDownDisplayList = displayList
+    event.worldX = worldX
+    event.worldY = worldY
+    
+    
+    for i = max, 1, -1 do
+        local display = displayList[i]
+        
+        Log.debug("Layer:onTouchDown", i)
+        display:onTouchDown(event)
+    end
+end
+
+---------------------------------------
+-- レイヤーのタッチする処理を行います。
+---------------------------------------
+function Layer:onTouchUp(event)
+    if not self._touchDownDisplayList then
+        return
+    end
+
+    local displayList = self._touchDownDisplayList
+    local max = #displayList
+
+    for i = max, 1, -1 do
+        local display = displayList[i]
+        display:onTouchUp(event)
+    end
+end
+
+---------------------------------------
+-- レイヤーのタッチする処理を行います。
+---------------------------------------
+function Layer:onTouchMove(event)
+    if not self._touchDownDisplayList then
+        return
+    end
+
+    local displayList = self._touchDownDisplayList
+    local max = #displayList
+
+    for i = max, 1, -1 do
+        local display = displayList[i]
+        display:onTouchMove(event)
+    end
+end
+
+---------------------------------------
+-- レイヤーのタッチする処理を行います。
+---------------------------------------
+function Layer:onTouchCancel(event)
+    if not self._touchDownDisplayList then
+        return
+    end
+
+    local displayList = self._touchDownDisplayList
+    local max = #displayList
+
+    for i = max, 1, -1 do
+        local display = displayList[i]
+        display:onTouchCancel(event)
+    end
 end

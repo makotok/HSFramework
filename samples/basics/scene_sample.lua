@@ -2,7 +2,8 @@
 Application:openWindow("title", 480, 320)
 
 -- scenes
-local scene1 = Scene:new()
+scene_sample = Scene:new()
+local scene1 = scene_sample
 Sprite:new("samples/images/back_1.png", {parent = scene1})
 Sprite:new("samples/images/cathead.png", {x = 10, y = 10, parent = scene1})
 
@@ -28,26 +29,19 @@ local closeAnim2 = Animation:new(scene2, 1):parallel(
     Animation:new(scene2, 1):fadeOut())
 
 -- scene1 functions
-function scene1:onTouch(e)
-    if e.touchType == Event.DOWN then
-        scene1:closeScene({animation = closeAnim1, onComplete =
-            function()
-                scene2:openScene({animation = openAnim2})
-            end}
-        )
-    end
+function scene1:onTouchDown(e)
+    scene1:closeScene({animation = closeAnim1, onComplete =
+        function()
+            scene2:openScene({animation = openAnim2})
+        end}
+    )
 end
 
 -- scene2 functions
-function scene2:onTouch(e)
-    if e.touchType == Event.DOWN then
-        scene2:closeScene({animation = closeAnim2, onComplete =
-            function()
-                scene1:openScene({animation = openAnim1})
-            end}
-        )
-    end
+function scene2:onTouchDown(e)
+    scene2:closeScene({animation = closeAnim2, onComplete =
+        function()
+            scene1:openScene({animation = openAnim1})
+        end}
+    )
 end
-
-scene1:openScene({animation = openAnim1})
-

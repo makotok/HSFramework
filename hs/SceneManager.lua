@@ -9,7 +9,10 @@ function SceneManager:init()
     self.currentScene = nil
     
     -- イベントリスナーの設定
-    InputManager:addListener(Event.TOUCH, self.onTouch, self)
+    InputManager:addListener(Event.TOUCH_DOWN, self.onTouchDown, self)
+    InputManager:addListener(Event.TOUCH_UP, self.onTouchUp, self)
+    InputManager:addListener(Event.TOUCH_MOVE, self.onTouchMove, self)
+    InputManager:addListener(Event.TOUCH_CANCEL, self.onTouchCancel, self)
     InputManager:addListener(Event.KEYBORD, self.onKeybord, self)
     Application:addListener(Event.ENTER_FRAME, self.onEnterFrame, self)
 end
@@ -90,9 +93,36 @@ end
 ---------------------------------------
 -- 画面をタッチする処理を行います。
 ---------------------------------------
-function SceneManager:onTouch(e)
+function SceneManager:onTouchDown(e)
     if self.currentScene and self.currentScene:isOpened() then
-        self.currentScene:onTouch(e)
+        self.currentScene:onSceneTouchDown(e)
+    end
+end
+
+---------------------------------------
+-- 画面をタッチする処理を行います。
+---------------------------------------
+function SceneManager:onTouchUp(e)
+    if self.currentScene and self.currentScene:isOpened() then
+        self.currentScene:onSceneTouchUp(e)
+    end
+end
+
+---------------------------------------
+-- 画面をタッチする処理を行います。
+---------------------------------------
+function SceneManager:onTouchMove(e)
+    if self.currentScene and self.currentScene:isOpened() then
+        self.currentScene:onSceneTouchMove(e)
+    end
+end
+
+---------------------------------------
+-- 画面をタッチする処理を行います。
+---------------------------------------
+function SceneManager:onTouchCancel(e)
+    if self.currentScene and self.currentScene:isOpened() then
+        self.currentScene:onSceneTouchCancel(e)
     end
 end
 

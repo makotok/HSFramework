@@ -1,15 +1,15 @@
--- window
-Application:openWindow("title", 480, 320)
-
 -- scene
-local scene = Scene:new()
+anime_group_sample = Scene:new()
+local scene = anime_group_sample
 
--- sprite1
-local sprite1 = Sprite:new("samples/images/cathead.png", {width = 60, height = 60, parent = scene})
-local sprite2 = Sprite:new("samples/images/cathead.png", {width = 60, height = 60, y = 70, parent = scene})
+-- open event
+function scene:onOpen(event)
+    local sprite1 = Sprite:new("samples/images/cathead.png", {width = 60, height = 60, parent = scene})
+    local sprite2 = Sprite:new("samples/images/cathead.png", {width = 60, height = 60, y = 70, parent = scene})
+    
+    local animation = Animation:new({sprite1, sprite2}, 1):move(60, 0):fadeOut():fadeIn():rotate(360):play()
+end
 
--- animate
-local animation = Animation:new({sprite1, sprite2}, 1):move(60, 0):fadeOut():fadeIn():rotate(360):play()
-
-scene:openScene()
-
+-- close event
+function scene:onClose(event)
+end

@@ -1,18 +1,5 @@
 
-Texture = {
-    cache = {}
-}
-
----------------------------------------
---- テクスチャをロードして返します。
---- テクスチャはキャッシュされます。
----------------------------------------
-function Texture:get(path)
-    if self.cache[path] == nil then
-        self.cache[path] = self:new(path)
-    end
-    return self.cache[path]
-end
+Texture = {}
 
 ---------------------------------------
 --- 新規テクスチャをロードして返します。
@@ -22,3 +9,4 @@ function Texture:new(path)
     texture:load (path)
     return texture
 end
+

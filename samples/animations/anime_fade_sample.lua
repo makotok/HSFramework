@@ -1,14 +1,13 @@
--- window
-Application:openWindow("title", 480, 320)
-
 -- scene
-local scene = Scene:new()
+anime_fade_sample = Scene:new()
+local scene = anime_fade_sample
 
--- sprite1
-local sprite1 = Sprite:new("samples/images/cathead.png", {parent = scene})
+-- open event
+function scene:onOpen()
+    local sprite1 = Sprite:new("samples/images/cathead.png", {parent = scene})
+    local animation = Animation:new(sprite1, 1):move(50, 50):fadeOut():fadeIn():rotate(360):play()    
+end
 
--- animate
-local animation = Animation:new(sprite1, 1):move(50, 50):fadeOut():fadeIn():rotate(360):play()
-
-scene:openScene()
-
+-- close event
+function scene:onClose(event)
+end

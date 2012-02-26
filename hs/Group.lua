@@ -25,6 +25,10 @@ function Group:init(params)
     if params then
         table.copy(params, self)
     end
+    
+    if self._background then
+        self._background._displayObject = self
+    end
 end
 
 ---------------------------------------
@@ -202,6 +206,19 @@ function Group:getProp()
 end
 
 ---------------------------------------
+-- 親オブジェクトを設定します。
+-- 親オブジェクトはGroupである必要があります。
+-- nilを設定した場合、親オブジェクトはクリアされます。
+-- TODO:要リファクタリング
+---------------------------------------
+function Group:setParent(parent)
+    DisplayObject.setParent(self, parent)
+    for i, child in ipairs(self.children) do
+        child.parent = parent
+    end
+end
+
+---------------------------------------
 -- グループのレイアウトを設定します。
 -- レイアウトクラスを設定すると、子オブジェクトの
 -- 座標やサイズを自動的に設定する事が可能になります。
@@ -273,6 +290,13 @@ function Group:updatePriority()
     for i, child in ipairs(self.children) do
         child:updatePriority()
     end
+end
+
+---------------------------------------
+-- リソースを削除します。
+---------------------------------------
+function Group:dispose()
+    self.parent = nil
 end
 
 ---------------------------------------

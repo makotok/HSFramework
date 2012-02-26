@@ -12,6 +12,7 @@ Scene = Transform()
 Scene:setPropertyName("layers")
 Scene:setPropertyName("topLayer")
 Scene:setPropertyName("opened", "setOpened", "isOpened")
+Scene:setPropertyName("visible", "setVisible", "isVisible")
 
 ---------------------------------------
 -- コンストラクタです
@@ -188,6 +189,15 @@ end
 -- トップレベルコンテナなので、親はありません。
 ---------------------------------------
 function Scene:setParent(parent)
+end
+
+---------------------------------------
+-- リソースを削除します。
+---------------------------------------
+function Scene:dispose()
+    for i, layer in ipairs(self.layers) do
+        layer:dispose()
+    end
 end
 
 ---------------------------------------
@@ -418,8 +428,45 @@ end
 
 ---------------------------------------
 -- 画面をタッチした時のイベント処理です。
--- イベントハンドラ関数です
--- 子クラスで継承してください
 ---------------------------------------
-function Scene:onTouch(event)
+function Scene:onSceneTouchDown(event)
+    self:_onSceneTouchCommon(event, "onTouchDown")
+end
+
+---------------------------------------
+-- 画面をタッチした時のイベント処理です。
+---------------------------------------
+function Scene:onSceneTouchUp(event)
+    self:_onSceneTouchCommon(event, "onTouchUp")
+end
+
+---------------------------------------
+-- 画面をタッチした時のイベント処理です。
+---------------------------------------
+function Scene:onSceneTouchMove(event)
+    self:_onSceneTouchCommon(event, "onTouchMove")
+end
+
+---------------------------------------
+-- 画面をタッチした時のイベント処理です。
+---------------------------------------
+function Scene:onSceneTouchCancel(event)
+    self:_onSceneTouchCommon(event, "onTouchCancel")
+end
+
+function Scene:_onSceneTouchCommon(event, funcName)
+    Log.debug("Scene", funcName)
+    local max = #self.layers
+    for i = max, 1, -1 do
+        local layer = self.layers[i]
+        if not event.stoped then
+            layer[funcName](layer, event)
+        end
+    end
+    if not event.stoped then
+        if self[funcName] then
+            self[funcName](self, event)
+        end
+        self:dispatchEvent(event)
+    end
 end

@@ -40,6 +40,11 @@ function DisplayObject:init()
     self._visible = true
     self._enabled = true
     self._focus = false
+    
+    -- propとディスプレイリストのひも付け
+    if self.prop then
+        self.prop._displayObject = self
+    end
 end
 
 ---------------------------------------
@@ -366,13 +371,13 @@ function DisplayObject:_setAttrLinkForParent()
     if parent == nil then
         self.transformObj:setParent(nil)
     elseif parent:instanceOf(Layer) then
-        --[[
-        TODO:リンクすると子が正常にいかない
+        
+        --TODO:リンクすると子が正常にいかない
         self.prop:setAttrLink(MOAIColor.ATTR_R_COL, parent.prop, MOAIColor.ATTR_R_COL)
         self.prop:setAttrLink(MOAIColor.ATTR_G_COL, parent.prop, MOAIColor.ATTR_G_COL)
         self.prop:setAttrLink(MOAIColor.ATTR_B_COL, parent.prop, MOAIColor.ATTR_B_COL)
         self.prop:setAttrLink(MOAIColor.ATTR_A_COL, parent.prop, MOAIColor.ATTR_A_COL)
-        --]]
+        
     else
         self.transformObj:setParent(parent.transformObj)
     end
@@ -468,8 +473,44 @@ function DisplayObject:getTransformObj()
 end
 
 ---------------------------------------
+-- リソースを削除します。
+---------------------------------------
+function DisplayObject:dispose()
+    self.parent = nil
+end
+
+---------------------------------------
 -- フレーム毎の処理を行います。
 -- デフォルトでは、何も行いません。
 ---------------------------------------
 function DisplayObject:onEnterFrame(event)
+end
+
+---------------------------------------
+-- タッチ処理を行います。
+-- デフォルトでは、何も行いません。
+---------------------------------------
+function DisplayObject:onTouchDown(event)
+    Log.debug("[DisplayObject]", "onTouchDown")
+end
+
+---------------------------------------
+-- フレーム毎の処理を行います。
+-- デフォルトでは、何も行いません。
+---------------------------------------
+function DisplayObject:onTouchUp(event)
+end
+
+---------------------------------------
+-- フレーム毎の処理を行います。
+-- デフォルトでは、何も行いません。
+---------------------------------------
+function DisplayObject:onTouchMove(event)
+end
+
+---------------------------------------
+-- フレーム毎の処理を行います。
+-- デフォルトでは、何も行いません。
+---------------------------------------
+function DisplayObject:onTouchCancel(event)
 end
