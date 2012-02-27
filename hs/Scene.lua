@@ -24,6 +24,7 @@ function Scene:init()
     self.name = ""
     self._layers = {}
     self._opened = false
+    self._visible = true
     self._topLayer = Layer:new()
     self:addLayer(self.topLayer)
     
@@ -121,6 +122,10 @@ end
 -- 描画レイヤーを表示します。
 ---------------------------------------
 function Scene:showRenders()
+    if not self.visible then
+        return
+    end
+    
     for i, layer in ipairs(self.layers) do
         Log.debug("push render!")
         MOAISim.pushRenderPass(layer.renderPass)
@@ -397,6 +402,23 @@ function Scene:getBlue()
 end
 
 ---------------------------------------
+-- 表示するか設定します。
+---------------------------------------
+function Scene:setVisible(visible)
+    self._visible = visible
+    if self:isOpened() then
+        Application.sceneManager:refreshRenders()
+    end
+end
+
+---------------------------------------
+-- 表示するか返します。
+---------------------------------------
+function Scene:isVisible(visible)
+    return self._visible
+end
+
+---------------------------------------
 -- シーンを開いているか返します。
 ---------------------------------------
 function Scene:isOpened()
@@ -430,32 +452,32 @@ end
 -- 画面をタッチした時のイベント処理です。
 ---------------------------------------
 function Scene:onSceneTouchDown(event)
-    self:_onSceneTouchCommon(event, "onTouchDown")
+    self:onSceneTouchCommon(event, "onTouchDown")
 end
 
 ---------------------------------------
 -- 画面をタッチした時のイベント処理です。
 ---------------------------------------
 function Scene:onSceneTouchUp(event)
-    self:_onSceneTouchCommon(event, "onTouchUp")
+    self:onSceneTouchCommon(event, "onTouchUp")
 end
 
 ---------------------------------------
 -- 画面をタッチした時のイベント処理です。
 ---------------------------------------
 function Scene:onSceneTouchMove(event)
-    self:_onSceneTouchCommon(event, "onTouchMove")
+    self:onSceneTouchCommon(event, "onTouchMove")
 end
 
 ---------------------------------------
 -- 画面をタッチした時のイベント処理です。
 ---------------------------------------
 function Scene:onSceneTouchCancel(event)
-    self:_onSceneTouchCommon(event, "onTouchCancel")
+    self:onSceneTouchCommon(event, "onTouchCancel")
 end
 
-function Scene:_onSceneTouchCommon(event, funcName)
-    Log.debug("Scene", funcName)
+function Scene:onSceneTouchCommon(event, funcName)
+    Log.debug("[Scene:onSceneTouchCommon]", funcName)
     local max = #self.layers
     for i = max, 1, -1 do
         local layer = self.layers[i]

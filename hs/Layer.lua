@@ -12,6 +12,7 @@ Layer = Group()
 Layer:setPropertyName("camera")
 Layer:setPropertyName("renderPass")
 Layer:setPropertyName("lastPriority")
+Layer:setPropertyName("touchEnabled", "setTouchEnabled", "isTouchEnabled")
 
 ---------------------------------------
 -- コンストラクタです
@@ -21,6 +22,7 @@ function Layer:init(params)
     self._renderPass = self:newRenderPass()
     self._partition = self.renderPass:getPartition()
     self._lastPriority = 0
+    self._touchEnabled = true
     self.camera = Transform:new()
     self.camera:setPivot(Application.stageWidth / 2, Application.stageHeight / 2)
 
@@ -121,6 +123,20 @@ function Layer:getCamera()
 end
 
 ---------------------------------------
+-- タッチ可能かどうか設定します。
+---------------------------------------
+function Layer:setTouchEnabled(enabled)
+    self._touchEnabled = enabled
+end
+
+---------------------------------------
+-- タッチ可能かどうか返します。
+---------------------------------------
+function Layer:isTouchEnabled()
+    return self._touchEnabled
+end
+
+---------------------------------------
 -- フレーム毎の処理を行います。
 -- invalidateDisplayList関数が呼ばれていた場合、
 -- updateDisplayList関数を実行します。
@@ -172,6 +188,10 @@ end
 -- レイヤーのタッチする処理を行います。
 ---------------------------------------
 function Layer:onTouchDown(event)
+    if not self.touchEnabled then
+        return
+    end
+
     local worldX, worldY = self.renderPass:wndToWorld(event.x, event.y)
     local displayList = self:getDisplayListForPoint(worldX, worldY)
     self._touchDownDisplayList = displayList
@@ -181,11 +201,11 @@ function Layer:onTouchDown(event)
     event.worldX = worldX
     event.worldY = worldY
     
+    Log.debug("[Layer:onTouchDown]", worldX, worldY)
+
     
     for i = max, 1, -1 do
         local display = displayList[i]
-        
-        Log.debug("Layer:onTouchDown", i)
         display:onTouchDown(event)
     end
 end
@@ -194,49 +214,46 @@ end
 -- レイヤーのタッチする処理を行います。
 ---------------------------------------
 function Layer:onTouchUp(event)
-    if not self._touchDownDisplayList then
-        return
-    end
-
-    local displayList = self._touchDownDisplayList
-    local max = #displayList
-
-    for i = max, 1, -1 do
-        local display = displayList[i]
-        display:onTouchUp(event)
-    end
+    self:onTouchCommon(event, "onTouchUp")
 end
 
 ---------------------------------------
 -- レイヤーのタッチする処理を行います。
 ---------------------------------------
 function Layer:onTouchMove(event)
-    if not self._touchDownDisplayList then
-        return
-    end
-
-    local displayList = self._touchDownDisplayList
-    local max = #displayList
-
-    for i = max, 1, -1 do
-        local display = displayList[i]
-        display:onTouchMove(event)
-    end
+    self:onTouchCommon(event, "onTouchMove")
 end
 
 ---------------------------------------
 -- レイヤーのタッチする処理を行います。
 ---------------------------------------
 function Layer:onTouchCancel(event)
+    self:onTouchCommon(event, "onTouchCancel")
+end
+
+---------------------------------------
+-- レイヤーのタッチする共通処理です。
+---------------------------------------
+function Layer:onTouchCommon(event, funcName)
+    if not self.touchEnabled then
+        return
+    end
     if not self._touchDownDisplayList then
         return
     end
 
+    -- ワールド座標の取得
+    local worldX, worldY = self.renderPass:wndToWorld(event.x, event.y)
+    event.worldX = worldX
+    event.worldY = worldY
+
     local displayList = self._touchDownDisplayList
     local max = #displayList
+    
+    Log.debug("[Layer:onTouchCommon]", funcName, worldX, worldY)
 
     for i = max, 1, -1 do
         local display = displayList[i]
-        display:onTouchCancel(event)
+        display[funcName](display, event)
     end
 end

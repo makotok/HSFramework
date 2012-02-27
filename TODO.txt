@@ -2,7 +2,7 @@ TODO：今後の実装予定
 
 Sceneのエフェクトの強化
 Sceneのイベントの見直し
-DisplayObjectの親子の色の連携がうまくいっていない
+DisplayObjectのVisibleの連携
 TMXMapの実装
 Box2Dの実装
 ListBox,Button,RadioButton,MessageBoxなど

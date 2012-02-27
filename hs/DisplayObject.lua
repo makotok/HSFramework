@@ -371,13 +371,7 @@ function DisplayObject:_setAttrLinkForParent()
     if parent == nil then
         self.transformObj:setParent(nil)
     elseif parent:instanceOf(Layer) then
-        
-        --TODO:リンクすると子が正常にいかない
-        self.prop:setAttrLink(MOAIColor.ATTR_R_COL, parent.prop, MOAIColor.ATTR_R_COL)
-        self.prop:setAttrLink(MOAIColor.ATTR_G_COL, parent.prop, MOAIColor.ATTR_G_COL)
-        self.prop:setAttrLink(MOAIColor.ATTR_B_COL, parent.prop, MOAIColor.ATTR_B_COL)
-        self.prop:setAttrLink(MOAIColor.ATTR_A_COL, parent.prop, MOAIColor.ATTR_A_COL)
-        
+        self.prop:setAttrLink(MOAIColor.INHERIT_COLOR, parent.prop, MOAIColor.COLOR_TRAIT)
     else
         self.transformObj:setParent(parent.transformObj)
     end
@@ -491,7 +485,6 @@ end
 -- デフォルトでは、何も行いません。
 ---------------------------------------
 function DisplayObject:onTouchDown(event)
-    Log.debug("[DisplayObject]", "onTouchDown")
 end
 
 ---------------------------------------

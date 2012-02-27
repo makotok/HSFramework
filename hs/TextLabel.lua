@@ -19,7 +19,7 @@ TextLabel = DisplayObject()
 
 -- デフォルト値
 -- 変更した場合、インスタンスの生成時にデフォルト値が使用されます。
-TextLabel.defaultCharcodes = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,:;!?()&/-'
+TextLabel.defaultCharcodes = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,:;!?()&/-_'
 TextLabel.defaultFontTTF = "hs/resources/ipag.ttf"
 TextLabel.defaultFontSize = 9
 TextLabel.defaultFontDPI = 163
