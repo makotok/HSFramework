@@ -2,7 +2,7 @@ TODO：今後の実装予定
 
 SceneとSceneManagerの見直し。特にモジュールの連携
 DisplayObjectのVisibleの連携
-TMXMapの実装
+TMXMapの強化
 Box2Dの実装
 ListBox,Button,RadioButton,MessageBoxなど
 
