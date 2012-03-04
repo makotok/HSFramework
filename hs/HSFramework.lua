@@ -1,72 +1,64 @@
-
 ----------------------------------------------------------------
--- モジュール参照
+-- HSFrameworkのモジュールをロードするためのクラスです。
+-- モジュールの参照、初期化を担います。
 ----------------------------------------------------------------
--- 依存関係の順に参照
 
--- base liblary
-require "hs/Class"
-require "hs/PropertySupport"
-require "hs/Log"
-require "hs/Runtime"
-require "hs/Globals"
-require "hs/UString"
+-- lang liblary
+require "hs/lang/Class"
+require "hs/lang/PropertySupport"
+require "hs/lang/Log"
+require "hs/lang/Globals"
+require "hs/lang/UString"
 
-require "hs/ObjectPool"
-require "hs/EventPool"
+-- core library
+require "hs/core/ObjectPool"
+require "hs/core/EventPool"
+require "hs/core/Event"
+require "hs/core/EventListener"
+require "hs/core/EventDispatcher"
+require "hs/core/InputManager"
+require "hs/core/Transform"
+require "hs/core/Texture"
+require "hs/core/TextureCache"
+require "hs/core/DisplayObject"
+require "hs/core/Group"
+require "hs/core/Layer"
+require "hs/core/Graphics"
+require "hs/core/Sprite"
+require "hs/core/SpriteSheet"
+require "hs/core/MapSprite"
+require "hs/core/TextLabel"
+require "hs/core/Font"
+require "hs/core/FontCache"
+require "hs/core/Scene"
+require "hs/core/SceneManager"
+require "hs/core/Window"
+require "hs/core/Application"
+require "hs/core/BoxLayout"
+require "hs/core/VBoxLayout"
+require "hs/core/HBoxLayout"
+require "hs/core/EaseType"
+require "hs/core/Animation"
+require "hs/core/FPSMonitor"
 
-require "hs/Event"
-require "hs/EventListener"
-require "hs/EventDispatcher"
-require "hs/InputManager"
+-- tmx library
+require "hs/tmx/TMXMap"
+require "hs/tmx/TMXMapLoader"
+require "hs/tmx/TMXLayer"
+require "hs/tmx/TMXObject"
+require "hs/tmx/TMXObjectGroup"
+require "hs/tmx/TMXTileset"
 
--- display classes
-require "hs/Transform"
-require "hs/Texture"
-require "hs/TextureCache"
-require "hs/DisplayObject"
-require "hs/Group"
-require "hs/Layer"
-require "hs/Graphics"
-require "hs/Sprite"
-require "hs/SpriteSheet"
-require "hs/MapSprite"
-require "hs/TextLabel"
-require "hs/Font"
-require "hs/FontCache"
-require "hs/Scene"
-require "hs/SceneManager"
-require "hs/Window"
-require "hs/Application"
-require "hs/BoxLayout"
-require "hs/VBoxLayout"
-require "hs/HBoxLayout"
-require "hs/EaseType"
-require "hs/Animation"
-
-require "hs/TMXMap"
-require "hs/TMXMapLoader"
-require "hs/TMXLayer"
-require "hs/TMXObject"
-require "hs/TMXObjectGroup"
-require "hs/TMXTileset"
-
--- util
-require "hs/FPSMonitor"
+-- box2d library
 
 ----------------------------------------------------------------
 -- HSFramework
 ----------------------------------------------------------------
 HSFramework = {}
-
-HSFramework.VERSION = "0.2"
+HSFramework.VERSION = "0.3"
 
 ---------------------------------------
 --- フレームワークの初期化処理です
---- この関数は、フレームワークを使用する側で、
---- 必ず一度だけコールしなければなりません。
---- フレームワークの初期化処理を変更する場合、
---- この関数の動作を変更する事で可能です。
 ---------------------------------------
 function HSFramework:initialize()
     Log.info("Hana Saurus Framework loading...", "Version:" .. HSFramework.VERSION)
