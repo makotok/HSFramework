@@ -34,6 +34,16 @@ function BoxLayout:init(params)
 end
 
 ---------------------------------------
+-- 上下左右の余白を設定します。
+---------------------------------------
+function BoxLayout:setPadding(left, top, right, bottom)
+    self.pLeft = left
+    self.pTop = top
+    self.pRight = right
+    self.pBottom = bottom
+end
+
+---------------------------------------
 -- 指定したGroupのレイアウトを更新します。
 ---------------------------------------
 function BoxLayout:update(group)

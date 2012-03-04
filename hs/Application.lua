@@ -9,7 +9,6 @@ Application = EventDispatcher:new()
 
 -- プロパティ定義
 Application:setPropertyName("window")
-Application:setPropertyName("sceneManager")
 Application:setPropertyName("screenWidth")
 Application:setPropertyName("screenHeight")
 Application:setPropertyName("stageWidth")
@@ -20,7 +19,6 @@ Application:setPropertyName("stageHeight")
 ---------------------------------------
 function Application:initialize()
     self._window = Window:new()
-    self._sceneManager = SceneManager:new()
 
     if MOAIThread then
         self._thread = MOAIThread.new()
@@ -56,26 +54,11 @@ function Application:openWindow(title, width, height, screenMode)
     self.window:open(title, width, height, screenMode)
 end
 
-function Application:addScene(scene)
-    self.sceneManager:addScene(scene)
-end
-
-function Application:removeScene(scene)
-    self.sceneManager:removeScene(scene)
-end
-
 ---------------------------------------
 --- ウインドウを返します。。
 ---------------------------------------
 function Application:getWindow()
     return self._window
-end
-
----------------------------------------
---- シーンマネージャを返します。
----------------------------------------
-function Application:getSceneManager()
-    return self._sceneManager
 end
 
 ---------------------------------------

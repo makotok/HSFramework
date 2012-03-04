@@ -4,7 +4,7 @@ local scene = anime_basic_sample
 
 -- open event
 function scene:onOpen()
-    local sprite1 = Sprite:new("samples/images/cathead.png", {parent = scene})
+    local sprite1 = Sprite:new("samples/resources/cathead.png", {parent = scene})
 
     self.animation = Animation:new(sprite1, 1)
         :copy({x = 0, y = 0, rotation = 0, scaleX = 1, scaleY = 1})

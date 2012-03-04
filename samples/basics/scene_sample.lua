@@ -4,12 +4,12 @@ Application:openWindow("title", 480, 320)
 -- scenes
 scene_sample = Scene:new()
 local scene1 = scene_sample
-Sprite:new("samples/images/back_1.png", {parent = scene1})
-Sprite:new("samples/images/cathead.png", {x = 10, y = 10, parent = scene1})
+Sprite:new("samples/resources/back_1.png", {parent = scene1})
+Sprite:new("samples/resources/cathead.png", {x = 10, y = 10, parent = scene1})
 
 local scene2 = Scene:new()
-Sprite:new("samples/images/back_2.png", {parent = scene2})
-Sprite:new("samples/images/cathead.png", {x = 50, y = 50, parent = scene2})
+Sprite:new("samples/resources/back_2.png", {parent = scene2})
+Sprite:new("samples/resources/cathead.png", {x = 50, y = 50, parent = scene2})
 
 -- animations
 local openAnim1 = Animation:new(scene1, 1):copy({x = -25, y = 0}):parallel(

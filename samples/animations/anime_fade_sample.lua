@@ -4,7 +4,7 @@ local scene = anime_fade_sample
 
 -- open event
 function scene:onOpen()
-    local sprite1 = Sprite:new("samples/images/cathead.png", {parent = scene})
+    local sprite1 = Sprite:new("samples/resources/cathead.png", {parent = scene})
     local animation = Animation:new(sprite1, 1):move(50, 50):fadeOut():fadeIn():rotate(360):play()    
 end
 

@@ -1,10 +1,13 @@
-SceneManager = Class()
+----------------------------------------------------------------
+-- Sceneを管理するマネージャクラスです
+-- シーンの追加、削除、描画順やイベント制御を行います。
+----------------------------------------------------------------
+SceneManager = EventDispatcher:new()
 
 ---------------------------------------
 -- コンストラクタです。
 ---------------------------------------
-function SceneManager:init()
-    Class.init(self)
+function SceneManager:initialize()
     self.scenes = {}
     self.currentScene = nil
     
@@ -15,6 +18,31 @@ function SceneManager:init()
     InputManager:addListener(Event.TOUCH_CANCEL, self.onTouchCancel, self)
     InputManager:addListener(Event.KEYBORD, self.onKeybord, self)
     Application:addListener(Event.ENTER_FRAME, self.onEnterFrame, self)
+end
+
+---------------------------------------
+-- Sceneを開きます。
+-- TODO:未実装
+---------------------------------------
+function SceneManager:openScene(sceneName, params)
+    local scene = Scene:new(sceneModule)
+    scene.sceneModule = require(sceneName)
+    scene.sceneName = sceneName
+    return scene
+end
+
+---------------------------------------
+-- TODO:未実装
+---------------------------------------
+function SceneManager:nextScene(sceneName, params)
+
+end
+
+---------------------------------------
+-- TODO:未実装
+---------------------------------------
+function SceneManager:closeScene(sceneName, params)
+
 end
 
 ---------------------------------------

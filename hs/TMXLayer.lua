@@ -1,93 +1,87 @@
 --------------------------------------------------------------------------------
--- 単一のテクスチャを描画する為のクラスです。
+-- TMXMapのレイヤークラスです。
 --
 --------------------------------------------------------------------------------
 
-TMXLayer = Group()
-
--- プロパティ定義
-TMXLayer:setPropertyName("data")
-TMXLayer:setPropertyName("layerWidth")
-TMXLayer:setPropertyName("layerHeight")
-TMXLayer:setPropertyName("tmxMap")
-TMXLayer:setPropertyName("tilesets")
-TMXLayer:setPropertyName("properties")
+TMXLayer = Class()
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function TMXLayer:init(tmxMap, data, layerWidth, layerHeight)
+function TMXLayer:init(tmxMap)
     TMXLayer:super(self)
-    
-    self._tmxMap = tmxMap
-    self._data = data
-    self._layerWidth = layerWidth
-    self._layerHeight = layerHeight
-end
 
----------------------------------------
--- レイヤーのデータを返します。
----------------------------------------
-function TMXLayer:getData()
-    return self._mapData
+    self.tmxMap = tmxMap
+    self.name = ""
+    self.x = 0
+    self.y = 0
+    self.width = 0
+    self.height = 0
+    self.opacity = 0
+    self.visible = true
+    self.properties = {}
+    self.tiles = {}
+    self.displayGroup = nil
 end
 
 ---------------------------------------
 -- レイヤーの描画を行います。
 -- タイルセットのテクスチャが存在するのを対象とします。
+-- TODO:割り切れない時の動作を厳密にしたい
 ---------------------------------------
-function TMXLayer:drawLayer()
-    local mapWidth = self.mapWidth
-    local mapHeight = self.mapHeight
-    for i, tileset in ipairs(self.tilesets) do
+function TMXLayer:drawLayer(parent)
+    if not self.visible then
+        return
+    end
+
+    local tmxMap = self.tmxMap
+    local mapWidth, mapHeight = tmxMap.width, tmxMap.height
+    local group = Group:new({parent = parent})
+    local tilesets = self:createDisplayTilesets()
+    self.displayGroup = group
+    self.tilesets = tilesets
+    
+    for key, tileset in pairs(tilesets) do
         local texture = tileset.texture
         if texture then
             local tw, th = texture:getSize()
-            local mapSprite = MapSprite:new(texture, mapHeight, mapWidth, tw / tileset.tileWidth, th / tileset.tileHeight)
-            self:addChild(mapSprite)
+            local mapSprite = MapSprite:new(texture, mapWidth, mapHeight, tw / tileset.tilewidth, th / tileset.tileheight)
+            group:addChild(mapSprite)
+            
+            for y = 1, self.height do
+                local rowData = {}
+                for x = 1, self.width do
+                    local gid = self.tiles[(y - 1) * self.width + x]
+                    local tileNo = gid == 0 and gid or gid - tileset.firstgid + 1
+                    table.insert(rowData, tileNo)                        
+                end
+                mapSprite:setRowData(y, unpack(rowData))
+            end
         end
     end
 end
 
 ---------------------------------------
--- TMXMapを返します。
+-- レイヤーのタイルリストのgidから、
+-- 描画すべきタイルセットのリストを生成します。
+-- タイルセットのテクスチャはロードされた状態となります。
 ---------------------------------------
-function TMXLayer:getTmxMap()
-    return self._tmxMap
-end
-
----------------------------------------
--- TMXTileset配列を返します。
----------------------------------------
-function TMXLayer:getTilesets()
-    return self.tmxMap.tilesets
-end
-
----------------------------------------
--- プロパティを返します。
----------------------------------------
-function TMXLayer:getProperties()
-    return self._properties
+function TMXLayer:createDisplayTilesets()
+    local tmxMap = self.tmxMap
+    local tilesets = {}
+    for i, gid in ipairs(self.tiles) do
+        local tileset = tmxMap:findTilesetByGid(gid)
+        if tileset then
+            tileset:loadTexture()
+            tilesets[tileset.name] = tileset
+        end
+    end
+    return tilesets
 end
 
 ---------------------------------------
 -- プロパティを返します。
 ---------------------------------------
 function TMXLayer:getProperty(key)
-    return self._properties[key]
+    return self.properties[key]
 end
-
----------------------------------------
--- レイヤーの列数を返します。
----------------------------------------
-function TMXLayer:getLayerWidth()
-    return self._layerWidth
-end
-
----------------------------------------
--- レイヤーの行数を返します。
----------------------------------------
-function TMXLayer:getLayerHeight()
-    return self._layerHeight
-end
-

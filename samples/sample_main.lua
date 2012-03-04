@@ -15,6 +15,9 @@ require "samples/animations/anime_basic_sample"
 require "samples/animations/anime_fade_sample"
 require "samples/animations/anime_group_sample"
 
+-- map samples
+require "samples/maps/tmxmap1_sample"
+
 -- utils samples
 require "samples/utils/fps_sample"
 
@@ -23,6 +26,7 @@ sample_scene = Scene:new()
 
 -- group
 local group = Group:new({parent = sample_scene, layout = VBoxLayout:new({vGap = 0})})
+group.layout:setPadding(0, 0, 0, 0)
 
 local function onTouchDown(self, event)
     local scene = _G[self.text]
@@ -42,13 +46,14 @@ local sceneNames ={
     "anime_basic_sample",
     "anime_fade_sample",
     "anime_group_sample",
+    "tmxmap1_sample",
     "fps_sample"
 }
 
 for i, name in ipairs(sceneNames) do
-    local labelGroup = Group:new({width = 460, height = 25, parent = group})
+    local labelGroup = Group:new({width = Application.stageWidth + 1, height = 25, parent = group})
     labelGroup.background:drawRect()
-    local label = TextLabel:new({text = name, width = 460, height = 25, parent = labelGroup, onTouchDown = onTouchDown})
+    local label = TextLabel:new({text = name, width = labelGroup.width, height = 25, parent = labelGroup, onTouchDown = onTouchDown})
 end
 
 -- scene open

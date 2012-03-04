@@ -20,9 +20,9 @@ function scene:onOpen(event)
     
     -- sprites
     for i = 1, 3 do
-        Sprite:new("samples/images/cathead.png", {width = 64, height = 64, parent = group3})
-        Sprite:new("samples/images/cathead.png", {width = 64, height = 64, parent = group4})
-        Sprite:new("samples/images/cathead.png", {width = 64, height = 64, parent = group5})
+        Sprite:new("samples/resources/cathead.png", {width = 64, height = 64, parent = group3})
+        Sprite:new("samples/resources/cathead.png", {width = 64, height = 64, parent = group4})
+        Sprite:new("samples/resources/cathead.png", {width = 64, height = 64, parent = group5})
         Graphics:new({width = 64, height = 64, parent = group6})
             :fillRect():setPenColor(0, 0, 0):drawLine(0, 0, 64, 64, 0, 64, 64, 0, 0, 0)
     end

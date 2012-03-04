@@ -9,6 +9,12 @@
 Scene = Transform()
 
 -- getters
+Scene:setPropertyName("width")
+Scene:setPropertyName("height")
+Scene:setPropertyName("alpha")
+Scene:setPropertyName("red")
+Scene:setPropertyName("green")
+Scene:setPropertyName("blue")
 Scene:setPropertyName("layers")
 Scene:setPropertyName("topLayer")
 Scene:setPropertyName("opened", "setOpened", "isOpened")
@@ -26,6 +32,7 @@ function Scene:init()
     self._opened = false
     self._visible = true
     self._topLayer = Layer:new()
+    self.sceneModule = {}
     self:addLayer(self.topLayer)
     
     self:setSize(Application.stageWidth, Application.stageHeight)
@@ -34,8 +41,8 @@ end
 
 ---------------------------------------
 -- シーンを開きます
--- 引数の設定により、
---
+-- 引数の設定により、アニメーション等を行えます。
+-- TODO:リファクタリング
 -- @param params 
 ---------------------------------------
 function Scene:openScene(params)
@@ -49,10 +56,10 @@ function Scene:openScene(params)
     self:dispatchEvent(event)
 
     -- ログ
-    Log.debug(self.name .. ":onOpen(event)")
+    Log.debug("[Scene:openScene]", "onOpen(event)")
 
     -- マネージャにスタック
-    Application:addScene(self)
+    SceneManager:addScene(self)
     self._opened = true
     
     if params and params.animation then
@@ -70,36 +77,47 @@ end
 
 ---------------------------------------
 -- シーンを閉じます
+-- TODO:リファクタリング
 ---------------------------------------
 function Scene:closeScene(params)
     if not self.opened or self._animation then
         return
     end
     
-    -- 閉じた時の処理
-    local event = Event:new(Event.CLOSE, self)
-    self:onClose(event)
-    self:dispatchEvent(event)
-
-    -- ログ
-    Log.debug(self.name .. ":onClose(event)")
-
     -- マネージャから削除
     if params and params.animation then
         self._animation = params.animation
         self._animation:play({onComplete =
             function(e)
-                Application:removeScene(self)
+                SceneManager:removeScene(self)
                 self._opened = false
                 self._animation = nil
+
+                -- close event
+                local event = Event:new(Event.CLOSE, self)
+                self:onClose(event)
+                self:dispatchEvent(event)
+
+                -- ログ
+                Log.debug("[Scene:closeScene]", "onClose(event)")
+
                 if params.onComplete then
                     params.onComplete(e)
                 end
             end}
         )
     else
-        Application:removeScene(self)
+        SceneManager:removeScene(self)
         self._opened = false
+        
+        -- close event
+        local event = Event:new(Event.CLOSE, self)
+        self:onClose(event)
+        self:dispatchEvent(event)
+
+        -- ログ
+        Log.debug("[Scene:closeScene]", "onClose(event)")
+
     end
     
 end
@@ -108,14 +126,14 @@ end
 -- シーンを最前面に表示します。
 ---------------------------------------
 function Scene:orderToFront()
-    Application.sceneManager:orderToFront(self)
+    SceneManager:orderToFront(self)
 end
 
 ---------------------------------------
 -- シーンを最背面に表示します。
 ---------------------------------------
 function Scene:orderToBack()
-    Application.sceneManager:orderToBack(self)
+    SceneManager:orderToBack(self)
 end
 
 ---------------------------------------
@@ -136,7 +154,7 @@ end
 -- カレントシーンかどうか返します。
 ---------------------------------------
 function Scene:isCurrentScene()
-    return Application.currentScene == self
+    return SceneManager.currentScene == self
 end
 
 ---------------------------------------
@@ -161,7 +179,7 @@ function Scene:addLayer(layer)
     layer.parent = self
     
     if self:isOpened() then
-        Application.sceneManager:refreshRenders()
+        SceneManager:refreshRenders()
     end
 end
 
@@ -179,7 +197,7 @@ function Scene:removeLayer(layer)
     table.insert(self.layers, layer)
     layer.parent = self
     
-    Application.sceneManager:refreshRenders()
+    SceneManager:refreshRenders()
 end
 
 ---------------------------------------
@@ -407,7 +425,7 @@ end
 function Scene:setVisible(visible)
     self._visible = visible
     if self:isOpened() then
-        Application.sceneManager:refreshRenders()
+        SceneManager:refreshRenders()
     end
 end
 

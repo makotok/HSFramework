@@ -43,6 +43,15 @@ require "hs/VBoxLayout"
 require "hs/HBoxLayout"
 require "hs/EaseType"
 require "hs/Animation"
+
+require "hs/TMXMap"
+require "hs/TMXMapLoader"
+require "hs/TMXLayer"
+require "hs/TMXObject"
+require "hs/TMXObjectGroup"
+require "hs/TMXTileset"
+
+-- util
 require "hs/FPSMonitor"
 
 ----------------------------------------------------------------
@@ -63,6 +72,7 @@ function HSFramework:initialize()
     Log.info("Hana Saurus Framework loading...", "Version:" .. HSFramework.VERSION)
 
     InputManager:initialize()
+    SceneManager:initialize()
     Application:initialize()
 end
 

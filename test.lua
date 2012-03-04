@@ -5,6 +5,7 @@ require "test/luaunit"
 require "test/TestClass"
 require "test/TestPropertySupport"
 require "test/TestUString"
+require "test/TestTMXMapLoader"
 --require "test/TestEventDispatcher"
 
 -- test all
