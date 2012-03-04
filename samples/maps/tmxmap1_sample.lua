@@ -23,5 +23,4 @@ function scene:onTouchMove(event)
     local camera = scene.topLayer.camera
     camera.x = camera.x - moveX
     camera.y = camera.y - moveY
-    
 end
