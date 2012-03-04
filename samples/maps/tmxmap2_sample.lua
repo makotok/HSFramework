@@ -1,10 +1,10 @@
 -- scene
-tmxmap1_sample = Scene:new()
-local scene = tmxmap1_sample
+tmxmap2_sample = Scene:new()
+local scene = tmxmap2_sample
 local preX, preY = 0, 0
 
 function scene:onOpen(event)
-    local map = TMXMapLoader:new():load("samples/resources/demomap.tmx")
+    local map = TMXMapLoader:new():load("samples/resources/platformmap.tmx")
     map.resourceDirectory = "samples/resources/"
     map:drawMap(scene)
 end
@@ -23,5 +23,4 @@ function scene:onTouchMove(event)
     local camera = scene.topLayer.camera
     camera.x = camera.x - moveX
     camera.y = camera.y - moveY
-    
 end

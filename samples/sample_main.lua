@@ -17,6 +17,7 @@ require "samples/animations/anime_group_sample"
 
 -- map samples
 require "samples/maps/tmxmap1_sample"
+require "samples/maps/tmxmap2_sample"
 
 -- utils samples
 require "samples/utils/fps_sample"
@@ -47,6 +48,7 @@ local sceneNames ={
     "anime_fade_sample",
     "anime_group_sample",
     "tmxmap1_sample",
+    "tmxmap2_sample",
     "fps_sample"
 }
 

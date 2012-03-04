@@ -45,7 +45,9 @@ function TMXLayer:drawLayer(parent)
         local texture = tileset.texture
         if texture then
             local tw, th = texture:getSize()
-            local mapSprite = MapSprite:new(texture, mapWidth, mapHeight, tw / tileset.tilewidth, th / tileset.tileheight)
+            local tileCol = math.floor(tw / tileset.tilewidth)
+            local tileRow = math.floor(th / tileset.tileheight)
+            local mapSprite = MapSprite:new(texture, mapWidth, mapHeight, tileCol, tileRow, tileset.tilewidth, tileset.tileheight)
             group:addChild(mapSprite)
             
             for y = 1, self.height do

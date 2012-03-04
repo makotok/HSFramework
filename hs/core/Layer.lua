@@ -10,6 +10,7 @@ Layer = Group()
 
 -- プロパティ定義
 Layer:setPropertyName("camera")
+Layer:setPropertyName("touchEnabled")
 Layer:setPropertyName("renderPass")
 Layer:setPropertyName("lastPriority")
 Layer:setPropertyName("touchEnabled", "setTouchEnabled", "isTouchEnabled")
@@ -167,6 +168,20 @@ function Layer:lastPriority()
 end
 
 ---------------------------------------
+-- タッチ操作が可能かどうか設定します。
+---------------------------------------
+function Layer:setTouchEnabled(value)
+    self._touchEnabled = value
+end
+
+---------------------------------------
+-- タッチ操作が可能かどうか返します。
+---------------------------------------
+function Layer:isTouchEnabled()
+    return self._touchEnabled
+end
+
+---------------------------------------
 -- レイヤー内のワールド座標から、
 -- 存在するDisplayObjectリストを返します。
 ---------------------------------------
@@ -185,6 +200,20 @@ function Layer:getDisplayListForPoint(worldX, worldY)
 end
 
 ---------------------------------------
+-- スクリーン座標からワールド座標に変換します。
+---------------------------------------
+function Layer:windowToWorld(windowX, windowY)
+    return self.renderPass:wndToWorld(windowX, windowY)
+end
+
+---------------------------------------
+-- ワールド座標からスクリーン座標に変換します。
+---------------------------------------
+function Layer:worldToWindow(worldX, worldY)
+    return self.renderPass:worldToWnd(worldX, worldY)
+end
+
+---------------------------------------
 -- レイヤーのタッチする処理を行います。
 ---------------------------------------
 function Layer:onTouchDown(event)
@@ -192,7 +221,7 @@ function Layer:onTouchDown(event)
         return
     end
 
-    local worldX, worldY = self.renderPass:wndToWorld(event.x, event.y)
+    local worldX, worldY = self:windowToWorld(event.x, event.y)
     local displayList = self:getDisplayListForPoint(worldX, worldY)
     self._touchDownDisplayList = displayList
     local max = #displayList
@@ -240,15 +269,13 @@ function Layer:onTouchCommon(event, funcName)
     end
 
     -- ワールド座標の取得
-    local worldX, worldY = self.renderPass:wndToWorld(event.x, event.y)
+    local worldX, worldY = self:windowToWorld(event.x, event.y)
     event.worldX = worldX
     event.worldY = worldY
 
     local displayList = self._touchDownDisplayList
     local max = #displayList
     
-    Log.debug("[Layer:onTouchCommon]", funcName, worldX, worldY)
-
     for i = max, 1, -1 do
         local display = displayList[i]
         display[funcName](display, event)
