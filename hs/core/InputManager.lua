@@ -5,7 +5,7 @@
 
 InputManager = EventDispatcher:new()
 InputManager.pointer = {x = 0, y = 0, down = false}
-InputManager.keybord = {key = 0, down = false}
+InputManager.keyboard = {key = 0, down = false}
 
 ---------------------------------------
 -- InputManagerの初期化処理です
@@ -22,7 +22,7 @@ function InputManager:initialize()
         MOAIInputMgr.device.touch:setCallback (InputManager.onTouch)
     end
 
-    -- keybord input
+    -- keyboard input
     if MOAIInputMgr.device.keyboard then
         MOAIInputMgr.device.keyboard:setCallback(InputManager.onKeyboard)
     end
@@ -83,10 +83,10 @@ end
 -- キーボード入力時のイベント処理です。
 ---------------------------------------
 function InputManager.onKeyboard( key, down )
-    InputManager.keybord.key = key
-    InputManager.keybord.down = down
+    InputManager.keyboard.key = key
+    InputManager.keyboard.down = down
 
-    local event = Event:new(Event.KEYBORD, InputManager)
+    local event = Event:new(Event.KEYBOARD, InputManager)
     event.key = key
     event.down = down
 
