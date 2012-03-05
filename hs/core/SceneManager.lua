@@ -16,7 +16,7 @@ function SceneManager:initialize()
     InputManager:addListener(Event.TOUCH_UP, self.onTouchUp, self)
     InputManager:addListener(Event.TOUCH_MOVE, self.onTouchMove, self)
     InputManager:addListener(Event.TOUCH_CANCEL, self.onTouchCancel, self)
-    InputManager:addListener(Event.KEYBORD, self.onKeybord, self)
+    InputManager:addListener(Event.KEYBOARD, self.onKeyboard, self)
     Application:addListener(Event.ENTER_FRAME, self.onEnterFrame, self)
 end
 
@@ -157,9 +157,9 @@ end
 ---------------------------------------
 -- キーボード入力する処理を行います。
 ---------------------------------------
-function SceneManager:onKeybord(e)
+function SceneManager:onKeyboard(e)
     if self.currentScene and self.currentScene:isOpened() then
-        self.currentScene:onKeybord(e)
+        self.currentScene:onKeyboard(e)
     end
 end
 
