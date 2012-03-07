@@ -59,7 +59,7 @@ require "hs/tmx/TMXTileset"
 -- HSFramework
 ----------------------------------------------------------------
 HSFramework = {}
-HSFramework.VERSION = "0.3"
+HSFramework.VERSION = "0.4"
 
 ---------------------------------------
 --- フレームワークの初期化処理です

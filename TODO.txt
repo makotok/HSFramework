@@ -1,7 +1,5 @@
 TODO：今後の実装予定
 
-SceneとSceneManagerの見直し。
-より簡潔にSceneの定義が行えるように修正予定
 複数のScene間のHUDオブジェクト
 DisplayObjectのVisibleの連携
 モバイルの画面サイズの最適化
