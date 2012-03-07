@@ -6,11 +6,14 @@
 -- lang liblary
 require "hs/lang/Class"
 require "hs/lang/PropertySupport"
-require "hs/lang/Log"
 require "hs/lang/Globals"
 require "hs/lang/UString"
 
+-- util library
+require "hs/util/FunctionUtil"
+
 -- core library
+require "hs/core/Log"
 require "hs/core/ObjectPool"
 require "hs/core/EventPool"
 require "hs/core/Event"
@@ -31,6 +34,7 @@ require "hs/core/TextLabel"
 require "hs/core/Font"
 require "hs/core/FontCache"
 require "hs/core/Scene"
+require "hs/core/SceneFactory"
 require "hs/core/SceneManager"
 require "hs/core/Window"
 require "hs/core/Application"

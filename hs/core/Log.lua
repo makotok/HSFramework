@@ -8,7 +8,7 @@ Log.LEVEL_ERROR = 3
 Log.LEVEL_DEBUG = 4
 
 -- 変数
-Log.level = Log.LEVEL_DEBUG
+Log.level = Log.LEVEL_ERROR
 
 ---------------------------------------
 -- 通常ログを出力します。

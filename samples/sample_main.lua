@@ -1,63 +1,41 @@
--- window
-Application:openWindow("samples", 480, 320)
+module(..., package.seeall)
 
--- basic samples
-require "samples/basics/sprite_sample"
-require "samples/basics/mapsprite_sample"
-require "samples/basics/group_sample"
-require "samples/basics/layer_sample"
-require "samples/basics/scene_sample"
-require "samples/basics/textlabel_sample"
+-- create event
+function onCreate()
+    -- group
+    group = Group:new({parent = scene, layout = VBoxLayout:new({vGap = 0})})
+    group.layout:setPadding(0, 0, 0, 0)
 
-
--- animation samples
-require "samples/animations/anime_basic_sample"
-require "samples/animations/anime_fade_sample"
-require "samples/animations/anime_group_sample"
-
--- map samples
-require "samples/maps/tmxmap1_sample"
-require "samples/maps/tmxmap2_sample"
-
--- utils samples
-require "samples/utils/fps_sample"
-
--- scene
-sample_scene = Scene:new()
-
--- group
-local group = Group:new({parent = sample_scene, layout = VBoxLayout:new({vGap = 0})})
-group.layout:setPadding(0, 0, 0, 0)
-
-local function onTouchDown(self, event)
-    local scene = _G[self.text]
-    if scene then
-        sample_scene:closeScene()
-        scene:openScene()
+    -- sample list
+    for i, item in ipairs(sceneItems) do
+        local labelGroup = Group:new({width = Application.stageWidth + 1, height = 25, parent = group})
+        labelGroup.background:drawRect()
+        
+        local label = TextLabel:new(
+            {text = item.text, width = labelGroup.width, height = 25,
+            parent = labelGroup, onTouchDown = onTouchDownLabel, sceneName = item.scene})
     end
 end
 
-local sceneNames ={
-    "sprite_sample",
-    "mapsprite_sample",
-    "group_sample",
-    "layer_sample",
-    "scene_sample",
-    "textlabel_sample",
-    "anime_basic_sample",
-    "anime_fade_sample",
-    "anime_group_sample",
-    "tmxmap1_sample",
-    "tmxmap2_sample",
-    "fps_sample"
+-- scene names
+sceneItems ={
+    {text = "sprite_sample", scene = "samples/basics/sprite_sample"},
+    {text = "mapsprite_sample", scene = "samples/basics/mapsprite_sample"},
+    {text = "group_sample", scene = "samples/basics/group_sample"},
+    {text = "layer_sample", scene = "samples/basics/layer_sample"},
+    {text = "scene_sample", scene = "samples/basics/scene1_sample"},
+    {text = "textlabel_sample", scene = "samples/basics/textlabel_sample"},
+    {text = "anime_basic_sample", scene = "samples/animations/anime_basic_sample"},
+    {text = "anime_fade_sample", scene = "samples/animations/anime_fade_sample"},
+    {text = "anime_group_sample", scene = "samples/animations/anime_group_sample"},
+    {text = "tmxmap1_sample", scene = "samples/maps/tmxmap1_sample"},
+    {text = "tmxmap2_sample", scene = "samples/maps/tmxmap2_sample"},
+    {text = "fps_sample", scene = "samples/utils/fps_sample"}
 }
 
-for i, name in ipairs(sceneNames) do
-    local labelGroup = Group:new({width = Application.stageWidth + 1, height = 25, parent = group})
-    labelGroup.background:drawRect()
-    local label = TextLabel:new({text = name, width = labelGroup.width, height = 25, parent = labelGroup, onTouchDown = onTouchDown})
+-- touch event
+function onTouchDownLabel(self, event)
+    Log.info("label touch!" .. self.sceneName)
+    SceneManager:openNextScene(self.sceneName)
 end
-
--- scene open
-sample_scene:openScene()
 

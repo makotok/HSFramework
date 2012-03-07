@@ -5,6 +5,14 @@
 --
 -- デフォルトのレイヤー（topLayer）を持ちます。
 -- DisplayObjectの親に直接指定された場合、実際に追加される先はtopLayerになります。
+--
+-- Sceneのライフサイクルについて
+-- 1. onCreate()  ... 生成時に呼ばれます。
+-- 2. onStart()   ... 開始時に呼ばれます。
+-- 3. onResume()   ... 再開時に呼ばれます。
+-- 4. onPause()   ... 一時停止時に呼ばれます。
+-- 5. onStop()     ... 終了時に呼ばれます。
+-- 6. onDestroy() ... 破棄時に呼ばれます。
 ----------------------------------------------------------------
 Scene = Transform()
 
@@ -32,94 +40,10 @@ function Scene:init()
     self._opened = false
     self._visible = true
     self._topLayer = Layer:new()
-    self.sceneModule = {}
+    self.sceneHandler = {}
     self:addLayer(self.topLayer)
     
     self:setSize(Application.stageWidth, Application.stageHeight)
-
-end
-
----------------------------------------
--- シーンを開きます
--- 引数の設定により、アニメーション等を行えます。
--- TODO:リファクタリング
--- @param params 
----------------------------------------
-function Scene:openScene(params)
-    if self.opened or self._animation then
-        return
-    end
-
-    -- 開いた時の処理
-    local event = Event:new(Event.OPEN, self)
-    self:onOpen(event)
-    self:dispatchEvent(event)
-
-    -- ログ
-    Log.debug("[Scene:openScene]", "onOpen(event)")
-
-    -- マネージャにスタック
-    SceneManager:addScene(self)
-    self._opened = true
-    
-    if params and params.animation then
-        self._animation = params.animation
-        self._animation:play({onComplete =
-            function(e)
-                self._animation = nil
-                if params.onComplete then
-                    params.onComplete(e)
-                end
-            end}
-        )
-    end
-end
-
----------------------------------------
--- シーンを閉じます
--- TODO:リファクタリング
----------------------------------------
-function Scene:closeScene(params)
-    if not self.opened or self._animation then
-        return
-    end
-    
-    -- マネージャから削除
-    if params and params.animation then
-        self._animation = params.animation
-        self._animation:play({onComplete =
-            function(e)
-                SceneManager:removeScene(self)
-                self._opened = false
-                self._animation = nil
-
-                -- close event
-                local event = Event:new(Event.CLOSE, self)
-                self:onClose(event)
-                self:dispatchEvent(event)
-
-                -- ログ
-                Log.debug("[Scene:closeScene]", "onClose(event)")
-
-                if params.onComplete then
-                    params.onComplete(e)
-                end
-            end}
-        )
-    else
-        SceneManager:removeScene(self)
-        self._opened = false
-        
-        -- close event
-        local event = Event:new(Event.CLOSE, self)
-        self:onClose(event)
-        self:dispatchEvent(event)
-
-        -- ログ
-        Log.debug("[Scene:closeScene]", "onClose(event)")
-
-    end
-    
 end
 
 ---------------------------------------
@@ -437,10 +361,61 @@ function Scene:isVisible(visible)
 end
 
 ---------------------------------------
--- シーンを開いているか返します。
+-- 起動したかどうか返します。
 ---------------------------------------
 function Scene:isOpened()
     return self._opened
+end
+
+---------------------------------------
+-- シーンの生成処理時に一度だけ呼ばれます。
+---------------------------------------
+function Scene:onCreate()
+    FunctionUtil.callExist(self.sceneHandler.onCreate)    
+    self._opened = true
+end
+
+---------------------------------------
+-- シーンの開始時に一度だけ呼ばれます。
+---------------------------------------
+function Scene:onStart()
+    FunctionUtil.callExist(self.sceneHandler.onStart)    
+end
+
+---------------------------------------
+-- シーンの再開時に呼ばれます。
+-- pauseした場合に、再開処理で呼ばれます。
+---------------------------------------
+function Scene:onResume()
+    FunctionUtil.callExist(self.sceneHandler.onResume)    
+end
+
+---------------------------------------
+-- シーンの一時停止時に呼ばれます。
+---------------------------------------
+function Scene:onPause()
+    FunctionUtil.callExist(self.sceneHandler.onPause)    
+end
+
+---------------------------------------
+-- シーンの停止時に呼ばれます。
+-- 停止された後、他シーン遷移が完了した後に
+-- onDestoryが呼ばれます。
+---------------------------------------
+function Scene:onStop()
+    self._opened = false
+    FunctionUtil.callExist(self.sceneHandler.onStop) 
+end
+
+---------------------------------------
+-- シーンの破棄時に呼ばれます。
+-- この時点でシーンは破棄されて使用できなくなります。
+---------------------------------------
+function Scene:onDestroy()
+    for i, layer in ipairs(self.layers) do
+        layer:dispose()
+    end
+    FunctionUtil.callExist(self.sceneHandler.onDestroy)
 end
 
 ---------------------------------------
@@ -450,20 +425,14 @@ function Scene:onEnterFrame(event)
     for i, layer in ipairs(self.layers) do
         layer:onEnterFrame(event)
     end
+    FunctionUtil.callExist(self.sceneHandler.onEnterFrame, event)
 end
 
 ---------------------------------------
--- シーンを開いた時のイベントハンドラ関数です
--- 子クラスで継承してください
+-- キーボード入力時の処理を行います。
 ---------------------------------------
-function Scene:onOpen(event)
-end
-
----------------------------------------
--- シーンを閉じた時のイベントハンドラ関数です
--- 子クラスで継承してください
----------------------------------------
-function Scene:onClose(event)
+function Scene:onKeyboard(event)
+    FunctionUtil.callExist(self.sceneHandler.onKeyboard, event)
 end
 
 ---------------------------------------
@@ -494,8 +463,11 @@ function Scene:onSceneTouchCancel(event)
     self:onSceneTouchCommon(event, "onTouchCancel")
 end
 
+---------------------------------------
+-- 画面をタッチした時の共通処理です。
+---------------------------------------
 function Scene:onSceneTouchCommon(event, funcName)
-    --Log.debug("[Scene:onSceneTouchCommon]", funcName)
+    Log.debug("[Scene:onSceneTouchCommon]", funcName)
     
     local max = #self.layers
     for i = max, 1, -1 do
@@ -509,5 +481,8 @@ function Scene:onSceneTouchCommon(event, funcName)
             self[funcName](self, event)
         end
         self:dispatchEvent(event)
+    end
+    if not event.stoped then
+        FunctionUtil.callExist(self.sceneHandler[funcName], event)
     end
 end
