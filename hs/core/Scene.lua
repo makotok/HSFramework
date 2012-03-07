@@ -41,7 +41,7 @@ function Scene:init()
     self._visible = true
     self._topLayer = Layer:new()
     self.sceneHandler = {}
-    self:addLayer(self.topLayer)
+    self:addChild(self.topLayer)
     
     self:setSize(Application.stageWidth, Application.stageHeight)
 end
@@ -92,15 +92,24 @@ function Scene:getTopLayer()
 end
 
 ---------------------------------------
--- レイヤーを追加します。
+-- 子レイヤーを追加します。
+-- レイヤー以外を指定した場合、topLayerに追加されます。
+-- レイヤーの場合はシーンに追加されます。
 ---------------------------------------
-function Scene:addLayer(layer)
-    if table.indexOf(self.layers, layer) > 0 then
+function Scene:addChild(child)
+    -- レイヤーでない場合、topLayerに追加
+    if not child:instanceOf(Layer) then
+        self.topLayer:addChild(child)
+        return
+    end
+    
+    if table.indexOf(self.layers, child) > 0 then
         return
     end
 
-    table.insert(self.layers, layer)
-    layer.parent = self
+    table.insert(self.layers, child)
+    child.parent = self
+    self:setAttrLinkForChild(child)
     
     if self:isOpened() then
         SceneManager:refreshRenders()
@@ -110,18 +119,37 @@ end
 ---------------------------------------
 -- レイヤーを削除します。
 ---------------------------------------
-function Scene:removeLayer(layer)
+function Scene:removeChild(child)
+    -- レイヤーでない場合、topLayerから削除
+    if not child:instanceOf(Layer) then
+        self.topLayer:removeChild(child)
+        return
+    end
     if self.topLayer == layer then
         return
     end
-    if table.indexOf(self.layers, layer) > 0 then
+    local i = table.indexOf(self.layers, child)
+    if i == 0 then
         return
     end
 
-    table.insert(self.layers, layer)
-    layer.parent = self
+    table.remove(self.layers, i)
+    child.parent = nil
+    self:setAttrLinkForChild(child)
     
-    SceneManager:refreshRenders()
+    if self:isOpened() then
+        SceneManager:refreshRenders()
+    end
+end
+
+---------------------------------------
+-- 子オブジェクトの属性連携を設定します。
+---------------------------------------
+function Scene:setAttrLinkForChild(child)
+    child.prop:clearAttrLink(MOAITransform.INHERIT_TRANSFORM)
+    if child.parent then
+        child.prop:setAttrLink(MOAITransform.INHERIT_TRANSFORM, child.parent.transformObj, MOAITransform.TRANSFORM_TRAIT)
+    end
 end
 
 ---------------------------------------

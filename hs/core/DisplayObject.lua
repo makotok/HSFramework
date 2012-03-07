@@ -9,7 +9,6 @@ DisplayObject = Transform()
 DisplayObject:setPropertyName("width")
 DisplayObject:setPropertyName("height")
 DisplayObject:setPropertyName("priority")
-DisplayObject:setPropertyName("parent")
 DisplayObject:setPropertyName("physicsObject")
 DisplayObject:setPropertyName("alpha")
 DisplayObject:setPropertyName("red")
@@ -331,60 +330,6 @@ function DisplayObject:isFocus()
 end
 
 ---------------------------------------
--- 親オブジェクトを設定します。
--- 親オブジェクトはGroupである必要があります。
--- nilを設定した場合、親オブジェクトはクリアされます。
--- TODO:要リファクタリング
----------------------------------------
-function DisplayObject:setParent(parent)    
-    -- sceneを指定された場合はtopLayerを取得
-    if parent and parent:instanceOf(Scene) then
-        parent = parent.topLayer
-    end
-
-    local myParent = self.parent
-    if myParent == parent then
-        return
-    end
-
-    -- 親から削除
-    if myParent ~= nil then
-        myParent:removeChild(self)
-    end
-
-    -- 親に追加
-    self._parent = parent
-    if parent ~= nil then
-        parent:addChild(self)
-    end
-    
-    -- 座標等の連携
-    self:_setAttrLinkForParent()
-
-end
-
-function DisplayObject:_setAttrLinkForParent()
-    local parent = self.parent
-    if parent == nil then
-        self.transformObj:setParent(nil)
-    elseif parent:instanceOf(Layer) then
-        self.prop:setAttrLink(MOAIColor.INHERIT_COLOR, parent.prop, MOAIColor.COLOR_TRAIT)
-    else
-        self.transformObj:setParent(parent.transformObj)
-    end
-    if self.physicsObject then
-        self.transformObj:setParent(self.physicsObject)
-    end
-end
-
----------------------------------------
--- 親オブジェクトを返します。
----------------------------------------
-function DisplayObject:getParent(parent)
-    return self._parent
-end
-
----------------------------------------
 -- 物理オブジェクトを設定します。
 -- TODO:未実装
 ---------------------------------------
@@ -414,8 +359,8 @@ function DisplayObject:setLayer(layer)
         myLayer:removeProp(self.prop)
     end
     -- レイヤーに追加
+    self._layer = layer
     if layer then
-        self._layer = layer
         layer:addProp(self.prop)
     end
 end

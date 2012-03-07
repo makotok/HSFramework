@@ -62,11 +62,12 @@ function Group:addChild(child)
     if table.indexOf(self.children, child) > 0 then
         return
     end
-
+    
     table.insert(self.children, child)
     child.layer = self.layer
     child.parent = self
-
+    self:setAttrLinkForChild(child)
+    
     self:invalidateLayout()
 end
 
@@ -79,7 +80,20 @@ function Group:removeChild(child)
         table.remove(self.children, i)
         child.layer = nil
         child.parent = nil
+        self:setAttrLinkForChild(child)
         self:invalidateLayout()
+    end
+end
+
+---------------------------------------
+-- 子オブジェクトの属性連携を設定します。
+---------------------------------------
+function Group:setAttrLinkForChild(child)
+    child.prop:clearAttrLink(MOAIColor.INHERIT_COLOR)
+    child.prop:clearAttrLink(MOAITransform.INHERIT_TRANSFORM)
+    if child.parent then
+        child.prop:setAttrLink(MOAIColor.INHERIT_COLOR, child.parent.prop, MOAIColor.COLOR_TRAIT)
+        child.prop:setAttrLink(MOAITransform.INHERIT_TRANSFORM, child.parent.prop, MOAITransform.TRANSFORM_TRAIT)
     end
 end
 
@@ -214,7 +228,7 @@ end
 function Group:setParent(parent)
     DisplayObject.setParent(self, parent)
     for i, child in ipairs(self.children) do
-        child.parent = parent
+        child.parent = self
     end
 end
 

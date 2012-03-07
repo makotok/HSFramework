@@ -292,13 +292,33 @@ end
 -- nilを設定した場合、親オブジェクトはクリアされます。
 ---------------------------------------
 function Transform:setParent(parent)
-    self._parent = parent
-    if parent == nil or parent.getRenderPass then
-        self.transformObj:setParent(nil)
-    else
-        self.transformObj:setParent(parent.transformObj)
+    -- sceneを指定された場合はtopLayerを取得
+    if parent and parent:instanceOf(Scene) then
+        parent = parent.topLayer
     end
 
+    -- 親が同一の場合は処理しない
+    local myParent = self.parent
+    if myParent == parent then
+        return
+    end
+    
+    -- 現在の相対座標を取得
+    local x, y = self:getLocation()
+    
+    -- 親から削除
+    if myParent ~= nil then
+        myParent:removeChild(self)
+    end
+
+    -- 親に追加
+    self._parent = parent
+    if parent ~= nil then
+        parent:addChild(self)
+    end
+    
+    -- 相対座標を元に戻す
+    self:setLocation(x, y)
 end
 
 ---------------------------------------

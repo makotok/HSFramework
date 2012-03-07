@@ -55,19 +55,23 @@ function Layer:setParent(parent)
     end
     -- 親から削除
     if myParent ~= nil then
-        myParent:removeLayer(self)
+        myParent:removeChild(self)
     end
 
     -- 親に追加
     self._parent = parent
     if parent then
-        self.transformObj:setParent(parent.transformObj)
-        parent:addLayer(self)
+        parent:addChild(self)
     end
-    
-    -- 子に反映
-    for i, child in ipairs(self.children) do
-        child.parent = parent
+end
+
+---------------------------------------
+-- 子オブジェクトの属性連携を設定します。
+---------------------------------------
+function Layer:setAttrLinkForChild(child)
+    child.prop:clearAttrLink(MOAIColor.INHERIT_COLOR)
+    if child.parent then
+        child.prop:setAttrLink(MOAIColor.INHERIT_COLOR, child.parent.prop, MOAIColor.COLOR_TRAIT)
     end
 end
 
