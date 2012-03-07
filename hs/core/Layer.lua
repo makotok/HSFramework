@@ -272,7 +272,7 @@ function Layer:onTouchCommon(event, funcName)
     local worldX, worldY = self:windowToWorld(event.x, event.y)
     event.worldX = worldX
     event.worldY = worldY
-
+    
     local displayList = self._touchDownDisplayList
     local max = #displayList
     
