@@ -11,7 +11,9 @@ function onCreate()
             Animation:new(sprite1, 1):rotate(90),
             Animation:new(sprite1, 1):scale(1, 1)
         )
-    
+end
+
+function onStart()
     animate()
 end
 
