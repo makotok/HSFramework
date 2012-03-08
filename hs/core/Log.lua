@@ -15,16 +15,16 @@ Log.level = Log.LEVEL_ERROR
 ---------------------------------------
 function Log.info(...)
     if Log.level >= Log.LEVEL_INFO then
-        print("[info]", unpack(...))
+        print("[info]", ...)
     end
 end
 
 ---------------------------------------
 -- 警告ログを出力します。
 ---------------------------------------
-function Log.info(...)
+function Log.warn(...)
     if Log.level >= Log.LEVEL_WARN then
-        print("[info]", ...)
+        print("[warn]", ...)
     end
 end
 

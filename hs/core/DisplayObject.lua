@@ -159,7 +159,7 @@ end
 -- 色をアニメーション遷移させます。
 ---------------------------------------
 function DisplayObject:moveColor(red, green, blue, alpha, sec, mode, completeHandler)
-    local action = self.prop:moveColor(red, green, blue, alpha, mode)
+    local action = self.prop:moveColor(red, green, blue, alpha, sec, mode)
     if completeHandler ~= nil then
         action:setListener(MOAIAction.EVENT_STOP, function(prop) completeHandler(self) end)
     end

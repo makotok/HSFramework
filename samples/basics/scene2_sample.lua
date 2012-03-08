@@ -5,6 +5,9 @@ module(..., package.seeall)
 
 function onCreate()
     Log.info("onCreate()", scene.name)
+
+    scene.sceneOpenAnimation = SceneAnimation.popIn
+    scene.sceneCloseAnimation = SceneAnimation.popOut
     
     Sprite:new("samples/resources/back_2.png", {parent = scene})
     Sprite:new("samples/resources/cathead.png", {x = 50, y = 50, parent = scene})
@@ -39,6 +42,6 @@ function onKeyboard(event)
 end
 
 function onTouchDown(event)
-    SceneManager:openNextScene("samples/basics/scene1_sample")
+    SceneManager:closeScene("samples/basics/scene1_sample")
 end
 

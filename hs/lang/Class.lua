@@ -30,9 +30,7 @@ setmetatable(Class, Class)
 function Class:__call()
     local class = {}
     setmetatable(class, self)
-    for i,v in pairs(self) do
-        class[i] = v
-    end
+    table.deepCopy(self, class)
     class.__base = self
     return class
 end

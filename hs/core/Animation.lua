@@ -14,6 +14,7 @@ Animation:setPropertyName("running", "setRunning", "isRunning")
 ---------------------------------------
 function Animation:init(targets, sec, easeType)
     Animation:super(self)
+    targets = targets and targets or {}
     
     -- コンストラクタが存在する場合、配列に代入
     if targets.new then
@@ -70,8 +71,8 @@ function Animation:copy(src)
         function(obj, callback)
             for i, target in ipairs(self.targets) do
                 table.copy(src, target)
-                callback(obj)
             end
+            callback(obj)
         end
     )
     self:addCommand(command)
@@ -143,7 +144,7 @@ end
 ---------------------------------------
 function Animation:color(red, green, blue, alpha, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
-        return target:moveColor(red, blue, alpha, tSec, tMode, completeHandler)
+        return target:moveColor(red, green, blue, alpha, tSec, tMode, completeHandler)
     end
     local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
@@ -199,7 +200,6 @@ function Animation:sequence(...)
                     callback(obj)
                 else
                     currentAnimation = animations[count]
-                    currentAnimation:reset()
                     currentAnimation:play({onComplete = completeHandler})
                 end
             end
@@ -263,17 +263,24 @@ function Animation:play(params)
     if self.running then
         return self
     end
-    if #self._commands == 0 then
-        return self
-    end
     if params then
         self._onComplete = params.onComplete
     end
+    
     Log.debug("Animation:play")
     self._currentSecond = self._second
     self._currentEaseType = self._easeType
     self._running = true
     self._stoped = false
+    
+    -- 即座に完了するパターン
+    if #self.targets == 0 then
+        self:_onCommandComplete()
+        return self        
+    end
+    if #self._commands == 0 then
+        return self
+    end
     
     -- execute command
     self:_executeCommand(1)
@@ -304,6 +311,7 @@ function Animation:_onCommandComplete()
         self:_executeCommand(self._currentIndex + 1)
     -- complete!
     else
+        Log.debug("Animation:complete")
         local event = EventPool:getObject(Event.COMPLETE, self)
         if self._onComplete then self._onComplete(event) end
         self._running = false

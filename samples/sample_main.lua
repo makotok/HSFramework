@@ -2,6 +2,9 @@ module(..., package.seeall)
 
 -- create event
 function onCreate()
+    scene.sceneOpenAnimation = SceneAnimation.now
+    scene.sceneCloseAnimation = SceneAnimation.now
+    
     -- group
     group = Group:new({parent = scene, layout = VBoxLayout:new({vGap = 0})})
     group.layout:setPadding(0, 0, 0, 0)

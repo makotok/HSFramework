@@ -3,7 +3,7 @@
 require "hs/HSFramework"
 
 -- log level
---Log.level = Log.LEVEL_DEBUG
+Log.level = Log.LEVEL_DEBUG
 
 -- application start
 -- TODO:config file

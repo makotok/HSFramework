@@ -6,6 +6,9 @@ module(..., package.seeall)
 function onCreate()
     Log.info("onCreate()", scene.name)
     
+    scene.sceneOpenAnimation = SceneAnimation.crossFade
+    scene.sceneCloseAnimation = SceneAnimation.crossFade
+    
     Sprite:new("samples/resources/back_1.png", {parent = scene})
     Sprite:new("samples/resources/cathead.png", {x = 10, y = 10, parent = scene})
 end
@@ -39,6 +42,6 @@ function onKeyboard(event)
 end
 
 function onTouchDown(event)
-    SceneManager:openNextScene("samples/basics/scene2_sample")
+    SceneManager:openScene("samples/basics/scene2_sample")
 end
 

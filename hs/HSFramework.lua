@@ -4,9 +4,9 @@
 ----------------------------------------------------------------
 
 -- lang liblary
+require "hs/lang/Globals"
 require "hs/lang/Class"
 require "hs/lang/PropertySupport"
-require "hs/lang/Globals"
 require "hs/lang/UString"
 
 -- util library
@@ -34,6 +34,7 @@ require "hs/core/TextLabel"
 require "hs/core/Font"
 require "hs/core/FontCache"
 require "hs/core/Scene"
+require "hs/core/SceneAnimation"
 require "hs/core/SceneFactory"
 require "hs/core/SceneManager"
 require "hs/core/Window"

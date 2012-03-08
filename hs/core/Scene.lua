@@ -41,6 +41,8 @@ function Scene:init()
     self._visible = true
     self._topLayer = Layer:new()
     self.sceneHandler = {}
+    self.sceneOpenAnimation = SceneAnimation.slideToLeft
+    self.sceneCloseAnimation = SceneAnimation.slideToRight
     self:addChild(self.topLayer)
     
     self:setSize(Application.stageWidth, Application.stageHeight)

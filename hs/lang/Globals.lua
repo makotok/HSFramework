@@ -20,3 +20,19 @@ function table.copy(src, dest)
     end
     return dest
 end
+
+---------------------------------------
+--- テーブルをディープコピーします。
+---------------------------------------
+function table.deepCopy(src, dest)
+    dest = dest and dest or {}
+    for i, v in pairs(src) do
+        if type(v) == "table" then
+            dest[i] = {}
+            table.deepCopy(v, dest[i])
+        else
+            dest[i] = v
+        end
+    end
+    return dest
+end

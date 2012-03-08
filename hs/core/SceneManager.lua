@@ -38,6 +38,7 @@ end
 ---------------------------------------
 function SceneManager:openScene(sceneName, params)
     if self.transitioning then
+        Log.warn("[SceneManager:openScene]", "scene transitioning!")
         return nil
     end
 
@@ -84,12 +85,10 @@ function SceneManager:openScene(sceneName, params)
     end
         
     -- アニメーションを行う
-    local animation = params.animation
+    local animation = nextScene.sceneOpenAnimation
     if animation then
         self.transitioning = true
-        animation.currentScene = currentScene
-        animation.nextScene = nextScene
-        self.sceneAnimation:play({onComplete = completeFunc})
+        animation(currentScene, nextScene, params):play({onComplete = completeFunc})
     else
         completeFunc()
     end
@@ -144,12 +143,10 @@ function SceneManager:closeScene(params)
     end
     
     -- アニメーションを行う場合
-    local animation = params.animation
+    local animation = currentScene.sceneCloseAnimation
     if animation then
         self.transitioning = true
-        animation.currentScene = currentScene
-        animation.nextScene = nextScene
-        animation:play({onComplete = completeFunc})
+        animation(currentScene, nextScene, params):play({onComplete = completeFunc})
     else
         completeFunc()
     end
