@@ -42,6 +42,6 @@ function onKeyboard(event)
 end
 
 function onTouchDown(event)
-    SceneManager:closeScene("samples/basics/scene1_sample")
+    SceneManager:closeScene()
 end
 

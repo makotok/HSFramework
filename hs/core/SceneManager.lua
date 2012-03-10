@@ -251,8 +251,9 @@ end
 -- 画面をタッチする処理を行います。
 ---------------------------------------
 function SceneManager:onTouchDown(e)
-    if self.currentScene and self.currentScene:isOpened() then
-        self.currentScene:onSceneTouchDown(e)
+    local currentScene = self.currentScene
+    if currentScene and not self.transitioning then
+        currentScene:onSceneTouchDown(e)
     end
 end
 
@@ -260,8 +261,9 @@ end
 -- 画面をタッチする処理を行います。
 ---------------------------------------
 function SceneManager:onTouchUp(e)
-    if self.currentScene and self.currentScene:isOpened() then
-        self.currentScene:onSceneTouchUp(e)
+    local currentScene = self.currentScene
+    if currentScene and not self.transitioning then
+        currentScene:onSceneTouchUp(e)
     end
 end
 
@@ -269,8 +271,9 @@ end
 -- 画面をタッチする処理を行います。
 ---------------------------------------
 function SceneManager:onTouchMove(e)
-    if self.currentScene and self.currentScene:isOpened() then
-        self.currentScene:onSceneTouchMove(e)
+    local currentScene = self.currentScene
+    if currentScene and not self.transitioning then
+        currentScene:onSceneTouchMove(e)
     end
 end
 
@@ -278,8 +281,9 @@ end
 -- 画面をタッチする処理を行います。
 ---------------------------------------
 function SceneManager:onTouchCancel(e)
-    if self.currentScene and self.currentScene:isOpened() then
-        self.currentScene:onSceneTouchCancel(e)
+    local currentScene = self.currentScene
+    if currentScene and not self.transitioning then
+        currentScene:onSceneTouchCancel(e)
     end
 end
 
@@ -287,17 +291,19 @@ end
 -- キーボード入力する処理を行います。
 ---------------------------------------
 function SceneManager:onKeyboard(e)
-    if self.currentScene and self.currentScene:isOpened() then
-        self.currentScene:onKeyboard(e)
+    local currentScene = self.currentScene
+    if currentScene and not self.transitioning then
+        currentScene:onKeyboard(e)
     end
 end
 
 ---------------------------------------
 -- 毎フレームの処理を行います。
+-- シーン遷移中でもイベントは行われます。
 ---------------------------------------
 function SceneManager:onEnterFrame(e)
     local currentScene = self.currentScene
-    if currentScene and currentScene:isOpened() then
+    if currentScene then
         currentScene:onEnterFrame(e)
     end
 end
