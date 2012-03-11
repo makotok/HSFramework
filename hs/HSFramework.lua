@@ -55,6 +55,11 @@ require "hs/tmx/TMXObjectGroup"
 require "hs/tmx/TMXTileset"
 
 -- box2d library
+require "hs/box2d/Box2DWorld"
+require "hs/box2d/Box2DBody"
+require "hs/box2d/Box2DFixture"
+require "hs/box2d/Box2DConfig"
+
 
 ----------------------------------------------------------------
 -- HSFramework

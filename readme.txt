@@ -2,8 +2,8 @@
 --
 -- HSFramework(Hana Saurus Framework)
 -- Makoto
--- Version:0.4
--- MOAI SDK:Moai SDK Beta Version 0.95 Beta
+-- Version:0.4.2
+-- MOAI SDK:Moai SDK Beta Version 0.95 Beta revesion 3
 -------------------------------------------------------------------
 
 [日本語]
@@ -21,7 +21,7 @@ MoaiSDKは低レベル層なフレームワークの為、そのまま使用す�
 ・簡単に使用できる複雑なアニメーション
 ・マルチバイト文字のテキスト描画を簡単にできるようにする
 ・タイルマップ形式(tmx)のファイル読み込み、マップ構築
-・物理オブジェクトを簡単に使用(未実装)
+・物理オブジェクトを簡単に使用（一部実装した。あとちょっと）
 ・GUI機能(未実装)
 
 ソースはApache License 2.0の元で公開しますので、自由に使用していいです。

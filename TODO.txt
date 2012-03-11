@@ -4,6 +4,6 @@ TODO：今後の実装予定
 DisplayObjectのVisibleの連携
 モバイルの画面サイズの最適化
 TMXMapの強化
-Box2Dの実装
+Box2Dの継続的な機能の強化
 GUI機能(ListBox,Button,RadioButton,MessageBox)
 ゲーム用モジュール（RPG,SLG,AVG）

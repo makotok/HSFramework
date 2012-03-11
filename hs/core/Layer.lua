@@ -12,6 +12,7 @@ Layer = Group()
 Layer:setPropertyName("camera")
 Layer:setPropertyName("touchEnabled")
 Layer:setPropertyName("renderPass")
+Layer:setPropertyName("viewport")
 Layer:setPropertyName("lastPriority")
 Layer:setPropertyName("touchEnabled", "setTouchEnabled", "isTouchEnabled")
 
@@ -37,7 +38,12 @@ end
 ---------------------------------------
 function Layer:newRenderPass()
     local layer = MOAILayer2D.new ()
-    layer:setViewport(Application.window.viewport)
+    layer.viewport = MOAIViewport.new()
+    layer.viewport:setOffset(-1, 1)
+    layer.viewport:setScale(Application.window.width, -Application.window.height)
+    layer.viewport:setSize(Application.stageWidth, Application.stageHeight)
+    
+    layer:setViewport(layer.viewport)
     layer:setSortMode(MOAILayer2D.SORT_PRIORITY_ASCENDING)
     layer:setPartition(MOAIPartition.new())
     return layer
@@ -103,6 +109,13 @@ end
 ---------------------------------------
 function Layer:getRenderPass()
     return self._renderPass
+end
+
+---------------------------------------
+-- Viewportを返します。
+---------------------------------------
+function Layer:getViewport()
+    return self._renderPass.viewport
 end
 
 ---------------------------------------

@@ -5,7 +5,7 @@
 -- シングルトンなクラスとして扱います。
 ----------------------------------------------------------------
 
-Application = EventDispatcher:new()
+Application = EventDispatcher():new()
 
 -- プロパティ定義
 Application:setPropertyName("window")

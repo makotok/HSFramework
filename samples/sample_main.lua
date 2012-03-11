@@ -33,6 +33,7 @@ sceneItems ={
     {text = "anime_group_sample", scene = "samples/animations/anime_group_sample"},
     {text = "tmxmap1_sample", scene = "samples/maps/tmxmap1_sample"},
     {text = "tmxmap2_sample", scene = "samples/maps/tmxmap2_sample"},
+    {text = "box2d_body_sample", scene = "samples/box2d/box2d_body_sample"},
     {text = "fps_sample", scene = "samples/utils/fps_sample"}
 }
 
