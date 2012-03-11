@@ -65,7 +65,7 @@ require "hs/box2d/Box2DConfig"
 -- HSFramework
 ----------------------------------------------------------------
 HSFramework = {}
-HSFramework.VERSION = "0.4"
+HSFramework.VERSION = "0.4.2"
 
 ---------------------------------------
 --- フレームワークの初期化処理です
