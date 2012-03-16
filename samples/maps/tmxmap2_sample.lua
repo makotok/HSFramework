@@ -8,6 +8,7 @@ function onCreate()
     map:drawMap(scene)
 end
 
+-- TODO タッチイベントの座標については課題あり
 function onTouchDown(event)
     preX = event.x
     preY = event.y
