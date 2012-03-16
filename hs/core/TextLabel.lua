@@ -17,6 +17,17 @@
 
 TextLabel = DisplayObject()
 
+-- 定数
+TextLabel.ALIGN_LEFT = MOAITextBox.LEFT_JUSTIFY
+TextLabel.ALIGN_CENTER = MOAITextBox.CENTER_JUSTIFY
+TextLabel.ALIGN_RIGHT = MOAITextBox.RIGHT_JUSTIFY
+
+TextLabel.ALIGN_TYPES = {
+    left = TextLabel.ALIGN_LEFT,
+    center = TextLabel.ALIGN_CENTER,
+    right = TextLabel.ALIGN_RIGHT
+}
+
 -- デフォルト値
 -- 変更した場合、インスタンスの生成時にデフォルト値が使用されます。
 TextLabel.defaultCharcodes = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,:;!?()&/-_'
@@ -26,6 +37,7 @@ TextLabel.defaultFontDPI = 163
 
 -- properties
 TextLabel:setPropertyName("text")
+TextLabel:setPropertyName("textAlign")
 TextLabel:setPropertyName("charcodes")
 TextLabel:setPropertyName("fontSize")
 TextLabel:setPropertyName("fontTTF")
@@ -41,6 +53,7 @@ function TextLabel:init(params)
     self._fontSize = self.defaultFontSize
     self._fontTTF = self.defaultFontTTF
     self._fontDPI = self.defaultFontDPI
+    self._textChanged = false
     
     if params then
         table.copy(params, self)
@@ -139,13 +152,31 @@ end
 function TextLabel:setText(text)
     self._charcodes = self:makeCharcodes(text)
     self._text = text
-    self:updateText()
+    self._textChanged = true
 end
 
 ---------------------------------------
 -- 表示文字列を返します。
 ---------------------------------------
 function TextLabel:getText()
+    return self._text
+end
+
+---------------------------------------
+-- 表示文字列を設定します。
+---------------------------------------
+function TextLabel:setTextAlign(align)
+    self._textAlign = align
+    if self.prop then
+        Log.debug("setTextAlign", align)
+        self.prop:setAlignment(TextLabel.ALIGN_TYPES[align])
+    end
+end
+
+---------------------------------------
+-- 表示文字列を返します。
+---------------------------------------
+function TextLabel:getTextAlign()
     return self._text
 end
 
@@ -161,7 +192,7 @@ end
 ---------------------------------------
 function TextLabel:setFontSize(size)
     self._fontSize = size
-    self:updateText()
+    self._textChanged = true
 end
 
 ---------------------------------------
@@ -176,7 +207,7 @@ end
 ---------------------------------------
 function TextLabel:setFontTTF(ttfPath)
     self._fontTTF = ttfPath
-    self:updateText()
+    self._textChanged = true
 end
 
 ---------------------------------------
@@ -193,7 +224,7 @@ end
 ---------------------------------------
 function TextLabel:setFontDPI(dpi)
     self._fontDPI = dpi
-    self:updateText()
+    self._textChanged = true
 end
 
 ---------------------------------------
@@ -201,4 +232,15 @@ end
 ---------------------------------------
 function TextLabel:getFontDPI()
     return self._fontDPI
+end
+
+---------------------------------------
+-- フレーム毎の処理を行います。
+---------------------------------------
+function TextLabel:onEnterFrame(event)
+    if self._textChanged then
+        self:updateText()
+        self._textChanged = false
+    end
+    DisplayObject.onEnterFrame(self, event)
 end

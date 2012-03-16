@@ -73,6 +73,7 @@ end
 ---------------------------------------
 function EventDispatcher:dispatchEvent(event)
     event.stoped = false
+    event.target = event.target and event.target or self
     for key, obj in ipairs(self.listeners) do
         if obj.type == event.type then
             event:setListener(obj.callback, obj.source)
@@ -82,7 +83,7 @@ function EventDispatcher:dispatchEvent(event)
             end
         end
     end
-    --EventPool:releaseObject(event)
+    EventPool:releaseObject(event)
 end
 
 ---------------------------------------

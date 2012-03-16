@@ -167,6 +167,17 @@ function DisplayObject:moveColor(red, green, blue, alpha, sec, mode, completeHan
 end
 
 ---------------------------------------
+-- 色をアニメーション遷移させます。
+---------------------------------------
+function DisplayObject:seekColor(red, green, blue, alpha, sec, mode, completeHandler)
+    local action = self.prop:seekColor(red, green, blue, alpha, sec, mode)
+    if completeHandler ~= nil then
+        action:setListener(MOAIAction.EVENT_STOP, function(prop) completeHandler(self) end)
+    end
+    return action
+end
+
+---------------------------------------
 -- フェードインします。
 ---------------------------------------
 function DisplayObject:fadeIn(sec, mode, completeHandler)
@@ -417,35 +428,35 @@ end
 
 ---------------------------------------
 -- フレーム毎の処理を行います。
--- デフォルトでは、何も行いません。
 ---------------------------------------
 function DisplayObject:onEnterFrame(event)
+    FunctionUtil.callExist(self.enterFrameListener, self, event)
 end
 
 ---------------------------------------
 -- タッチ処理を行います。
--- デフォルトでは、何も行いません。
 ---------------------------------------
 function DisplayObject:onTouchDown(event)
+    FunctionUtil.callExist(self.touchDownListener, self, event)
 end
 
 ---------------------------------------
--- フレーム毎の処理を行います。
--- デフォルトでは、何も行いません。
+-- タッチ処理を行います。
 ---------------------------------------
 function DisplayObject:onTouchUp(event)
+    FunctionUtil.callExist(self.touchUpListener, self, event)
 end
 
 ---------------------------------------
--- フレーム毎の処理を行います。
--- デフォルトでは、何も行いません。
+-- タッチ処理を行います。
 ---------------------------------------
 function DisplayObject:onTouchMove(event)
+    FunctionUtil.callExist(self.touchMoveListener, self, event)
 end
 
 ---------------------------------------
--- フレーム毎の処理を行います。
--- デフォルトでは、何も行いません。
+-- タッチ処理を行います。
 ---------------------------------------
 function DisplayObject:onTouchCancel(event)
+    FunctionUtil.callExist(self.touchCancelListener, self, event)
 end

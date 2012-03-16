@@ -27,14 +27,14 @@ function SpriteSheet:init(texture, frameWidth, frameHeight, params)
     -- イベントリスナの設定
     self._frameAnim:setListener(MOAITimer.EVENT_TIMER_LOOP, 
         function(prop)
-            local e = Event:new(Event.FRAME_LOOP, self)
+            local e = EventPool:getObject(Event.FRAME_LOOP)
             self:onFrameLoop(e)
             self:dispatchEvent(e)
         end
     )
     self._frameAnim:setListener(MOAIAction.EVENT_STOP,
         function(prop)
-            local e = Event:new(Event.FRAME_STOP, self)
+            local e = EventPool:getObject(Event.FRAME_STOP)
             self:onFrameStop(e)
             self:dispatchEvent(e)
         end

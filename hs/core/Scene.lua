@@ -510,7 +510,6 @@ function Scene:onSceneTouchCommon(event, funcName)
         if self[funcName] then
             self[funcName](self, event)
         end
-        self:dispatchEvent(event)
     end
     if not event.stoped then
         FunctionUtil.callExist(self.sceneHandler[funcName], event)

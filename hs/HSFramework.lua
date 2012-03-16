@@ -30,6 +30,7 @@ require "hs/core/Graphics"
 require "hs/core/Sprite"
 require "hs/core/SpriteSheet"
 require "hs/core/MapSprite"
+require "hs/core/NinePatch"
 require "hs/core/TextLabel"
 require "hs/core/Font"
 require "hs/core/FontCache"
@@ -60,6 +61,12 @@ require "hs/box2d/Box2DBody"
 require "hs/box2d/Box2DFixture"
 require "hs/box2d/Box2DConfig"
 
+-- gui library
+require "hs/gui/UIComponent"
+require "hs/gui/Button"
+require "hs/gui/Skins" -- TODO:別の方法を考える
+require "hs/gui/View"
+require "hs/gui/ScrollView"
 
 ----------------------------------------------------------------
 -- HSFramework

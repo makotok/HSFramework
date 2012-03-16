@@ -43,7 +43,9 @@ function ObjectPool:getObject(...)
         self:initObject(obj, ...)
         return obj
     else
-        return self:createObject(...)
+        local obj = self:createObject(...)
+        obj._pooling = true
+        return obj
     end
 end
 
@@ -51,5 +53,7 @@ end
 -- オブジェクトをプールに戻します。
 ---------------------------------------
 function ObjectPool:releaseObject(object)
-    table.insert(self._pool, object)
+    if object._pooling then
+        table.insert(self._pool, object)
+    end
 end

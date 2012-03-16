@@ -16,6 +16,7 @@ MapSprite:setPropertyName("cellWidth")
 MapSprite:setPropertyName("cellHeight")
 MapSprite:setPropertyName("tileWidth")
 MapSprite:setPropertyName("tileHeight")
+MapSprite:setPropertyName("repeat")
 
 ---------------------------------------
 -- コンストラクタです
@@ -35,6 +36,7 @@ function MapSprite:init(texture, gridWidth, gridHeight, tileWidth, tileHeight, c
     self._gridHeight = gridHeight
     self._tileWidth = tileWidth
     self._tileHeight = tileHeight
+    self._repeat = false
     
     self:setGridSize(gridWidth, gridHeight)
     self:setTileSize(tileWidth, tileHeight)
@@ -270,3 +272,19 @@ end
 function MapSprite:getTileHeight()
     return self._tileHeight
 end
+
+---------------------------------------
+-- リピート描画するか設定します。
+---------------------------------------
+function MapSprite:setRepeat(value)
+    self.grid:setRepeat(value)
+    self._repeat = value
+end
+
+---------------------------------------
+-- タイルの行数を返します。
+---------------------------------------
+function MapSprite:getRepeat()
+    return self._repeat
+end
+

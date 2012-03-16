@@ -33,8 +33,8 @@ end
 -- TODO:毎フレーム行うと遅いのかも・・・
 ---------------------------------------
 function Application:enterFrame()
-    local event = Event:new(Event.ENTER_FRAME, self)
     while true do
+        local event = EventPool:getObject(Event.ENTER_FRAME)
         self:dispatchEvent(event)
         coroutine.yield()
     end

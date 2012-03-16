@@ -5,18 +5,14 @@ function onCreate()
     scene.sceneOpenAnimation = SceneAnimation.now
     scene.sceneCloseAnimation = SceneAnimation.now
     
-    -- group
-    group = Group:new({parent = scene, layout = VBoxLayout:new({vGap = 0})})
-    group.layout:setPadding(0, 0, 0, 0)
+    -- scrollView
+    scrollView = ScrollView:new({parent = scene, layout = VBoxLayout:new()})
 
     -- sample list
     for i, item in ipairs(sceneItems) do
-        local labelGroup = Group:new({width = Application.stageWidth + 1, height = 25, parent = group})
-        labelGroup.background:drawRect()
-        
-        local label = TextLabel:new(
-            {text = item.text, width = labelGroup.width, height = 25,
-            parent = labelGroup, onTouchDown = onTouchDownLabel, sceneName = item.scene})
+        local button = Button:new(
+            {text = item.text, width = 200, height = 30, parent = scrollView,
+            onTouchDown = onTouchDown_button, sceneName = item.scene})
     end
 end
 
@@ -34,11 +30,12 @@ sceneItems ={
     {text = "tmxmap1_sample", scene = "samples/maps/tmxmap1_sample"},
     {text = "tmxmap2_sample", scene = "samples/maps/tmxmap2_sample"},
     {text = "box2d_body_sample", scene = "samples/box2d/box2d_body_sample"},
+    {text = "button_sample", scene = "samples/gui/button_sample"},
     {text = "fps_sample", scene = "samples/utils/fps_sample"}
 }
 
 -- touch event
-function onTouchDownLabel(self, event)
+function onTouchDown_button(self, event)
     Log.info("label touch!" .. self.sceneName)
     SceneManager:openNextScene(self.sceneName)
 end

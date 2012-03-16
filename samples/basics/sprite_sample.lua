@@ -24,5 +24,4 @@ function onStart()
 
     -- sprite2 animation
     sprite2:moveFrames({1, 2, 3, 2, 1}, 0.25)
-    
 end

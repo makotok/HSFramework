@@ -244,12 +244,19 @@ function Layer:onTouchDown(event)
     local max = #displayList
 
     self._touchDownDisplayList = displayList
-    event.worldX = worldX
-    event.worldY = worldY
+    local e = EventPool:getObject(event.type)
+    e.worldX = worldX
+    e.worldY = worldY
     
     for i = max, 1, -1 do
         local display = displayList[i]
-        display:onTouchDown(event)
+        display:onTouchDown(e)
+        if e.stoped then
+            break
+        end
+    end
+    if not e.stoped then
+        self:dispatchEvent(e)
     end
 end
 
@@ -286,15 +293,21 @@ function Layer:onTouchCommon(event, funcName)
     end
 
     -- ワールド座標の取得
-    local worldX, worldY = self:windowToWorld(event.x, event.y)
-    event.worldX = worldX
-    event.worldY = worldY
+    local e = EventPool:getObject(event.type)
+    e.screenX, e.screenY = event.x, event.y
+    e.worldX, e.worldY = self:windowToWorld(event.x, event.y)
     
     local displayList = self._touchDownDisplayList
     local max = #displayList
     
     for i = max, 1, -1 do
         local display = displayList[i]
-        display[funcName](display, event)
+        display[funcName](display, e)
+        if e.stoped then
+            break
+        end
+    end
+    if not e.stoped then
+        self:dispatchEvent(e)
     end
 end

@@ -61,7 +61,7 @@ end
 ---------------------------------------
 function InputManager.onTouch(eventType, idx, x, y, tapCount)
     -- event
-    local event = Event:new(Event.TOUCH, InputManager)
+    local event = EventPool:getObject(Event.TOUCH, InputManager)
     if eventType == MOAITouchSensor.TOUCH_DOWN then
         event.type = Event.TOUCH_DOWN
     elseif eventType == MOAITouchSensor.TOUCH_UP then
@@ -86,7 +86,7 @@ function InputManager.onKeyboard( key, down )
     InputManager.keyboard.key = key
     InputManager.keyboard.down = down
 
-    local event = Event:new(Event.KEYBOARD, InputManager)
+    local event = EventPool:getObject(Event.KEYBOARD, InputManager)
     event.key = key
     event.down = down
 

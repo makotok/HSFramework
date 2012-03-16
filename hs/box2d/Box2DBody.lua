@@ -165,6 +165,7 @@ end
 
 function Box2DBody:setLinearDamping(damping)
     self.body:setLinearDamping(damping)
+    self.body._linearDamping = damping
 end
 
 ---------------------------------------
