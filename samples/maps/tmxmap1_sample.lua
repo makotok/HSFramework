@@ -9,13 +9,17 @@ function onCreate()
 end
 
 function onTouchDown(event)
-    preX = event.worldX
-    preY = event.worldY
+    preX = event.x
+    preY = event.y
 end
 
 function onTouchMove(event)
-    local moveX, moveY = event.worldX - preX, event.worldY - preY
+    local screenX, screenY = event.x, event.y
+    local moveX, moveY = preX - screenX, preY - screenY
+
     local camera = scene.topLayer.camera
-    camera.x = camera.x - moveX
-    camera.y = camera.y - moveY
+    camera.x = camera.x + moveX
+    camera.y = camera.y + moveY
+    
+    preX, preY = screenX, screenY
 end
