@@ -64,7 +64,7 @@ function SceneManager:openScene(sceneName, params)
     -- 起動中のシーンがない場合中の場合
     if not nextScene then
         local scene = self.sceneFactory:createScene(sceneName, params)
-        scene:onCreate()
+        scene:onCreate(params)
         self:addScene(scene)
         
         nextScene = scene
@@ -80,8 +80,8 @@ function SceneManager:openScene(sceneName, params)
         end
         
         self.transitioning = false
-        nextScene:onStart()
-        nextScene:onResume()
+        nextScene:onStart(params)
+        nextScene:onResume(params)
     end
         
     -- アニメーションを行う
@@ -138,7 +138,7 @@ function SceneManager:closeScene(params)
         self:removeScene(currentScene)
         currentScene:onDestroy()
         if nextScene then
-            nextScene:onResume()
+            nextScene:onResume(params)
         end
     end
     

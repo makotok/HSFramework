@@ -400,31 +400,31 @@ end
 ---------------------------------------
 -- シーンの生成処理時に一度だけ呼ばれます。
 ---------------------------------------
-function Scene:onCreate()
-    FunctionUtil.callExist(self.sceneHandler.onCreate)    
+function Scene:onCreate(params)
+    FunctionUtil.callExist(self.sceneHandler.onCreate, params)
     self._opened = true
 end
 
 ---------------------------------------
 -- シーンの開始時に一度だけ呼ばれます。
 ---------------------------------------
-function Scene:onStart()
-    FunctionUtil.callExist(self.sceneHandler.onStart)    
+function Scene:onStart(params)
+    FunctionUtil.callExist(self.sceneHandler.onStart, params)
 end
 
 ---------------------------------------
 -- シーンの再開時に呼ばれます。
 -- pauseした場合に、再開処理で呼ばれます。
 ---------------------------------------
-function Scene:onResume()
-    FunctionUtil.callExist(self.sceneHandler.onResume)    
+function Scene:onResume(params)
+    FunctionUtil.callExist(self.sceneHandler.onResume, params)
 end
 
 ---------------------------------------
 -- シーンの一時停止時に呼ばれます。
 ---------------------------------------
 function Scene:onPause()
-    FunctionUtil.callExist(self.sceneHandler.onPause)    
+    FunctionUtil.callExist(self.sceneHandler.onPause)
 end
 
 ---------------------------------------
@@ -434,7 +434,7 @@ end
 ---------------------------------------
 function Scene:onStop()
     self._opened = false
-    FunctionUtil.callExist(self.sceneHandler.onStop) 
+    FunctionUtil.callExist(self.sceneHandler.onStop)
 end
 
 ---------------------------------------
