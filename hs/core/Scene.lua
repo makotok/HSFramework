@@ -446,6 +446,9 @@ function Scene:onDestroy()
         layer:dispose()
     end
     FunctionUtil.callExist(self.sceneHandler.onDestroy)
+    
+    -- モジュールの削除
+    unrequire(self.name)
 end
 
 ---------------------------------------

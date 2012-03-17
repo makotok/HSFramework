@@ -1,5 +1,7 @@
 TODO：今後の実装予定
 
+クラスのnamespaceについて検討
+必要がなくなったテクスチャ、フォントの自動的な解放
 複数のScene間のHUDオブジェクト
 DisplayObjectのVisibleの連携
 モバイルの画面サイズの最適化

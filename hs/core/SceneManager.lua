@@ -77,6 +77,8 @@ function SceneManager:openScene(sceneName, params)
         if currentScene and params.currentClosing then
             self:removeScene(currentScene)
             currentScene:onDestroy()
+            
+            collectgarbage("collect")
         end
         
         self.transitioning = false
@@ -137,6 +139,9 @@ function SceneManager:closeScene(params)
         self.transitioning = false
         self:removeScene(currentScene)
         currentScene:onDestroy()
+        
+        collectgarbage("collect")
+
         if nextScene then
             nextScene:onResume(params)
         end
