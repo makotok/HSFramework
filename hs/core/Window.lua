@@ -1,8 +1,9 @@
 ----------------------------------------------------------------
--- 単一のウィンドウを管理するクラスです。
--- ウィンドウのタイトル、描画領域（Screen）を保持します。
+-- 単一のウィンドウを管理するクラスです.
+-- ウィンドウのタイトル、描画領域（Screen）を保持します.
+-- @class table
+-- @name Window
 ----------------------------------------------------------------
-
 Window = Class()
 
 -- 定数
@@ -25,14 +26,14 @@ function Window:init()
 end
 
 ---------------------------------------
--- Windowを起動します。
--- titleは、ウィンドウのタイトルで使用されます。
--- width,heightは、ウィンドウのサイズになります。
+-- Windowを起動します.
+-- titleは、ウィンドウのタイトルで使用されます.
+-- width,heightは、ウィンドウのサイズになります.
 --
 -- ただし、モバイルアプリケーションの場合、
 -- サイズが一致するわけではなく、サイズが固定の為、
 -- StageにstageModeを指定する事で、描画領域の
--- 任意のロジックで引き伸ばしを行う事ができます。
+-- 任意のロジックで引き伸ばしを行う事ができます.
 ---------------------------------------
 function Window:open(title, width, height, stageMode)
     if self.opened == false then
@@ -48,7 +49,7 @@ end
 function Window:initScreenSize(width, height)
 
     -- モバイルの場合、指定されたモードにより、
-    -- Viewportのサイズを変更する。
+    -- Viewportのサイズを変更する.
     local scaleWidth = width
     local scaleHeight = height
     local stageWidth = width

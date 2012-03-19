@@ -1,9 +1,11 @@
 --------------------------------------------------------------------------------
 -- シーンに追加できるレイヤークラスです
--- レイヤーは、ビューポートを持ち、MOAILayer2Dに対応するクラスとなります。
+-- レイヤーは、ビューポートを持ち、MOAILayer2Dに対応するクラスとなります.
 --
--- レイヤー内の子オブジェクトの移動は、カメラを使用して移動してください。
--- レイヤーの直接的な移動は、画面内の座標を移動する事になります。
+-- レイヤー内の子オブジェクトの移動は、カメラを使用して移動してください.
+-- レイヤーの直接的な移動は、画面内の座標を移動する事になります.
+-- @class table
+-- @name Layer
 --------------------------------------------------------------------------------
 
 Layer = Group()
@@ -34,7 +36,7 @@ function Layer:init(params)
 end
 
 ---------------------------------------
--- MOAILayer2Dを生成します。
+-- MOAILayer2Dを生成します.
 ---------------------------------------
 function Layer:newRenderPass()
     local layer = MOAILayer2D.new ()
@@ -50,9 +52,9 @@ function Layer:newRenderPass()
 end
 
 ---------------------------------------
--- 親オブジェクトを設定します。
--- 親オブジェクトはSceneである必要があります。
--- nilを設定した場合、親オブジェクトはクリアされます。
+-- 親オブジェクトを設定します.
+-- 親オブジェクトはSceneである必要があります.
+-- nilを設定した場合、親オブジェクトはクリアされます.
 ---------------------------------------
 function Layer:setParent(parent)
     local myParent = self.parent
@@ -72,7 +74,7 @@ function Layer:setParent(parent)
 end
 
 ---------------------------------------
--- 子オブジェクトの属性連携を設定します。
+-- 子オブジェクトの属性連携を設定します.
 ---------------------------------------
 function Layer:setAttrLinkForChild(child)
     child.prop:clearAttrLink(MOAIColor.INHERIT_COLOR)
@@ -82,7 +84,7 @@ function Layer:setAttrLinkForChild(child)
 end
 
 ---------------------------------------
--- 子オブジェクトを追加します。
+-- 子オブジェクトを追加します.
 ---------------------------------------
 function Layer:addChild(child)
     Group.addChild(self, child)
@@ -90,7 +92,7 @@ function Layer:addChild(child)
 end
 
 ---------------------------------------
--- 描画オブジェクトを追加します。
+-- 描画オブジェクトを追加します.
 ---------------------------------------
 function Layer:addProp(prop)
     self.invalidatedPriority = true
@@ -98,35 +100,35 @@ function Layer:addProp(prop)
 end
 
 ---------------------------------------
--- 描画オブジェクトを削除します。
+-- 描画オブジェクトを削除します.
 ---------------------------------------
 function Layer:removeProp(prop)
     self.renderPass:removeProp(prop)
 end
 
 ---------------------------------------
--- レンダラーパスを返します。
+-- レンダラーパスを返します.
 ---------------------------------------
 function Layer:getRenderPass()
     return self._renderPass
 end
 
 ---------------------------------------
--- Viewportを返します。
+-- Viewportを返します.
 ---------------------------------------
 function Layer:getViewport()
     return self._renderPass.viewport
 end
 
 ---------------------------------------
--- MOAIPropを返します。
+-- MOAIPropを返します.
 ---------------------------------------
 function Layer:getProp()
     return self.renderPass
 end
 
 ---------------------------------------
--- カメラを設定します。
+-- カメラを設定します.
 ---------------------------------------
 function Layer:setCamera(camera)
     self._camera = camera
@@ -134,30 +136,30 @@ function Layer:setCamera(camera)
 end
 
 ---------------------------------------
--- カメラを返します。
+-- カメラを返します.
 ---------------------------------------
 function Layer:getCamera()
     return self._camera
 end
 
 ---------------------------------------
--- タッチ可能かどうか設定します。
+-- タッチ可能かどうか設定します.
 ---------------------------------------
 function Layer:setTouchEnabled(enabled)
     self._touchEnabled = enabled
 end
 
 ---------------------------------------
--- タッチ可能かどうか返します。
+-- タッチ可能かどうか返します.
 ---------------------------------------
 function Layer:isTouchEnabled()
     return self._touchEnabled
 end
 
 ---------------------------------------
--- フレーム毎の処理を行います。
+-- フレーム毎の処理を行います.
 -- invalidateDisplayList関数が呼ばれていた場合、
--- updateDisplayList関数を実行します。
+-- updateDisplayList関数を実行します.
 ---------------------------------------
 function Layer:onEnterFrame(event)
     Group.onEnterFrame(self, event)
@@ -170,7 +172,7 @@ function Layer:onEnterFrame(event)
 end
 
 ---------------------------------------
--- 次のプライオリティを採番して返します。
+-- 次のプライオリティを採番して返します.
 ---------------------------------------
 function Layer:nextPriority()
     self._lastPriority = self._lastPriority + 1
@@ -178,29 +180,15 @@ function Layer:nextPriority()
 end
 
 ---------------------------------------
--- 最後のプライオリティを返します。
+-- 最後のプライオリティを返します.
 ---------------------------------------
 function Layer:lastPriority()
     return self._lastPriority
 end
 
 ---------------------------------------
--- タッチ操作が可能かどうか設定します。
----------------------------------------
-function Layer:setTouchEnabled(value)
-    self._touchEnabled = value
-end
-
----------------------------------------
--- タッチ操作が可能かどうか返します。
----------------------------------------
-function Layer:isTouchEnabled()
-    return self._touchEnabled
-end
-
----------------------------------------
 -- レイヤー内のワールド座標から、
--- 存在するDisplayObjectリストを返します。
+-- 存在するDisplayObjectリストを返します.
 ---------------------------------------
 function Layer:getDisplayListForPoint(worldX, worldY)
     local partition = self._partition
@@ -217,21 +205,21 @@ function Layer:getDisplayListForPoint(worldX, worldY)
 end
 
 ---------------------------------------
--- スクリーン座標からワールド座標に変換します。
+-- スクリーン座標からワールド座標に変換します.
 ---------------------------------------
 function Layer:windowToWorld(windowX, windowY)
     return self.renderPass:wndToWorld(windowX, windowY)
 end
 
 ---------------------------------------
--- ワールド座標からスクリーン座標に変換します。
+-- ワールド座標からスクリーン座標に変換します.
 ---------------------------------------
 function Layer:worldToWindow(worldX, worldY)
     return self.renderPass:worldToWnd(worldX, worldY)
 end
 
 ---------------------------------------
--- レイヤーのタッチする処理を行います。
+-- レイヤーのタッチする処理を行います.
 ---------------------------------------
 function Layer:onTouchDown(event)
     if not self.touchEnabled then
@@ -261,28 +249,28 @@ function Layer:onTouchDown(event)
 end
 
 ---------------------------------------
--- レイヤーのタッチする処理を行います。
+-- レイヤーのタッチする処理を行います.
 ---------------------------------------
 function Layer:onTouchUp(event)
     self:onTouchCommon(event, "onTouchUp")
 end
 
 ---------------------------------------
--- レイヤーのタッチする処理を行います。
+-- レイヤーのタッチする処理を行います.
 ---------------------------------------
 function Layer:onTouchMove(event)
     self:onTouchCommon(event, "onTouchMove")
 end
 
 ---------------------------------------
--- レイヤーのタッチする処理を行います。
+-- レイヤーのタッチする処理を行います.
 ---------------------------------------
 function Layer:onTouchCancel(event)
     self:onTouchCommon(event, "onTouchCancel")
 end
 
 ---------------------------------------
--- レイヤーのタッチする共通処理です。
+-- レイヤーのタッチする共通処理です.
 ---------------------------------------
 function Layer:onTouchCommon(event, funcName)
     if not self.touchEnabled then

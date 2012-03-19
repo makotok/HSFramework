@@ -1,6 +1,8 @@
 --------------------------------------------------------------------------------
 -- 表示オブジェクトを含める事ができるグルーピングクラスです
 --
+-- @class table
+-- @name Group
 --------------------------------------------------------------------------------
 
 Group = DisplayObject()
@@ -32,28 +34,28 @@ function Group:init(params)
 end
 
 ---------------------------------------
--- 背景を生成して返します。
+-- 背景を生成して返します.
 ---------------------------------------
 function Group:newBackground()
     return Graphics:new()
 end
 
 ---------------------------------------
--- ダミーなので生成しません。
+-- ダミーなので生成しません.
 ---------------------------------------
 function Group:newDeck()
     return nil
 end
 
 ---------------------------------------
--- ダミーなので生成しません。
+-- ダミーなので生成しません.
 ---------------------------------------
 function Group:newProp(deck)
     return nil
 end
 
 ---------------------------------------
--- 子オブジェクトを追加します。
+-- 子オブジェクトを追加します.
 ---------------------------------------
 function Group:addChild(child)
     if child.prop == nil then
@@ -72,7 +74,7 @@ function Group:addChild(child)
 end
 
 ---------------------------------------
--- 子オブジェクトを削除します。
+-- 子オブジェクトを削除します.
 ---------------------------------------
 function Group:removeChild(child)
     local i = table.indexOf(self.children, child)
@@ -86,7 +88,7 @@ function Group:removeChild(child)
 end
 
 ---------------------------------------
--- 子オブジェクトの属性連携を設定します。
+-- 子オブジェクトの属性連携を設定します.
 ---------------------------------------
 function Group:setAttrLinkForChild(child)
     child.prop:clearAttrLink(MOAIColor.INHERIT_COLOR)
@@ -98,21 +100,21 @@ function Group:setAttrLinkForChild(child)
 end
 
 ---------------------------------------
--- 子オブジェクトリストを返します。
+-- 子オブジェクトリストを返します.
 ---------------------------------------
 function Group:getChildren()
     return self._children
 end
 
 ---------------------------------------
--- 子オブジェクトを返します。
+-- 子オブジェクトを返します.
 ---------------------------------------
 function Group:getChildAt(i)
     return self._children[i]
 end
 
 ---------------------------------------
--- 一致する名前の子オブジェクトを返します。
+-- 一致する名前の子オブジェクトを返します.
 ---------------------------------------
 function Group:findChildByName(name)
     for i, child in ipairs(self.children) do
@@ -124,8 +126,8 @@ function Group:findChildByName(name)
 end
 
 ---------------------------------------
--- レイヤーをセットします。
--- 描画オブジェクトをMOAILayerに追加します。
+-- レイヤーをセットします.
+-- 描画オブジェクトをMOAILayerに追加します.
 ---------------------------------------
 function Group:setLayer(layer)
     self._layer = layer
@@ -136,7 +138,7 @@ function Group:setLayer(layer)
 end
 
 ---------------------------------------
--- サイズを設定します。
+-- サイズを設定します.
 ---------------------------------------
 function Group:setSize(width, height)
     DisplayObject.setSize(self, width, height)
@@ -144,7 +146,7 @@ function Group:setSize(width, height)
 end
 
 ---------------------------------------
--- 表示するか反映します。
+-- 表示するか反映します.
 ---------------------------------------
 --[[
 function Group:updateVisible()
@@ -156,7 +158,7 @@ function Group:updateVisible()
 end
 --]]
 ---------------------------------------
--- 表示するか設定します。
+-- 表示するか設定します.
 ---------------------------------------
 function Group:setVisible(visible)
     DisplayObject.setVisible(self, visible)
@@ -167,7 +169,7 @@ function Group:setVisible(visible)
 end
 
 ---------------------------------------
--- 背景オブジェクトを設定します。
+-- 背景オブジェクトを設定します.
 -- TODO:変更時の子の反映
 ---------------------------------------
 function Group:setBackground(background)
@@ -175,7 +177,7 @@ function Group:setBackground(background)
 end
 
 ---------------------------------------
--- 背景オブジェクトを返します。
+-- 背景オブジェクトを返します.
 ---------------------------------------
 function Group:getBackground()
     return self._background
@@ -183,14 +185,14 @@ end
 
 ---------------------------------------
 -- @Deprecated
--- このメソッドは非推奨です。
--- 設定してもbackgroundのdeckが使用されます。
+-- このメソッドは非推奨です.
+-- 設定してもbackgroundのdeckが使用されます.
 ---------------------------------------
 function Group:setDeck(deck)
 end
 
 ---------------------------------------
--- MOAIDeckを返します。
+-- MOAIDeckを返します.
 ---------------------------------------
 function Group:getDeck()
     if self.background then
@@ -202,14 +204,14 @@ end
 
 ---------------------------------------
 -- @Deprecated
--- このメソッドは非推奨です。
--- 設定してもbackgroundのpropが使用されます。
+-- このメソッドは非推奨です.
+-- 設定してもbackgroundのpropが使用されます.
 ---------------------------------------
 function Group:setProp(prop)
 end
 
 ---------------------------------------
--- MOAIPropを返します。
+-- MOAIPropを返します.
 ---------------------------------------
 function Group:getProp()
     if self.background then
@@ -220,9 +222,9 @@ function Group:getProp()
 end
 
 ---------------------------------------
--- 親オブジェクトを設定します。
--- 親オブジェクトはGroupである必要があります。
--- nilを設定した場合、親オブジェクトはクリアされます。
+-- 親オブジェクトを設定します.
+-- 親オブジェクトはGroupである必要があります.
+-- nilを設定した場合、親オブジェクトはクリアされます.
 -- TODO:要リファクタリング
 ---------------------------------------
 function Group:setParent(parent)
@@ -233,44 +235,44 @@ function Group:setParent(parent)
 end
 
 ---------------------------------------
--- グループのレイアウトを設定します。
+-- グループのレイアウトを設定します.
 -- レイアウトクラスを設定すると、子オブジェクトの
--- 座標やサイズを自動的に設定する事が可能になります。
+-- 座標やサイズを自動的に設定する事が可能になります.
 ---------------------------------------
 function Group:setLayout(layout)
     self._layout = layout
 end
 
 ---------------------------------------
--- グループのレイアウトを返します。
+-- グループのレイアウトを返します.
 ---------------------------------------
 function Group:getLayout()
     return self._layout
 end
 
 ---------------------------------------
--- 自動的にレイアウトを調整するか設定します。
+-- 自動的にレイアウトを調整するか設定します.
 ---------------------------------------
 function Group:setAutoLayout(value)
     self._autoLayout = value
 end
 
 ---------------------------------------
--- 自動的にレイアウトを調整するか返します。
+-- 自動的にレイアウトを調整するか返します.
 ---------------------------------------
 function Group:getAutoLayout()
     return self._autoLayout
 end
 
 ---------------------------------------
--- 表示オブジェクトの更新を予約します。
+-- 表示オブジェクトの更新を予約します.
 ---------------------------------------
 function Group:invalidateLayout()
     self.layoutInvalidated = true
 end
 
 ---------------------------------------
--- 子オブジェクトのレイアウトを更新します。
+-- 子オブジェクトのレイアウトを更新します.
 ---------------------------------------
 function Group:updateLayout(forceUpdate)
     if not self.layoutInvalidated and not forceUpdate then
@@ -291,7 +293,7 @@ function Group:updateLayout(forceUpdate)
 end
 
 ---------------------------------------
--- 子オブジェクトの表示順を更新します。
+-- 子オブジェクトの表示順を更新します.
 ---------------------------------------
 function Group:updatePriority()
     if not self.layer then
@@ -307,16 +309,16 @@ function Group:updatePriority()
 end
 
 ---------------------------------------
--- リソースを削除します。
+-- リソースを削除します.
 ---------------------------------------
 function Group:dispose()
     self.parent = nil
 end
 
 ---------------------------------------
--- フレーム毎の処理を行います。
+-- フレーム毎の処理を行います.
 -- invalidateDisplayList関数が呼ばれていた場合、
--- updateDisplayList関数を実行します。
+-- updateDisplayList関数を実行します.
 ---------------------------------------
 function Group:onEnterFrame(event)
     for i, child in ipairs(self.children) do

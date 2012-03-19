@@ -1,7 +1,6 @@
 
 ---------------------------------------
--- モジュールを削除します。
--- TODO:global汚染かなぁ
+-- モジュールを削除します.
 ---------------------------------------
 function unrequire(m)
     package.loaded[m] = nil
@@ -9,7 +8,7 @@ function unrequire(m)
 end
 
 ---------------------------------------
---- 配列から一致する値を検索して、見つかった位置を返します。
+-- 配列から一致する値を検索して、見つかった位置を返します.
 ---------------------------------------
 function table.indexOf(array, value)
     for i, v in ipairs(array) do
@@ -21,7 +20,7 @@ function table.indexOf(array, value)
 end
 
 ---------------------------------------
---- テーブルをコピーします。
+-- テーブルをコピーします.
 ---------------------------------------
 function table.copy(src, dest)
     dest = dest and dest or {}
@@ -32,7 +31,7 @@ function table.copy(src, dest)
 end
 
 ---------------------------------------
---- テーブルをディープコピーします。
+-- テーブルをディープコピーします.
 ---------------------------------------
 function table.deepCopy(src, dest)
     dest = dest and dest or {}

@@ -1,13 +1,13 @@
 --------------------------------------------------------------------------------
--- Graphics機能を持ったDisplayObjectです。
--- DisplayObjectの機能に加えて、基本図形の描画を行う機能があります。
+-- Graphics機能を持ったDisplayObjectです.
+-- DisplayObjectの機能に加えて、基本図形の描画を行う機能があります.
 -- 
--- draw*,fill*関数で描画を行います。
--- set*関数で状態の設定を行います。
--- 描画した結果をクリアしたい場合は、clear関数をコールしてください。
+-- draw*,fill*関数で描画を行います.
+-- set*関数で状態の設定を行います.
+-- 描画した結果をクリアしたい場合は、clear関数をコールしてください.
 -- 
+-- <code>
 -- example)
--- local scene = Scene:new()
 -- local g = Graphics:new({width = 100, height = 100})
 -- g:setPenColor(1, 0, 0, 1)
 -- g:fillRect()
@@ -16,6 +16,10 @@
 -- g:fillRect(25, 25, 50, 50)
 -- g:drawRect(25, 25, 50, 50)
 -- g.parent = scene
+-- </code>
+--
+-- @class table
+-- @name Graphics
 --------------------------------------------------------------------------------
 Graphics = DisplayObject()
 
@@ -33,7 +37,7 @@ function Graphics:init(params)
 end
 
 ---------------------------------------
--- MOAIDeckを生成します。
+-- MOAIDeckを生成します.
 ---------------------------------------
 function Graphics:newDeck()
     local deck = MOAIScriptDeck.new()
@@ -46,7 +50,7 @@ function Graphics:newDeck()
 end
 
 ---------------------------------------
--- 描画処理を行います。
+-- 描画処理を行います.
 ---------------------------------------
 function Graphics:onDraw(index, xOff, yOff, xFlip, yFlip)
     if not self.visible then
@@ -61,7 +65,7 @@ function Graphics:onDraw(index, xOff, yOff, xFlip, yFlip)
 end
 
 ---------------------------------------
--- 表示オブジェクトのサイズを設定します。
+-- 表示オブジェクトのサイズを設定します.
 ---------------------------------------
 function Graphics:setSize(width, height)
     DisplayObject.setSize(self, width, height)
@@ -69,7 +73,7 @@ function Graphics:setSize(width, height)
 end
 
 ---------------------------------------
--- 円を描画します。
+-- 円を描画します.
 -- @param x ローカル座標
 -- @param y ローカル座標
 -- @param r 半径
@@ -91,7 +95,7 @@ function Graphics:drawCircle(x, y, r, steps)
 end
 
 ---------------------------------------
--- 楕円を描画します。
+-- 楕円を描画します.
 -- @param x ローカル座標
 -- @param y ローカル座標
 -- @param xRad x方向の半径
@@ -113,8 +117,8 @@ function Graphics:drawEllipse(x, y, xRad, yRad, steps)
 end
 
 ---------------------------------------
--- 引数の点を結んだ線を描画します。
--- @param ... 点の座標。x0, y0, x1, y1...
+-- 引数の点を結んだ線を描画します.
+-- @param ... 点の座標.x0, y0, x1, y1...
 -- @return self
 ---------------------------------------
 function Graphics:drawLine(...)
@@ -126,8 +130,8 @@ function Graphics:drawLine(...)
 end
 
 ---------------------------------------
--- 引数の点を描画します。
--- @param ... 点の座標。x0, y0, x1, y1...
+-- 引数の点を描画します.
+-- @param ... 点の座標.x0, y0, x1, y1...
 -- @return self
 ---------------------------------------
 function Graphics:drawPoints(...)
@@ -140,7 +144,7 @@ function Graphics:drawPoints(...)
 end
 
 ---------------------------------------
--- 放射線を描画します。
+-- 放射線を描画します.
 -- @param x ローカル座標
 -- @param y ローカル座標
 -- @param dx 線の長さ
@@ -160,7 +164,7 @@ function Graphics:drawRay(x, y, dx, dy)
 end
 
 ---------------------------------------
--- 四角形を描画します。
+-- 四角形を描画します.
 -- TODO:使用してみると座標に違和感がある・・・
 -- @param x0 開始のローカル座標
 -- @param y0 開始のローカル座標
@@ -181,7 +185,7 @@ function Graphics:drawRect(x0, y0, x1, y1)
 end
 
 ---------------------------------------
--- 円を塗りつぶします。
+-- 円を塗りつぶします.
 -- @param x ローカル座標
 -- @param y ローカル座標
 -- @param r 半径
@@ -203,7 +207,7 @@ function Graphics:fillCircle(x, y, r, steps)
 end
 
 ---------------------------------------
--- 楕円を塗りつぶします。
+-- 楕円を塗りつぶします.
 -- @param x ローカル座標
 -- @param y ローカル座標
 -- @param xRad 半径
@@ -224,9 +228,9 @@ function Graphics:fillEllipse(x, y, xRad, yRad, steps)
 end
 
 ---------------------------------------
--- 三角形を塗りつぶします。
--- TRIANGLE_FANに該当します。
--- @param ... 点(x, y)。x0, y0, x1, y1...
+-- 三角形を塗りつぶします.
+-- TRIANGLE_FANに該当します.
+-- @param ... 点(x, y).x0, y0, x1, y1...
 -- @return self
 ---------------------------------------
 function Graphics:fillFan(...)
@@ -239,7 +243,7 @@ function Graphics:fillFan(...)
 end
 
 ---------------------------------------
--- 四角形を塗りつぶします。
+-- 四角形を塗りつぶします.
 -- @param x0 開始のローカル座標
 -- @param y0 開始のローカル座標
 -- @param x1 終了のローカル座標
@@ -259,8 +263,8 @@ function Graphics:fillRect(x0, y0, x1, y1)
 end
 
 ---------------------------------------
--- 指定した色に設定します。
--- 設定後に描画したコマンドに反映されます。
+-- 指定した色に設定します.
+-- 設定後に描画したコマンドに反映されます.
 -- @param r red
 -- @param g green
 -- @param b blue
@@ -281,8 +285,8 @@ function Graphics:setPenColor(r, g, b, a)
 end
 
 ---------------------------------------
--- 指定したペンのサイズに設定します。
--- 設定後に描画したコマンドに反映されます。
+-- 指定したペンのサイズに設定します.
+-- 設定後に描画したコマンドに反映されます.
 -- @return self
 ---------------------------------------
 function Graphics:setPenWidth(width)
@@ -294,8 +298,8 @@ function Graphics:setPenWidth(width)
 end
 
 ---------------------------------------
--- 指定したポイントのサイズに設定します。
--- 設定後に描画したコマンドに反映されます。
+-- 指定したポイントのサイズに設定します.
+-- 設定後に描画したコマンドに反映されます.
 -- @return self
 ---------------------------------------
 function Graphics:setPointSize(size)
@@ -307,7 +311,7 @@ function Graphics:setPointSize(size)
 end
 
 ---------------------------------------
--- 描画処理をクリアします。
+-- 描画処理をクリアします.
 ---------------------------------------
 function Graphics:clear()
     self._commands = {}

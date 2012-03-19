@@ -11,7 +11,7 @@ Log.LEVEL_DEBUG = 4
 Log.level = Log.LEVEL_ERROR
 
 ---------------------------------------
--- 通常ログを出力します。
+-- 通常ログを出力します.
 ---------------------------------------
 function Log.info(...)
     if Log.level >= Log.LEVEL_INFO then
@@ -20,7 +20,7 @@ function Log.info(...)
 end
 
 ---------------------------------------
--- 警告ログを出力します。
+-- 警告ログを出力します.
 ---------------------------------------
 function Log.warn(...)
     if Log.level >= Log.LEVEL_WARN then
@@ -29,7 +29,7 @@ function Log.warn(...)
 end
 
 ---------------------------------------
--- エラーログを出力します。
+-- エラーログを出力します.
 ---------------------------------------
 function Log.error(...)
     if Log.level >= Log.LEVEL_ERROR then
@@ -38,7 +38,7 @@ function Log.error(...)
 end
 
 ---------------------------------------
--- デバッグログを出力します。
+-- デバッグログを出力します.
 ---------------------------------------
 function Log.debug(...)
     if Log.level >= Log.LEVEL_DEBUG then

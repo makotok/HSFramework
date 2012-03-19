@@ -1,12 +1,14 @@
 --------------------------------------------------------------------------------
--- Sceneクラスをアニメーションする為の関数群です。
--- 実態はクラスではなく、Animationクラスを返す関数の集まりです。
+-- Sceneクラスをアニメーションする為の関数群です.
+-- 実態はクラスではなく、Animationクラスを返す関数の集まりです.
+-- @class table
+-- @name SceneAnimation
 --------------------------------------------------------------------------------
 SceneAnimation = {}
 SceneAnimation.defaultSecond = 0.5
 
 ---------------------------------------
--- 即座に表示します。
+-- 即座に表示します.
 ---------------------------------------
 function SceneAnimation.now(currentScene, nextScene, params)
     return Animation:new():parallel(
@@ -16,7 +18,7 @@ function SceneAnimation.now(currentScene, nextScene, params)
 end
 
 ---------------------------------------
--- ポップアップ表示します。
+-- ポップアップ表示します.
 ---------------------------------------
 function SceneAnimation.popIn(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
@@ -28,8 +30,8 @@ function SceneAnimation.popIn(currentScene, nextScene, params)
 end
 
 ---------------------------------------
--- ポップアップ表示をクローズします。
--- ポップアップ表示したシーンに対してのみ有効です。
+-- ポップアップ表示をクローズします.
+-- ポップアップ表示したシーンに対してのみ有効です.
 ---------------------------------------
 function SceneAnimation.popOut(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
@@ -40,7 +42,7 @@ function SceneAnimation.popOut(currentScene, nextScene, params)
 end
 
 ---------------------------------------
--- fadeOut,fadeInを順次行います。
+-- fadeOut,fadeInを順次行います.
 ---------------------------------------
 function SceneAnimation.fade(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
@@ -51,7 +53,7 @@ function SceneAnimation.fade(currentScene, nextScene, params)
 end
 
 ---------------------------------------
--- fadeOut,fadeInを並列して行います。
+-- fadeOut,fadeInを並列して行います.
 ---------------------------------------
 function SceneAnimation.crossFade(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
@@ -62,7 +64,7 @@ function SceneAnimation.crossFade(currentScene, nextScene, params)
 end
 
 ---------------------------------------
--- 画面上の移動します。
+-- 画面上の移動します.
 ---------------------------------------
 function SceneAnimation.slideToTop(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
@@ -74,7 +76,7 @@ function SceneAnimation.slideToTop(currentScene, nextScene, params)
 end
 
 ---------------------------------------
--- 画面下の移動します。
+-- 画面下の移動します.
 ---------------------------------------
 function SceneAnimation.slideToBottom(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
@@ -86,7 +88,7 @@ function SceneAnimation.slideToBottom(currentScene, nextScene, params)
 end
 
 ---------------------------------------
--- 画面左の移動します。
+-- 画面左の移動します.
 ---------------------------------------
 function SceneAnimation.slideToLeft(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
@@ -98,7 +100,7 @@ function SceneAnimation.slideToLeft(currentScene, nextScene, params)
 end
 
 ---------------------------------------
--- 画面右の移動します。
+-- 画面右の移動します.
 ---------------------------------------
 function SceneAnimation.slideToRight(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond

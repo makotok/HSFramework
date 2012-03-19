@@ -1,8 +1,10 @@
 ----------------------------------------------------------------
--- 単一のウィンドウを管理するクラスです。
--- ウィンドウのタイトル、描画領域（Screen）を保持します。
+-- 単一のウィンドウを管理するクラスです.
+-- ウィンドウのタイトル、描画領域（Screen）を保持します.
 --
--- シングルトンなクラスとして扱います。
+-- シングルトンなクラスとして扱います.
+-- @class table
+-- @name Application
 ----------------------------------------------------------------
 
 Application = EventDispatcher():new()
@@ -15,7 +17,7 @@ Application:setPropertyName("stageWidth")
 Application:setPropertyName("stageHeight")
 
 ---------------------------------------
--- 初期化処理を行います。
+-- 初期化処理を行います.
 ---------------------------------------
 function Application:initialize()
     self._window = Window:new()
@@ -29,7 +31,7 @@ function Application:initialize()
 end
 
 ---------------------------------------
--- フレーム毎の処理を行います。
+-- フレーム毎の処理を行います.
 -- TODO:毎フレーム行うと遅いのかも・・・
 ---------------------------------------
 function Application:enterFrame()
@@ -41,28 +43,28 @@ function Application:enterFrame()
 end
 
 ---------------------------------------
--- Windowを起動します。
--- titleは、ウィンドウのタイトルで使用されます。
--- width,heightは、ウィンドウのサイズになります。
+-- Windowを起動します.
+-- titleは、ウィンドウのタイトルで使用されます.
+-- width,heightは、ウィンドウのサイズになります.
 --
 -- ただし、モバイルアプリケーションの場合、
 -- サイズが一致するわけではなく、サイズが固定の為、
 -- StageにstageModeを指定する事で、描画領域の
--- 任意のロジックで引き伸ばしを行う事ができます。
+-- 任意のロジックで引き伸ばしを行う事ができます.
 ---------------------------------------
 function Application:openWindow(title, width, height, screenMode)
     self.window:open(title, width, height, screenMode)
 end
 
 ---------------------------------------
---- ウインドウを返します。。
+--- ウインドウを返します..
 ---------------------------------------
 function Application:getWindow()
     return self._window
 end
 
 ---------------------------------------
---- 実行環境がモバイルかどうか返します。
+--- 実行環境がモバイルかどうか返します.
 ---------------------------------------
 function Application:isMobile()
     local bland = MOAIEnvironment.getOSBrand()
@@ -70,39 +72,39 @@ function Application:isMobile()
 end
 
 ---------------------------------------
---- 実行環境がデスクトップかどうか返します。
+--- 実行環境がデスクトップかどうか返します.
 ---------------------------------------
 function Application:isDesktop()
     return not self:isMobile()
 end
 
 ---------------------------------------
--- 画面の幅を返します。
--- モバイル環境の場合、シーンのサイズとは一致しません。
+-- 画面の幅を返します.
+-- モバイル環境の場合、シーンのサイズとは一致しません.
 ---------------------------------------
 function Application:getScreenWidth()
     return self.window.screenWidth
 end
 
 ---------------------------------------
--- 画面の高さを返します。
--- モバイル環境の場合、シーンのサイズとは一致しません。
+-- 画面の高さを返します.
+-- モバイル環境の場合、シーンのサイズとは一致しません.
 ---------------------------------------
 function Application:getScreenHeight()
     return self.window.screenHeight
 end
 
 ---------------------------------------
--- ステージの幅を返します。
--- シーンのサイズと一致します。
+-- ステージの幅を返します.
+-- シーンのサイズと一致します.
 ---------------------------------------
 function Application:getStageWidth()
     return self.window.stageWidth
 end
 
 ---------------------------------------
--- ステージの高さを返します。
--- シーンのサイズと一致します。
+-- ステージの高さを返します.
+-- シーンのサイズと一致します.
 ---------------------------------------
 function Application:getStageHeight()
     return self.window.stageHeight

@@ -1,12 +1,13 @@
 ----------------------------------------------------------------
 -- Sceneを管理するマネージャクラスです
--- シーンのライフサイクルの管理やイベント制御を行います。
---
+-- シーンのライフサイクルの管理やイベント制御を行います.
+-- @class table
+-- @name SceneManager
 ----------------------------------------------------------------
 SceneManager = EventDispatcher:new()
 
 ---------------------------------------
--- コンストラクタです。
+-- コンストラクタです.
 ---------------------------------------
 function SceneManager:initialize()
     self.scenes = {}
@@ -26,13 +27,13 @@ function SceneManager:initialize()
 end
 
 ---------------------------------------
--- 新しいシーンを表示します。
+-- 新しいシーンを表示します.
 -- 現在のシーンはそのままスタックされた状態で、
--- 次のシーンを表示します。
+-- 次のシーンを表示します.
 --
--- params引数で、いくつかの動作を変更できます。
+-- params引数で、いくつかの動作を変更できます.
 -- 1. params.sceneClassを指定した場合、
---    Sceneクラスではなく、別のクラスをnewします。
+--    Sceneクラスではなく、別のクラスをnewします.
 -- 2. params.animationを指定した場合、
 --    
 ---------------------------------------
@@ -99,8 +100,8 @@ function SceneManager:openScene(sceneName, params)
 end
 
 ---------------------------------------
--- 次のシーンに遷移します。
--- 現在のシーンは終了します。
+-- 次のシーンに遷移します.
+-- 現在のシーンは終了します.
 ---------------------------------------
 function SceneManager:openNextScene(sceneName, params)
     params = params and params or {}
@@ -109,8 +110,8 @@ function SceneManager:openNextScene(sceneName, params)
 end
 
 ---------------------------------------
--- 現在のシーンを終了します。
--- 前のシーンに遷移します。
+-- 現在のシーンを終了します.
+-- 前のシーンに遷移します.
 ---------------------------------------
 function SceneManager:closeScene(params)
     if self.transitioning then
@@ -167,7 +168,7 @@ function SceneManager:animateScene(currentScene, nextScene, animation)
 end
 
 ---------------------------------------
--- レンダラーパスの表示順を反映します。
+-- レンダラーパスの表示順を反映します.
 ---------------------------------------
 function SceneManager:refreshRenders()
     MOAISim.clearRenderStack()
@@ -177,7 +178,7 @@ function SceneManager:refreshRenders()
 end
 
 ---------------------------------------
--- シーンを追加します。
+-- シーンを追加します.
 ---------------------------------------
 function SceneManager:addScene(scene)
     if table.indexOf(self.scenes, scene) == 0 then
@@ -188,7 +189,7 @@ function SceneManager:addScene(scene)
 end
 
 ---------------------------------------
--- シーンを削除します。
+-- シーンを削除します.
 ---------------------------------------
 function SceneManager:removeScene(scene)
     local i = table.indexOf(self.scenes, scene)
@@ -207,8 +208,8 @@ function SceneManager:removeScene(scene)
 end
 
 ---------------------------------------
--- シーン名からシーンを検索して返します。
--- 見つからない場合はnilを返します。
+-- シーン名からシーンを検索して返します.
+-- 見つからない場合はnilを返します.
 ---------------------------------------
 function SceneManager:findSceneByName(sceneName)
     for i, scene in ipairs(self.scenes) do
@@ -220,7 +221,7 @@ function SceneManager:findSceneByName(sceneName)
 end
 
 ---------------------------------------
--- シーンを最前面に移動します。
+-- シーンを最前面に移動します.
 ---------------------------------------
 function SceneManager:orderToFront(scene)
     if #self.scenes <= 1 then
@@ -237,7 +238,7 @@ function SceneManager:orderToFront(scene)
 end
 
 ---------------------------------------
--- シーンを最背面に移動します。
+-- シーンを最背面に移動します.
 ---------------------------------------
 function SceneManager:orderToBack(scene)
     if #self.scenes <= 1 then
@@ -253,7 +254,7 @@ function SceneManager:orderToBack(scene)
 end
 
 ---------------------------------------
--- 画面をタッチする処理を行います。
+-- 画面をタッチする処理を行います.
 ---------------------------------------
 function SceneManager:onTouchDown(e)
     local currentScene = self.currentScene
@@ -263,7 +264,7 @@ function SceneManager:onTouchDown(e)
 end
 
 ---------------------------------------
--- 画面をタッチする処理を行います。
+-- 画面をタッチする処理を行います.
 ---------------------------------------
 function SceneManager:onTouchUp(e)
     local currentScene = self.currentScene
@@ -273,7 +274,7 @@ function SceneManager:onTouchUp(e)
 end
 
 ---------------------------------------
--- 画面をタッチする処理を行います。
+-- 画面をタッチする処理を行います.
 ---------------------------------------
 function SceneManager:onTouchMove(e)
     local currentScene = self.currentScene
@@ -283,7 +284,7 @@ function SceneManager:onTouchMove(e)
 end
 
 ---------------------------------------
--- 画面をタッチする処理を行います。
+-- 画面をタッチする処理を行います.
 ---------------------------------------
 function SceneManager:onTouchCancel(e)
     local currentScene = self.currentScene
@@ -293,7 +294,7 @@ function SceneManager:onTouchCancel(e)
 end
 
 ---------------------------------------
--- キーボード入力する処理を行います。
+-- キーボード入力する処理を行います.
 ---------------------------------------
 function SceneManager:onKeyboard(e)
     local currentScene = self.currentScene
@@ -303,8 +304,8 @@ function SceneManager:onKeyboard(e)
 end
 
 ---------------------------------------
--- 毎フレームの処理を行います。
--- シーン遷移中でもイベントは行われます。
+-- 毎フレームの処理を行います.
+-- シーン遷移中でもイベントは行われます.
 ---------------------------------------
 function SceneManager:onEnterFrame(e)
     local currentScene = self.currentScene

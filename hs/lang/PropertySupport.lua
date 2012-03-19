@@ -1,18 +1,25 @@
 --------------------------------------------------------------------------------
--- プロパティアクセスを可能にするためのクラスです。
---
--- 使用するクラスに、
--- __settersテーブルが存在した場合、そこからsetter関数を取得します。
--- __gettersテーブルが存在した場合、同テーブルからgetter関数を取得します。
---
+-- プロパティアクセスを可能にするためのクラスです.<br>
+-- <br>
+-- 使用するクラスに、<br>
+-- __settersテーブルが存在した場合、そこからsetter関数を取得します.<br>
+-- __gettersテーブルが存在した場合、同テーブルからgetter関数を取得します.<br>
+-- @class table
+-- @name PropertySupport
+-- @field __setters setter関数の一覧
+-- @field __getters getter関数の一覧
 --------------------------------------------------------------------------------
 PropertySupport = Class()
+
 PropertySupport.__setters = {}
 PropertySupport.__getters = {}
 
----------------------------------------
--- インスタンスの生成を行います。
----------------------------------------
+----------------------------------------
+-- インスタンスの生成を行います.<br>
+-- プロパティアクセスの為の設定を行います.
+-- @param ... コンストラクタに渡すパラメータ
+-- @return インスタンス
+----------------------------------------
 function PropertySupport:new(...)
    local proxy = {}
    local obj = {
@@ -32,10 +39,12 @@ function PropertySupport:new(...)
    return proxy
 end
 
----------------------------------------
--- プロパティに値を設定した場合の処理です。
--- setter関数が存在する場合は、その関数を使用します。
----------------------------------------
+----------------------------------------
+-- プロパティに値を設定した場合の処理です.<br>
+-- setter関数が存在する場合は、その関数を使用します.
+-- @param key プロパティ名
+-- @param value 値
+----------------------------------------
 function PropertySupport:propertyChange(key, value)
     local object = getmetatable(self).__object
 
@@ -50,10 +59,12 @@ function PropertySupport:propertyChange(key, value)
     end
 end
 
----------------------------------------
--- プロパティにアクセスした場合の処理です。
--- getter関数が存在する場合は、その関数を使用します。
----------------------------------------
+----------------------------------------
+-- プロパティにアクセスした場合の処理です.<br>
+-- getter関数が存在する場合は、その関数を使用します.
+-- @param key プロパティ名
+-- @return プロパティ値
+----------------------------------------
 function PropertySupport:propertyAccess(key)
     local object = getmetatable(self).__object
 
@@ -70,6 +81,11 @@ function PropertySupport:propertyAccess(key)
     end
 end
 
+----------------------------------------
+-- プロパティかどうか判定します.
+-- @param key プロパティ名
+-- @return プロパティ値
+----------------------------------------
 function PropertySupport:isProperty(key)
     if self.__setters[key] then
         return true
@@ -80,10 +96,11 @@ function PropertySupport:isProperty(key)
     return false
 end
 
----------------------------------------
--- プロパティを定義します。
--- 指定したプロパティ名をプロパティと認識します。
----------------------------------------
+----------------------------------------
+-- プロパティを定義します.<br>
+-- 指定したプロパティ名をプロパティと認識します.
+-- @param ... プロパティリスト
+----------------------------------------
 function PropertySupport:setPropertyNames(...)
     for i, key in ipairs(...) do
         if type(key) == "string" then
@@ -95,9 +112,12 @@ function PropertySupport:setPropertyNames(...)
 end
 
 ---------------------------------------
--- プロパティを定義します。
--- プロパティ名とアクセスするsetter,getter名を設定します。
--- nilの場合は自動的にget,setが設定されます。
+-- プロパティを定義します.<br>
+-- プロパティ名とアクセスするsetter,getter名を設定します.<br>
+-- nilの場合は自動的にget,setが設定されます.
+-- @param key プロパティ名
+-- @param setterName setter名
+-- @param getterName getter名
 ---------------------------------------
 function PropertySupport:setPropertyName(key, setterName, getterName)
     local headName = string.upper(key:sub(1, 1))
@@ -111,7 +131,9 @@ function PropertySupport:setPropertyName(key, setterName, getterName)
 end
 
 ---------------------------------------
--- 指定したプロパティ名のsetter関数を返します。
+-- 指定したプロパティ名のsetter関数を返します.
+-- @param key プロパティ名
+-- @return setter関数
 ---------------------------------------
 function PropertySupport:getSetter(key)
     local setterName = self.__setters[key]
@@ -123,7 +145,9 @@ function PropertySupport:getSetter(key)
 end
 
 ---------------------------------------
--- 指定したプロパティ名のgetter関数を返します。
+-- 指定したプロパティ名のgetter関数を返します.
+-- @param key プロパティ名
+-- @return getter関数
 ---------------------------------------
 function PropertySupport:getGetter(key)
     local getterName = self.__getters[key]

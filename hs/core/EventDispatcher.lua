@@ -1,9 +1,10 @@
 ----------------------------------------------------------------
--- イベント処理を行うための基本クラスです。
+-- イベント処理を行うための基本クラスです.
 -- イベントの発出した結果を、登録したイベントリスナがキャッチして
--- イベント処理を行います。
+-- イベント処理を行います.
+-- @class table
+-- @name EventDispatcher
 ----------------------------------------------------------------
-
 EventDispatcher = PropertySupport()
 
 ---------------------------------------
@@ -15,13 +16,13 @@ function EventDispatcher:init()
 end
 
 ---------------------------------------
--- イベントリスナを登録します。
--- callbackは、呼び出されるコールバック関数です。
--- sourceは、オブジェクトの関数だった場合に指定します。
+-- イベントリスナを登録します.
+-- callbackは、呼び出されるコールバック関数です.
+-- sourceは、オブジェクトの関数だった場合に指定します.
 -- nilの場合は、callback(event)となり、
--- 指定ありの場合、callback(self, event)で呼ばれます。
--- priorityは、優先度です。
--- 優先度が小さい値程、最初に関数が呼ばれます。
+-- 指定ありの場合、callback(self, event)で呼ばれます.
+-- priorityは、優先度です.
+-- 優先度が小さい値程、最初に関数が呼ばれます.
 ---------------------------------------
 function EventDispatcher:addListener(eventType, callback, source, priority)
     if self:hasListener(eventType, callback, source) then
@@ -42,7 +43,7 @@ function EventDispatcher:addListener(eventType, callback, source, priority)
 end
 
 ---------------------------------------
---- イベントリスナを削除します。
+--- イベントリスナを削除します.
 ---------------------------------------
 function EventDispatcher:removeListener(eventType, callback, source)
     for key, obj in ipairs(self.listeners) do
@@ -55,7 +56,7 @@ function EventDispatcher:removeListener(eventType, callback, source)
 end
 
 ---------------------------------------
---- イベントリスナを登録済か返します。
+--- イベントリスナを登録済か返します.
 ---------------------------------------
 function EventDispatcher:hasListener(eventType, callback, source)
     for key, obj in ipairs(self.listeners) do
@@ -69,7 +70,7 @@ end
 ---------------------------------------
 -- イベントをディスパッチします
 -- eventオブジェクトは回収されるため、
--- 再利用する場合は、EventPoolから再取得してください。
+-- 再利用する場合は、EventPoolから再取得してください.
 ---------------------------------------
 function EventDispatcher:dispatchEvent(event)
     event.stoped = false
@@ -87,7 +88,7 @@ function EventDispatcher:dispatchEvent(event)
 end
 
 ---------------------------------------
--- イベントリスナをすべて削除します。
+-- イベントリスナをすべて削除します.
 ---------------------------------------
 function EventDispatcher:clearListeners()
     self.listeners = {}

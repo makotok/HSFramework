@@ -1,6 +1,8 @@
 --------------------------------------------------------------------------------
--- 表示オブジェクトの位置やサイズのレイアウトを更新する為のクラスです。
--- このクラスでは、Box形式のオブジェクトを水平、垂直方向に配置する事が可能です。
+-- 表示オブジェクトの位置やサイズのレイアウトを更新する為のクラスです.
+-- このクラスでは、Box形式のオブジェクトを水平、垂直方向に配置する事が可能です.
+-- @class table
+-- @name BoxLayout
 --------------------------------------------------------------------------------
 BoxLayout = Class()
 
@@ -38,7 +40,7 @@ function BoxLayout:init(params)
 end
 
 ---------------------------------------
--- 上下左右の余白を設定します。
+-- 上下左右の余白を設定します.
 ---------------------------------------
 function BoxLayout:setPadding(left, top, right, bottom)
     self.pLeft = left
@@ -48,7 +50,7 @@ function BoxLayout:setPadding(left, top, right, bottom)
 end
 
 ---------------------------------------
--- 指定したGroupのレイアウトを更新します。
+-- 指定したGroupのレイアウトを更新します.
 ---------------------------------------
 function BoxLayout:update(group)
     if self.direction == BoxLayout.DIRECTION_V then
@@ -60,7 +62,7 @@ end
 
 ---------------------------------------
 -- 指定した四角形内に、
--- 垂直方向に子オブジェクトを配置します。
+-- 垂直方向に子オブジェクトを配置します.
 ---------------------------------------
 function BoxLayout:updateVertical(parent)
     local children = parent.children
@@ -83,7 +85,7 @@ end
 
 ---------------------------------------
 -- 指定した四角形内に、
--- 水平方向に子オブジェクトを配置します。
+-- 水平方向に子オブジェクトを配置します.
 ---------------------------------------
 function BoxLayout:updateHorizotal(parent)
     local children = parent.children
@@ -105,7 +107,7 @@ function BoxLayout:updateHorizotal(parent)
 end
 
 ---------------------------------------
--- 子オブジェクトのX座標を返します。
+-- 子オブジェクトのX座標を返します.
 ---------------------------------------
 function BoxLayout:getChildX(parentWidth, childWidth)
     -- サイズの計算
@@ -125,7 +127,7 @@ function BoxLayout:getChildX(parentWidth, childWidth)
 end
 
 ---------------------------------------
--- 子オブジェクトのY座標を返します。
+-- 子オブジェクトのY座標を返します.
 ---------------------------------------
 function BoxLayout:getChildY(parentHeight, childHeight)
     -- サイズの計算
@@ -146,7 +148,7 @@ end
 
 ---------------------------------------
 -- 垂直方向に子オブジェクトを配置した時の
--- 全体のレイアウトサイズを返します。
+-- 全体のレイアウトサイズを返します.
 ---------------------------------------
 function BoxLayout:getVerticalLayoutSize(children)
     local width = 0
@@ -164,7 +166,7 @@ end
 
 ---------------------------------------
 -- 水平方向に子オブジェクトを配置した時の
--- 全体のレイアウトサイズを返します。
+-- 全体のレイアウトサイズを返します.
 ---------------------------------------
 function BoxLayout:getHorizotalLayoutSize(children)
     local width = 0

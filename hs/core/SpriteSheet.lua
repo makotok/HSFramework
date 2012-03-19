@@ -1,7 +1,9 @@
 --------------------------------------------------------------------------------
--- テクスチャをタイル毎に分割して、タイル毎に描画するクラスです。
+-- テクスチャをタイル毎に分割して、タイル毎に描画するクラスです.<br>
+-- TODO:クラス名がTiledSpriteに変更される予定.SpriteSheetは任意のフレームに変更される.<br>
+-- @class table
+-- @name SpriteSheet
 --------------------------------------------------------------------------------
-
 SpriteSheet = DisplayObject()
 
 -- プロパティ定義
@@ -12,6 +14,7 @@ SpriteSheet:setPropertyName("texture")
 
 ---------------------------------------
 -- コンストラクタです
+-- @name SpriteSheet:new
 ---------------------------------------
 function SpriteSheet:init(texture, frameWidth, frameHeight, params)
     SpriteSheet:super(self)
@@ -58,15 +61,15 @@ function SpriteSheet:init(texture, frameWidth, frameHeight, params)
 end
 
 ---------------------------------------
--- MOAIDeckを生成します。
+-- MOAIDeckを生成します.
 ---------------------------------------
 function SpriteSheet:newDeck()
     return MOAITileDeck2D.new()
 end
 
 ---------------------------------------
--- テキスチャを設定します。
--- サイズも自動で設定されます。
+-- テキスチャを設定します.
+-- サイズも自動で設定されます.
 ---------------------------------------
 function SpriteSheet:setTexture(texture)
     if type(texture) == "string" then
@@ -80,12 +83,16 @@ function SpriteSheet:setTexture(texture)
     self:setSize(width / self.frameWidth, height / self.frameHeight)
 end
 
+---------------------------------------
+-- テキスチャを返します.
+-- @return texture
+---------------------------------------
 function SpriteSheet:getTexture()
     return self._texture
 end
 
 ---------------------------------------
--- 表示オブジェクトのサイズを設定します。
+-- 表示オブジェクトのサイズを設定します.
 ---------------------------------------
 function SpriteSheet:setSize(width, height)
     DisplayObject.setSize(self, width, height)
@@ -93,7 +100,7 @@ function SpriteSheet:setSize(width, height)
 end
 
 ---------------------------------------
--- タイルのフレーム数を設定します。
+-- タイルのフレーム数を設定します.
 ---------------------------------------
 function SpriteSheet:setFrameSize(width, height)
     self._frameWidth = width
@@ -105,29 +112,37 @@ function SpriteSheet:setFrameSize(width, height)
 end
 
 ---------------------------------------
--- タイルのフレーム数を設定します。
+-- タイルのフレーム数を設定します.
 ---------------------------------------
 function SpriteSheet:setFrameWidth(width)
     self:setFrameSize(width, self._frameHeight)
 end
 
+---------------------------------------
+-- タイルのフレーム数を返します.
+-- @return frameWidth
+---------------------------------------
 function SpriteSheet:getFrameWidth()
     return self._frameWidth
 end
 
 ---------------------------------------
--- タイルのフレーム数を設定します。
+-- タイルのフレーム数を設定します.
 ---------------------------------------
 function SpriteSheet:setFrameHeight(height)
     self:setFrameSize(self._frameWidth, height)
 end
 
+---------------------------------------
+-- タイルのフレーム数を返します.
+-- @return frameHeight
+---------------------------------------
 function SpriteSheet:getFrameHeight()
     return self._frameHeight
 end
 
 ---------------------------------------
--- タイルのフレーム番号を設定します。
+-- タイルのフレーム番号を設定します.
 ---------------------------------------
 function SpriteSheet:setFrame(value)
     self._frame = value
@@ -135,15 +150,15 @@ function SpriteSheet:setFrame(value)
 end
 
 ---------------------------------------
--- タイルのフレーム番号を返します。
+-- タイルのフレーム番号を返します.
 ---------------------------------------
 function SpriteSheet:getFrame()
     return self._frame
 end
 
 ---------------------------------------
--- フレームアニメーションを行います。
--- modeには、
+-- フレームアニメーションを行います.
+-- TODO:改善されたアニメーションに置き換わる
 ---------------------------------------
 function SpriteSheet:moveFrames(frames, sec, mode)
     mode = mode and mode or MOAITimer.LOOP
@@ -168,26 +183,22 @@ function SpriteSheet:moveFrames(frames, sec, mode)
     return anim
 end
 
-function SpriteSheet:playFrames()
-
-end
-
 ---------------------------------------
--- フレームアニメーションを停止します。
+-- フレームアニメーションを停止します.
 ---------------------------------------
 function SpriteSheet:stopFrames()
     self._frameAnim:stop()
 end
 
 ---------------------------------------
--- フレームアニメーションのループ時の処理を行います。
+-- フレームアニメーションのループ時の処理を行います.
 ---------------------------------------
 function SpriteSheet:onFrameLoop(event)
 
 end
 
 ---------------------------------------
--- フレームアニメーション停止時の処理を行います。
+-- フレームアニメーション停止時の処理を行います.
 ---------------------------------------
 function SpriteSheet:onFrameStop(event)
 

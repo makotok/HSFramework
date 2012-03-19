@@ -1,8 +1,9 @@
 --------------------------------------------------------------------------------
--- TMXMapのObjectGroupです。
+-- TMXMapのObjectGroupです.
 --
+-- @class table
+-- @name TMXObjectGroup
 --------------------------------------------------------------------------------
-
 TMXObjectGroup = Class()
 
 ---------------------------------------
@@ -20,20 +21,20 @@ function TMXObjectGroup:init(tmxMap)
 end
 
 ---------------------------------------
--- コンストラクタです
+-- TODO:未実装
 ---------------------------------------
 function TMXObjectGroup:createDisplayObjects()
 end
 
 ---------------------------------------
--- オブジェクトを追加します。
+-- オブジェクトを追加します.
 ---------------------------------------
 function TMXObjectGroup:addObject(object)
     table.insert(self.objects, object)
 end
 
 ---------------------------------------
--- プロパティを返します。
+-- プロパティを返します.
 ---------------------------------------
 function TMXObjectGroup:getProperty(key)
     return self._properties[key]

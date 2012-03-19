@@ -1,6 +1,8 @@
 --------------------------------------------------------------------------------
--- TMXMapのObjectGroupです。
+-- TMXMapのObjectGroupです.
 --
+-- @class table
+-- @name TMXObject
 --------------------------------------------------------------------------------
 
 TMXObject = Class()
@@ -21,13 +23,13 @@ function TMXObject:init()
 end
 
 ---------------------------------------
--- DisplayObjectを生成します。
+-- DisplayObjectを生成します.
 ---------------------------------------
 function TMXObject:createDisplayObject()
 end
 
 ---------------------------------------
--- Box2DBodyを生成します。
+-- Box2DBodyを生成します.
 ---------------------------------------
 function TMXObject:createBox2DBody()
 end

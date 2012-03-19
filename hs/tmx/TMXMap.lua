@@ -1,7 +1,9 @@
 --------------------------------------------------------------------------------
--- タイルマップ形式のデータを保持するTMXMapクラスです。
--- タイルマップエディタについては、以下を参照してください。
+-- タイルマップ形式のデータを保持するTMXMapクラスです.<br>
+-- タイルマップエディタについては、以下を参照してください.<br>
 -- http://www.mapeditor.org/
+-- @class table
+-- @name TMXMap
 --------------------------------------------------------------------------------
 
 TMXMap = PropertySupport()
@@ -50,7 +52,7 @@ function TMXMap:drawMap(parent)
 end
 
 ---------------------------------------
--- TMXMapの情報を標準出力します。
+-- TMXMapの情報を標準出力します.
 ---------------------------------------
 function TMXMap:printDebugInfo()
     -- header
@@ -67,49 +69,49 @@ function TMXMap:printDebugInfo()
 end
 
 ---------------------------------------
--- レイヤーリストを返します。
+-- レイヤーリストを返します.
 ---------------------------------------
 function TMXMap:getLayers()
     return self._layers
 end
 
 ---------------------------------------
--- レイヤーを追加します。
+-- レイヤーを追加します.
 ---------------------------------------
 function TMXMap:addLayer(layer)
     table.insert(self.layers, layer)
 end
 
 ---------------------------------------
--- レイヤーを削除します。
+-- レイヤーを削除します.
 ---------------------------------------
 function TMXMap:removeLayerAt(index)
     table.remove(self.layers, index)
 end
 
 ---------------------------------------
--- タイルセットリストを返します。
+-- タイルセットリストを返します.
 ---------------------------------------
 function TMXMap:getTilesets()
     return self._tilesets
 end
 
 ---------------------------------------
--- タイルセットを追加します。
+-- タイルセットを追加します.
 ---------------------------------------
 function TMXMap:addTileset(tileset)
     table.insert(self.tilesets, tileset)
 end
 
 ---------------------------------------
--- タイルセットを削除します。
+-- タイルセットを削除します.
 ---------------------------------------
 function TMXMap:removeTilesetAt(index)
     table.remove(self.tilesets, index)
 end
 
 ---------------------------------------
--- 指定されたGIDからタイルセットを検索して返します。
+-- 指定されたGIDからタイルセットを検索して返します.
 -- @param gid
 -- @return TMXTileset
 ---------------------------------------
@@ -124,56 +126,56 @@ function TMXMap:findTilesetByGid(gid)
 end
 
 ---------------------------------------
--- オブジェクトグループリストを返します。
+-- オブジェクトグループリストを返します.
 ---------------------------------------
 function TMXMap:getObjectGroups()
     return self._objectGroups
 end
 
 ---------------------------------------
--- タイルセットを追加します。
+-- タイルセットを追加します.
 ---------------------------------------
 function TMXMap:addObjectGroup(objectGroup)
     table.insert(self.objectGroups, objectGroup)
 end
 
 ---------------------------------------
--- タイルセットを削除します。
+-- タイルセットを削除します.
 ---------------------------------------
 function TMXMap:removeObjectGroupAt(index)
     table.remove(self.objectGroups, index)
 end
 
 ---------------------------------------
--- バージョンを設定します。
+-- バージョンを設定します.
 ---------------------------------------
 function TMXMap:setVersion(version)
     self._version = version
 end
 
 ---------------------------------------
--- バージョンを返します。
+-- バージョンを返します.
 ---------------------------------------
 function TMXMap:getVersion()
     return self._version
 end
 
 ---------------------------------------
--- オリエンテーションを設定します。
+-- オリエンテーションを設定します.
 ---------------------------------------
 function TMXMap:setOrientation(value)
     self._orientation = value
 end
 
 ---------------------------------------
--- オリエンテーションを返します。
+-- オリエンテーションを返します.
 ---------------------------------------
 function TMXMap:getOrientation()
     return self._orientation
 end
 
 ---------------------------------------
--- マップのサイズを設定します。
+-- マップのサイズを設定します.
 ---------------------------------------
 function TMXMap:setSize(width, height)
     self._width = width
@@ -181,35 +183,35 @@ function TMXMap:setSize(width, height)
 end
 
 ---------------------------------------
--- マップのサイズを設定します。
+-- マップのサイズを設定します.
 ---------------------------------------
 function TMXMap:setWidth(width)
     self:setSize(width, self.height)
 end
 
 ---------------------------------------
--- マップのサイズを返します。
+-- マップのサイズを返します.
 ---------------------------------------
 function TMXMap:getWidth()
     return self._width
 end
 
 ---------------------------------------
--- マップのサイズを設定します。
+-- マップのサイズを設定します.
 ---------------------------------------
 function TMXMap:setHeight(height)
     self:setSize(self.width, height)
 end
 
 ---------------------------------------
--- マップのサイズを返します。
+-- マップのサイズを返します.
 ---------------------------------------
 function TMXMap:getHeight()
     return self._height
 end
 
 ---------------------------------------
--- タイルのサイズを設定します。
+-- タイルのサイズを設定します.
 ---------------------------------------
 function TMXMap:setTileSize(width, height)
     self._tilewidth = width
@@ -217,56 +219,56 @@ function TMXMap:setTileSize(width, height)
 end
 
 ---------------------------------------
--- タイルのサイズを設定します。
+-- タイルのサイズを設定します.
 ---------------------------------------
 function TMXMap:setTilewidth(width)
     self:setTileSize(width, self.tileheight)
 end
 
 ---------------------------------------
--- タイルのサイズを返します。
+-- タイルのサイズを返します.
 ---------------------------------------
 function TMXMap:getTilewidth()
     return self._tilewidth
 end
 
 ---------------------------------------
--- タイルのサイズを設定します。
+-- タイルのサイズを設定します.
 ---------------------------------------
 function TMXMap:setTileheight(height)
     self:setTileSize(self.tilewidth, height)
 end
 
 ---------------------------------------
--- タイルのサイズを返します。
+-- タイルのサイズを返します.
 ---------------------------------------
 function TMXMap:getTileheight()
     return self._tileheight
 end
 
 ---------------------------------------
--- プロパティリストを返します。
+-- プロパティリストを返します.
 ---------------------------------------
 function TMXMap:getProperties()
     return self._properties
 end
 
 ---------------------------------------
--- 指定したキーのプロパティを返します。
+-- 指定したキーのプロパティを返します.
 ---------------------------------------
 function TMXMap:getProperty(key)
     return self._properties[key]
 end
 
 ---------------------------------------
--- リソースディレクトリを設定します。
+-- リソースディレクトリを設定します.
 ---------------------------------------
 function TMXMap:setResourceDirectory(directory)
     self._resourceDirectory = directory
 end
 
 ---------------------------------------
--- タイルのサイズを返します。
+-- タイルのサイズを返します.
 ---------------------------------------
 function TMXMap:getResourceDirectory()
     return self._resourceDirectory

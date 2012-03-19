@@ -1,6 +1,8 @@
 ----------------------------------------------------------------
--- 画面の操作をキャッチして、イベントを発出するクラスです。
+-- 画面の操作をキャッチして、イベントを発出するクラスです.
 -- タッチ、キーボードの操作が該当します
+-- @class table
+-- @name InputManager
 ----------------------------------------------------------------
 
 InputManager = EventDispatcher:new()
@@ -9,7 +11,7 @@ InputManager.keyboard = {key = 0, down = false}
 
 ---------------------------------------
 -- InputManagerの初期化処理です
--- フレームワークで初期化する必要があります。
+-- フレームワークで初期化する必要があります.
 ---------------------------------------
 function InputManager:initialize()
     -- コールバック関数の登録
@@ -80,7 +82,7 @@ function InputManager.onTouch(eventType, idx, x, y, tapCount)
 end
 
 ---------------------------------------
--- キーボード入力時のイベント処理です。
+-- キーボード入力時のイベント処理です.
 ---------------------------------------
 function InputManager.onKeyboard( key, down )
     InputManager.keyboard.key = key

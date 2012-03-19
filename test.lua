@@ -7,6 +7,7 @@ require "test/TestPropertySupport"
 require "test/TestUString"
 require "test/TestTMXMapLoader"
 --require "test/TestEventDispatcher"
+require "test.ModuleA"
 
 -- load classes
 local globals = {}

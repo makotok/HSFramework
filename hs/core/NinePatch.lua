@@ -1,6 +1,8 @@
 --------------------------------------------------------------------------------
--- 画像のサイズにあわせて、部分的に伸張するスプライトクラスです。
---
+-- 画像のサイズにあわせて、部分的に伸張するスプライトクラスです.
+-- TODO:なんか使い勝手がいまいちかも
+-- @class table
+-- @name NinePatch
 --------------------------------------------------------------------------------
 
 NinePatch = DisplayObject()
@@ -25,7 +27,7 @@ function NinePatch:init(texture, params)
 end
 
 ---------------------------------------
--- MOAIDeckを生成します。
+-- MOAIDeckを生成します.
 ---------------------------------------
 function NinePatch:newDeck()
     local deck = MOAIStretchPatch2D.new()
@@ -46,8 +48,8 @@ function NinePatch:newDeck()
 end
 
 ---------------------------------------
--- テキスチャを設定します。
--- サイズも自動で設定されます。
+-- テキスチャを設定します.
+-- サイズも自動で設定されます.
 ---------------------------------------
 function NinePatch:setTexture(texture)
     if type(texture) == "string" then
@@ -68,7 +70,7 @@ function NinePatch:getTexture()
 end
 
 ---------------------------------------
--- 表示オブジェクトのサイズを設定します。
+-- 表示オブジェクトのサイズを設定します.
 ---------------------------------------
 function NinePatch:setSize(width, height)
     DisplayObject.setSize(self, width, height)

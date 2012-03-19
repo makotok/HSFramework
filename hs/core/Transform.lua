@@ -1,7 +1,8 @@
 --------------------------------------------------------------------------------
 -- 表示オブジェクトの移動や回転、拡大を行うためのクラスです
+-- @class table
+-- @name Transform
 --------------------------------------------------------------------------------
-
 Transform = EventDispatcher()
 
 -- プロパティ定義
@@ -28,7 +29,7 @@ function Transform:init()
 end
 
 ---------------------------------------
---- MOAITransformを生成して返します。
+--- MOAITransformを生成して返します.
 ---------------------------------------
 function Transform:newTransformObj()
     return MOAITransform.new()
@@ -39,7 +40,7 @@ function Transform:getTransformObj()
 end
 
 ---------------------------------------
--- ローカル座標を設定します。
+-- ローカル座標を設定します.
 ---------------------------------------
 function Transform:setLocation(x, y)
     local parent = self.parent
@@ -51,7 +52,7 @@ function Transform:setLocation(x, y)
 end
 
 ---------------------------------------
--- ローカル座標を返します。
+-- ローカル座標を返します.
 ---------------------------------------
 function Transform:getLocation()
     local parent = self.parent
@@ -65,7 +66,7 @@ function Transform:getLocation()
 end
 
 ---------------------------------------
--- ローカル座標を移動します。
+-- ローカル座標を移動します.
 ---------------------------------------
 function Transform:move(x, y, sec, mode, completeHandler)
     Log.debug(x, y, mode)
@@ -77,14 +78,14 @@ function Transform:move(x, y, sec, mode, completeHandler)
 end
 
 ---------------------------------------
--- X座標を設定します。
+-- ローカルX座標を設定します.
 ---------------------------------------
 function Transform:setX(x)
     self:setLocation(x, self.y)
 end
 
 ---------------------------------------
--- X座標を返します。
+-- ローカルX座標を返します.
 ---------------------------------------
 function Transform:getX()
     local x, y = self:getLocation()
@@ -92,14 +93,14 @@ function Transform:getX()
 end
 
 ---------------------------------------
--- Y座標を設定します。
+-- ローカルY座標を設定します.
 ---------------------------------------
 function Transform:setY(y)
     self:setLocation(self.x, y)
 end
 
 ---------------------------------------
--- Y座標を返します。
+-- ローカルY座標を返します.
 ---------------------------------------
 function Transform:getY()
     local x, y = self:getLocation()
@@ -107,7 +108,7 @@ function Transform:getY()
 end
 
 ---------------------------------------
--- 座標を設定します。
+-- ワールド座標を設定します.
 ---------------------------------------
 function Transform:setWorldLocation(x, y)
     x = x + self.pivotX
@@ -116,7 +117,7 @@ function Transform:setWorldLocation(x, y)
 end
 
 ---------------------------------------
--- 座標を返します。
+-- ワールド座標を返します.
 ---------------------------------------
 function Transform:getWorldLocation()
     local x, y = self.transformObj:getLoc()
@@ -127,14 +128,14 @@ end
 
 
 ---------------------------------------
--- X座標を設定します。
+-- ワールドX座標を設定します.
 ---------------------------------------
 function Transform:setWorldX(x)
     self:setWorldLocation(x, self.y)
 end
 
 ---------------------------------------
--- X座標を返します。
+-- ワールドX座標を返します.
 ---------------------------------------
 function Transform:getWorldX()
     local x, y = self:getWorldLocation()
@@ -142,14 +143,14 @@ function Transform:getWorldX()
 end
 
 ---------------------------------------
--- Y座標を設定します。
+-- ワールドY座標を設定します.
 ---------------------------------------
 function Transform:setWorldY(y)
     self:setWorldLocation(self.x, y)
 end
 
 ---------------------------------------
--- Y座標を返します。
+-- ワールドY座標を返します.
 ---------------------------------------
 function Transform:getWorldY()
     local x, y = self:getWorldLocation()
@@ -157,21 +158,21 @@ function Transform:getWorldY()
 end
 
 ---------------------------------------
--- rotationを設定します。
+-- rotationを設定します.
 ---------------------------------------
 function Transform:setRotation(rotation)
     self.transformObj:setRot(rotation)
 end
 
 ---------------------------------------
--- rotationを返します。
+-- rotationを返します.
 ---------------------------------------
 function Transform:getRotation()
     return self.transformObj:getRot()
 end
 
 ---------------------------------------
--- 回転します。
+-- 回転します.
 ---------------------------------------
 function Transform:rotate(rotation, sec, mode, completeHandler)
     local action = self.transformObj:moveRot(rotation, sec, mode)
@@ -183,21 +184,21 @@ end
 
 
 ---------------------------------------
--- scaleX, scaleYを設定します。
+-- scaleX, scaleYを設定します.
 ---------------------------------------
 function Transform:setScale(scaleX, scaleY)
     self.transformObj:setScl(scaleX, scaleY)
 end
 
 ---------------------------------------
--- scaleX, scaleYを返します。
+-- scaleX, scaleYを返します.
 ---------------------------------------
 function Transform:getScale()
     return self.transformObj:getScl()
 end
 
 ---------------------------------------
--- 回転量を移動します。
+-- 回転量を移動します.
 ---------------------------------------
 function Transform:scale(x, y, sec, mode, completeHandler)
     local action = self.transformObj:moveScl(x, y, sec, mode)
@@ -208,14 +209,14 @@ function Transform:scale(x, y, sec, mode, completeHandler)
 end
 
 ---------------------------------------
--- scaleXを設定します。
+-- scaleXを設定します.
 ---------------------------------------
 function Transform:setScaleX(scaleX)
     self:setScale(scaleX, self.scaleY)
 end
 
 ---------------------------------------
--- scaleXを返します。
+-- scaleXを返します.
 ---------------------------------------
 function Transform:getScaleX()
     local scaleX, scaleY = self:getScale()
@@ -223,14 +224,14 @@ function Transform:getScaleX()
 end
 
 ---------------------------------------
--- scaleYを設定します。
+-- scaleYを設定します.
 ---------------------------------------
 function Transform:setScaleY(scaleY)
     self:setScale(self.scaleX, scaleY)
 end
 
 ---------------------------------------
--- scaleYを返します。
+-- scaleYを返します.
 ---------------------------------------
 function Transform:getScaleY()
     local scaleX, scaleY = self:getScale()
@@ -238,8 +239,8 @@ function Transform:getScaleY()
 end
 
 ---------------------------------------
--- 中心点を設定します。
--- これは、回転や拡大・縮小で使用されます。
+-- 中心点を設定します.
+-- これは、回転や拡大・縮小で使用されます.
 ---------------------------------------
 function Transform:setPivot(pivotX, pivotY)
     local x, y = self:getWorldLocation()
@@ -248,22 +249,22 @@ function Transform:setPivot(pivotX, pivotY)
 end
 
 ---------------------------------------
--- 中心点を返します。
+-- 中心点を返します.
 ---------------------------------------
 function Transform:getPivot()
     return self.transformObj:getPiv()
 end
 
 ---------------------------------------
--- 中心点を設定します。
--- これは、回転や拡大・縮小で使用されます。
+-- 中心点を設定します.
+-- これは、回転や拡大・縮小で使用されます.
 ---------------------------------------
 function Transform:setPivotX(pivotX)
     self:setPivot(pivotX, self.pivotY)
 end
 
 ---------------------------------------
--- pivotXを返します。
+-- pivotXを返します.
 ---------------------------------------
 function Transform:getPivotX()
     local pivotX, pivotY = self:getPivot()
@@ -271,15 +272,15 @@ function Transform:getPivotX()
 end
 
 ---------------------------------------
--- 中心点を設定します。
--- これは、回転や拡大・縮小で使用されます。
+-- 中心点を設定します.
+-- これは、回転や拡大・縮小で使用されます.
 ---------------------------------------
 function Transform:setPivotY(pivotY)
     self:setPivot(self.pivotX, pivotY)
 end
 
 ---------------------------------------
--- pivotYを返します。
+-- pivotYを返します.
 ---------------------------------------
 function Transform:getPivotY()
     local pivotX, pivotY = self:getPivot()
@@ -287,9 +288,9 @@ function Transform:getPivotY()
 end
 
 ---------------------------------------
--- 親オブジェクトを設定します。
--- 親オブジェクトはGroupである必要があります。
--- nilを設定した場合、親オブジェクトはクリアされます。
+-- 親オブジェクトを設定します.
+-- 親オブジェクトはGroupである必要があります.
+-- nilを設定した場合、親オブジェクトはクリアされます.
 ---------------------------------------
 function Transform:setParent(parent)
     -- sceneを指定された場合はtopLayerを取得
@@ -322,7 +323,7 @@ function Transform:setParent(parent)
 end
 
 ---------------------------------------
--- 親オブジェクトを返します。
+-- 親オブジェクトを返します.
 ---------------------------------------
 function Transform:getParent(parent)
     return self._parent

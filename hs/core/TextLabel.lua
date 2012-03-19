@@ -1,20 +1,21 @@
 --------------------------------------------------------------------------------
--- 文字列を描画するラベルクラスです。
--- charcodesを指定せずとも、日本語の描画が行えます。
+-- 文字列を描画するラベルクラスです.
+-- charcodesを指定せずとも、日本語の描画が行えます.
 -- 
 -- 効率的な文字列描画を行えるように、デフォルトのキャラコードのみで構成されたテキストを指定した場合、
--- キャッシュされたフォントを使用します。
+-- キャッシュされたフォントを使用します.
 -- 
 -- 制約として、あまりに文字の種類が多い場合、自動生成したキャラコードが多くなり、
--- フォントテクスチャの生成に失敗する可能性があります。（実用にはそれほど問題ないかと）
--- 改善の余地はありますが、現時点では以下の方法により回避してください。
+-- フォントテクスチャの生成に失敗する可能性があります.（実用にはそれほど問題ないかと）
+-- 改善の余地はありますが、現時点では以下の方法により回避してください.
 -- ・文字の種類を少なくする
 -- ・fontSizeを小さくする
 --
--- その他、以下の点で改善の余地があります。
--- ・DPIの設定に何を設定すればいいわからないのでsampleの値を設定しているが、後で検証が必要。
+-- その他、以下の点で改善の余地があります.
+-- ・DPIの設定に何を設定すればいいわからないのでsampleの値を設定しているが、後で検証が必要.
+-- @class table
+-- @name TextLabel
 --------------------------------------------------------------------------------
-
 TextLabel = DisplayObject()
 
 -- 定数
@@ -29,7 +30,7 @@ TextLabel.ALIGN_TYPES = {
 }
 
 -- デフォルト値
--- 変更した場合、インスタンスの生成時にデフォルト値が使用されます。
+-- 変更した場合、インスタンスの生成時にデフォルト値が使用されます.
 TextLabel.defaultCharcodes = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,:;!?()&/-_'
 TextLabel.defaultFontTTF = "hs/resources/ipag.ttf"
 TextLabel.defaultFontSize = 9
@@ -44,7 +45,7 @@ TextLabel:setPropertyName("fontTTF")
 TextLabel:setPropertyName("fontDPI")
 
 ---------------------------------------
--- コンストラクタです。
+-- コンストラクタです.
 ---------------------------------------
 function TextLabel:init(params)
     TextLabel:super(self)
@@ -61,15 +62,15 @@ function TextLabel:init(params)
 end
 
 ---------------------------------------
--- MOAIDeckを生成します。
--- 実際には生成しません。
+-- MOAIDeckを生成します.
+-- 実際には生成しません.
 ---------------------------------------
 function TextLabel:newDeck()
     return nil
 end
 
 ---------------------------------------
--- MOAIPropを生成します。
+-- MOAIPropを生成します.
 -- インスタンスはMOAITextBoxになります
 ---------------------------------------
 function TextLabel:newProp(deck)
@@ -78,7 +79,7 @@ function TextLabel:newProp(deck)
 end
 
 ---------------------------------------
--- サイズを設定します。
+-- サイズを設定します.
 ---------------------------------------
 function TextLabel:setSize(width, height)
     self._width = width
@@ -90,9 +91,9 @@ function TextLabel:setSize(width, height)
 end
 
 ---------------------------------------
--- フォントのキャラコードを生成します。
+-- フォントのキャラコードを生成します.
 -- マルチバイトを考慮して、ユニークとなる
--- キャラコードを生成します。
+-- キャラコードを生成します.
 ---------------------------------------
 function TextLabel:makeCharcodes(text)
     if self:isDefaultCharcodesOnly(text) then
@@ -114,7 +115,7 @@ end
 
 ---------------------------------------
 -- デフォルトのキャラコードのみで構成された
--- 文字列のみかどうか判定します。
+-- 文字列のみかどうか判定します.
 ---------------------------------------
 function TextLabel:isDefaultCharcodesOnly(text)
     local charMap = {}
@@ -131,7 +132,7 @@ function TextLabel:isDefaultCharcodesOnly(text)
 end
 
 ---------------------------------------
--- 設定値をMOAITextBoxに反映します。
+-- 設定値をMOAITextBoxに反映します.
 ---------------------------------------
 function TextLabel:updateText()
     if not (self.text and self.charcodes) then
@@ -147,7 +148,7 @@ function TextLabel:updateText()
 end
 
 ---------------------------------------
--- 表示文字列を設定します。
+-- 表示文字列を設定します.
 ---------------------------------------
 function TextLabel:setText(text)
     self._charcodes = self:makeCharcodes(text)
@@ -156,14 +157,14 @@ function TextLabel:setText(text)
 end
 
 ---------------------------------------
--- 表示文字列を返します。
+-- 表示文字列を返します.
 ---------------------------------------
 function TextLabel:getText()
     return self._text
 end
 
 ---------------------------------------
--- 表示文字列を設定します。
+-- 表示文字列を設定します.
 ---------------------------------------
 function TextLabel:setTextAlign(align)
     self._textAlign = align
@@ -174,21 +175,21 @@ function TextLabel:setTextAlign(align)
 end
 
 ---------------------------------------
--- 表示文字列を返します。
+-- 表示文字列を返します.
 ---------------------------------------
 function TextLabel:getTextAlign()
     return self._text
 end
 
 ---------------------------------------
--- フォントのキャラコードを返します。
+-- フォントのキャラコードを返します.
 ---------------------------------------
 function TextLabel:getCharcodes()
     return self._charcodes
 end
 
 ---------------------------------------
--- フォントのサイズを設定します。
+-- フォントのサイズを設定します.
 ---------------------------------------
 function TextLabel:setFontSize(size)
     self._fontSize = size
@@ -196,14 +197,14 @@ function TextLabel:setFontSize(size)
 end
 
 ---------------------------------------
--- フォントのサイズを返します。
+-- フォントのサイズを返します.
 ---------------------------------------
 function TextLabel:getFontSize()
     return self._fontSize
 end
 
 ---------------------------------------
--- TrueTypeフォントのパスを設定します。
+-- TrueTypeフォントのパスを設定します.
 ---------------------------------------
 function TextLabel:setFontTTF(ttfPath)
     self._fontTTF = ttfPath
@@ -211,16 +212,16 @@ function TextLabel:setFontTTF(ttfPath)
 end
 
 ---------------------------------------
--- TrueTypeフォントのパスを返します。
+-- TrueTypeフォントのパスを返します.
 ---------------------------------------
 function TextLabel:getFontTTF()
     return self._fontTTF
 end
 
 ---------------------------------------
--- フォントのDPIを設定します。
+-- フォントのDPIを設定します.
 -- ライブラリ使用者側で意識しないでいいはずなので、
--- 明示的に設定する必要はありません。
+-- 明示的に設定する必要はありません.
 ---------------------------------------
 function TextLabel:setFontDPI(dpi)
     self._fontDPI = dpi
@@ -228,14 +229,14 @@ function TextLabel:setFontDPI(dpi)
 end
 
 ---------------------------------------
--- フォントのDPIを返します。
+-- フォントのDPIを返します.
 ---------------------------------------
 function TextLabel:getFontDPI()
     return self._fontDPI
 end
 
 ---------------------------------------
--- フレーム毎の処理を行います。
+-- フレーム毎の処理を行います.
 ---------------------------------------
 function TextLabel:onEnterFrame(event)
     if self._textChanged then

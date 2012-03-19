@@ -1,3 +1,11 @@
+--------------------------------------------------------------------------------
+-- MOAIBox2DBodyのラッパークラスです.<br>
+-- 基本的にそのまま関数名をラッピングしています.<br>
+-- いくつかの関数をプロパティアクセス可能にしています.
+--
+-- @class table
+-- @name Box2DBody
+--------------------------------------------------------------------------------
 Box2DBody = PropertySupport()
 
 Box2DBody.BODY_TYPES = {
@@ -32,46 +40,73 @@ end
 -- Functions
 ---------------------------------------
 
+---------------------------------------
+-- サークルを追加します.
+---------------------------------------
 function Box2DBody:addCircle(x, y, radius)
     local fixture = Box2DFixture:new(body, self.body:addCircle(x, y, radius))
     table.insert(self.fixtures, fixture)
     return fixture
 end
 
+---------------------------------------
+-- エッジを追加します.
+---------------------------------------
 function Box2DBody:addEdges(verts)
     local fixture = Box2DFixture:new(body, self.body:addEdges(verts))
     table.insert(self.fixtures, fixture)
     return fixture
 end
 
+---------------------------------------
+-- ポリゴンを追加します.
+---------------------------------------
 function Box2DBody:addPolygon(verts)
     local fixture = Box2DFixture:new(body, self.body:addPolygon(verts))
     table.insert(self.fixtures, fixture)
     return fixture
 end
 
+---------------------------------------
+-- 四角形を追加します.
+---------------------------------------
 function Box2DBody:addRect(xMin, yMin, xMax, yMax)
     local fixture = Box2DFixture:new(body, self.body:addRect(xMin, yMin, xMax, yMax))
     table.insert(self.fixtures, fixture)
     return fixture
 end
 
+---------------------------------------
+-- applyAngularImpulse.
+---------------------------------------
 function Box2DBody:applyAngularImpulse(impulse)
     self.body:applyAngularImpulse(impulse)
 end
 
+---------------------------------------
+-- applyForce.
+---------------------------------------
 function Box2DBody:applyForce(forceX, forceY, pointX, pointY)
     self.body:applyForce(forceX, forceY, pointX, pointY)
 end
 
+---------------------------------------
+-- applyLinearImpulse.
+---------------------------------------
 function Box2DBody:applyLinearImpulse(impulseX, impulseY, pointX, pointY)
     self.body:applyLinearImpulse(impulseX, impulseY, pointX, pointY)
 end
 
+---------------------------------------
+-- applyTorque.
+---------------------------------------
 function Box2DBody:applyTorque(torque)
     self.body:applyTorque(torque)
 end
 
+---------------------------------------
+-- destroy.
+---------------------------------------
 function Box2DBody:destroy()
     self.body:destroy()
 end
@@ -81,159 +116,205 @@ end
 ---------------------------------------
 
 ---------------------------------------
--- angle
+-- angleを返します.
+-- @return angle
 ---------------------------------------
-
 function Box2DBody:getAngle()
     return self.body:getAngle()
 end
 
+---------------------------------------
+-- angleを設定します.
+-- @param angle angle
+---------------------------------------
 function Box2DBody:setAngle(angle)
     self:setTransform(self.x, self.y, angle)
 end
 
 ---------------------------------------
--- angularVelocity
+-- angularVelocityを返します.
 ---------------------------------------
-
 function Box2DBody:getAngularVelocity()
     return self.body:getAngularVelocity()
 end
 
+---------------------------------------
+-- angularVelocityを設定します.
+---------------------------------------
 function Box2DBody:setAngularVelocity(omega)
     self.body:setAngularVelocity(omega)
 end
 
 ---------------------------------------
--- angularDamping
+-- angularDampingを返します.
 ---------------------------------------
-
 function Box2DBody:getAngularDamping()
     return self.body._angularDamping
 end
 
+---------------------------------------
+-- angularDampingを設定します.
+---------------------------------------
 function Box2DBody:setAngularDamping(damping)
     self.body:setAngularDamping(damping)
     self.body._angularDamping = damping
 end
 
 ---------------------------------------
--- inertia
+-- inertiaを返します.
 ---------------------------------------
-
 function Box2DBody:getInertia()
     return self.body:getInertia()
 end
 
 ---------------------------------------
--- linearVelocity
+-- linearVelocityを返します.
+-- @return LinearVelocityX
+-- @return LinearVelocityY
 ---------------------------------------
-
 function Box2DBody:getLinearVelocity()
     return self.body:getLinearVelocity()
 end
 
+---------------------------------------
+-- linearVelocityを設定します.
+-- @param LinearVelocityX
+-- @param LinearVelocityY
+---------------------------------------
+function Box2DBody:setLinearVelocity(velocityX, velocityY)
+    self.body:setLinearVelocity(velocityX, velocityY)
+end
+
+---------------------------------------
+-- LinearVelocityXを返します.
+-- @return LinearVelocityX
+---------------------------------------
 function Box2DBody:getLinearVelocityX()
     local x, y = self.body:getLinearVelocity()
     return x
 end
 
+---------------------------------------
+-- LinearVelocityXを設定します.
+---------------------------------------
+function Box2DBody:setLinearVelocityX(velocityX)
+    self:setLinearVelocity(velocityX, self.linearVelocityY)
+end
+
+---------------------------------------
+-- LinearVelocityYを返します.
+-- @return LinearVelocityY
+---------------------------------------
 function Box2DBody:getLinearVelocityY()
     local x, y = self.body:getLinearVelocity()
     return y
 end
 
-function Box2DBody:setLinearVelocity(velocityX, velocityY)
-    self.body:setLinearVelocity(velocityX, velocityY)
-end
-
-function Box2DBody:setLinearVelocityX(velocityX)
-    self:setLinearVelocity(velocityX, self.linearVelocityY)
-end
-
+---------------------------------------
+-- LinearVelocityYを設定します.
+---------------------------------------
 function Box2DBody:setLinearVelocityY(velocityY)
     self:setLinearVelocity(self.linearVelocityX, velocityY)
 end
 
 ---------------------------------------
--- linearDamping
+-- linearDampingを返します.
+-- @return linearDamping
 ---------------------------------------
-
 function Box2DBody:getLinearDamping()
     return self.body._linearDamping
 end
 
+---------------------------------------
+-- linearDampingを設定します.
+---------------------------------------
 function Box2DBody:setLinearDamping(damping)
     self.body:setLinearDamping(damping)
     self.body._linearDamping = damping
 end
 
 ---------------------------------------
--- mass
+-- massを返します.
+-- @return mass
 ---------------------------------------
-
 function Box2DBody:getMass()
     return self.body:getMass()
 end
 
-function Box2DBody:setMassData(mass, I, centerX, centerY)
-    self.body:setMassData(mass, I, centerX, centerY)
-end
-
+---------------------------------------
+-- massを設定します.
+---------------------------------------
 function Box2DBody:setMass(mass)
     self.body:setMassData(mass)
 end
 
+---------------------------------------
+-- massDataを設定します.
+---------------------------------------
+function Box2DBody:setMassData(mass, I, centerX, centerY)
+    self.body:setMassData(mass, I, centerX, centerY)
+end
+
+---------------------------------------
+-- massDataをリセットします.
+---------------------------------------
 function Box2DBody:resetMassData()
     self.body:resetMassData()
 end
 
 ---------------------------------------
--- transform
+-- 座標、回転量を設定します.
 ---------------------------------------
-
 function Box2DBody:setTransform(positionX, positionY, angle)
     self.body:setTransform(positionX, positionY, angle)
 end
 
 ---------------------------------------
--- position
+-- positionX, positionYを返します.
+-- @return positionX
+-- @return positionY
 ---------------------------------------
-
 function Box2DBody:getPosition()
     return self.body:getPosition()
 end
 
 ---------------------------------------
--- position x
+-- x座標を返します.
+-- @return x
 ---------------------------------------
-
 function Box2DBody:getX()
     local x, y = self:getPosition()
     return x
 end
 
+---------------------------------------
+-- x座標を設定します.
+---------------------------------------
 function Box2DBody:setX(x)
     self:setTransform(x, self.y, self.angle)
 end
 
 ---------------------------------------
--- position y
+-- y座標を返します.
+-- @return y
 ---------------------------------------
-
 function Box2DBody:getY()
     local x, y = self:getPosition()
     return y
 end
 
+---------------------------------------
+-- y座標を設定します.
+---------------------------------------
 function Box2DBody:setY(y)
     self:setTransform(self.x, y, self.angle)
 end
 
 ---------------------------------------
--- localCenter
+-- localCenter座標を返します.
+-- @return localCenterX
+-- @return localCenterY
 ---------------------------------------
-
 function Box2DBody:getLocalCenter()
     return self.body:getLocalCenter()
 end
@@ -242,56 +323,71 @@ end
 -- worldCenter
 ---------------------------------------
 
+---------------------------------------
+-- worldCenter座標を返します.
+-- @return worldCenterX
+-- @return worldCenterY
+---------------------------------------
 function Box2DBody:getWorldCenter()
     return self.body:getWorldCenter()
 end
 
 ---------------------------------------
--- active
+-- activeを返します.
+-- @return active
 ---------------------------------------
-
 function Box2DBody:isActive()
     return self.body:isActive()
 end
 
+---------------------------------------
+-- activeを設定します.
+---------------------------------------
 function Box2DBody:setActive(active)
     self.body:setActive(active)
 end
 
-
 ---------------------------------------
--- awake
+-- awakeを返します.
+-- @return awake
 ---------------------------------------
-
 function Box2DBody:isAwake()
     return self.body:isAwake()
 end
 
+---------------------------------------
+-- awakeを設定します.
+---------------------------------------
 function Box2DBody:setAwake(awake)
     self.body:setAwake(awake)
 end
 
 ---------------------------------------
--- bullet
+-- bulletを返します.
+-- @return bullet
 ---------------------------------------
-
 function Box2DBody:isBullet()
     return self.body:isBullet()
 end
 
+---------------------------------------
+-- bulletを設定します.
+---------------------------------------
 function Box2DBody:setBullet(bullet)
     self.body:setBullet(bullet)
 end
 
 ---------------------------------------
--- fixedRotation
+-- fixedRotationを返します.
+-- @return fixedRotation
 ---------------------------------------
-
 function Box2DBody:isFixedRotation()
     return self.body:isFixedRotation()
 end
 
+---------------------------------------
+-- fixedRotationを設定します.
+---------------------------------------
 function Box2DBody:setFixedRotation(fixedRotation)
     self.body:setFixedRotation(fixedRotation)
 end
-

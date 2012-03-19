@@ -1,18 +1,20 @@
 ----------------------------------------------------------------
--- Sceneはシーングラフを構築するトップレベルコンテナです。
--- Sceneは複数のLayerを管理します。
--- このクラスを使用して、画面を構築します。
+-- Sceneはシーングラフを構築するトップレベルコンテナです.
+-- Sceneは複数のLayerを管理します.
+-- このクラスを使用して、画面を構築します.
 --
--- デフォルトのレイヤー（topLayer）を持ちます。
--- DisplayObjectの親に直接指定された場合、実際に追加される先はtopLayerになります。
+-- デフォルトのレイヤー（topLayer）を持ちます.
+-- DisplayObjectの親に直接指定された場合、実際に追加される先はtopLayerになります.
 --
 -- Sceneのライフサイクルについて
--- 1. onCreate()  ... 生成時に呼ばれます。
--- 2. onStart()   ... 開始時に呼ばれます。
--- 3. onResume()   ... 再開時に呼ばれます。
--- 4. onPause()   ... 一時停止時に呼ばれます。
--- 5. onStop()     ... 終了時に呼ばれます。
--- 6. onDestroy() ... 破棄時に呼ばれます。
+-- 1. onCreate()  ... 生成時に呼ばれます.
+-- 2. onStart()   ... 開始時に呼ばれます.
+-- 3. onResume()   ... 再開時に呼ばれます.
+-- 4. onPause()   ... 一時停止時に呼ばれます.
+-- 5. onStop()     ... 終了時に呼ばれます.
+-- 6. onDestroy() ... 破棄時に呼ばれます.
+-- @class table
+-- @name Scene
 ----------------------------------------------------------------
 Scene = Transform()
 
@@ -49,21 +51,21 @@ function Scene:init()
 end
 
 ---------------------------------------
--- シーンを最前面に表示します。
+-- シーンを最前面に表示します.
 ---------------------------------------
 function Scene:orderToFront()
     SceneManager:orderToFront(self)
 end
 
 ---------------------------------------
--- シーンを最背面に表示します。
+-- シーンを最背面に表示します.
 ---------------------------------------
 function Scene:orderToBack()
     SceneManager:orderToBack(self)
 end
 
 ---------------------------------------
--- 描画レイヤーを表示します。
+-- 描画レイヤーを表示します.
 ---------------------------------------
 function Scene:showRenders()
     if not self.visible then
@@ -77,26 +79,26 @@ function Scene:showRenders()
 end
 
 ---------------------------------------
--- カレントシーンかどうか返します。
+-- カレントシーンかどうか返します.
 ---------------------------------------
 function Scene:isCurrentScene()
     return SceneManager.currentScene == self
 end
 
 ---------------------------------------
--- 最初に描画するレイヤーを返します。
--- つまり、実際の表示は後ろです。
+-- 最初に描画するレイヤーを返します.
+-- つまり、実際の表示は後ろです.
 -- デフォルトで一つだけ追加されているので、
--- 必ず使用できます。
+-- 必ず使用できます.
 ---------------------------------------
 function Scene:getTopLayer()
     return self._topLayer
 end
 
 ---------------------------------------
--- 子レイヤーを追加します。
--- レイヤー以外を指定した場合、topLayerに追加されます。
--- レイヤーの場合はシーンに追加されます。
+-- 子レイヤーを追加します.
+-- レイヤー以外を指定した場合、topLayerに追加されます.
+-- レイヤーの場合はシーンに追加されます.
 ---------------------------------------
 function Scene:addChild(child)
     -- レイヤーでない場合、topLayerに追加
@@ -119,7 +121,7 @@ function Scene:addChild(child)
 end
 
 ---------------------------------------
--- レイヤーを削除します。
+-- レイヤーを削除します.
 ---------------------------------------
 function Scene:removeChild(child)
     -- レイヤーでない場合、topLayerから削除
@@ -145,7 +147,7 @@ function Scene:removeChild(child)
 end
 
 ---------------------------------------
--- 子オブジェクトの属性連携を設定します。
+-- 子オブジェクトの属性連携を設定します.
 ---------------------------------------
 function Scene:setAttrLinkForChild(child)
     child.prop:clearAttrLink(MOAITransform.INHERIT_TRANSFORM)
@@ -155,21 +157,21 @@ function Scene:setAttrLinkForChild(child)
 end
 
 ---------------------------------------
--- レイヤーリストを返します。
+-- レイヤーリストを返します.
 ---------------------------------------
 function Scene:getLayers()
     return self._layers
 end
 
 ---------------------------------------
--- 親オブジェクトを設定します。
--- トップレベルコンテナなので、親はありません。
+-- 親オブジェクトを設定します.
+-- トップレベルコンテナなので、親はありません.
 ---------------------------------------
 function Scene:setParent(parent)
 end
 
 ---------------------------------------
--- リソースを削除します。
+-- リソースを削除します.
 ---------------------------------------
 function Scene:dispose()
     for i, layer in ipairs(self.layers) do
@@ -178,9 +180,9 @@ function Scene:dispose()
 end
 
 ---------------------------------------
--- サイズを設定します。
+-- サイズを設定します.
 -- 基本的にはstageのサイズのみを設定すべきであり、
--- フレームワーク外部から設定すべきではありません。
+-- フレームワーク外部から設定すべきではありません.
 ---------------------------------------
 function Scene:setSize(width, height)
     self._width = width
@@ -189,42 +191,42 @@ function Scene:setSize(width, height)
 end
 
 ---------------------------------------
--- サイズを返します。
+-- サイズを返します.
 ---------------------------------------
 function Scene:getSize()
     return self._width, self._height
 end
 
 ---------------------------------------
--- widthを設定します。
+-- widthを設定します.
 ---------------------------------------
 function Scene:setWidth(width)
     self:setSize(width, self._height)
 end
 
 ---------------------------------------
--- widthを返します。
+-- widthを返します.
 ---------------------------------------
 function Scene:getWidth()
     return self._width
 end
 
 ---------------------------------------
--- heightを設定します。
+-- heightを設定します.
 ---------------------------------------
 function Scene:setHeight(height)
     self:setSize(self._width, height)
 end
 
 ---------------------------------------
--- heightを返します。
+-- heightを返します.
 ---------------------------------------
 function Scene:getHeight()
     return self._height
 end
 
 ---------------------------------------
--- 中心点を中央に設定します。
+-- 中心点を中央に設定します.
 ---------------------------------------
 function Scene:centerPivot()
     local w, h = self:getSize()
@@ -234,13 +236,13 @@ function Scene:centerPivot()
 end
 
 ---------------------------------------
--- SceneにLayerはセットできません。
+-- SceneにLayerはセットできません.
 ---------------------------------------
 function Scene:setLayer(layer)
 end
 
 ---------------------------------------
--- 子オブジェクトのレイアウトを更新します。
+-- 子オブジェクトのレイアウトを更新します.
 ---------------------------------------
 function Scene:updateLayout()
     for i, layer in ipairs(self.layers) do
@@ -249,7 +251,7 @@ function Scene:updateLayout()
 end
 
 ---------------------------------------
--- 色をアニメーション遷移させます。
+-- 色をアニメーション遷移させます.
 ---------------------------------------
 function Scene:moveColor(red, green, blue, alpha, sec, mode, completeHandler)
     local actionGroup = MOAIAction.new()
@@ -269,7 +271,7 @@ function Scene:moveColor(red, green, blue, alpha, sec, mode, completeHandler)
 end
 
 ---------------------------------------
--- フェードインします。
+-- フェードインします.
 ---------------------------------------
 function Scene:fadeIn(sec, mode, completeHandler)
     local actionGroup = MOAIAction.new()
@@ -289,7 +291,7 @@ function Scene:fadeIn(sec, mode, completeHandler)
 end
 
 ---------------------------------------
--- フェードアウトします。
+-- フェードアウトします.
 ---------------------------------------
 function Scene:fadeOut(sec, mode, completeHandler)
     local actionGroup = MOAIAction.new()
@@ -309,7 +311,7 @@ function Scene:fadeOut(sec, mode, completeHandler)
 end
 
 ---------------------------------------
--- 色を設定します。
+-- 色を設定します.
 ---------------------------------------
 function Scene:setColor(red, green, blue, alpha)
     for i, layer in ipairs(self.layers) do
@@ -318,63 +320,63 @@ function Scene:setColor(red, green, blue, alpha)
 end
 
 ---------------------------------------
--- alpha値を設定します。
+-- alpha値を設定します.
 ---------------------------------------
 function Scene:setAlpha(alpha)
     self:setColor(self.red, self.green, self.blue, alpha)
 end
 
 ---------------------------------------
--- alpha値を返します。
+-- alpha値を返します.
 ---------------------------------------
 function Scene:getAlpha()
     return self.topLayer.alpha
 end
 
 ---------------------------------------
--- red値を設定します。
+-- red値を設定します.
 ---------------------------------------
 function Scene:setRed(red)
     self:setColor(red, self.green, self.blue, self.alpha)
 end
 
 ---------------------------------------
--- red値を返します。
+-- red値を返します.
 ---------------------------------------
 function Scene:getRed()
     return self.topLayer.red
 end
 
 ---------------------------------------
--- green値を設定します。
+-- green値を設定します.
 ---------------------------------------
 function Scene:setGreen(green)
     self:setColor(self.red, green, self.blue, self.alpha)
 end
 
 ---------------------------------------
--- green値を返します。
+-- green値を返します.
 ---------------------------------------
 function Scene:getGreen()
     return self.topLayer.green
 end
 
 ---------------------------------------
--- blue値を設定します。
+-- blue値を設定します.
 ---------------------------------------
 function Scene:setBlue(blue)
     self:setColor(self.red, self.green, blue, self.alpha)
 end
 
 ---------------------------------------
--- blue値を返します。
+-- blue値を返します.
 ---------------------------------------
 function Scene:getBlue()
     return self.topLayer.blue
 end
 
 ---------------------------------------
--- 表示するか設定します。
+-- 表示するか設定します.
 ---------------------------------------
 function Scene:setVisible(visible)
     self._visible = visible
@@ -384,21 +386,21 @@ function Scene:setVisible(visible)
 end
 
 ---------------------------------------
--- 表示するか返します。
+-- 表示するか返します.
 ---------------------------------------
 function Scene:isVisible(visible)
     return self._visible
 end
 
 ---------------------------------------
--- 起動したかどうか返します。
+-- 起動したかどうか返します.
 ---------------------------------------
 function Scene:isOpened()
     return self._opened
 end
 
 ---------------------------------------
--- シーンの生成処理時に一度だけ呼ばれます。
+-- シーンの生成処理時に一度だけ呼ばれます.
 ---------------------------------------
 function Scene:onCreate(params)
     FunctionUtil.callExist(self.sceneHandler.onCreate, params)
@@ -406,31 +408,31 @@ function Scene:onCreate(params)
 end
 
 ---------------------------------------
--- シーンの開始時に一度だけ呼ばれます。
+-- シーンの開始時に一度だけ呼ばれます.
 ---------------------------------------
 function Scene:onStart(params)
     FunctionUtil.callExist(self.sceneHandler.onStart, params)
 end
 
 ---------------------------------------
--- シーンの再開時に呼ばれます。
--- pauseした場合に、再開処理で呼ばれます。
+-- シーンの再開時に呼ばれます.
+-- pauseした場合に、再開処理で呼ばれます.
 ---------------------------------------
 function Scene:onResume(params)
     FunctionUtil.callExist(self.sceneHandler.onResume, params)
 end
 
 ---------------------------------------
--- シーンの一時停止時に呼ばれます。
+-- シーンの一時停止時に呼ばれます.
 ---------------------------------------
 function Scene:onPause()
     FunctionUtil.callExist(self.sceneHandler.onPause)
 end
 
 ---------------------------------------
--- シーンの停止時に呼ばれます。
+-- シーンの停止時に呼ばれます.
 -- 停止された後、他シーン遷移が完了した後に
--- onDestoryが呼ばれます。
+-- onDestoryが呼ばれます.
 ---------------------------------------
 function Scene:onStop()
     self._opened = false
@@ -438,8 +440,8 @@ function Scene:onStop()
 end
 
 ---------------------------------------
--- シーンの破棄時に呼ばれます。
--- この時点でシーンは破棄されて使用できなくなります。
+-- シーンの破棄時に呼ばれます.
+-- この時点でシーンは破棄されて使用できなくなります.
 ---------------------------------------
 function Scene:onDestroy()
     for i, layer in ipairs(self.layers) do
@@ -452,7 +454,7 @@ function Scene:onDestroy()
 end
 
 ---------------------------------------
--- フレーム毎の処理を行います。
+-- フレーム毎の処理を行います.
 ---------------------------------------
 function Scene:onEnterFrame(event)
     for i, layer in ipairs(self.layers) do
@@ -462,42 +464,42 @@ function Scene:onEnterFrame(event)
 end
 
 ---------------------------------------
--- キーボード入力時の処理を行います。
+-- キーボード入力時の処理を行います.
 ---------------------------------------
 function Scene:onKeyboard(event)
     FunctionUtil.callExist(self.sceneHandler.onKeyboard, event)
 end
 
 ---------------------------------------
--- 画面をタッチした時のイベント処理です。
+-- 画面をタッチした時のイベント処理です.
 ---------------------------------------
 function Scene:onSceneTouchDown(event)
     self:onSceneTouchCommon(event, "onTouchDown")
 end
 
 ---------------------------------------
--- 画面をタッチした時のイベント処理です。
+-- 画面をタッチした時のイベント処理です.
 ---------------------------------------
 function Scene:onSceneTouchUp(event)
     self:onSceneTouchCommon(event, "onTouchUp")
 end
 
 ---------------------------------------
--- 画面をタッチした時のイベント処理です。
+-- 画面をタッチした時のイベント処理です.
 ---------------------------------------
 function Scene:onSceneTouchMove(event)
     self:onSceneTouchCommon(event, "onTouchMove")
 end
 
 ---------------------------------------
--- 画面をタッチした時のイベント処理です。
+-- 画面をタッチした時のイベント処理です.
 ---------------------------------------
 function Scene:onSceneTouchCancel(event)
     self:onSceneTouchCommon(event, "onTouchCancel")
 end
 
 ---------------------------------------
--- 画面をタッチした時の共通処理です。
+-- 画面をタッチした時の共通処理です.
 ---------------------------------------
 function Scene:onSceneTouchCommon(event, funcName)
     Log.debug("[Scene:onSceneTouchCommon]", funcName)

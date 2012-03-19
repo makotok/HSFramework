@@ -1,7 +1,9 @@
 ----------------------------------------------------------------
--- AnimationはDisplayObjectをアニメーションする為のクラスです。
--- 移動、回転、拡大や、フレームアニメーションに対応します。
+-- AnimationはDisplayObjectをアニメーションする為のクラスです.
+-- 移動、回転、拡大や、フレームアニメーションに対応します.
 --
+-- @class table
+-- @name Animation
 ----------------------------------------------------------------
 Animation = EventDispatcher()
 
@@ -36,21 +38,21 @@ function Animation:init(targets, sec, easeType)
 end
 
 ---------------------------------------
--- アニメーション中かどうか返します。
+-- アニメーション中かどうか返します.
 ---------------------------------------
 function Animation:isRunning()
     return self._running
 end
 
 ---------------------------------------
--- 対象オブジェクトを返します。
+-- 対象オブジェクトを返します.
 ---------------------------------------
 function Animation:getTargets()
     return self._targets
 end
 
 ---------------------------------------
--- アニメーションのプロパティを設定します。
+-- アニメーションのプロパティを設定します.
 ---------------------------------------
 function Animation:setting(src)
     local command = self:newCommand(
@@ -64,7 +66,7 @@ function Animation:setting(src)
 end
 
 ---------------------------------------
--- 対象オブジェクトのプロパティを設定します。
+-- 対象オブジェクトのプロパティを設定します.
 ---------------------------------------
 function Animation:copy(src)
     local command = self:newCommand(
@@ -80,7 +82,7 @@ function Animation:copy(src)
 end
 
 ---------------------------------------
--- 対象オブジェクトを移動させます。
+-- 対象オブジェクトを移動させます.
 ---------------------------------------
 function Animation:move(moveX, moveY, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
@@ -92,7 +94,7 @@ function Animation:move(moveX, moveY, sec, mode)
 end
 
 ---------------------------------------
--- 対象オブジェクトを回転させます。
+-- 対象オブジェクトを回転させます.
 ---------------------------------------
 function Animation:rotate(rotation, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
@@ -104,7 +106,7 @@ function Animation:rotate(rotation, sec, mode)
 end
 
 ---------------------------------------
--- 対象オブジェクトを拡大します。
+-- 対象オブジェクトを拡大します.
 ---------------------------------------
 function Animation:scale(scaleX, scaleY, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
@@ -116,7 +118,7 @@ function Animation:scale(scaleX, scaleY, sec, mode)
 end
 
 ---------------------------------------
--- 対象オブジェクトをフェードインします。
+-- 対象オブジェクトをフェードインします.
 ---------------------------------------
 function Animation:fadeIn(sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
@@ -128,7 +130,7 @@ function Animation:fadeIn(sec, mode)
 end
 
 ---------------------------------------
--- 対象オブジェクトをフェードアウトします。
+-- 対象オブジェクトをフェードアウトします.
 ---------------------------------------
 function Animation:fadeOut(sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
@@ -140,7 +142,7 @@ function Animation:fadeOut(sec, mode)
 end
 
 ---------------------------------------
--- 対象オブジェクトの色をアニメーションします。
+-- 対象オブジェクトの色をアニメーションします.
 ---------------------------------------
 function Animation:color(red, green, blue, alpha, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
@@ -152,7 +154,7 @@ function Animation:color(red, green, blue, alpha, sec, mode)
 end
 
 ---------------------------------------
--- 指定されたアニメーションを並列実行します。
+-- 指定されたアニメーションを並列実行します.
 ---------------------------------------
 function Animation:parallel(...)
     local animations = {...}
@@ -183,7 +185,7 @@ function Animation:parallel(...)
 end
 
 ---------------------------------------
--- 指定されたアニメーションを順次実行します。
+-- 指定されたアニメーションを順次実行します.
 ---------------------------------------
 function Animation:sequence(...)
     local animations = {...}
@@ -217,9 +219,9 @@ function Animation:sequence(...)
 end
 
 ---------------------------------------
--- 指定されたアニメーションを指定回数だけ実行します。
--- 0の場合は、無限にアニメーションし続けます。
--- onLoop関数がtrueを返すと、ループは終了します。
+-- 指定されたアニメーションを指定回数だけ実行します.
+-- 0の場合は、無限にアニメーションし続けます.
+-- onLoop関数がtrueを返すと、ループは終了します.
 -- 
 -- @param count ループ回数
 -- @param onLoop ループの判定関数
@@ -230,7 +232,7 @@ function Animation:loop(count, onLoop, ...)
 end
 
 ---------------------------------------
--- 一定時間待機します。
+-- 一定時間待機します.
 -- @param sec 待機時間
 ---------------------------------------
 function Animation:wait(sec)
@@ -252,12 +254,12 @@ function Animation:wait(sec)
 end
 
 ---------------------------------------
--- アニメーションを開始します。
--- 一時停止していた場合は最初から再開します。
+-- アニメーションを開始します.
+-- 一時停止していた場合は最初から再開します.
 -- 
--- 引数のparamsでいくつかの動作を制御できます。
+-- 引数のparamsでいくつかの動作を制御できます.
 -- params.onComplete(e)に関数を指定すると
--- 完了時に関数がコールされます。
+-- 完了時に関数がコールされます.
 ---------------------------------------
 function Animation:play(params)
     if self.running then
@@ -289,7 +291,7 @@ function Animation:play(params)
 end
 
 ---------------------------------------
--- コマンドを実行します。
+-- コマンドを実行します.
 ---------------------------------------
 function Animation:_executeCommand(index)
     if index <= #self._commands then
@@ -300,7 +302,7 @@ function Animation:_executeCommand(index)
 end
 
 ---------------------------------------
--- コマンド完了時のハンドラです。
+-- コマンド完了時のハンドラです.
 ---------------------------------------
 function Animation:_onCommandComplete()
     if self._stoped then
@@ -321,7 +323,7 @@ function Animation:_onCommandComplete()
 end
 
 ---------------------------------------
--- アニメーションを停止します。
+-- アニメーションを停止します.
 ---------------------------------------
 function Animation:stop()
     if not self.running then
@@ -336,8 +338,8 @@ function Animation:stop()
 end
 
 ---------------------------------------
--- アニメーション完了時のイベント処理を行います。
--- 継承して使用する事を想定します。
+-- アニメーション完了時のイベント処理を行います.
+-- 継承して使用する事を想定します.
 -- @param event
 ---------------------------------------
 function Animation:onComplete(event)
@@ -345,9 +347,9 @@ function Animation:onComplete(event)
 end
 
 ---------------------------------------
--- アニメーション実行コマンドを追加します。
+-- アニメーション実行コマンドを追加します.
 -- 通常は使用する必要がありませんが、
--- カスタムコマンドを追加する事もできます。
+-- カスタムコマンドを追加する事もできます.
 -- @param command play,stop,restart関数
 ---------------------------------------
 function Animation:addCommand(command)
@@ -356,9 +358,9 @@ function Animation:addCommand(command)
 end
 
 ---------------------------------------
--- アニメーション実行コマンドを生成します。
--- 実行コマンドは単純なテーブルです。
--- 指定しなかった関数は空関数がセットされます。
+-- アニメーション実行コマンドを生成します.
+-- 実行コマンドは単純なテーブルです.
+-- 指定しなかった関数は空関数がセットされます.
 -- @param playFunc 開始 playFunc(callback)
 -- @param stopFunc 停止 stopFunc()
 -- @return command コマンドテーブル
@@ -374,7 +376,7 @@ end
 
 ---------------------------------------
 -- 非同期なアクションを伴う、
--- アニメーション実行コマンドを生成します。
+-- アニメーション実行コマンドを生成します.
 -- @param funcName 関数名
 -- @param args sec, modeをのぞく引数
 -- @param sec 秒
