@@ -1,10 +1,13 @@
+local table = require("hs/lang/table")
+local Class = require("hs/lang/Class")
+
 --------------------------------------------------------------------------------
 -- TMXMapのObjectGroupです.
 --
 -- @class table
 -- @name TMXObjectGroup
 --------------------------------------------------------------------------------
-TMXObjectGroup = Class()
+local TMXObjectGroup = Class()
 
 ---------------------------------------
 -- コンストラクタです
@@ -39,3 +42,5 @@ end
 function TMXObjectGroup:getProperty(key)
     return self._properties[key]
 end
+
+return TMXObjectGroup

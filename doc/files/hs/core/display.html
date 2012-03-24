@@ -54,8 +54,10 @@
 		<a href="../../../files/hs/box2d/Box2DFixture.html">hs/box2d/Box2DFixture.lua</a>
 	</li>
 
-	<li><strong>hs/box2d/Box2DWorld.lua</strong></li>
-	
+	<li>
+		<a href="../../../files/hs/box2d/Box2DWorld.html">hs/box2d/Box2DWorld.lua</a>
+	</li>
+
 	<li>
 		<a href="../../../files/hs/core/Animation.html">hs/core/Animation.lua</a>
 	</li>
@@ -192,10 +194,8 @@
 		<a href="../../../files/hs/core/Window.html">hs/core/Window.lua</a>
 	</li>
 
-	<li>
-		<a href="../../../files/hs/core/display.html">hs/core/display.lua</a>
-	</li>
-
+	<li><strong>hs/core/display.lua</strong></li>
+	
 	<li>
 		<a href="../../../files/hs/gui/Button.html">hs/gui/Button.lua</a>
 	</li>
@@ -279,7 +279,7 @@
 
 <div id="content">
 
-<h1>File <code>hs/box2d/Box2DWorld.lua</code></h1>
+<h1>File <code>hs/core/display.lua</code></h1>
 
 
 
@@ -291,59 +291,54 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getAngularSleepTolerance">Box2DWorld:getAngularSleepTolerance</a>&nbsp;()</td>
-	<td class="summary">angularSleepTolerance  </td>
+	<td class="name" nowrap><a href="#display:newGraphics">display:newGraphics</a>&nbsp;(...)</td>
+	<td class="summary">Graphicsインスタンスを生成して返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getAutoClearForces">Box2DWorld:getAutoClearForces</a>&nbsp;()</td>
-	<td class="summary">autoClearForces  </td>
+	<td class="name" nowrap><a href="#display:newGroup">display:newGroup</a>&nbsp;(...)</td>
+	<td class="summary">Groupインスタンスを生成して返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getGravity">Box2DWorld:getGravity</a>&nbsp;()</td>
-	<td class="summary">gravity  </td>
+	<td class="name" nowrap><a href="#display:newLayer">display:newLayer</a>&nbsp;(...)</td>
+	<td class="summary">Layerインスタンスを生成して返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getLayer">Box2DWorld:getLayer</a>&nbsp;()</td>
-	<td class="summary">layer  </td>
+	<td class="name" nowrap><a href="#display:newMapSprite">display:newMapSprite</a>&nbsp;(...)</td>
+	<td class="summary">MapSpriteインスタンスを生成して返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getLinearSleepTolerance">Box2DWorld:getLinearSleepTolerance</a>&nbsp;()</td>
-	<td class="summary">linearSleepTolerance  </td>
+	<td class="name" nowrap><a href="#display:newSprite">display:newSprite</a>&nbsp;(...)</td>
+	<td class="summary">Spriteインスタンスを生成して返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getTimeToSleep">Box2DWorld:getTimeToSleep</a>&nbsp;()</td>
-	<td class="summary">timeToSleep  </td>
+	<td class="name" nowrap><a href="#display:newSpriteSheet">display:newSpriteSheet</a>&nbsp;(...)</td>
+	<td class="summary">SpriteSheetインスタンスを生成して返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getUnitsToMeters">Box2DWorld:getUnitsToMeters</a>&nbsp;()</td>
-	<td class="summary">unitsToMeters  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:init">Box2DWorld:init</a>&nbsp;(params)</td>
-	<td class="summary">コンストラクタです  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:setDebugDraw">Box2DWorld:setDebugDraw</a>&nbsp;(value)</td>
-	<td class="summary">debugDraw  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:start">Box2DWorld:start</a>&nbsp;()</td>
-	<td class="summary">Function  </td>
+	<td class="name" nowrap><a href="#display:newText">display:newText</a>&nbsp;(...)</td>
+	<td class="summary">TextLabelインスタンスを生成して返します.</td>
 	</tr>
 
 </table>
 
 
 
+
+<h2>Tables</h2>
+<table class="table_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#display ">display </a></td>
+	<td class="summary">DisplayObject系のインスタンスを生成する為のクラスです.</td>
+	</tr>
+
+</table>
 
 
 
@@ -358,135 +353,16 @@
 
 
 
-<dt><a name="Box2DWorld:getAngularSleepTolerance"></a><strong>Box2DWorld:getAngularSleepTolerance</strong>&nbsp;()</dt>
+<dt><a name="display:newGraphics"></a><strong>display:newGraphics</strong>&nbsp;(...)</dt>
 <dd>
-angularSleepTolerance 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getAutoClearForces"></a><strong>Box2DWorld:getAutoClearForces</strong>&nbsp;()</dt>
-<dd>
-autoClearForces 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getGravity"></a><strong>Box2DWorld:getGravity</strong>&nbsp;()</dt>
-<dd>
-gravity 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getLayer"></a><strong>Box2DWorld:getLayer</strong>&nbsp;()</dt>
-<dd>
-layer 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getLinearSleepTolerance"></a><strong>Box2DWorld:getLinearSleepTolerance</strong>&nbsp;()</dt>
-<dd>
-linearSleepTolerance 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getTimeToSleep"></a><strong>Box2DWorld:getTimeToSleep</strong>&nbsp;()</dt>
-<dd>
-timeToSleep 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getUnitsToMeters"></a><strong>Box2DWorld:getUnitsToMeters</strong>&nbsp;()</dt>
-<dd>
-unitsToMeters 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:init"></a><strong>Box2DWorld:init</strong>&nbsp;(params)</dt>
-<dd>
-コンストラクタです 
+Graphicsインスタンスを生成して返します. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  params: 
+	  ...: 
 	</li>
 	
 </ul>
@@ -503,16 +379,16 @@ unitsToMeters
 
 
 
-<dt><a name="Box2DWorld:setDebugDraw"></a><strong>Box2DWorld:setDebugDraw</strong>&nbsp;(value)</dt>
+<dt><a name="display:newGroup"></a><strong>display:newGroup</strong>&nbsp;(...)</dt>
 <dd>
-debugDraw 
+Groupインスタンスを生成して返します. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  value: 
+	  ...: 
 	</li>
 	
 </ul>
@@ -529,10 +405,123 @@ debugDraw
 
 
 
-<dt><a name="Box2DWorld:start"></a><strong>Box2DWorld:start</strong>&nbsp;()</dt>
+<dt><a name="display:newLayer"></a><strong>display:newLayer</strong>&nbsp;(...)</dt>
 <dd>
-Function 
+Layerインスタンスを生成して返します. 
 
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:newMapSprite"></a><strong>display:newMapSprite</strong>&nbsp;(...)</dt>
+<dd>
+MapSpriteインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:newSprite"></a><strong>display:newSprite</strong>&nbsp;(...)</dt>
+<dd>
+Spriteインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:newSpriteSheet"></a><strong>display:newSpriteSheet</strong>&nbsp;(...)</dt>
+<dd>
+SpriteSheetインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:newText"></a><strong>display:newText</strong>&nbsp;(...)</dt>
+<dd>
+TextLabelインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
 
 
 
@@ -548,6 +537,19 @@ Function
 
 
 
+
+<h2><a name="tables"></a>Tables</h2>
+<dl class="table">
+
+<dt><a name="display "></a><strong>display </strong></dt>
+<dd>DisplayObject系のインスタンスを生成する為のクラスです. このクラスを使用しないで直接生成してもいいですが、 このクラスを使用するこで、requireが一回で済みます.
+
+
+
+</dd>
+
+
+</dl>
 
 
 

@@ -39,7 +39,7 @@
 <ul>
 
 	<li>
-		<a href="../../../files/hs/HSFramework.html">hs/HSFramework.lua</a>
+		<a href="../../../files/hs/Framework.html">hs/Framework.lua</a>
 	</li>
 
 	<li>
@@ -131,7 +131,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Log.html">hs/core/Log.lua</a>
+		<a href="../../../files/hs/core/Logger.html">hs/core/Logger.lua</a>
 	</li>
 
 	<li>
@@ -195,6 +195,10 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/core/display.html">hs/core/display.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/gui/Button.html">hs/gui/Button.lua</a>
 	</li>
 
@@ -226,6 +230,14 @@
 
 	<li>
 		<a href="../../../files/hs/lang/UString.html">hs/lang/UString.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/lang/math.html">hs/lang/math.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/lang/table.html">hs/lang/table.lua</a>
 	</li>
 
 	<li>
@@ -284,13 +296,23 @@
 	</tr>
 
 	<tr>
+	<td class="name" nowrap><a href="#ScrollView:onEnterFrame">ScrollView:onEnterFrame</a>&nbsp;(event)</td>
+	<td class="summary">フレームの処理です.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#ScrollView:onTouchDown">ScrollView:onTouchDown</a>&nbsp;(event)</td>
-	<td class="summary">子オブジェクトを生成します。  </td>
+	<td class="summary">タッチを開始した時のイベント処理です.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#ScrollView:onTouchMove">ScrollView:onTouchMove</a>&nbsp;(event)</td>
 	<td class="summary">子オブジェクトを生成します。  </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#ScrollView:onTouchUp">ScrollView:onTouchUp</a>&nbsp;(event)</td>
+	<td class="summary">タッチを終了した時のイベント処理です.</td>
 	</tr>
 
 </table>
@@ -337,9 +359,35 @@
 
 
 
+<dt><a name="ScrollView:onEnterFrame"></a><strong>ScrollView:onEnterFrame</strong>&nbsp;(event)</dt>
+<dd>
+フレームの処理です. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  event: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
 <dt><a name="ScrollView:onTouchDown"></a><strong>ScrollView:onTouchDown</strong>&nbsp;(event)</dt>
 <dd>
-子オブジェクトを生成します。 
+タッチを開始した時のイベント処理です. 
 
 
 <h3>Parameters</h3>
@@ -366,6 +414,32 @@
 <dt><a name="ScrollView:onTouchMove"></a><strong>ScrollView:onTouchMove</strong>&nbsp;(event)</dt>
 <dd>
 子オブジェクトを生成します。 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  event: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="ScrollView:onTouchUp"></a><strong>ScrollView:onTouchUp</strong>&nbsp;(event)</dt>
+<dd>
+タッチを終了した時のイベント処理です. 
 
 
 <h3>Parameters</h3>

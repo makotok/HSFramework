@@ -1,4 +1,4 @@
-require "hs/HSFramework"
+require "hs/Framework"
 require "test/luaunit"
 
 -- test cases

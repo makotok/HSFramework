@@ -1,3 +1,6 @@
+local table = require("hs/lang/table")
+local Class = require("hs/lang/Class")
+
 --------------------------------------------------------------------------------
 -- TMXMapのObjectGroupです.
 --
@@ -5,7 +8,7 @@
 -- @name TMXObject
 --------------------------------------------------------------------------------
 
-TMXObject = Class()
+local TMXObject = Class()
 
 ---------------------------------------
 -- コンストラクタです
@@ -33,3 +36,5 @@ end
 ---------------------------------------
 function TMXObject:createBox2DBody()
 end
+
+return TMXObject

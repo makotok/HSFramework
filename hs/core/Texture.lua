@@ -4,7 +4,7 @@
 -- @class table
 -- @name Texture
 ----------------------------------------------------------------
-Texture = {}
+local Texture = {}
 
 ---------------------------------------
 --- 新規テクスチャをロードして返します.
@@ -15,3 +15,4 @@ function Texture:new(path)
     return texture
 end
 
+return Texture

@@ -1,3 +1,9 @@
+local table = require("hs/lang/table")
+local DisplayObject = require("hs/core/DisplayObject")
+local Transform = require("hs/core/Transform")
+local Layer = require("hs/core/Layer")
+local FunctionUtil = require("hs/util/FunctionUtil")
+
 ----------------------------------------------------------------
 -- Sceneはシーングラフを構築するトップレベルコンテナです.
 -- Sceneは複数のLayerを管理します.
@@ -16,7 +22,7 @@
 -- @class table
 -- @name Scene
 ----------------------------------------------------------------
-Scene = Transform()
+local Scene = Transform()
 
 -- getters
 Scene:setPropertyName("width")
@@ -35,6 +41,11 @@ Scene:setPropertyName("visible", "setVisible", "isVisible")
 ---------------------------------------
 function Scene:init()
     Scene:super(self)
+    
+    local SceneAnimation = require("hs/core/SceneAnimation")
+    local Application = require("hs/core/Application")
+
+    self.sceneManager = require("hs/core/SceneManager")
 
     -- 初期値
     self.name = ""
@@ -54,14 +65,14 @@ end
 -- シーンを最前面に表示します.
 ---------------------------------------
 function Scene:orderToFront()
-    SceneManager:orderToFront(self)
+    self.sceneManager:orderToFront(self)
 end
 
 ---------------------------------------
 -- シーンを最背面に表示します.
 ---------------------------------------
 function Scene:orderToBack()
-    SceneManager:orderToBack(self)
+    self.sceneManager:orderToBack(self)
 end
 
 ---------------------------------------
@@ -73,7 +84,6 @@ function Scene:showRenders()
     end
     
     for i, layer in ipairs(self.layers) do
-        Log.debug("push render!")
         MOAISim.pushRenderPass(layer.renderPass)
     end
 end
@@ -82,7 +92,7 @@ end
 -- カレントシーンかどうか返します.
 ---------------------------------------
 function Scene:isCurrentScene()
-    return SceneManager.currentScene == self
+    return self.sceneManager.currentScene == self
 end
 
 ---------------------------------------
@@ -116,7 +126,7 @@ function Scene:addChild(child)
     self:setAttrLinkForChild(child)
     
     if self:isOpened() then
-        SceneManager:refreshRenders()
+        self.sceneManager:refreshRenders()
     end
 end
 
@@ -142,7 +152,7 @@ function Scene:removeChild(child)
     self:setAttrLinkForChild(child)
     
     if self:isOpened() then
-        SceneManager:refreshRenders()
+        self.sceneManager:refreshRenders()
     end
 end
 
@@ -502,8 +512,6 @@ end
 -- 画面をタッチした時の共通処理です.
 ---------------------------------------
 function Scene:onSceneTouchCommon(event, funcName)
-    Log.debug("[Scene:onSceneTouchCommon]", funcName)
-    
     local max = #self.layers
     for i = max, 1, -1 do
         local layer = self.layers[i]
@@ -520,3 +528,5 @@ function Scene:onSceneTouchCommon(event, funcName)
         FunctionUtil.callExist(self.sceneHandler[funcName], event)
     end
 end
+
+return Scene

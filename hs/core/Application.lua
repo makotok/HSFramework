@@ -1,3 +1,7 @@
+local table = require("hs/lang/table")
+local Event = require("hs/core/Event")
+local EventDispatcher = require("hs/core/EventDispatcher")
+
 ----------------------------------------------------------------
 -- 単一のウィンドウを管理するクラスです.
 -- ウィンドウのタイトル、描画領域（Screen）を保持します.
@@ -7,7 +11,7 @@
 -- @name Application
 ----------------------------------------------------------------
 
-Application = EventDispatcher():new()
+local Application = EventDispatcher():new()
 
 -- プロパティ定義
 Application:setPropertyName("window")
@@ -20,6 +24,7 @@ Application:setPropertyName("stageHeight")
 -- 初期化処理を行います.
 ---------------------------------------
 function Application:initialize()
+    local Window = require("hs/core/Window")
     self._window = Window:new()
 
     if MOAIThread then
@@ -32,11 +37,10 @@ end
 
 ---------------------------------------
 -- フレーム毎の処理を行います.
--- TODO:毎フレーム行うと遅いのかも・・・
 ---------------------------------------
 function Application:enterFrame()
+    local event = Event:new(Event.ENTER_FRAME)
     while true do
-        local event = EventPool:getObject(Event.ENTER_FRAME)
         self:dispatchEvent(event)
         coroutine.yield()
     end
@@ -109,3 +113,5 @@ end
 function Application:getStageHeight()
     return self.window.stageHeight
 end
+
+return Application

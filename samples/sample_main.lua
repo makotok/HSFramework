@@ -1,12 +1,15 @@
+local Button = require("hs/gui/Button")
+local ScrollView = require("hs/gui/ScrollView")
+local VBoxLayout = require("hs/core/VBoxLayout")
+local SceneManager = require("hs/core/SceneManager")
+
 module(..., package.seeall)
 
 -- create event
 function onCreate()
-    scene.sceneOpenAnimation = SceneAnimation.now
-    scene.sceneCloseAnimation = SceneAnimation.now
     
     -- scrollView
-    scrollView = ScrollView:new({parent = scene, layout = VBoxLayout:new()})
+    scrollView = ScrollView:new({parent = scene, layout = VBoxLayout:new(), hScrollEnabled = false, vScrollEnabled = true})
 
     -- sample list
     for i, item in ipairs(sceneItems) do
@@ -36,7 +39,6 @@ sceneItems ={
 
 -- touch event
 function onTouchDown_button(self, event)
-    Log.info("label touch!" .. self.sceneName)
     SceneManager:openNextScene(self.sceneName)
 end
 

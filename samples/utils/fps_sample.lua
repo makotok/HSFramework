@@ -10,6 +10,6 @@ function onStart()
     sprite2:moveFrames({1, 2, 3, 2, 1}, 0.25)
     
     -- fps monitor
-    Log.level = Log.LEVEL_DEBUG
+    Logger.level = Logger.LEVEL_DEBUG
     FPSMonitor:new(5):play()
 end

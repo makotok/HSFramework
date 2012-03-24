@@ -1,3 +1,6 @@
+local table = require("hs/lang/table")
+local Class = require("hs/lang/Class")
+
 --------------------------------------------------------------------------------
 -- TMXMapのタイルセットクラスです.
 --
@@ -5,7 +8,7 @@
 -- @name TMXTileset
 --------------------------------------------------------------------------------
 
-TMXTileset = Class()
+local TMXTileset = Class()
 
 ---------------------------------------
 -- コンストラクタです
@@ -49,3 +52,5 @@ end
 function TMXTileset:getTileIndexByGid(gid)
     return gid - self.firstgid + 1
 end
+
+return TMXTileset

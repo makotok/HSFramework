@@ -2,7 +2,7 @@
 -- Box2Dの初期値の一覧です。
 ----------------------------------------------------------------
 
-Box2DConfig = {}
+local Box2DConfig = {}
 
 -- Box2DWorld
 Box2DConfig.world = {
@@ -24,3 +24,5 @@ Box2DConfig.fixture = {
     restitution = 0.3,
     --sensor = true
 }
+
+return Box2DConfig

@@ -1,9 +1,11 @@
+local EventDispatcher = require("hs/core/EventDispatcher")
+
 --------------------------------------------------------------------------------
 -- 表示オブジェクトの移動や回転、拡大を行うためのクラスです
 -- @class table
 -- @name Transform
 --------------------------------------------------------------------------------
-Transform = EventDispatcher()
+local Transform = EventDispatcher()
 
 -- プロパティ定義
 Transform:setPropertyName("x")
@@ -69,7 +71,6 @@ end
 -- ローカル座標を移動します.
 ---------------------------------------
 function Transform:move(x, y, sec, mode, completeHandler)
-    Log.debug(x, y, mode)
     local action = self.transformObj:moveLoc(x, y, sec, mode)
     if completeHandler ~= nil then
         action:setListener(MOAIAction.EVENT_STOP, function(prop) completeHandler(self) end)
@@ -293,6 +294,8 @@ end
 -- nilを設定した場合、親オブジェクトはクリアされます.
 ---------------------------------------
 function Transform:setParent(parent)
+    local Scene = require("hs/core/Scene")
+    
     -- sceneを指定された場合はtopLayerを取得
     if parent and parent:instanceOf(Scene) then
         parent = parent.topLayer
@@ -329,3 +332,4 @@ function Transform:getParent(parent)
     return self._parent
 end
 
+return Transform

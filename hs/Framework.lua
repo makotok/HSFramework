@@ -1,8 +1,3 @@
-----------------------------------------------------------------
--- HSFrameworkのモジュールをロードするためのクラスです.
--- モジュールの参照、初期化を担います.
-----------------------------------------------------------------
-
 -- lang liblary
 require "hs/lang/Globals"
 require "hs/lang/Class"
@@ -13,7 +8,7 @@ require "hs/lang/UString"
 require "hs/util/FunctionUtil"
 
 -- core library
-require "hs/core/Log"
+require "hs/core/Logger"
 require "hs/core/ObjectPool"
 require "hs/core/EventPool"
 require "hs/core/Event"
@@ -68,21 +63,36 @@ require "hs/gui/Skins" -- TODO:別の方法を考える
 require "hs/gui/View"
 require "hs/gui/ScrollView"
 
+local logger = require("hs/core/Logger")
+local InputManager = require("hs/core/InputManager")
+local SceneManager = require("hs/core/SceneManager")
+local Application = require("hs/core/Application")
+
 ----------------------------------------------------------------
--- HSFramework
+-- HSFrameworkのモジュールをロードするためのクラスです.
+-- モジュールの参照、初期化を担います.
 ----------------------------------------------------------------
-HSFramework = {}
-HSFramework.VERSION = "0.4.2"
+local Framework = {initialObjects = {}}
+Framework.VERSION = "0.4.2"
 
 ---------------------------------------
---- フレームワークの初期化処理です
+-- フレームワークの初期化処理です.
+-- このフレームワークを使う場合に最初に実行してください.
 ---------------------------------------
-function HSFramework:initialize()
-    Log.info("Hana Saurus Framework loading...", "Version:" .. HSFramework.VERSION)
+function Framework:initialize()
+    logger.info("Hana Saurus Framework loading...", "Version:" .. self.VERSION)
 
-    InputManager:initialize()
-    SceneManager:initialize()
-    Application:initialize()
+    for i, v in ipairs(self.initialObjects) do
+        v:initialize()
+    end
 end
 
-HSFramework:initialize()
+function Framework:addInitialObject(object)
+    table.insert(self.initialObjects, object)
+end
+
+Framework:addInitialObject(InputManager)
+Framework:addInitialObject(SceneManager)
+Framework:addInitialObject(Application)
+
+return Framework

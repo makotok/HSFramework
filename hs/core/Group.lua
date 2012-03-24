@@ -1,11 +1,14 @@
+local table = require("hs/lang/table")
+local DisplayObject = require("hs/core/DisplayObject")
+local Graphics = require("hs/core/Graphics")
+
 --------------------------------------------------------------------------------
 -- 表示オブジェクトを含める事ができるグルーピングクラスです
 --
 -- @class table
 -- @name Group
 --------------------------------------------------------------------------------
-
-Group = DisplayObject()
+local Group = DisplayObject()
 
 -- プロパティ定義
 Group:setPropertyName("layout")
@@ -288,8 +291,6 @@ function Group:updateLayout(forceUpdate)
         self.layout:update(self)
     end
     self.layoutInvalidated = false
-    
-    Log.debug("Group:updateLayout", "layout updated!")
 end
 
 ---------------------------------------
@@ -326,3 +327,5 @@ function Group:onEnterFrame(event)
     end
     self:updateLayout()
 end
+
+return Group

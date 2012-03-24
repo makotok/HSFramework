@@ -1,3 +1,6 @@
+local table = require("hs/lang/table")
+local DisplayObject = require("hs/core/DisplayObject")
+
 --------------------------------------------------------------------------------
 -- Graphics機能を持ったDisplayObjectです.
 -- DisplayObjectの機能に加えて、基本図形の描画を行う機能があります.
@@ -21,10 +24,10 @@
 -- @class table
 -- @name Graphics
 --------------------------------------------------------------------------------
-Graphics = DisplayObject()
+local Graphics = DisplayObject()
 
 function Graphics:init(params)
-    DisplayObject.init(self)
+    Graphics:super(self)
     
     -- 描画コマンド
     self._commands = {}
@@ -316,3 +319,5 @@ end
 function Graphics:clear()
     self._commands = {}
 end
+
+return Graphics

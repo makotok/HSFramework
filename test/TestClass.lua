@@ -1,3 +1,5 @@
+local Class = require("hs/lang/Class")
+
 TestClass = {}
 
 ------------------------------------------------------------

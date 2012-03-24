@@ -1,3 +1,9 @@
+local table = require("hs/lang/table")
+local PropertySupport = require("hs/lang/PropertySupport")
+local Box2DConfig = require("hs/box2d/Box2DConfig")
+local Box2DBody = require("hs/box2d/Box2DBody")
+local Box2DFixture = require("hs/box2d/Box2DFixture")
+
 ----------------------------------------------------------------
 -- MOAIBox2DWorldのWrapperクラスです。
 -- プロパティアクセスを可能とします。
@@ -5,7 +11,7 @@
 -- TODO:オーバーヘッドがどの程度か後で計測したい
 ----------------------------------------------------------------
 
-Box2DWorld = PropertySupport()
+local Box2DWorld = PropertySupport()
 
 Box2DWorld:setPropertyName("layer")
 Box2DWorld:setPropertyName("angularSleepTolerance")
@@ -156,7 +162,6 @@ end
 function Box2DWorld:setLayer(layer)
     self._layer = layer
     if self.debugDraw and layer then
-        Log.debug("[Box2DWorld]", "debug draw!")
         layer.renderPass:setBox2DWorld(self.world)
     end
 end
@@ -260,7 +265,6 @@ function Box2DWorld:setDebugDraw(value)
     self._debugDraw = value
     
     if value and self.layer then
-        Log.debug("[Box2DWorld]", "debug draw!")
         self.layer:setBox2DWorld(self.world)
     end
 end
@@ -268,3 +272,5 @@ end
 function Box2DWorld:getDebugDraw()
     return self._debugDraw
 end
+
+return Box2DWorld

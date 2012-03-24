@@ -4,7 +4,7 @@ module(..., package.seeall)
 -- scene: this module scene.
 
 function onCreate()
-    Log.info("onCreate()", scene.name)
+    Logger.info("onCreate()", scene.name)
     
     scene.sceneOpenAnimation = SceneAnimation.crossFade
     scene.sceneCloseAnimation = SceneAnimation.crossFade
@@ -14,31 +14,31 @@ function onCreate()
 end
 
 function onStart()
-    Log.info("onStart()", scene.name)
+    Logger.info("onStart()", scene.name)
 end
 
 function onResume()
-    Log.info("onResume()", scene.name)
+    Logger.info("onResume()", scene.name)
 end
 
 function onPause()
-    Log.info("onPause()", scene.name)
+    Logger.info("onPause()", scene.name)
 end
 
 function onStop()
-    Log.info("onStop()", scene.name)
+    Logger.info("onStop()", scene.name)
 end
 
 function onDestroy()
-    Log.info("onDestroy()", scene.name)
+    Logger.info("onDestroy()", scene.name)
 end
 
 function onEnterFrame()
-    --Log.info("onEnterFrame()", scene.name)
+    --Logger.info("onEnterFrame()", scene.name)
 end
 
 function onKeyboard(event)
-    Log.info("key = " .. event.key .. ", down = " .. tostring(event.down))
+    Logger.info("key = " .. event.key .. ", down = " .. tostring(event.down))
 end
 
 function onTouchDown(event)

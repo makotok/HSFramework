@@ -1,11 +1,19 @@
+local table = require("hs/lang/table")
+local Class = require("hs/lang/Class")
+local logger = require("hs/core/Logger")
+local TMXMap = require("hs/tmx/TMXMap")
+local TMXTileset = require("hs/tmx/TMXTileset")
+local TMXLayer = require("hs/tmx/TMXLayer")
+local TMXObject = require("hs/tmx/TMXObject")
+local TMXObjectGroup = require("hs/tmx/TMXObjectGroup")
+
 ----------------------------------------------------------------
 -- TMXMapLoaderはtmxファイルを読み込んで、TMXMapを生成するクラスです。
 -- 
 -- @class table
 -- @name TMXMapLoader
 ----------------------------------------------------------------
-
-TMXMapLoader = Class()
+local TMXMapLoader = Class()
 
 ---------------------------------------
 -- コンストラクタです
@@ -35,7 +43,7 @@ end
 -- ノードを読み込みます。
 ---------------------------------------
 function TMXMapLoader:parseNode(node)
-    --Log.debug("[TMXMapLoader:parseNode]", node.type)
+    --logger.debug("[TMXMapLoader:parseNode]", node.type)
 
     local parser = self.nodeParserNames[node.type]
     if parser then
@@ -61,7 +69,7 @@ end
 -- Mapのノードを読み込みます。
 ---------------------------------------
 function TMXMapLoader:parseNodeMap(node)
-    --Log.debug("[TMXMapLoader:parseNodeMap]")
+    --logger.debug("[TMXMapLoader:parseNodeMap]")
 
     local map = TMXMap:new()
     self.map = map
@@ -76,7 +84,7 @@ end
 -- 読み込んだ結果は、destに設定します。
 ---------------------------------------
 function TMXMapLoader:parseNodeAttributes(node, dest)
-    --Log.debug("[TMXMapLoader:parseNodeAttributes]", node.type)
+    --logger.debug("[TMXMapLoader:parseNodeAttributes]", node.type)
 
     for key, value in pairs(node.attributes) do
         if tonumber(value) ~= nil then
@@ -91,7 +99,7 @@ end
 -- tilesetのノードを読み込みます。
 ---------------------------------------
 function TMXMapLoader:parseNodeTileset(node)
-    --Log.debug("[TMXMapLoader:parseNodeTileset]")
+    --logger.debug("[TMXMapLoader:parseNodeTileset]")
     
     local tileset = TMXTileset:new(self.map)
     self.map:addTileset(tileset)
@@ -106,7 +114,7 @@ end
 -- imageのノードを読み込みます。
 ---------------------------------------
 function TMXMapLoader:parseNodeImage(node, tileset)
-    --Log.debug("[TMXMapLoader:parseNodeImage]")
+    --logger.debug("[TMXMapLoader:parseNodeImage]")
     
     if not node.children.image then
         return
@@ -122,7 +130,7 @@ end
 -- tileのノードを読み込みます。
 ---------------------------------------
 function TMXMapLoader:parseNodeTile(node, tileset)
-    --Log.debug("[TMXMapLoader:parseNodeTile]")
+    --logger.debug("[TMXMapLoader:parseNodeTile]")
 
     if node.children.node == nil then
         return
@@ -140,7 +148,7 @@ end
 -- Layerのノードを読み込みます。
 ---------------------------------------
 function TMXMapLoader:parseNodeLayer(node)
-    --Log.debug("[TMXMapLoader:parseNodeLayer]")
+    --logger.debug("[TMXMapLoader:parseNodeLayer]")
 
     local layer = TMXLayer:new(self.map)
     self.map:addLayer(layer)
@@ -154,7 +162,7 @@ end
 -- dataのノードを読み込みます。
 ---------------------------------------
 function TMXMapLoader:parseNodeData(node, layer)
-    --Log.debug("[TMXMapLoader:parseNodeData]")
+    --logger.debug("[TMXMapLoader:parseNodeData]")
 
     if node.children.data == nil then
         return
@@ -172,7 +180,7 @@ end
 -- ObjectGroupのノードを読み込みます。
 ---------------------------------------
 function TMXMapLoader:parseNodeObjectGroup(node)
-    --Log.debug("[TMXMapLoader:parseNodeObjectGroup]")
+    --logger.debug("[TMXMapLoader:parseNodeObjectGroup]")
 
     local group = TMXObjectGroup:new(self.map)
     self.map:addObjectGroup(group)
@@ -186,7 +194,7 @@ end
 -- ObjectGroup.objectのノードを読み込みます。
 ---------------------------------------
 function TMXMapLoader:parseNodeObject(node, group)
-    --Log.debug("[TMXMapLoader:parseNodeObject]")
+    --logger.debug("[TMXMapLoader:parseNodeObject]")
 
     if node.children.object == nil then
         return
@@ -206,7 +214,7 @@ end
 -- TMXファイルのノードを読み込みます。
 ---------------------------------------
 function TMXMapLoader:parseNodeProperties(node, dest)
-    --Log.debug("[TMXMapLoader:parseNodeProperties]")
+    --logger.debug("[TMXMapLoader:parseNodeProperties]")
 
     if not node.children.properties then
         return
@@ -218,3 +226,5 @@ function TMXMapLoader:parseNodeProperties(node, dest)
         end
     end
 end
+
+return TMXMapLoader

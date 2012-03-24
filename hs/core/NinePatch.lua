@@ -1,3 +1,7 @@
+local table = require("hs/lang/table")
+local DisplayObject = require("hs/core/DisplayObject")
+local TextureCache = require("hs/core/TextureCache")
+
 --------------------------------------------------------------------------------
 -- 画像のサイズにあわせて、部分的に伸張するスプライトクラスです.
 -- TODO:なんか使い勝手がいまいちかも
@@ -5,7 +9,7 @@
 -- @name NinePatch
 --------------------------------------------------------------------------------
 
-NinePatch = DisplayObject()
+local NinePatch = DisplayObject()
 
 -- プロパティ定義
 NinePatch:setPropertyName("texture")
@@ -76,3 +80,5 @@ function NinePatch:setSize(width, height)
     DisplayObject.setSize(self, width, height)
     self.deck:setRect(0, 0, self.width, self.height)
 end
+
+return NinePatch

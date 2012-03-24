@@ -1,10 +1,13 @@
+local table = require("hs/lang/table")
+local Class = require("hs/lang/Class")
+
 --------------------------------------------------------------------------------
 -- 表示オブジェクトの位置やサイズのレイアウトを更新する為のクラスです.
 -- このクラスでは、Box形式のオブジェクトを水平、垂直方向に配置する事が可能です.
 -- @class table
 -- @name BoxLayout
 --------------------------------------------------------------------------------
-BoxLayout = Class()
+local BoxLayout = Class()
 
 -- 定数
 -- hAlign
@@ -181,3 +184,5 @@ function BoxLayout:getHorizotalLayoutSize(children)
     end
     return width, height
 end
+
+return BoxLayout

@@ -1,3 +1,5 @@
+local UString = require("hs/lang/UString")
+
 TestUString = {}
 
 ------------------------------------------------------------

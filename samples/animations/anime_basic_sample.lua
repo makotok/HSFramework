@@ -25,6 +25,6 @@ function animate()
     if animation.running then
         animation:stop()
     else
-        animation:play({onComplete = function(e) Log.info("animation complete!") end})
+        animation:play({onComplete = function(e) Logger.info("animation complete!") end})
     end
 end

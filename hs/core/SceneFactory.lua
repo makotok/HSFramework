@@ -1,10 +1,13 @@
+local Class = require("hs/lang/Class")
+local Scene = require("hs/core/Scene")
+
 ----------------------------------------------------------------
 -- Sceneを生成するファクトリークラスです.
 -- SceneManagerにより使用されます.
 -- @class table
 -- @name SceneFactory
 ----------------------------------------------------------------
-SceneFactory = Class()
+local SceneFactory = Class()
 
 ---------------------------------------
 -- シーンを生成します.
@@ -28,3 +31,5 @@ function SceneFactory:createScene(name, params)
 
     return scene
 end
+
+return SceneFactory

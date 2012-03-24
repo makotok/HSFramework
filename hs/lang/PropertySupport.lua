@@ -1,3 +1,6 @@
+-- import
+local Class = require("hs/lang/Class")
+
 --------------------------------------------------------------------------------
 -- プロパティアクセスを可能にするためのクラスです.<br>
 -- <br>
@@ -9,7 +12,7 @@
 -- @field __setters setter関数の一覧
 -- @field __getters getter関数の一覧
 --------------------------------------------------------------------------------
-PropertySupport = Class()
+local PropertySupport = Class()
 
 PropertySupport.__setters = {}
 PropertySupport.__getters = {}
@@ -157,4 +160,6 @@ function PropertySupport:getGetter(key)
         return nil
     end
 end
+
+return PropertySupport
 

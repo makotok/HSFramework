@@ -54,8 +54,10 @@
 		<a href="../../../files/hs/box2d/Box2DFixture.html">hs/box2d/Box2DFixture.lua</a>
 	</li>
 
-	<li><strong>hs/box2d/Box2DWorld.lua</strong></li>
-	
+	<li>
+		<a href="../../../files/hs/box2d/Box2DWorld.html">hs/box2d/Box2DWorld.lua</a>
+	</li>
+
 	<li>
 		<a href="../../../files/hs/core/Animation.html">hs/core/Animation.lua</a>
 	</li>
@@ -236,10 +238,8 @@
 		<a href="../../../files/hs/lang/math.html">hs/lang/math.lua</a>
 	</li>
 
-	<li>
-		<a href="../../../files/hs/lang/table.html">hs/lang/table.lua</a>
-	</li>
-
+	<li><strong>hs/lang/table.lua</strong></li>
+	
 	<li>
 		<a href="../../../files/hs/tmx/TMXLayer.html">hs/tmx/TMXLayer.lua</a>
 	</li>
@@ -279,7 +279,7 @@
 
 <div id="content">
 
-<h1>File <code>hs/box2d/Box2DWorld.lua</code></h1>
+<h1>File <code>hs/lang/table.lua</code></h1>
 
 
 
@@ -291,59 +291,34 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getAngularSleepTolerance">Box2DWorld:getAngularSleepTolerance</a>&nbsp;()</td>
-	<td class="summary">angularSleepTolerance  </td>
+	<td class="name" nowrap><a href="#table.copy">table.copy</a>&nbsp;(src, dest, includeFields, excludeFields)</td>
+	<td class="summary">テーブルをコピーします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getAutoClearForces">Box2DWorld:getAutoClearForces</a>&nbsp;()</td>
-	<td class="summary">autoClearForces  </td>
+	<td class="name" nowrap><a href="#table.deepCopy">table.deepCopy</a>&nbsp;(src, dest)</td>
+	<td class="summary">テーブルをディープコピーします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getGravity">Box2DWorld:getGravity</a>&nbsp;()</td>
-	<td class="summary">gravity  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getLayer">Box2DWorld:getLayer</a>&nbsp;()</td>
-	<td class="summary">layer  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getLinearSleepTolerance">Box2DWorld:getLinearSleepTolerance</a>&nbsp;()</td>
-	<td class="summary">linearSleepTolerance  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getTimeToSleep">Box2DWorld:getTimeToSleep</a>&nbsp;()</td>
-	<td class="summary">timeToSleep  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:getUnitsToMeters">Box2DWorld:getUnitsToMeters</a>&nbsp;()</td>
-	<td class="summary">unitsToMeters  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:init">Box2DWorld:init</a>&nbsp;(params)</td>
-	<td class="summary">コンストラクタです  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:setDebugDraw">Box2DWorld:setDebugDraw</a>&nbsp;(value)</td>
-	<td class="summary">debugDraw  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Box2DWorld:start">Box2DWorld:start</a>&nbsp;()</td>
-	<td class="summary">Function  </td>
+	<td class="name" nowrap><a href="#table.indexOf">table.indexOf</a>&nbsp;(array, value)</td>
+	<td class="summary">配列から一致する値を検索して、見つかった位置を返します.</td>
 	</tr>
 
 </table>
 
 
 
+
+<h2>Tables</h2>
+<table class="table_list">
+
+	<tr>
+	<td class="name" nowrap><a href="#table ">table </a></td>
+	<td class="summary">tableの機能拡張したモジュールです.</td>
+	</tr>
+
+</table>
 
 
 
@@ -358,135 +333,28 @@
 
 
 
-<dt><a name="Box2DWorld:getAngularSleepTolerance"></a><strong>Box2DWorld:getAngularSleepTolerance</strong>&nbsp;()</dt>
+<dt><a name="table.copy"></a><strong>table.copy</strong>&nbsp;(src, dest, includeFields, excludeFields)</dt>
 <dd>
-angularSleepTolerance 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getAutoClearForces"></a><strong>Box2DWorld:getAutoClearForces</strong>&nbsp;()</dt>
-<dd>
-autoClearForces 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getGravity"></a><strong>Box2DWorld:getGravity</strong>&nbsp;()</dt>
-<dd>
-gravity 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getLayer"></a><strong>Box2DWorld:getLayer</strong>&nbsp;()</dt>
-<dd>
-layer 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getLinearSleepTolerance"></a><strong>Box2DWorld:getLinearSleepTolerance</strong>&nbsp;()</dt>
-<dd>
-linearSleepTolerance 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getTimeToSleep"></a><strong>Box2DWorld:getTimeToSleep</strong>&nbsp;()</dt>
-<dd>
-timeToSleep 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:getUnitsToMeters"></a><strong>Box2DWorld:getUnitsToMeters</strong>&nbsp;()</dt>
-<dd>
-unitsToMeters 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Box2DWorld:init"></a><strong>Box2DWorld:init</strong>&nbsp;(params)</dt>
-<dd>
-コンストラクタです 
+テーブルをコピーします. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  params: 
+	  src: 
+	</li>
+	
+	<li>
+	  dest: 
+	</li>
+	
+	<li>
+	  includeFields: 
+	</li>
+	
+	<li>
+	  excludeFields: 
 	</li>
 	
 </ul>
@@ -503,16 +371,20 @@ unitsToMeters
 
 
 
-<dt><a name="Box2DWorld:setDebugDraw"></a><strong>Box2DWorld:setDebugDraw</strong>&nbsp;(value)</dt>
+<dt><a name="table.deepCopy"></a><strong>table.deepCopy</strong>&nbsp;(src, dest)</dt>
 <dd>
-debugDraw 
+テーブルをディープコピーします. destを指定しない場合は新規テーブルを生成して返します.
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  value: 
+	  src: コピー元
+	</li>
+	
+	<li>
+	  dest: コピー先(option)
 	</li>
 	
 </ul>
@@ -522,6 +394,9 @@ debugDraw
 
 
 
+<h3>Return value:</h3>
+コピー後テーブル 
+
 
 
 </dd>
@@ -529,15 +404,31 @@ debugDraw
 
 
 
-<dt><a name="Box2DWorld:start"></a><strong>Box2DWorld:start</strong>&nbsp;()</dt>
+<dt><a name="table.indexOf"></a><strong>table.indexOf</strong>&nbsp;(array, value)</dt>
 <dd>
-Function 
+配列から一致する値を検索して、見つかった位置を返します.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  array: 配列
+	</li>
+	
+	<li>
+	  value: 検索する値
+	</li>
+	
+</ul>
 
 
 
 
 
 
+<h3>Return value:</h3>
+見つかった場合はindex,ない場合は0 
 
 
 
@@ -548,6 +439,19 @@ Function
 
 
 
+
+<h2><a name="tables"></a>Tables</h2>
+<dl class="table">
+
+<dt><a name="table "></a><strong>table </strong></dt>
+<dd>tableの機能拡張したモジュールです.
+
+
+
+</dd>
+
+
+</dl>
 
 
 

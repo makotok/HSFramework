@@ -39,7 +39,7 @@
 <ul>
 
 	<li>
-		<a href="../../../files/hs/HSFramework.html">hs/HSFramework.lua</a>
+		<a href="../../../files/hs/Framework.html">hs/Framework.lua</a>
 	</li>
 
 	<li>
@@ -130,7 +130,7 @@
 		<a href="../../../files/hs/core/Layer.html">hs/core/Layer.lua</a>
 	</li>
 
-	<li><strong>hs/core/Log.lua</strong></li>
+	<li><strong>hs/core/Logger.lua</strong></li>
 	
 	<li>
 		<a href="../../../files/hs/core/MapSprite.html">hs/core/MapSprite.lua</a>
@@ -193,6 +193,10 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/core/display.html">hs/core/display.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/gui/Button.html">hs/gui/Button.lua</a>
 	</li>
 
@@ -226,6 +230,14 @@
 
 	<li>
 		<a href="../../../files/hs/lang/UString.html">hs/lang/UString.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/lang/math.html">hs/lang/math.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/lang/table.html">hs/lang/table.lua</a>
 	</li>
 
 	<li>
@@ -267,7 +279,7 @@
 
 <div id="content">
 
-<h1>File <code>hs/core/Log.lua</code></h1>
+<h1>File <code>hs/core/Logger.lua</code></h1>
 
 
 
@@ -279,22 +291,22 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Log.debug">Log.debug</a>&nbsp;(...)</td>
+	<td class="name" nowrap><a href="#Logger.debug">Logger.debug</a>&nbsp;(...)</td>
 	<td class="summary">デバッグログを出力します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Log.error">Log.error</a>&nbsp;(...)</td>
+	<td class="name" nowrap><a href="#Logger.error">Logger.error</a>&nbsp;(...)</td>
 	<td class="summary">エラーログを出力します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Log.info">Log.info</a>&nbsp;(...)</td>
+	<td class="name" nowrap><a href="#Logger.info">Logger.info</a>&nbsp;(...)</td>
 	<td class="summary">通常ログを出力します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Log.warn">Log.warn</a>&nbsp;(...)</td>
+	<td class="name" nowrap><a href="#Logger.warn">Logger.warn</a>&nbsp;(...)</td>
 	<td class="summary">警告ログを出力します.</td>
 	</tr>
 
@@ -316,7 +328,7 @@
 
 
 
-<dt><a name="Log.debug"></a><strong>Log.debug</strong>&nbsp;(...)</dt>
+<dt><a name="Logger.debug"></a><strong>Logger.debug</strong>&nbsp;(...)</dt>
 <dd>
 デバッグログを出力します. 
 
@@ -342,7 +354,7 @@
 
 
 
-<dt><a name="Log.error"></a><strong>Log.error</strong>&nbsp;(...)</dt>
+<dt><a name="Logger.error"></a><strong>Logger.error</strong>&nbsp;(...)</dt>
 <dd>
 エラーログを出力します. 
 
@@ -368,7 +380,7 @@
 
 
 
-<dt><a name="Log.info"></a><strong>Log.info</strong>&nbsp;(...)</dt>
+<dt><a name="Logger.info"></a><strong>Logger.info</strong>&nbsp;(...)</dt>
 <dd>
 通常ログを出力します. 
 
@@ -394,7 +406,7 @@
 
 
 
-<dt><a name="Log.warn"></a><strong>Log.warn</strong>&nbsp;(...)</dt>
+<dt><a name="Logger.warn"></a><strong>Logger.warn</strong>&nbsp;(...)</dt>
 <dd>
 警告ログを出力します. 
 

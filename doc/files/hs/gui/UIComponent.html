@@ -39,7 +39,7 @@
 <ul>
 
 	<li>
-		<a href="../../../files/hs/HSFramework.html">hs/HSFramework.lua</a>
+		<a href="../../../files/hs/Framework.html">hs/Framework.lua</a>
 	</li>
 
 	<li>
@@ -131,7 +131,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Log.html">hs/core/Log.lua</a>
+		<a href="../../../files/hs/core/Logger.html">hs/core/Logger.lua</a>
 	</li>
 
 	<li>
@@ -195,6 +195,10 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/core/display.html">hs/core/display.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/gui/Button.html">hs/gui/Button.lua</a>
 	</li>
 
@@ -226,6 +230,14 @@
 
 	<li>
 		<a href="../../../files/hs/lang/UString.html">hs/lang/UString.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/lang/math.html">hs/lang/math.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/lang/table.html">hs/lang/table.lua</a>
 	</li>
 
 	<li>
@@ -295,12 +307,17 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#UIComponent:onCreateChildren">UIComponent:onCreateChildren</a>&nbsp;()</td>
-	<td class="summary">初期化処理です フレームの最初に一回だけ呼ばれます。 デフォルトでは何もしません。  </td>
+	<td class="summary">子オブジェクト作成処理です.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#UIComponent:onEnterFrame">UIComponent:onEnterFrame</a>&nbsp;(event)</td>
 	<td class="summary">フレーム毎の処理を行います。 invalidateDisplayList関数が呼ばれていた場合、 updateDisplayList関数を実行します。  </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#UIComponent:onInitial">UIComponent:onInitial</a>&nbsp;(params)</td>
+	<td class="summary">初期化処理です コンストラクタの途中で呼ばれます.</td>
 	</tr>
 
 </table>
@@ -383,7 +400,7 @@
 
 <dt><a name="UIComponent:onCreateChildren"></a><strong>UIComponent:onCreateChildren</strong>&nbsp;()</dt>
 <dd>
-初期化処理です フレームの最初に一回だけ呼ばれます。 デフォルトでは何もしません。 
+子オブジェクト作成処理です. フレームの最初に一回だけ呼ばれます. デフォルトでは何もしません. 
 
 
 
@@ -408,6 +425,32 @@
 	
 	<li>
 	  event: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="UIComponent:onInitial"></a><strong>UIComponent:onInitial</strong>&nbsp;(params)</dt>
+<dd>
+初期化処理です コンストラクタの途中で呼ばれます.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  params: パラメータ 
 	</li>
 	
 </ul>

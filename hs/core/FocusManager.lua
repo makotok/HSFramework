@@ -3,4 +3,4 @@
 -- TODO:未実装
 --------------------------------------------------------------------------------
 
-FocusManager = EventDispatcher:new()
+--FocusManager = EventDispatcher:new()

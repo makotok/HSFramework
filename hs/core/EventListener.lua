@@ -1,10 +1,13 @@
+-- import
+local Class = require("hs/lang/Class")
+
 --------------------------------------------------------------------------------
 -- イベントリスナーです.
 -- ライブラリ内部で使用されます.
 -- @class table
 -- @name EventListener
 --------------------------------------------------------------------------------
-EventListener = Class()
+local EventListener = Class()
 
 -- 定数
 EventListener.PRIORITY_MIN = 0
@@ -25,3 +28,4 @@ function EventListener:call(event)
     end
 end
 
+return EventListener

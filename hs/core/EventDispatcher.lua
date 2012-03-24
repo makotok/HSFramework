@@ -1,3 +1,7 @@
+-- import
+local PropertySupport = require("hs/lang/PropertySupport")
+local EventListener = require("hs/core/EventListener")
+
 ----------------------------------------------------------------
 -- イベント処理を行うための基本クラスです.
 -- イベントの発出した結果を、登録したイベントリスナがキャッチして
@@ -5,13 +9,13 @@
 -- @class table
 -- @name EventDispatcher
 ----------------------------------------------------------------
-EventDispatcher = PropertySupport()
+local EventDispatcher = PropertySupport()
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
 function EventDispatcher:init()
-    PropertySupport.init(self)
+    EventDispatcher:super(self)
     self.listeners = {}
 end
 
@@ -69,8 +73,6 @@ end
 
 ---------------------------------------
 -- イベントをディスパッチします
--- eventオブジェクトは回収されるため、
--- 再利用する場合は、EventPoolから再取得してください.
 ---------------------------------------
 function EventDispatcher:dispatchEvent(event)
     event.stoped = false
@@ -84,7 +86,6 @@ function EventDispatcher:dispatchEvent(event)
             end
         end
     end
-    EventPool:releaseObject(event)
 end
 
 ---------------------------------------
@@ -93,3 +94,5 @@ end
 function EventDispatcher:clearListeners()
     self.listeners = {}
 end
+
+return EventDispatcher

@@ -39,7 +39,7 @@
 <ul>
 
 	<li>
-		<a href="../../../files/hs/HSFramework.html">hs/HSFramework.lua</a>
+		<a href="../../../files/hs/Framework.html">hs/Framework.lua</a>
 	</li>
 
 	<li>
@@ -131,7 +131,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Log.html">hs/core/Log.lua</a>
+		<a href="../../../files/hs/core/Logger.html">hs/core/Logger.lua</a>
 	</li>
 
 	<li>
@@ -194,6 +194,10 @@
 		<a href="../../../files/hs/core/Window.html">hs/core/Window.lua</a>
 	</li>
 
+	<li>
+		<a href="../../../files/hs/core/display.html">hs/core/display.lua</a>
+	</li>
+
 	<li><strong>hs/gui/Button.lua</strong></li>
 	
 	<li>
@@ -226,6 +230,14 @@
 
 	<li>
 		<a href="../../../files/hs/lang/UString.html">hs/lang/UString.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/lang/math.html">hs/lang/math.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/lang/table.html">hs/lang/table.lua</a>
 	</li>
 
 	<li>
@@ -279,23 +291,43 @@
 <table class="function_list">
 
 	<tr>
+	<td class="name" nowrap><a href="#Button:getText">Button:getText</a>&nbsp;()</td>
+	<td class="summary">textを返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Button:isPressed">Button:isPressed</a>&nbsp;()</td>
+	<td class="summary">ボタンを押下しているか返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Button:new">Button:new</a>&nbsp;(params)</td>
+	<td class="summary">コンストラクタです.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#Button:onCreateChildren">Button:onCreateChildren</a>&nbsp;()</td>
 	<td class="summary">子オブジェクトを生成します。  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Button:onTouchDown_Background">Button:onTouchDown_Background</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#Button:onTouchDown_background">Button:onTouchDown_background</a>&nbsp;(event)</td>
 	<td class="summary">ボタンを押下した時の処理を行います。  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Button:onTouchUp_Background">Button:onTouchUp_Background</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#Button:onTouchUp_background">Button:onTouchUp_background</a>&nbsp;(event)</td>
 	<td class="summary">ボタンを離した時の処理を行います。  </td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Button:setText">Button:setText</a>&nbsp;(text)</td>
-	<td class="summary">text  </td>
+	<td class="summary">textを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Button:updateSkins">Button:updateSkins</a>&nbsp;()</td>
+	<td class="summary">ボタンのスキンを設定します.</td>
 	</tr>
 
 </table>
@@ -316,6 +348,72 @@
 
 
 
+<dt><a name="Button:getText"></a><strong>Button:getText</strong>&nbsp;()</dt>
+<dd>
+textを返します.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+テキスト 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Button:isPressed"></a><strong>Button:isPressed</strong>&nbsp;()</dt>
+<dd>
+ボタンを押下しているか返します.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+pressed 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Button:new"></a><strong>Button:new</strong>&nbsp;(params)</dt>
+<dd>
+コンストラクタです.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  params: パラメータ 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
 <dt><a name="Button:onCreateChildren"></a><strong>Button:onCreateChildren</strong>&nbsp;()</dt>
 <dd>
 子オブジェクトを生成します。 
@@ -333,7 +431,7 @@
 
 
 
-<dt><a name="Button:onTouchDown_Background"></a><strong>Button:onTouchDown_Background</strong>&nbsp;(event)</dt>
+<dt><a name="Button:onTouchDown_background"></a><strong>Button:onTouchDown_background</strong>&nbsp;(event)</dt>
 <dd>
 ボタンを押下した時の処理を行います。 
 
@@ -359,7 +457,7 @@
 
 
 
-<dt><a name="Button:onTouchUp_Background"></a><strong>Button:onTouchUp_Background</strong>&nbsp;(event)</dt>
+<dt><a name="Button:onTouchUp_background"></a><strong>Button:onTouchUp_background</strong>&nbsp;(event)</dt>
 <dd>
 ボタンを離した時の処理を行います。 
 
@@ -387,7 +485,7 @@
 
 <dt><a name="Button:setText"></a><strong>Button:setText</strong>&nbsp;(text)</dt>
 <dd>
-text 
+textを設定します. 
 
 
 <h3>Parameters</h3>
@@ -398,6 +496,23 @@ text
 	</li>
 	
 </ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Button:updateSkins"></a><strong>Button:updateSkins</strong>&nbsp;()</dt>
+<dd>
+ボタンのスキンを設定します. 
+
 
 
 

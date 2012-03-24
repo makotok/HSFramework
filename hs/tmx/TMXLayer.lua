@@ -1,9 +1,14 @@
+local table = require("hs/lang/table")
+local Class = require("hs/lang/Class")
+local Group = require("hs/core/Group")
+local MapSprite = require("hs/core/MapSprite")
+
 --------------------------------------------------------------------------------
 -- TMXMapのレイヤークラスです.
 -- @class table
 -- @name TMXLayer
 --------------------------------------------------------------------------------
-TMXLayer = Class()
+local TMXLayer = Class()
 
 ---------------------------------------
 -- コンストラクタです
@@ -87,3 +92,5 @@ end
 function TMXLayer:getProperty(key)
     return self.properties[key]
 end
+
+return TMXLayer

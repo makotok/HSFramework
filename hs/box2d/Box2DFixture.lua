@@ -1,4 +1,8 @@
-Box2DFixture = PropertySupport()
+local table = require("hs/lang/table")
+local PropertySupport = require("hs/lang/PropertySupport")
+local Box2DConfig = require("hs/box2d/Box2DConfig")
+
+local Box2DFixture = PropertySupport()
 
 Box2DFixture:setPropertyName("body")
 Box2DFixture:setPropertyName("density")
@@ -99,3 +103,4 @@ function Box2DFixture:setSensor(senser)
     self._fixture:setSensor(senser)
 end
 
+return Box2DFixture

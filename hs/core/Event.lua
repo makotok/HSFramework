@@ -1,3 +1,5 @@
+local Class = require("hs/lang/Class")
+
 --------------------------------------------------------------------------------
 -- Eventの基本クラスです.
 -- Eventのタイプ、送信元などの情報を保持します.
@@ -5,7 +7,7 @@
 -- @name Event
 --------------------------------------------------------------------------------
 
-Event = Class()
+local Event = Class()
 
 -- 定数
 -- 典型的なイベントを定義
@@ -46,3 +48,5 @@ end
 function Event:stop()
     self.stoped = true
 end
+
+return Event

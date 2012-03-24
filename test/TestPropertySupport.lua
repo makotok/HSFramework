@@ -1,3 +1,5 @@
+local PropertySupport = require("hs/lang/PropertySupport")
+
 TestPropertySupport = {}
 
 ------------------------------------------------------------

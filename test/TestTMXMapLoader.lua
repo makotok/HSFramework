@@ -1,3 +1,5 @@
+local TMXMapLoader = require("hs/tmx/TMXMapLoader")
+
 TestTMXMapLoader = {}
 
 ------------------------------------------------------------

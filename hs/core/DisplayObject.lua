@@ -1,3 +1,6 @@
+local table = require("hs/lang/table")
+local Transform = require("hs/core/Transform")
+
 --------------------------------------------------------------------------------
 -- 表示オブジェクトの基本クラスです.<br>
 -- 描画の為の基本的な機能を有します.<br>
@@ -8,7 +11,7 @@
 -- @name DisplayObject
 --------------------------------------------------------------------------------
 
-DisplayObject = Transform()
+local DisplayObject = Transform()
 
 -- プロパティ定義
 DisplayObject:setPropertyName("width")
@@ -347,22 +350,6 @@ function DisplayObject:isFocus()
 end
 
 ---------------------------------------
--- 物理オブジェクトを設定します.
--- TODO:未実装
----------------------------------------
-function DisplayObject:setPhysicsObject(object)
-    self._physicsObject = object
-end
-
----------------------------------------
--- 物理オブジェクトを返します.
--- TODO:未実装
----------------------------------------
-function DisplayObject:getPhysicsObject()
-    return self._physicsObject
-end
-
----------------------------------------
 -- レイヤーをセットします.
 -- 描画オブジェクトをMOAILayerに追加します.
 ---------------------------------------
@@ -436,33 +423,30 @@ end
 -- フレーム毎の処理を行います.
 ---------------------------------------
 function DisplayObject:onEnterFrame(event)
-    FunctionUtil.callExist(self.enterFrameListener, self, event)
 end
 
 ---------------------------------------
 -- タッチ処理を行います.
 ---------------------------------------
 function DisplayObject:onTouchDown(event)
-    FunctionUtil.callExist(self.touchDownListener, self, event)
 end
 
 ---------------------------------------
 -- タッチ処理を行います.
 ---------------------------------------
 function DisplayObject:onTouchUp(event)
-    FunctionUtil.callExist(self.touchUpListener, self, event)
 end
 
 ---------------------------------------
 -- タッチ処理を行います.
 ---------------------------------------
 function DisplayObject:onTouchMove(event)
-    FunctionUtil.callExist(self.touchMoveListener, self, event)
 end
 
 ---------------------------------------
 -- タッチ処理を行います.
 ---------------------------------------
 function DisplayObject:onTouchCancel(event)
-    FunctionUtil.callExist(self.touchCancelListener, self, event)
 end
+
+return DisplayObject

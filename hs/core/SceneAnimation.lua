@@ -1,10 +1,12 @@
+local Animation = require("hs/core/Animation")
+
 --------------------------------------------------------------------------------
 -- Sceneクラスをアニメーションする為の関数群です.
 -- 実態はクラスではなく、Animationクラスを返す関数の集まりです.
 -- @class table
 -- @name SceneAnimation
 --------------------------------------------------------------------------------
-SceneAnimation = {}
+local SceneAnimation = {}
 SceneAnimation.defaultSecond = 0.5
 
 ---------------------------------------
@@ -111,3 +113,4 @@ function SceneAnimation.slideToRight(currentScene, nextScene, params)
     )
 end
 
+return SceneAnimation

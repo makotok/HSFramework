@@ -1,3 +1,8 @@
+local table = require("hs/lang/table")
+local PropertySupport = require("hs/lang/PropertySupport")
+local Box2DConfig = require("hs/box2d/Box2DConfig")
+local Box2DFixture = require("hs/box2d/Box2DFixture")
+
 --------------------------------------------------------------------------------
 -- MOAIBox2DBodyのラッパークラスです.<br>
 -- 基本的にそのまま関数名をラッピングしています.<br>
@@ -6,7 +11,7 @@
 -- @class table
 -- @name Box2DBody
 --------------------------------------------------------------------------------
-Box2DBody = PropertySupport()
+local Box2DBody = PropertySupport()
 
 Box2DBody.BODY_TYPES = {
     dynamic = MOAIBox2DBody.DYNAMIC,
@@ -391,3 +396,5 @@ end
 function Box2DBody:setFixedRotation(fixedRotation)
     self.body:setFixedRotation(fixedRotation)
 end
+
+return Box2DBody

@@ -1,3 +1,7 @@
+local table = require("hs/lang/table")
+local Event = require("hs/core/Event")
+local EventDispatcher = require("hs/core/EventDispatcher")
+
 ----------------------------------------------------------------
 -- AnimationはDisplayObjectをアニメーションする為のクラスです.
 -- 移動、回転、拡大や、フレームアニメーションに対応します.
@@ -5,7 +9,7 @@
 -- @class table
 -- @name Animation
 ----------------------------------------------------------------
-Animation = EventDispatcher()
+local Animation = EventDispatcher()
 
 -- properties
 Animation:setPropertyName("targets")
@@ -269,7 +273,6 @@ function Animation:play(params)
         self._onComplete = params.onComplete
     end
     
-    Log.debug("Animation:play")
     self._currentSecond = self._second
     self._currentEaseType = self._easeType
     self._running = true
@@ -313,8 +316,7 @@ function Animation:_onCommandComplete()
         self:_executeCommand(self._currentIndex + 1)
     -- complete!
     else
-        Log.debug("Animation:complete")
-        local event = EventPool:getObject(Event.COMPLETE, self)
+        local event = Event:new(Event.COMPLETE, self)
         if self._onComplete then self._onComplete(event) end
         self._running = false
         self:onComplete(event)
@@ -330,7 +332,6 @@ function Animation:stop()
         return self
     end
     
-    Log.debug("Animation:stop")
     self._running = false
     self._stoped = true
     self._currentCommand.stop(self)    
@@ -431,3 +432,4 @@ function Animation:_getCommandEaseType(easeType)
     return easeType and easeType or self._currentEaseType
 end
 
+return Animation

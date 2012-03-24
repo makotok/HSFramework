@@ -1,3 +1,8 @@
+local table = require("hs/lang/table")
+local UString = require("hs/lang/UString")
+local FontCache = require("hs/core/FontCache")
+local DisplayObject = require("hs/core/DisplayObject")
+
 --------------------------------------------------------------------------------
 -- 文字列を描画するラベルクラスです.
 -- charcodesを指定せずとも、日本語の描画が行えます.
@@ -16,7 +21,7 @@
 -- @class table
 -- @name TextLabel
 --------------------------------------------------------------------------------
-TextLabel = DisplayObject()
+local TextLabel = DisplayObject()
 
 -- 定数
 TextLabel.ALIGN_LEFT = MOAITextBox.LEFT_JUSTIFY
@@ -169,7 +174,6 @@ end
 function TextLabel:setTextAlign(align)
     self._textAlign = align
     if self.prop then
-        Log.debug("setTextAlign", align)
         self.prop:setAlignment(TextLabel.ALIGN_TYPES[align])
     end
 end
@@ -245,3 +249,5 @@ function TextLabel:onEnterFrame(event)
     end
     DisplayObject.onEnterFrame(self, event)
 end
+
+return TextLabel

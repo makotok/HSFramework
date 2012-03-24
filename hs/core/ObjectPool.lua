@@ -1,3 +1,5 @@
+local Class = require("hs/lang/Class")
+
 --------------------------------------------------------------------------------
 -- オブジェクトプールの実装です.
 -- テーブルの再利用等を目的とします.
@@ -5,7 +7,7 @@
 -- @name ObjectPool
 --------------------------------------------------------------------------------
 
-ObjectPool = Class()
+local ObjectPool = Class()
 
 ---------------------------------------
 -- インスタンスの初期化処理を行います.
@@ -59,3 +61,5 @@ function ObjectPool:releaseObject(object)
         table.insert(self._pool, object)
     end
 end
+
+return ObjectPool

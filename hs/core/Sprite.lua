@@ -1,10 +1,15 @@
+local table = require("hs/lang/table")
+local TextureCache = require("hs/core/TextureCache")
+local DisplayObject = require("hs/core/DisplayObject")
+local Event = require("hs/core/Event")
+
 --------------------------------------------------------------------------------
 -- 単一のテクスチャを描画する為のクラスです.
 --
 -- @class table
 -- @name Sprite
 --------------------------------------------------------------------------------
-Sprite = DisplayObject()
+local Sprite = DisplayObject()
 
 -- プロパティ定義
 Sprite:setPropertyName("texture")
@@ -120,3 +125,5 @@ function Sprite:setSize(width, height)
     DisplayObject.setSize(self, width, height)
     self.deck:setRect(0, 0, self.width, self.height)
 end
+
+return Sprite

@@ -1,3 +1,6 @@
+local PropertySupport = require("hs/lang/PropertySupport")
+local logger = require("hs/core/Logger")
+
 --------------------------------------------------------------------------------
 -- FPSを観測する為のクラスです.
 --
@@ -5,7 +8,7 @@
 -- @name FPSMonitor
 --------------------------------------------------------------------------------
 
-FPSMonitor = PropertySupport()
+local FPSMonitor = PropertySupport()
 
 ---------------------------------------
 --- コンストラクタです
@@ -25,7 +28,7 @@ function FPSMonitor:init(sec, onFPS)
 end
 
 function FPSMonitor:onTimer()
-    Log.debug("FPSMonitor:onTimer", "FPS:" .. MOAISim.getPerformance())
+    logger.debug("FPSMonitor:onTimer", "FPS:" .. MOAISim.getPerformance())
     if self._onFPS then
         self._onFPS()
     end
@@ -40,3 +43,4 @@ function FPSMonitor:stop()
     self.timer:stop()
 end
 
+return FPSMonitor

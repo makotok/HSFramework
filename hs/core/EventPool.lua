@@ -1,9 +1,13 @@
+-- import
+local ObjectPool = require("hs/core/ObjectPool")
+local Event = require("hs/core/Event")
+
 --------------------------------------------------------------------------------
 -- イベントプールです.
 -- @class table
 -- @name EventPool
 --------------------------------------------------------------------------------
-EventPool = ObjectPool:new()
+local EventPool = ObjectPool:new()
 
 ---------------------------------------
 -- ファクトリー関数です.
@@ -21,3 +25,4 @@ function EventPool:initObject(object, eventType, target)
     object.stoped = false
 end
 
+return EventPool

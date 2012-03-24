@@ -4,7 +4,7 @@
 -- @name EaseType
 --------------------------------------------------------------------------------
 
-EaseType = {}
+local EaseType = {}
 
 EaseType.EASE_IN = MOAIEaseType.EASE_IN
 EaseType.EASE_OUT = MOAIEaseType.EASE_OUT
@@ -17,3 +17,5 @@ EaseType.SMOOTH = MOAIEaseType.SMOOTH
 EaseType.SOFT_EASE_IN = MOAIEaseType.SOFT_EASE_IN
 EaseType.SOFT_EASE_OUT = MOAIEaseType.SOFT_EASE_OUT
 EaseType.SOFT_SMOOTH = MOAIEaseType.SOFT_SMOOTH
+
+return EaseType

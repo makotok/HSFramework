@@ -1,10 +1,14 @@
+local Class = require("hs/lang/Class")
+local logger = require("hs/core/Logger")
+local Application = require("hs/core/Application")
+
 ----------------------------------------------------------------
 -- 単一のウィンドウを管理するクラスです.
 -- ウィンドウのタイトル、描画領域（Screen）を保持します.
 -- @class table
 -- @name Window
 ----------------------------------------------------------------
-Window = Class()
+local Window = Class()
 
 -- 定数
 Window.MODE_STRETCH = 1
@@ -116,10 +120,12 @@ function Window:initScreenSize(width, height)
     self.viewport:setSize(self.stageWidth, self.stageHeight)
     
     -- debug log
-    Log.debug("Window Open! ----------")
-    Log.debug("size:" .. self.width .. "," .. self.height)
-    Log.debug("screenSize:" .. self.screenWidth .. "," .. self.screenHeight)
-    Log.debug("stageSize:" .. self.stageWidth .. "," .. self.stageHeight)
-    Log.debug("------------------------")
+    logger.debug("Window Open! ----------")
+    logger.debug("size:" .. self.width .. "," .. self.height)
+    logger.debug("screenSize:" .. self.screenWidth .. "," .. self.screenHeight)
+    logger.debug("stageSize:" .. self.stageWidth .. "," .. self.stageHeight)
+    logger.debug("------------------------")
     
 end
+
+return Window

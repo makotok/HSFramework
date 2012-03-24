@@ -1,10 +1,15 @@
+local table = require("hs/lang/table")
+local TextureCache = require("hs/core/TextureCache")
+local DisplayObject = require("hs/core/DisplayObject")
+local Event = require("hs/core/Event")
+
 --------------------------------------------------------------------------------
 -- テクスチャをタイル毎に分割して、タイル毎に描画するクラスです.<br>
 -- TODO:クラス名がTiledSpriteに変更される予定.SpriteSheetは任意のフレームに変更される.<br>
 -- @class table
 -- @name SpriteSheet
 --------------------------------------------------------------------------------
-SpriteSheet = DisplayObject()
+local SpriteSheet = DisplayObject()
 
 -- プロパティ定義
 SpriteSheet:setPropertyName("frame")
@@ -30,14 +35,14 @@ function SpriteSheet:init(texture, frameWidth, frameHeight, params)
     -- イベントリスナの設定
     self._frameAnim:setListener(MOAITimer.EVENT_TIMER_LOOP, 
         function(prop)
-            local e = EventPool:getObject(Event.FRAME_LOOP)
+            local e = Event:new(Event.FRAME_LOOP)
             self:onFrameLoop(e)
             self:dispatchEvent(e)
         end
     )
     self._frameAnim:setListener(MOAIAction.EVENT_STOP,
         function(prop)
-            local e = EventPool:getObject(Event.FRAME_STOP)
+            local e = Event:new(Event.FRAME_STOP)
             self:onFrameStop(e)
             self:dispatchEvent(e)
         end
@@ -203,3 +208,5 @@ end
 function SpriteSheet:onFrameStop(event)
 
 end
+
+return SpriteSheet

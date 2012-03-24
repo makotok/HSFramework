@@ -1,10 +1,18 @@
+local table = require("hs/lang/table")
+local logger = require("hs/core/Logger")
+local EventDispatcher = require("hs/core/EventDispatcher")
+local SceneFactory = require("hs/core/SceneFactory")
+local Event = require("hs/core/Event")
+local InputManager = require("hs/core/InputManager")
+local Application = require("hs/core/Application")
+
 ----------------------------------------------------------------
 -- Sceneを管理するマネージャクラスです
 -- シーンのライフサイクルの管理やイベント制御を行います.
 -- @class table
 -- @name SceneManager
 ----------------------------------------------------------------
-SceneManager = EventDispatcher:new()
+local SceneManager = EventDispatcher:new()
 
 ---------------------------------------
 -- コンストラクタです.
@@ -39,7 +47,7 @@ end
 ---------------------------------------
 function SceneManager:openScene(sceneName, params)
     if self.transitioning then
-        Log.warn("[SceneManager:openScene]", "scene transitioning!")
+        logger.warn("[SceneManager:openScene]", "scene transitioning!")
         return nil
     end
 
@@ -158,13 +166,6 @@ function SceneManager:closeScene(params)
     end
     
     return nextScene
-end
-
----------------------------------------
--- 
----------------------------------------
-function SceneManager:animateScene(currentScene, nextScene, animation)
-
 end
 
 ---------------------------------------
@@ -313,3 +314,5 @@ function SceneManager:onEnterFrame(e)
         currentScene:onEnterFrame(e)
     end
 end
+
+return SceneManager

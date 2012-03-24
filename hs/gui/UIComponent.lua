@@ -1,9 +1,12 @@
+local table = require("hs/lang/table")
+local Group = require("hs/core/Group")
+
 --------------------------------------------------------------------------------
 -- UIコンポーネントの基本クラスです。
 --
 --------------------------------------------------------------------------------
 
-UIComponent = Group()
+local UIComponent = Group()
 
 ---------------------------------------
 -- コンストラクタです
@@ -14,6 +17,8 @@ function UIComponent:init(params)
     self._createdChildren = false
     self._invalidatedProperties = false
     
+    self:onInitial(params)
+    
     if params then
         table.copy(params, self)
     end
@@ -21,8 +26,16 @@ end
 
 ---------------------------------------
 -- 初期化処理です
--- フレームの最初に一回だけ呼ばれます。
--- デフォルトでは何もしません。
+-- コンストラクタの途中で呼ばれます.
+-- @param params パラメータ
+---------------------------------------
+function UIComponent:onInitial(params)
+end
+
+---------------------------------------
+-- 子オブジェクト作成処理です.
+-- フレームの最初に一回だけ呼ばれます.
+-- デフォルトでは何もしません.
 ---------------------------------------
 function UIComponent:onCreateChildren()
 end
@@ -53,7 +66,6 @@ function UIComponent:onEnterFrame(event)
     -- 初期化処理
     if not self._createdChildren then
         self:onCreateChildren()
-        Log.debug("onInitialComponent")
         self._createdChildren = true
     end
     
@@ -66,3 +78,5 @@ function UIComponent:onEnterFrame(event)
         self._invalidatedProperties = false
     end
 end
+
+return UIComponent

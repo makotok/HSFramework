@@ -1,9 +1,11 @@
+local BoxLayout = require("hs/core/BoxLayout")
+
 ----------------------------------------------------------------
 -- デフォルトで垂直方向にオブジェクトを配置するBoxLayoutです
 -- @class table
 -- @name VBoxLayout
 ----------------------------------------------------------------
-VBoxLayout = BoxLayout()
+local VBoxLayout = BoxLayout()
 
 ---------------------------------------
 -- コンストラクタです
@@ -13,3 +15,4 @@ function VBoxLayout:init(params)
     self.direction = BoxLayout.DIRECTION_V
 end
 
+return VBoxLayout

@@ -1,3 +1,6 @@
+local table = require("hs/lang/table")
+local PropertySupport = require("hs/lang/PropertySupport")
+
 --------------------------------------------------------------------------------
 -- タイルマップ形式のデータを保持するTMXMapクラスです.<br>
 -- タイルマップエディタについては、以下を参照してください.<br>
@@ -6,7 +9,7 @@
 -- @name TMXMap
 --------------------------------------------------------------------------------
 
-TMXMap = PropertySupport()
+local TMXMap = PropertySupport()
 
 -- constraints
 TMXMap.ATTRIBUTE_NAMES = {
@@ -273,4 +276,6 @@ end
 function TMXMap:getResourceDirectory()
     return self._resourceDirectory
 end
+
+return TMXMap
 

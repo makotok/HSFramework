@@ -1,3 +1,7 @@
+local table = require("hs/lang/table")
+local Event = require("hs/core/Event")
+local EventDispatcher = require("hs/core/EventDispatcher")
+
 ----------------------------------------------------------------
 -- 画面の操作をキャッチして、イベントを発出するクラスです.
 -- タッチ、キーボードの操作が該当します
@@ -5,7 +9,7 @@
 -- @name InputManager
 ----------------------------------------------------------------
 
-InputManager = EventDispatcher:new()
+local InputManager = EventDispatcher:new()
 InputManager.pointer = {x = 0, y = 0, down = false}
 InputManager.keyboard = {key = 0, down = false}
 
@@ -63,7 +67,7 @@ end
 ---------------------------------------
 function InputManager.onTouch(eventType, idx, x, y, tapCount)
     -- event
-    local event = EventPool:getObject(Event.TOUCH, InputManager)
+    local event = Event:new(Event.TOUCH, InputManager)
     if eventType == MOAITouchSensor.TOUCH_DOWN then
         event.type = Event.TOUCH_DOWN
     elseif eventType == MOAITouchSensor.TOUCH_UP then
@@ -88,10 +92,11 @@ function InputManager.onKeyboard( key, down )
     InputManager.keyboard.key = key
     InputManager.keyboard.down = down
 
-    local event = EventPool:getObject(Event.KEYBOARD, InputManager)
+    local event = Event:new(Event.KEYBOARD, InputManager)
     event.key = key
     event.down = down
 
     InputManager:dispatchEvent(event)
 end
 
+return InputManager

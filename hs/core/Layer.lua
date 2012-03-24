@@ -1,3 +1,9 @@
+local table = require("hs/lang/table")
+local Event = require("hs/core/Event")
+local Group = require("hs/core/Group")
+local Transform = require("hs/core/Transform")
+local Application = require("hs/core/Application")
+
 --------------------------------------------------------------------------------
 -- シーンに追加できるレイヤークラスです
 -- レイヤーは、ビューポートを持ち、MOAILayer2Dに対応するクラスとなります.
@@ -8,7 +14,7 @@
 -- @name Layer
 --------------------------------------------------------------------------------
 
-Layer = Group()
+local Layer = Group()
 
 -- プロパティ定義
 Layer:setPropertyName("camera")
@@ -164,7 +170,6 @@ end
 function Layer:onEnterFrame(event)
     Group.onEnterFrame(self, event)
     if self.invalidatedPriority then
-        Log.debug("Layer:onEnterFrame", "updatePriority()")
         self._lastPriority = 0
         self:updatePriority()
         self.invalidatedPriority = false
@@ -232,7 +237,7 @@ function Layer:onTouchDown(event)
     local max = #displayList
 
     self._touchDownDisplayList = displayList
-    local e = EventPool:getObject(event.type)
+    local e = Event:new(event.type)
     e.worldX = worldX
     e.worldY = worldY
     
@@ -281,7 +286,7 @@ function Layer:onTouchCommon(event, funcName)
     end
 
     -- ワールド座標の取得
-    local e = EventPool:getObject(event.type)
+    local e = Event:new(event.type)
     e.screenX, e.screenY = event.x, event.y
     e.worldX, e.worldY = self:windowToWorld(event.x, event.y)
     
@@ -299,3 +304,5 @@ function Layer:onTouchCommon(event, funcName)
         self:dispatchEvent(e)
     end
 end
+
+return Layer

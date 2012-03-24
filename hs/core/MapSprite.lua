@@ -1,3 +1,7 @@
+local table = require("hs/lang/table")
+local DisplayObject = require("hs/core/DisplayObject")
+local TextureCache = require("hs/core/TextureCache")
+
 --------------------------------------------------------------------------------
 -- 単一のテクスチャをグリッドで描画するクラスです.
 -- TODO:関数の充実化
@@ -5,7 +9,7 @@
 -- @name MapSprite
 --------------------------------------------------------------------------------
 
-MapSprite = DisplayObject()
+local MapSprite = DisplayObject()
 
 -- プロパティ定義
 MapSprite:setPropertyName("texture")
@@ -290,3 +294,4 @@ function MapSprite:getRepeat()
     return self._repeat
 end
 
+return MapSprite

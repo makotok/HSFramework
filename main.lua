@@ -1,12 +1,15 @@
-
 -- requires
-require "hs/HSFramework"
+local Framework = require("hs/Framework")
+local Application = require("hs/core/Application")
+local SceneManager = require("hs/core/SceneManager")
 
--- log level
-Log.level = Log.LEVEL_DEBUG
+-- use global imports
+require("import")
+
+-- framework initialize
+Framework:initialize()
 
 -- application start
--- TODO:config file
 Application:openWindow("samples", 480, 320)
 
 -- main scene open
