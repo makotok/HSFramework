@@ -1,3 +1,6 @@
+local display = require("hs/core/display")
+local Logger = require("hs/core/Logger")
+
 module(..., package.seeall)
 
 -- injection component
@@ -6,11 +9,10 @@ module(..., package.seeall)
 function onCreate()
     Logger.info("onCreate()", scene.name)
     
-    scene.sceneOpenAnimation = SceneAnimation.crossFade
-    scene.sceneCloseAnimation = SceneAnimation.crossFade
-    
-    Sprite:new("samples/resources/back_1.png", {parent = scene})
-    Sprite:new("samples/resources/cathead.png", {x = 10, y = 10, parent = scene})
+    local sprite1 = display:newSprite("samples/resources/back_1.png")
+    local sprite2 = display:newSprite("samples/resources/cathead.png")
+    sprite2.x = 10
+    sprite2.y = 10
 end
 
 function onStart()
@@ -42,6 +44,6 @@ function onKeyboard(event)
 end
 
 function onTouchDown(event)
-    SceneManager:openScene("samples/basics/scene2_sample")
+    display:openScene("samples/basics/scene2_sample")
 end
 

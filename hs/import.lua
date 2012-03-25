@@ -1,7 +1,8 @@
 --------------------------------------------------------------------------------
--- importを行うためだけのモジュールです.
+-- global変数にimportを行うためだけのモジュールです.<br>
 -- global変数にimportを行いたくない場合はこのモジュールを使用しないで、
--- ファイル毎にimportを行ってください.
+-- ファイル毎にimportを行ってください.<br>
+-- デフォルトではこのモジュールは使用されません.
 --------------------------------------------------------------------------------
 
 -- core library
@@ -9,12 +10,7 @@ Logger = require("hs/core/Logger")
 ObjectPool = require("hs/core/ObjectPool")
 EventPool = require("hs/core/EventPool")
 Event = require("hs/core/Event")
-EventListener = require("hs/core/EventListener")
-EventDispatcher = require("hs/core/EventDispatcher")
-InputManager = require("hs/core/InputManager")
 Transform = require("hs/core/Transform")
-Texture = require("hs/core/Texture")
-TextureCache = require("hs/core/TextureCache")
 DisplayObject = require("hs/core/DisplayObject")
 Group = require("hs/core/Group")
 Layer = require("hs/core/Layer")
@@ -33,7 +29,7 @@ VBoxLayout = require("hs/core/VBoxLayout")
 HBoxLayout = require("hs/core/HBoxLayout")
 EaseType = require("hs/core/EaseType")
 Animation = require("hs/core/Animation")
-FPSMonitor = require("hs/core/FPSMonitor")
+FPSMonitor = require("hs/util/FPSMonitor")
 
 -- tmx library
 TMXMap = require("hs/tmx/TMXMap")

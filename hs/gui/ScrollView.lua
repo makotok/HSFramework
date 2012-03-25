@@ -17,8 +17,6 @@ ScrollView:setPropertyName("hScrollEnabled")
 -- コンストラクタです。
 ---------------------------------------
 function ScrollView:init(params)
-    ScrollView:super(self)
-    
     self.vScrollEnabled = true
     self.hScrollEnabled = true
     self.friction = 0.1
@@ -32,9 +30,7 @@ function ScrollView:init(params)
     self._isTouchDown = false
     self._scrolling = false
 
-    if params then
-        table.copy(params, self)
-    end
+    ScrollView:super(self, params)
 end
 
 ---------------------------------------

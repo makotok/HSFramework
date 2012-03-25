@@ -186,8 +186,10 @@
 		<a href="../../../files/hs/core/VBoxLayout.html">hs/core/VBoxLayout.lua</a>
 	</li>
 
-	<li><strong>hs/core/Window.lua</strong></li>
-	
+	<li>
+		<a href="../../../files/hs/core/Window.html">hs/core/Window.lua</a>
+	</li>
+
 	<li>
 		<a href="../../../files/hs/core/display.html">hs/core/display.lua</a>
 	</li>
@@ -212,10 +214,8 @@
 		<a href="../../../files/hs/gui/View.html">hs/gui/View.lua</a>
 	</li>
 
-	<li>
-		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
+	<li><strong>hs/gui/widget.lua</strong></li>
+	
 	<li>
 		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
@@ -287,7 +287,7 @@
 
 <div id="content">
 
-<h1>File <code>hs/core/Window.lua</code></h1>
+<h1>File <code>hs/gui/widget.lua</code></h1>
 
 
 
@@ -299,8 +299,23 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Window:open">Window:open</a>&nbsp;(title, width, height, stageMode)</td>
-	<td class="summary">Windowを起動します.</td>
+	<td class="name" nowrap><a href="#widget:newButton">widget:newButton</a>&nbsp;(...)</td>
+	<td class="summary">Buttonインスタンスを生成して返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#widget:newScrollView">widget:newScrollView</a>&nbsp;(...)</td>
+	<td class="summary">ScrollViewインスタンスを生成して返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#widget:newUIComponent">widget:newUIComponent</a>&nbsp;(...)</td>
+	<td class="summary">UIComponentインスタンスを生成して返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#widget:newView">widget:newView</a>&nbsp;(...)</td>
+	<td class="summary">Viewインスタンスを生成して返します.</td>
 	</tr>
 
 </table>
@@ -312,8 +327,8 @@
 <table class="table_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Window ">Window </a></td>
-	<td class="summary">単一のウィンドウを管理するクラスです.</td>
+	<td class="name" nowrap><a href="#widget ">widget </a></td>
+	<td class="summary">GUIインスタンスを生成する為のクラスです.<br> このクラスを使用しないで直接生成してもいいですが、 このクラスを使用するこで、requireが一回で済みます.</td>
 	</tr>
 
 </table>
@@ -331,28 +346,94 @@
 
 
 
-<dt><a name="Window:open"></a><strong>Window:open</strong>&nbsp;(title, width, height, stageMode)</dt>
+<dt><a name="widget:newButton"></a><strong>widget:newButton</strong>&nbsp;(...)</dt>
 <dd>
-Windowを起動します. titleは、ウィンドウのタイトルで使用されます. width,heightは、ウィンドウのサイズになります.  ただし、モバイルアプリケーションの場合、 サイズが一致するわけではなく、サイズが固定の為、 StageにstageModeを指定する事で、描画領域の 任意のロジックで引き伸ばしを行う事ができます. 
+Buttonインスタンスを生成して返します. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  title: 
+	  ...: 
 	</li>
 	
-	<li>
-	  width: 
-	</li>
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="widget:newScrollView"></a><strong>widget:newScrollView</strong>&nbsp;(...)</dt>
+<dd>
+ScrollViewインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
 	
 	<li>
-	  height: 
+	  ...: 
 	</li>
 	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="widget:newUIComponent"></a><strong>widget:newUIComponent</strong>&nbsp;(...)</dt>
+<dd>
+UIComponentインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
 	<li>
-	  stageMode: 
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="widget:newView"></a><strong>widget:newView</strong>&nbsp;(...)</dt>
+<dd>
+Viewインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
 	</li>
 	
 </ul>
@@ -375,8 +456,8 @@ Windowを起動します. titleは、ウィンドウのタイトルで使用さ�
 <h2><a name="tables"></a>Tables</h2>
 <dl class="table">
 
-<dt><a name="Window "></a><strong>Window </strong></dt>
-<dd>単一のウィンドウを管理するクラスです. ウィンドウのタイトル、描画領域（Screen）を保持します.
+<dt><a name="widget "></a><strong>widget </strong></dt>
+<dd>GUIインスタンスを生成する為のクラスです.<br> このクラスを使用しないで直接生成してもいいですが、 このクラスを使用するこで、requireが一回で済みます.
 
 
 

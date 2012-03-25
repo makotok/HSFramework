@@ -1,8 +1,12 @@
+local display = require "hs/core/display"
+local FPSMonitor = require "hs/util/FPSMonitor"
+local Logger = require "hs/core/Logger"
+
 module(..., package.seeall)
 
 function onCreate()
-    sprite1 = Sprite:new("samples/resources/cathead.png", {x = 10, y = 10, parent = scene})
-    sprite2 = SpriteSheet:new("samples/resources/actor.png", 3, 4, {x = 20 + sprite1.width, y = 10, parent = scene})
+    sprite1 = display:newSprite("samples/resources/cathead.png", {x = 10, y = 10})
+    sprite2 = display:newSpriteSheet("samples/resources/actor.png", 3, 4, {x = 20 + sprite1.width, y = 10})
 end
 
 function onStart()

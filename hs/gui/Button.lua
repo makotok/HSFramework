@@ -18,8 +18,6 @@ Button:setPropertyName("text")
 -- @param  params パラメータ
 ---------------------------------------
 function Button:init(params)
-    Button:super(self, params)
-    
     -- public var
     self.upSkin = nil
     self.downSkin = nil
@@ -31,7 +29,13 @@ function Button:init(params)
     self._buttonGround = nil
     self._buttonLabel = nil
     self._buttonStyle = nil
-    
+
+    Button:super(self, params)
+end
+
+function Button:onInitial()
+    UIComponent.onInitial(self)
+
 end
 
 ---------------------------------------

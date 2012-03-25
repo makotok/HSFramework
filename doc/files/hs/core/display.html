@@ -95,10 +95,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/FPSMonitor.html">hs/core/FPSMonitor.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
@@ -217,6 +213,14 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/import.html">hs/import.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/lang/Class.html">hs/lang/Class.lua</a>
 	</li>
 
@@ -265,6 +269,10 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/util/FPSMonitor.html">hs/util/FPSMonitor.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/util/FunctionUtil.html">hs/util/FunctionUtil.lua</a>
 	</li>
 
@@ -291,6 +299,21 @@
 <table class="function_list">
 
 	<tr>
+	<td class="name" nowrap><a href="#display:closeScene">display:closeScene</a>&nbsp;(...)</td>
+	<td class="summary">SceneManager:closeScene関数に処理を委譲します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:newAnimation">display:newAnimation</a>&nbsp;(...)</td>
+	<td class="summary">Animationインスタンスを生成して返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:newBoxLayout">display:newBoxLayout</a>&nbsp;(...)</td>
+	<td class="summary">BoxLayoutインスタンスを生成して返します.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#display:newGraphics">display:newGraphics</a>&nbsp;(...)</td>
 	<td class="summary">Graphicsインスタンスを生成して返します.</td>
 	</tr>
@@ -298,6 +321,11 @@
 	<tr>
 	<td class="name" nowrap><a href="#display:newGroup">display:newGroup</a>&nbsp;(...)</td>
 	<td class="summary">Groupインスタンスを生成して返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:newHBoxLayout">display:newHBoxLayout</a>&nbsp;(...)</td>
+	<td class="summary">HBoxLayoutインスタンスを生成して返します.</td>
 	</tr>
 
 	<tr>
@@ -325,6 +353,21 @@
 	<td class="summary">TextLabelインスタンスを生成して返します.</td>
 	</tr>
 
+	<tr>
+	<td class="name" nowrap><a href="#display:newVBoxLayout">display:newVBoxLayout</a>&nbsp;(...)</td>
+	<td class="summary">VBoxLayoutインスタンスを生成して返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:openNextScene">display:openNextScene</a>&nbsp;(...)</td>
+	<td class="summary">SceneManager:openNextScene関数に処理を委譲します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#display:openScene">display:openScene</a>&nbsp;(...)</td>
+	<td class="summary">SceneManager:openScene関数に処理を委譲します.</td>
+	</tr>
+
 </table>
 
 
@@ -335,7 +378,7 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#display ">display </a></td>
-	<td class="summary">DisplayObject系のインスタンスを生成する為のクラスです.</td>
+	<td class="summary">DisplayObject系のインスタンスを生成する為のクラスです.<br> このクラスを使用しないで直接生成してもいいですが、 このクラスを使用するこで、requireが一回で済みます.</td>
 	</tr>
 
 </table>
@@ -350,6 +393,84 @@
 
 <h2><a name="functions"></a>Functions</h2>
 <dl class="function">
+
+
+
+<dt><a name="display:closeScene"></a><strong>display:closeScene</strong>&nbsp;(...)</dt>
+<dd>
+SceneManager:closeScene関数に処理を委譲します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:newAnimation"></a><strong>display:newAnimation</strong>&nbsp;(...)</dt>
+<dd>
+Animationインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:newBoxLayout"></a><strong>display:newBoxLayout</strong>&nbsp;(...)</dt>
+<dd>
+BoxLayoutインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
 
 
 
@@ -382,6 +503,32 @@ Graphicsインスタンスを生成して返します.
 <dt><a name="display:newGroup"></a><strong>display:newGroup</strong>&nbsp;(...)</dt>
 <dd>
 Groupインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:newHBoxLayout"></a><strong>display:newHBoxLayout</strong>&nbsp;(...)</dt>
+<dd>
+HBoxLayoutインスタンスを生成して返します. 
 
 
 <h3>Parameters</h3>
@@ -533,6 +680,84 @@ TextLabelインスタンスを生成して返します.
 </dd>
 
 
+
+
+<dt><a name="display:newVBoxLayout"></a><strong>display:newVBoxLayout</strong>&nbsp;(...)</dt>
+<dd>
+VBoxLayoutインスタンスを生成して返します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:openNextScene"></a><strong>display:openNextScene</strong>&nbsp;(...)</dt>
+<dd>
+SceneManager:openNextScene関数に処理を委譲します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="display:openScene"></a><strong>display:openScene</strong>&nbsp;(...)</dt>
+<dd>
+SceneManager:openScene関数に処理を委譲します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ...: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
 </dl>
 
 
@@ -542,7 +767,7 @@ TextLabelインスタンスを生成して返します.
 <dl class="table">
 
 <dt><a name="display "></a><strong>display </strong></dt>
-<dd>DisplayObject系のインスタンスを生成する為のクラスです. このクラスを使用しないで直接生成してもいいですが、 このクラスを使用するこで、requireが一回で済みます.
+<dd>DisplayObject系のインスタンスを生成する為のクラスです.<br> このクラスを使用しないで直接生成してもいいですが、 このクラスを使用するこで、requireが一回で済みます.
 
 
 

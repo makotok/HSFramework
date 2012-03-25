@@ -1,7 +1,5 @@
-local Button = require("hs/gui/Button")
-local ScrollView = require("hs/gui/ScrollView")
-local VBoxLayout = require("hs/core/VBoxLayout")
-local SceneManager = require("hs/core/SceneManager")
+local display = require "hs/core/display"
+local widget = require "hs/gui/widget"
 
 module(..., package.seeall)
 
@@ -9,11 +7,11 @@ module(..., package.seeall)
 function onCreate()
     
     -- scrollView
-    scrollView = ScrollView:new({parent = scene, layout = VBoxLayout:new(), hScrollEnabled = false, vScrollEnabled = true})
-
+    scrollView = widget:newScrollView({layout = display:newVBoxLayout(), hScrollEnabled = false, vScrollEnabled = true})
+    
     -- sample list
     for i, item in ipairs(sceneItems) do
-        local button = Button:new(
+        local button = widget:newButton(
             {text = item.text, width = 200, height = 30, parent = scrollView,
             onTouchDown = onTouchDown_button, sceneName = item.scene})
     end
@@ -23,6 +21,7 @@ end
 sceneItems ={
     {text = "sprite_sample", scene = "samples/basics/sprite_sample"},
     {text = "mapsprite_sample", scene = "samples/basics/mapsprite_sample"},
+    {text = "graphics_sample", scene = "samples/basics/graphics_sample"},
     {text = "group_sample", scene = "samples/basics/group_sample"},
     {text = "layer_sample", scene = "samples/basics/layer_sample"},
     {text = "scene_sample", scene = "samples/basics/scene1_sample"},
@@ -39,6 +38,6 @@ sceneItems ={
 
 -- touch event
 function onTouchDown_button(self, event)
-    SceneManager:openNextScene(self.sceneName)
+    display:openNextScene(self.sceneName)
 end
 

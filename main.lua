@@ -3,8 +3,9 @@ local Framework = require("hs/Framework")
 local Application = require("hs/core/Application")
 local SceneManager = require("hs/core/SceneManager")
 
--- use global imports
-require("import")
+-- Use global imports
+-- Please select by your coding style.
+--require("hs/import")
 
 -- framework initialize
 Framework:initialize()

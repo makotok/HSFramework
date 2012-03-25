@@ -73,6 +73,7 @@ function SceneManager:openScene(sceneName, params)
     -- 起動中のシーンがない場合中の場合
     if not nextScene then
         local scene = self.sceneFactory:createScene(sceneName, params)
+        self.currentScene = scene
         scene:onCreate(params)
         self:addScene(scene)
         

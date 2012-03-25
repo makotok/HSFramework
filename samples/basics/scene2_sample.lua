@@ -1,3 +1,6 @@
+local display = require("hs/core/display")
+local Logger = require("hs/core/Logger")
+
 module(..., package.seeall)
 
 -- Injection component.
@@ -6,11 +9,11 @@ module(..., package.seeall)
 function onCreate()
     Logger.info("onCreate()", scene.name)
 
-    scene.sceneOpenAnimation = SceneAnimation.popIn
-    scene.sceneCloseAnimation = SceneAnimation.popOut
+    --scene.sceneOpenAnimation = SceneAnimation.popIn
+    --scene.sceneCloseAnimation = SceneAnimation.popOut
     
-    Sprite:new("samples/resources/back_2.png", {parent = scene})
-    Sprite:new("samples/resources/cathead.png", {x = 50, y = 50, parent = scene})
+    display:newSprite("samples/resources/back_2.png")
+    display:newSprite("samples/resources/cathead.png", {x = 50, y = 50})
 end
 
 function onStart()
@@ -42,6 +45,6 @@ function onKeyboard(event)
 end
 
 function onTouchDown(event)
-    SceneManager:closeScene()
+    display:closeScene()
 end
 

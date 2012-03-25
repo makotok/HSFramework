@@ -6,6 +6,7 @@ require "hs/lang/UString"
 
 -- util library
 require "hs/util/FunctionUtil"
+require "hs/util/FPSMonitor"
 
 -- core library
 require "hs/core/Logger"
@@ -40,7 +41,6 @@ require "hs/core/VBoxLayout"
 require "hs/core/HBoxLayout"
 require "hs/core/EaseType"
 require "hs/core/Animation"
-require "hs/core/FPSMonitor"
 
 -- tmx library
 require "hs/tmx/TMXMap"

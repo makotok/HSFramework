@@ -93,10 +93,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/FPSMonitor.html">hs/core/FPSMonitor.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
@@ -217,6 +213,14 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/import.html">hs/import.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/lang/Class.html">hs/lang/Class.lua</a>
 	</li>
 
@@ -262,6 +266,10 @@
 
 	<li>
 		<a href="../../../files/hs/tmx/TMXTileset.html">hs/tmx/TMXTileset.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/util/FPSMonitor.html">hs/util/FPSMonitor.lua</a>
 	</li>
 
 	<li>
@@ -391,7 +399,7 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#DisplayObject:new ">DisplayObject:new </a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#DisplayObject:new ">DisplayObject:new </a>&nbsp;(params)</td>
 	<td class="summary">コンストラクタです </td>
 	</tr>
 
@@ -413,6 +421,11 @@
 	<tr>
 	<td class="name" nowrap><a href="#DisplayObject:onEnterFrame">DisplayObject:onEnterFrame</a>&nbsp;(event)</td>
 	<td class="summary">フレーム毎の処理を行います.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#DisplayObject:onInitial">DisplayObject:onInitial</a>&nbsp;()</td>
+	<td class="summary">初期化イベントハンドラです.</td>
 	</tr>
 
 	<tr>
@@ -969,10 +982,19 @@ widthを返します.
 
 
 
-<dt><a name="DisplayObject:new "></a><strong>DisplayObject:new </strong>&nbsp;()</dt>
+<dt><a name="DisplayObject:new "></a><strong>DisplayObject:new </strong>&nbsp;(params)</dt>
 <dd>
 コンストラクタです
 
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  params: 
+	</li>
+	
+</ul>
 
 
 
@@ -1059,6 +1081,23 @@ MOAITransformを生成して返します.
 	</li>
 	
 </ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="DisplayObject:onInitial"></a><strong>DisplayObject:onInitial</strong>&nbsp;()</dt>
+<dd>
+初期化イベントハンドラです. 
+
 
 
 

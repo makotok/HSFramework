@@ -28,17 +28,18 @@ Layer:setPropertyName("touchEnabled", "setTouchEnabled", "isTouchEnabled")
 -- コンストラクタです
 ---------------------------------------
 function Layer:init(params)
-    Layer:super(self)
+    Layer:super(self, params)
+end
+
+function Layer:onInitial()
+    Group.onInitial(self)
+    
     self._renderPass = self:newRenderPass()
     self._partition = self.renderPass:getPartition()
     self._lastPriority = 0
     self._touchEnabled = true
     self.camera = Transform:new()
     self.camera:setPivot(Application.stageWidth / 2, Application.stageHeight / 2)
-
-    if params then
-        table.copy(params, self)
-    end
 end
 
 ---------------------------------------

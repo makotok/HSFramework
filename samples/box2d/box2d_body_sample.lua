@@ -1,3 +1,5 @@
+local Box2DWorld = require "hs/box2d/Box2DWorld"
+
 module(..., package.seeall)
 
 function onCreate()

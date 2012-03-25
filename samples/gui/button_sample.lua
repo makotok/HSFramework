@@ -1,11 +1,14 @@
+local display = require "hs/core/display"
+local widget = require "hs/gui/widget"
+
 module(..., package.seeall)
 
 function onCreate()
     -- group
-    group = Group:new({layout = BoxLayout:new(), parent = scene})
+    group = display:newGroup({layout = display:newBoxLayout()})
     
     -- button
-    button1 = Button:new({text = "hello!", textAlign = "center", width = 200, height = 30, parent = group})
+    button1 = widget:newButton({text = "hello!", textAlign = "center", width = 200, height = 30, parent = group})
 end
 
 function onStart()

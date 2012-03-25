@@ -53,17 +53,15 @@ TextLabel:setPropertyName("fontDPI")
 -- コンストラクタです.
 ---------------------------------------
 function TextLabel:init(params)
-    TextLabel:super(self)
-    
+    TextLabel:super(self, params)
+end
+
+function TextLabel:onInitial()
     -- 初期値
     self._fontSize = self.defaultFontSize
     self._fontTTF = self.defaultFontTTF
     self._fontDPI = self.defaultFontDPI
     self._textChanged = false
-    
-    if params then
-        table.copy(params, self)
-    end
 end
 
 ---------------------------------------

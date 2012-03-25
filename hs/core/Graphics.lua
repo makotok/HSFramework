@@ -27,16 +27,13 @@ local DisplayObject = require("hs/core/DisplayObject")
 local Graphics = DisplayObject()
 
 function Graphics:init(params)
-    Graphics:super(self)
+    Graphics:super(self, params)
     
+end
+
+function Graphics:onInitial()
     -- 描画コマンド
     self._commands = {}
-    
-    -- parameters
-    if params then
-        table.copy(params, self)
-    end
-    
 end
 
 ---------------------------------------

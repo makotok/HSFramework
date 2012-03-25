@@ -95,10 +95,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/FPSMonitor.html">hs/core/FPSMonitor.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
@@ -217,6 +213,14 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/import.html">hs/import.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/lang/Class.html">hs/lang/Class.lua</a>
 	</li>
 
@@ -265,6 +269,10 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/util/FPSMonitor.html">hs/util/FPSMonitor.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/util/FunctionUtil.html">hs/util/FunctionUtil.lua</a>
 	</li>
 
@@ -291,13 +299,13 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#UIComponent:init">UIComponent:init</a>&nbsp;(params)</td>
-	<td class="summary">コンストラクタです  </td>
+	<td class="name" nowrap><a href="#UIComponent:invalidateProperties">UIComponent:invalidateProperties</a>&nbsp;()</td>
+	<td class="summary">プロパティが変更された事をマークする関数です。 この関数を実行すると、onCommitProperties() が後で呼び出されます。  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#UIComponent:invalidateProperties">UIComponent:invalidateProperties</a>&nbsp;()</td>
-	<td class="summary">プロパティが変更された事をマークする関数です。 この関数を実行すると、onCommitProperties() が後で呼び出されます。  </td>
+	<td class="name" nowrap><a href="#UIComponent:new ">UIComponent:new </a>&nbsp;(params)</td>
+	<td class="summary">コンストラクタです </td>
 	</tr>
 
 	<tr>
@@ -313,11 +321,6 @@
 	<tr>
 	<td class="name" nowrap><a href="#UIComponent:onEnterFrame">UIComponent:onEnterFrame</a>&nbsp;(event)</td>
 	<td class="summary">フレーム毎の処理を行います。 invalidateDisplayList関数が呼ばれていた場合、 updateDisplayList関数を実行します。  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#UIComponent:onInitial">UIComponent:onInitial</a>&nbsp;(params)</td>
-	<td class="summary">初期化処理です コンストラクタの途中で呼ばれます.</td>
 	</tr>
 
 </table>
@@ -338,19 +341,10 @@
 
 
 
-<dt><a name="UIComponent:init"></a><strong>UIComponent:init</strong>&nbsp;(params)</dt>
+<dt><a name="UIComponent:invalidateProperties"></a><strong>UIComponent:invalidateProperties</strong>&nbsp;()</dt>
 <dd>
-コンストラクタです 
+プロパティが変更された事をマークする関数です。 この関数を実行すると、onCommitProperties() が後で呼び出されます。 
 
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  params: 
-	</li>
-	
-</ul>
 
 
 
@@ -364,10 +358,19 @@
 
 
 
-<dt><a name="UIComponent:invalidateProperties"></a><strong>UIComponent:invalidateProperties</strong>&nbsp;()</dt>
+<dt><a name="UIComponent:new "></a><strong>UIComponent:new </strong>&nbsp;(params)</dt>
 <dd>
-プロパティが変更された事をマークする関数です。 この関数を実行すると、onCommitProperties() が後で呼び出されます。 
+コンストラクタです
 
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  params: 
+	</li>
+	
+</ul>
 
 
 
@@ -425,32 +428,6 @@
 	
 	<li>
 	  event: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="UIComponent:onInitial"></a><strong>UIComponent:onInitial</strong>&nbsp;(params)</dt>
-<dd>
-初期化処理です コンストラクタの途中で呼ばれます.
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  params: パラメータ 
 	</li>
 	
 </ul>

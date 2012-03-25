@@ -53,7 +53,7 @@ function TMXLayer:drawLayer(parent)
             local tileCol = math.floor(tw / tileset.tilewidth)
             local tileRow = math.floor(th / tileset.tileheight)
             local mapSprite = MapSprite:new(texture, mapWidth, mapHeight, tileCol, tileRow, tileset.tilewidth, tileset.tileheight)
-            group:addChild(mapSprite)
+            mapSprite.parent = group
             
             for y = 1, self.height do
                 local rowData = {}

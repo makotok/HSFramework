@@ -1,9 +1,10 @@
+local display = require("hs/core/display")
+
 module(..., package.seeall)
 
 function onCreate()
     -- mapsprite
-    local mapSprite = MapSprite:new("samples/resources/numbers.png", 8, 8, 8, 8)
-    mapSprite.parent = scene
+    local mapSprite = display:newMapSprite("samples/resources/numbers.png", 8, 8, 8, 8)
     
     for i = 1, 8 do
         local start = (i - 1) * 8 

@@ -1,5 +1,6 @@
 local table = require("hs/lang/table")
 local Class = require("hs/lang/Class")
+local TextureCache = require("hs/core/TextureCache")
 
 --------------------------------------------------------------------------------
 -- TMXMapのタイルセットクラスです.

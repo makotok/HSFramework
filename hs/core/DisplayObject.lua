@@ -1,4 +1,5 @@
 local table = require("hs/lang/table")
+local Logger = require("hs/core/Logger")
 local Transform = require("hs/core/Transform")
 
 --------------------------------------------------------------------------------
@@ -33,7 +34,7 @@ DisplayObject:setPropertyName("focus", "setFocus", "isFocus")
 -- コンストラクタです
 -- @name DisplayObject:new
 ---------------------------------------
-function DisplayObject:init()
+function DisplayObject:init(params)
     DisplayObject:super(self)
 
     -- 変数
@@ -45,11 +46,32 @@ function DisplayObject:init()
     self._visible = true
     self._enabled = true
     self._focus = false
-    
+
+    -- 初期化イベント
+    self:onInitial()
+
     -- propとディスプレイリストのひも付け
     if self.prop then
         self.prop._displayObject = self
     end
+    
+    -- 現在のシーンを設定
+    local SceneManager = require("hs/core/SceneManager")
+    local scene = SceneManager.currentScene
+    if scene then
+        self.parent = scene
+    end
+    
+    -- パラメータのコピー
+    if params then
+        table.copy(params, self)
+    end
+end
+
+---------------------------------------
+-- 初期化イベントハンドラです.
+---------------------------------------
+function DisplayObject:onInitial()
 end
 
 ---------------------------------------

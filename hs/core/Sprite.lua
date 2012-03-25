@@ -25,22 +25,22 @@ Sprite:setPropertyName("flipY")
 function Sprite:init(texture, params)
     Sprite:super(self)
     
-    self._initialized = false
-    self._flipX = false
-    self._flipY = false
-
-    -- 初期化
+    -- textureの設定
     if texture then
         self:setTexture(texture)
     end
     if params then
         table.copy(params, self)
     end
-    
     -- UVマッピングを更新
     self:updateUVRect()
+end
+
+function Sprite:onInitial()
+    DisplayObject.onInitial(self)
     
-    self._initialized = true
+    self._flipX = false
+    self._flipY = false
 end
 
 ---------------------------------------
@@ -75,6 +75,7 @@ function Sprite:setTexture(texture)
     if not self._initialized and texture then
         local width, height = texture:getSize()
         self:setSize(width, height)
+        self._initialized = true
     end
 
     self.deck:setTexture(texture)

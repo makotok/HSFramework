@@ -20,17 +20,15 @@ Group:setPropertyName("autoLayout")
 -- コンストラクタです
 ---------------------------------------
 function Group:init(params)
-    Group:super(self)
-    
+    Group:super(self, params)
+end
+
+function Group:onInitial()
+    DisplayObject.onInitial(self)
     -- オブジェクト定義
     self._children = {}
     self._background = self:newBackground()
     self._autoLayout = true
-
-    if params then
-        table.copy(params, self)
-    end
-    
     if self._background then
         self._background._displayObject = self
     end

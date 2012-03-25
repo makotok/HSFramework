@@ -95,10 +95,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/FPSMonitor.html">hs/core/FPSMonitor.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
@@ -217,6 +213,14 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/import.html">hs/import.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/lang/Class.html">hs/lang/Class.lua</a>
 	</li>
 
@@ -262,6 +266,10 @@
 
 	<li>
 		<a href="../../../files/hs/tmx/TMXTileset.html">hs/tmx/TMXTileset.lua</a>
+	</li>
+
+	<li>
+		<a href="../../../files/hs/util/FPSMonitor.html">hs/util/FPSMonitor.lua</a>
 	</li>
 
 	<li>
@@ -545,7 +553,7 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#Scene ">Scene </a></td>
-	<td class="summary">Sceneはシーングラフを構築するトップレベルコンテナです.</td>
+	<td class="summary">Sceneはシーングラフを構築するトップレベルコンテナです.<br> Sceneは複数のLayerを管理します.<br> このクラスを使用して、画面を構築します.<br> <br> デフォルトのレイヤー（topLayer）を持ちます.<br> DisplayObjectの親に直接指定された場合、実際に追加される先はtopLayerになります.<br> <br> Sceneのライフサイクルについて<br> 1.</td>
 	</tr>
 
 </table>
@@ -1715,7 +1723,7 @@ widthを設定します.
 <dl class="table">
 
 <dt><a name="Scene "></a><strong>Scene </strong></dt>
-<dd>Sceneはシーングラフを構築するトップレベルコンテナです. Sceneは複数のLayerを管理します. このクラスを使用して、画面を構築します.  デフォルトのレイヤー（topLayer）を持ちます. DisplayObjectの親に直接指定された場合、実際に追加される先はtopLayerになります.  Sceneのライフサイクルについて 1. onCreate()  ... 生成時に呼ばれます. 2. onStart()   ... 開始時に呼ばれます. 3. onResume()   ... 再開時に呼ばれます. 4. onPause()   ... 一時停止時に呼ばれます. 5. onStop()     ... 終了時に呼ばれます. 6. onDestroy() ... 破棄時に呼ばれます.
+<dd>Sceneはシーングラフを構築するトップレベルコンテナです.<br> Sceneは複数のLayerを管理します.<br> このクラスを使用して、画面を構築します.<br> <br> デフォルトのレイヤー（topLayer）を持ちます.<br> DisplayObjectの親に直接指定された場合、実際に追加される先はtopLayerになります.<br> <br> Sceneのライフサイクルについて<br> 1. onCreate()  ... 生成時に呼ばれます.<br> 2. onStart()   ... 開始時に呼ばれます.<br> 3. onResume()   ... 再開時に呼ばれます.<br> 4. onPause()   ... 一時停止時に呼ばれます.<br> 5. onStop()     ... 終了時に呼ばれます.<br> 6. onDestroy() ... 破棄時に呼ばれます.<br>
 
 
 

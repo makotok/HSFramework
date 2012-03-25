@@ -10,26 +10,17 @@ local UIComponent = Group()
 
 ---------------------------------------
 -- コンストラクタです
+-- @name UIComponent:new
 ---------------------------------------
 function UIComponent:init(params)
-    UIComponent:super(self)
+    UIComponent:super(self, params)
+end
+
+function UIComponent:onInitial()
+    Group.onInitial(self)
     
     self._createdChildren = false
     self._invalidatedProperties = false
-    
-    self:onInitial(params)
-    
-    if params then
-        table.copy(params, self)
-    end
-end
-
----------------------------------------
--- 初期化処理です
--- コンストラクタの途中で呼ばれます.
--- @param params パラメータ
----------------------------------------
-function UIComponent:onInitial(params)
 end
 
 ---------------------------------------
