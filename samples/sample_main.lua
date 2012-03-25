@@ -33,7 +33,7 @@ sceneItems ={
     {text = "tmxmap2_sample", scene = "samples/maps/tmxmap2_sample"},
     {text = "box2d_body_sample", scene = "samples/box2d/box2d_body_sample"},
     {text = "button_sample", scene = "samples/gui/button_sample"},
-    {text = "fps_sample", scene = "samples/utils/fps_sample"}
+    --{text = "fps_sample", scene = "samples/utils/fps_sample"}
 }
 
 -- touch event
