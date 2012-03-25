@@ -71,7 +71,7 @@ end
 --- 実行環境がモバイルかどうか返します.
 ---------------------------------------
 function Application:isMobile()
-    local bland = MOAIEnvironment.getOSBrand()
+    local bland = MOAIEnvironment.osBrand
     return bland == MOAIEnvironment.OS_BRAND_ANDROID or bland == MOAIEnvironment.OS_BRAND_IOS
 end
 

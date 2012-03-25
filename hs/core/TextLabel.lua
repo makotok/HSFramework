@@ -145,7 +145,7 @@ function TextLabel:updateText()
     self._font = FontCache:getFont(self.fontTTF, self.charcodes, self.fontSize, self.fontDPI)
     
     self.prop:setFont (self._font)
-    self.prop:setTextSize(self._font:getScale())
+    self.prop:setTextSize(self.fontSize, self.fontDPI)
     self.prop:setString(self.text)
     
 end

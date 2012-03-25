@@ -1,7 +1,9 @@
 local table = require("hs/lang/table")
+local Logger = require("hs/core/Logger")
 local Event = require("hs/core/Event")
 local Group = require("hs/core/Group")
 local Transform = require("hs/core/Transform")
+local Camera = require("hs/core/Camera")
 local Application = require("hs/core/Application")
 
 --------------------------------------------------------------------------------
@@ -38,7 +40,7 @@ function Layer:onInitial()
     self._partition = self.renderPass:getPartition()
     self._lastPriority = 0
     self._touchEnabled = true
-    self.camera = Transform:new()
+    self.camera = Camera:new()
     self.camera:setPivot(Application.stageWidth / 2, Application.stageHeight / 2)
 end
 
@@ -199,13 +201,19 @@ end
 function Layer:getDisplayListForPoint(worldX, worldY)
     local partition = self._partition
     local array = {}
-    local props = {partition:sortedPropListForPoint(worldX, worldY)}
+    local props = {partition:propListForPoint(worldX, worldY)}
     for i, prop in ipairs(props) do
+        if prop._displayObject then
+            table.insert(array, prop._displayObject)
+        end
+        
+        --[[
         for k, v in pairs(prop) do
             if v._displayObject then
                 table.insert(array, v._displayObject)
             end
         end
+        --]]
     end
     return array
 end
@@ -231,7 +239,7 @@ function Layer:onTouchDown(event)
     if not self.touchEnabled then
         return
     end
-
+    
     local worldX, worldY = self:windowToWorld(event.x, event.y)
     local displayList = self:getDisplayListForPoint(worldX, worldY)
     self._touchDownDisplayList = displayList
@@ -282,6 +290,7 @@ function Layer:onTouchCommon(event, funcName)
     if not self.touchEnabled then
         return
     end
+
     if not self._touchDownDisplayList then
         return
     end

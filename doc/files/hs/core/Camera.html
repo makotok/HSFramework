@@ -70,10 +70,8 @@
 		<a href="../../../files/hs/core/BoxLayout.html">hs/core/BoxLayout.lua</a>
 	</li>
 
-	<li>
-		<a href="../../../files/hs/core/Camera.html">hs/core/Camera.lua</a>
-	</li>
-
+	<li><strong>hs/core/Camera.lua</strong></li>
+	
 	<li>
 		<a href="../../../files/hs/core/DisplayObject.html">hs/core/DisplayObject.lua</a>
 	</li>
@@ -118,8 +116,10 @@
 		<a href="../../../files/hs/core/Group.html">hs/core/Group.lua</a>
 	</li>
 
-	<li><strong>hs/core/HBoxLayout.lua</strong></li>
-	
+	<li>
+		<a href="../../../files/hs/core/HBoxLayout.html">hs/core/HBoxLayout.lua</a>
+	</li>
+
 	<li>
 		<a href="../../../files/hs/core/InputManager.html">hs/core/InputManager.lua</a>
 	</li>
@@ -299,7 +299,7 @@
 
 <div id="content">
 
-<h1>File <code>hs/core/HBoxLayout.lua</code></h1>
+<h1>File <code>hs/core/Camera.lua</code></h1>
 
 
 
@@ -311,8 +311,13 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#HBoxLayout:init">HBoxLayout:init</a>&nbsp;(params)</td>
+	<td class="name" nowrap><a href="#Camera:init">Camera:init</a>&nbsp;()</td>
 	<td class="summary">コンストラクタです  </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Camera:newTransformObj">Camera:newTransformObj</a>&nbsp;()</td>
+	<td class="summary">MOAITransformを生成して返します.</td>
 	</tr>
 
 </table>
@@ -324,8 +329,8 @@
 <table class="table_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#HBoxLayout ">HBoxLayout </a></td>
-	<td class="summary">デフォルトで水平方向にオブジェクトを配置するBoxLayoutです </td>
+	<td class="name" nowrap><a href="#Transform ">Transform </a></td>
+	<td class="summary">表示オブジェクトの移動や回転、拡大を行うためのクラスです </td>
 	</tr>
 
 </table>
@@ -343,19 +348,27 @@
 
 
 
-<dt><a name="HBoxLayout:init"></a><strong>HBoxLayout:init</strong>&nbsp;(params)</dt>
+<dt><a name="Camera:init"></a><strong>Camera:init</strong>&nbsp;()</dt>
 <dd>
 コンストラクタです 
 
 
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  params: 
-	</li>
-	
-</ul>
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Camera:newTransformObj"></a><strong>Camera:newTransformObj</strong>&nbsp;()</dt>
+<dd>
+MOAITransformを生成して返します. 
+
 
 
 
@@ -375,8 +388,8 @@
 <h2><a name="tables"></a>Tables</h2>
 <dl class="table">
 
-<dt><a name="HBoxLayout "></a><strong>HBoxLayout </strong></dt>
-<dd>デフォルトで水平方向にオブジェクトを配置するBoxLayoutです
+<dt><a name="Transform "></a><strong>Transform </strong></dt>
+<dd>表示オブジェクトの移動や回転、拡大を行うためのクラスです
 
 
 

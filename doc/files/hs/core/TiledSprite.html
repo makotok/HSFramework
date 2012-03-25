@@ -66,8 +66,10 @@
 		<a href="../../../files/hs/core/Application.html">hs/core/Application.lua</a>
 	</li>
 
-	<li><strong>hs/core/BoxLayout.lua</strong></li>
-	
+	<li>
+		<a href="../../../files/hs/core/BoxLayout.html">hs/core/BoxLayout.lua</a>
+	</li>
+
 	<li>
 		<a href="../../../files/hs/core/Camera.html">hs/core/Camera.lua</a>
 	</li>
@@ -180,10 +182,8 @@
 		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
 	</li>
 
-	<li>
-		<a href="../../../files/hs/core/TiledSprite.html">hs/core/TiledSprite.lua</a>
-	</li>
-
+	<li><strong>hs/core/TiledSprite.lua</strong></li>
+	
 	<li>
 		<a href="../../../files/hs/core/Transform.html">hs/core/Transform.lua</a>
 	</li>
@@ -299,7 +299,7 @@
 
 <div id="content">
 
-<h1>File <code>hs/core/BoxLayout.lua</code></h1>
+<h1>File <code>hs/core/TiledSprite.lua</code></h1>
 
 
 
@@ -311,48 +311,83 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:getChildX">BoxLayout:getChildX</a>&nbsp;(parentWidth, childWidth)</td>
-	<td class="summary">子オブジェクトのX座標を返します.</td>
+	<td class="name" nowrap><a href="#TiledSprite:getFrame">TiledSprite:getFrame</a>&nbsp;()</td>
+	<td class="summary">タイルのフレーム番号を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:getChildY">BoxLayout:getChildY</a>&nbsp;(parentHeight, childHeight)</td>
-	<td class="summary">子オブジェクトのY座標を返します.</td>
+	<td class="name" nowrap><a href="#TiledSprite:getFrameHeight">TiledSprite:getFrameHeight</a>&nbsp;()</td>
+	<td class="summary">タイルのフレーム数を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:getHorizotalLayoutSize">BoxLayout:getHorizotalLayoutSize</a>&nbsp;(children)</td>
-	<td class="summary">水平方向に子オブジェクトを配置した時の 全体のレイアウトサイズを返します.</td>
+	<td class="name" nowrap><a href="#TiledSprite:getFrameWidth">TiledSprite:getFrameWidth</a>&nbsp;()</td>
+	<td class="summary">タイルのフレーム数を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:getVerticalLayoutSize">BoxLayout:getVerticalLayoutSize</a>&nbsp;(children)</td>
-	<td class="summary">垂直方向に子オブジェクトを配置した時の 全体のレイアウトサイズを返します.</td>
+	<td class="name" nowrap><a href="#TiledSprite:getTexture">TiledSprite:getTexture</a>&nbsp;()</td>
+	<td class="summary">テキスチャを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:init">BoxLayout:init</a>&nbsp;(params)</td>
-	<td class="summary">コンストラクタです  </td>
+	<td class="name" nowrap><a href="#TiledSprite:moveFrames">TiledSprite:moveFrames</a>&nbsp;(frames, sec, mode)</td>
+	<td class="summary">フレームアニメーションを行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:setPadding">BoxLayout:setPadding</a>&nbsp;(left, top, right, bottom)</td>
-	<td class="summary">上下左右の余白を設定します.</td>
+	<td class="name" nowrap><a href="#TiledSprite:new ">TiledSprite:new </a>&nbsp;(texture, frameWidth, frameHeight, params)</td>
+	<td class="summary">コンストラクタです </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:update">BoxLayout:update</a>&nbsp;(group)</td>
-	<td class="summary">指定したGroupのレイアウトを更新します.</td>
+	<td class="name" nowrap><a href="#TiledSprite:newDeck">TiledSprite:newDeck</a>&nbsp;()</td>
+	<td class="summary">MOAIDeckを生成します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:updateHorizotal">BoxLayout:updateHorizotal</a>&nbsp;(parent)</td>
-	<td class="summary">指定した四角形内に、 水平方向に子オブジェクトを配置します.</td>
+	<td class="name" nowrap><a href="#TiledSprite:onFrameLoop">TiledSprite:onFrameLoop</a>&nbsp;(event)</td>
+	<td class="summary">フレームアニメーションのループ時の処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:updateVertical">BoxLayout:updateVertical</a>&nbsp;(parent)</td>
-	<td class="summary">指定した四角形内に、 垂直方向に子オブジェクトを配置します.</td>
+	<td class="name" nowrap><a href="#TiledSprite:onFrameStop">TiledSprite:onFrameStop</a>&nbsp;(event)</td>
+	<td class="summary">フレームアニメーション停止時の処理を行います.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TiledSprite:setFrame">TiledSprite:setFrame</a>&nbsp;(value)</td>
+	<td class="summary">タイルのフレーム番号を設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TiledSprite:setFrameHeight">TiledSprite:setFrameHeight</a>&nbsp;(height)</td>
+	<td class="summary">タイルのフレーム数を設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TiledSprite:setFrameSize">TiledSprite:setFrameSize</a>&nbsp;(width, height)</td>
+	<td class="summary">タイルのフレーム数を設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TiledSprite:setFrameWidth">TiledSprite:setFrameWidth</a>&nbsp;(width)</td>
+	<td class="summary">タイルのフレーム数を設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TiledSprite:setSize">TiledSprite:setSize</a>&nbsp;(width, height)</td>
+	<td class="summary">表示オブジェクトのサイズを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TiledSprite:setTexture">TiledSprite:setTexture</a>&nbsp;(texture)</td>
+	<td class="summary">テキスチャを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TiledSprite:stopFrames">TiledSprite:stopFrames</a>&nbsp;()</td>
+	<td class="summary">フレームアニメーションを停止します.</td>
 	</tr>
 
 </table>
@@ -364,8 +399,8 @@
 <table class="table_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout ">BoxLayout </a></td>
-	<td class="summary">表示オブジェクトの位置やサイズのレイアウトを更新する為のクラスです.</td>
+	<td class="name" nowrap><a href="#TiledSprite ">TiledSprite </a></td>
+	<td class="summary">テクスチャをタイル毎に分割して、タイル毎に描画するクラスです.<br> TODO:クラス名がTiledSpriteに変更される予定.TiledSpriteは任意のフレームに変更される.<br> </td>
 	</tr>
 
 </table>
@@ -383,20 +418,101 @@
 
 
 
-<dt><a name="BoxLayout:getChildX"></a><strong>BoxLayout:getChildX</strong>&nbsp;(parentWidth, childWidth)</dt>
+<dt><a name="TiledSprite:getFrame"></a><strong>TiledSprite:getFrame</strong>&nbsp;()</dt>
 <dd>
-子オブジェクトのX座標を返します. 
+タイルのフレーム番号を返します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TiledSprite:getFrameHeight"></a><strong>TiledSprite:getFrameHeight</strong>&nbsp;()</dt>
+<dd>
+タイルのフレーム数を返します.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+frameHeight 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TiledSprite:getFrameWidth"></a><strong>TiledSprite:getFrameWidth</strong>&nbsp;()</dt>
+<dd>
+タイルのフレーム数を返します.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+frameWidth 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TiledSprite:getTexture"></a><strong>TiledSprite:getTexture</strong>&nbsp;()</dt>
+<dd>
+テキスチャを返します.
+
+
+
+
+
+
+
+<h3>Return value:</h3>
+texture 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TiledSprite:moveFrames"></a><strong>TiledSprite:moveFrames</strong>&nbsp;(frames, sec, mode)</dt>
+<dd>
+フレームアニメーションを行います. TODO:改善されたアニメーションに置き換わる 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  parentWidth: 
+	  frames: 
 	</li>
 	
 	<li>
-	  childWidth: 
+	  sec: 
+	</li>
+	
+	<li>
+	  mode: 
 	</li>
 	
 </ul>
@@ -413,95 +529,25 @@
 
 
 
-<dt><a name="BoxLayout:getChildY"></a><strong>BoxLayout:getChildY</strong>&nbsp;(parentHeight, childHeight)</dt>
+<dt><a name="TiledSprite:new "></a><strong>TiledSprite:new </strong>&nbsp;(texture, frameWidth, frameHeight, params)</dt>
 <dd>
-子オブジェクトのY座標を返します. 
+コンストラクタです
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  parentHeight: 
+	  texture: 
 	</li>
 	
 	<li>
-	  childHeight: 
+	  frameWidth: 
 	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="BoxLayout:getHorizotalLayoutSize"></a><strong>BoxLayout:getHorizotalLayoutSize</strong>&nbsp;(children)</dt>
-<dd>
-水平方向に子オブジェクトを配置した時の 全体のレイアウトサイズを返します. 
-
-
-<h3>Parameters</h3>
-<ul>
 	
 	<li>
-	  children: 
+	  frameHeight: 
 	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="BoxLayout:getVerticalLayoutSize"></a><strong>BoxLayout:getVerticalLayoutSize</strong>&nbsp;(children)</dt>
-<dd>
-垂直方向に子オブジェクトを配置した時の 全体のレイアウトサイズを返します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  children: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="BoxLayout:init"></a><strong>BoxLayout:init</strong>&nbsp;(params)</dt>
-<dd>
-コンストラクタです 
-
-
-<h3>Parameters</h3>
-<ul>
 	
 	<li>
 	  params: 
@@ -521,28 +567,33 @@
 
 
 
-<dt><a name="BoxLayout:setPadding"></a><strong>BoxLayout:setPadding</strong>&nbsp;(left, top, right, bottom)</dt>
+<dt><a name="TiledSprite:newDeck"></a><strong>TiledSprite:newDeck</strong>&nbsp;()</dt>
 <dd>
-上下左右の余白を設定します. 
+MOAIDeckを生成します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TiledSprite:onFrameLoop"></a><strong>TiledSprite:onFrameLoop</strong>&nbsp;(event)</dt>
+<dd>
+フレームアニメーションのループ時の処理を行います. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  left: 
-	</li>
-	
-	<li>
-	  top: 
-	</li>
-	
-	<li>
-	  right: 
-	</li>
-	
-	<li>
-	  bottom: 
+	  event: 
 	</li>
 	
 </ul>
@@ -559,16 +610,16 @@
 
 
 
-<dt><a name="BoxLayout:update"></a><strong>BoxLayout:update</strong>&nbsp;(group)</dt>
+<dt><a name="TiledSprite:onFrameStop"></a><strong>TiledSprite:onFrameStop</strong>&nbsp;(event)</dt>
 <dd>
-指定したGroupのレイアウトを更新します. 
+フレームアニメーション停止時の処理を行います. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  group: 
+	  event: 
 	</li>
 	
 </ul>
@@ -585,16 +636,16 @@
 
 
 
-<dt><a name="BoxLayout:updateHorizotal"></a><strong>BoxLayout:updateHorizotal</strong>&nbsp;(parent)</dt>
+<dt><a name="TiledSprite:setFrame"></a><strong>TiledSprite:setFrame</strong>&nbsp;(value)</dt>
 <dd>
-指定した四角形内に、 水平方向に子オブジェクトを配置します. 
+タイルのフレーム番号を設定します. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  parent: 
+	  value: 
 	</li>
 	
 </ul>
@@ -611,19 +662,148 @@
 
 
 
-<dt><a name="BoxLayout:updateVertical"></a><strong>BoxLayout:updateVertical</strong>&nbsp;(parent)</dt>
+<dt><a name="TiledSprite:setFrameHeight"></a><strong>TiledSprite:setFrameHeight</strong>&nbsp;(height)</dt>
 <dd>
-指定した四角形内に、 垂直方向に子オブジェクトを配置します. 
+タイルのフレーム数を設定します. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  parent: 
+	  height: 
 	</li>
 	
 </ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TiledSprite:setFrameSize"></a><strong>TiledSprite:setFrameSize</strong>&nbsp;(width, height)</dt>
+<dd>
+タイルのフレーム数を設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  width: 
+	</li>
+	
+	<li>
+	  height: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TiledSprite:setFrameWidth"></a><strong>TiledSprite:setFrameWidth</strong>&nbsp;(width)</dt>
+<dd>
+タイルのフレーム数を設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  width: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TiledSprite:setSize"></a><strong>TiledSprite:setSize</strong>&nbsp;(width, height)</dt>
+<dd>
+表示オブジェクトのサイズを設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  width: 
+	</li>
+	
+	<li>
+	  height: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TiledSprite:setTexture"></a><strong>TiledSprite:setTexture</strong>&nbsp;(texture)</dt>
+<dd>
+テキスチャを設定します. サイズも自動で設定されます. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  texture: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TiledSprite:stopFrames"></a><strong>TiledSprite:stopFrames</strong>&nbsp;()</dt>
+<dd>
+フレームアニメーションを停止します. 
+
 
 
 
@@ -643,8 +823,8 @@
 <h2><a name="tables"></a>Tables</h2>
 <dl class="table">
 
-<dt><a name="BoxLayout "></a><strong>BoxLayout </strong></dt>
-<dd>表示オブジェクトの位置やサイズのレイアウトを更新する為のクラスです. このクラスでは、Box形式のオブジェクトを水平、垂直方向に配置する事が可能です.
+<dt><a name="TiledSprite "></a><strong>TiledSprite </strong></dt>
+<dd>テクスチャをタイル毎に分割して、タイル毎に描画するクラスです.<br> TODO:クラス名がTiledSpriteに変更される予定.TiledSpriteは任意のフレームに変更される.<br>
 
 
 

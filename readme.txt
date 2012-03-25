@@ -3,10 +3,7 @@
 -- HSFramework(Hana Saurus Framework)
 -- Makoto
 -- Version:0.4.2
--- MOAI SDK:Moai SDK Beta Version 0.95 Beta revesion 3
--- Notes:
--- Does not work when you do not to download and compile the source
--- from github in MacOSX.
+-- MOAI SDK:Moai SDK Version 1.0 
 -------------------------------------------------------------------
 
 [日本語]
@@ -44,10 +41,6 @@ MOAI_CONFIG=MoaiSDKのsamplesフォルダのconfig.luaのフォルダパスを�
 4.MacOSXの場合は、以下の環境変数を設定してください。
 
 MOAI_HOME=MoaiSDKのトップディレクトリを設定してください。
-
-注意事項：
-MacOSXの場合、以下の「Moai SDK Beta Version 0.95 Beta revesion 3」で動作しません。
-最新のソースをgithubからダウンロードして、xcodeでコンパイルして対応してください。
 
 5.Windowsの場合は "run.bat"、MacOSXの場合は"run.sh"を実行してサンプルを実行してください。
  後は、サンプルを見てあなたのゲームを作成してください。
