@@ -20,6 +20,7 @@ end
 -- scene names
 sceneItems ={
     {text = "sprite_sample", scene = "samples/basics/sprite_sample"},
+    {text = "spritesheet_sample", scene = "samples/basics/spritesheet_sample"},
     {text = "mapsprite_sample", scene = "samples/basics/mapsprite_sample"},
     {text = "graphics_sample", scene = "samples/basics/graphics_sample"},
     {text = "group_sample", scene = "samples/basics/group_sample"},

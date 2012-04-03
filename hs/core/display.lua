@@ -1,3 +1,4 @@
+-- 使用するコンポーネント一覧
 local Group
 local Layer
 local Graphics

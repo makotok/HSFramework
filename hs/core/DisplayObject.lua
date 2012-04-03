@@ -315,34 +315,19 @@ function DisplayObject:getBlue()
 end
 
 ---------------------------------------
--- 表示するか反映します.
+-- 表示するか設定します.
 ---------------------------------------
-function DisplayObject:updateVisible()
+function DisplayObject:setVisible(visible)
+    self._visible = visible
     if self.prop then
         self.prop:setVisible(self.visible)
     end    
 end
 
 ---------------------------------------
--- 表示するか設定します.
----------------------------------------
-function DisplayObject:setVisible(visible)
-    self._visible = visible
-    self:updateVisible()
-end
-
----------------------------------------
 -- 表示するか返します.
 ---------------------------------------
 function DisplayObject:isVisible()
-    --[[
-    if self._visible == false then
-        return false
-    end
-    if self.parent then
-        return self.parent:isVisible()
-    end
-    --]]
     return self._visible
 end
 

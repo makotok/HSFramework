@@ -4,63 +4,118 @@ local DisplayObject = require("hs/core/DisplayObject")
 local Event = require("hs/core/Event")
 
 --------------------------------------------------------------------------------
--- テクスチャをタイル毎に分割して、タイル毎に描画するクラスです.<br>
--- TODO:クラス名がTiledSpriteに変更される予定.SpriteSheetは任意のフレームに変更される.<br>
+-- テクスチャを任意のシートに分割して、シート毎に描画するクラスです.<br>
 -- @class table
 -- @name SpriteSheet
 --------------------------------------------------------------------------------
 local SpriteSheet = DisplayObject()
 
 -- プロパティ定義
-SpriteSheet:setPropertyName("frame")
-SpriteSheet:setPropertyName("frameWidth")
-SpriteSheet:setPropertyName("frameHeight")
+SpriteSheet:setPropertyName("sheets")
+SpriteSheet:setPropertyName("sheetsAnimations")
+SpriteSheet:setPropertyName("sheetIndex")
 SpriteSheet:setPropertyName("texture")
 
 ---------------------------------------
 -- コンストラクタです
 -- @name SpriteSheet:new
 ---------------------------------------
-function SpriteSheet:init(texture, frameWidth, frameHeight, params)
+function SpriteSheet:init(params)
     SpriteSheet:super(self, params)
-
 end
 
 function SpriteSheet:onInitial()
     DisplayObject.onInitial(self)
     
     -- オブジェクト定義
-    self._frame = 1
-    self._frames = {}
-    self._frameCurve = MOAIAnimCurve.new()
-    self._frameAnim = MOAIAnim:new()
-    self._frameWidth = 1
-    self._frameHeight = 1
+    self._sheets = {}
+    self._sheetIndex = 1
+    self._sheetCurve = MOAIAnimCurve.new()
+    self._sheetAnim = MOAIAnim:new()
+    self._sheetsAnimations = {}
     
     -- イベントリスナの設定
-    self._frameAnim:setListener(MOAITimer.EVENT_TIMER_LOOP, 
+    self._sheetAnim:setListener(MOAITimer.EVENT_TIMER_LOOP, 
         function(prop)
             local e = Event:new(Event.FRAME_LOOP)
-            self:onFrameLoop(e)
             self:dispatchEvent(e)
         end
     )
-    self._frameAnim:setListener(MOAIAction.EVENT_STOP,
+    self._sheetAnim:setListener(MOAIAction.EVENT_STOP,
         function(prop)
             local e = Event:new(Event.FRAME_STOP)
-            self:onFrameStop(e)
             self:dispatchEvent(e)
         end
     )
+end
 
-    -- テクスチャの設定
-    if texture then
-        self:setTexture(texture)
+---------------------------------------
+-- 全てのシートデータを返します.
+-- このテーブルを直接変更しても表示オブジェクトには反映されません.
+-- @return sheets
+---------------------------------------
+function SpriteSheet:getSheets()
+    return self._sheets
+end
+
+---------------------------------------
+-- シートデータを設定します.
+---------------------------------------
+function SpriteSheet:setSheets(value)
+    self._sheets = value
+    self:updateSheets()
+end
+
+---------------------------------------
+-- シートデータを設定します.
+---------------------------------------
+function SpriteSheet:loadSheetsFromTile(tileX, tileY)
+    self._sheets = {}
+    for y = 1, tileY do
+        for x = 1, tileX do
+            self:addSheet((x - 1) * 32, (y - 1) * 32, 32, 32)
+        end
+    end
+    self:updateSheets()
+end
+
+---------------------------------------
+-- シートを追加します.
+---------------------------------------
+function SpriteSheet:addSheet(x, y, width, height)
+    local rect = {x = x, y = y, width = width, height = height}
+    table.insert(self.sheets, rect)
+end
+
+---------------------------------------
+-- シートを設定します.
+---------------------------------------
+function SpriteSheet:setSheet(index, x, y, width, height)
+    local rect = {x = x, y = y, width = width, height = height}
+    self.sheets[index] = rect
+end
+
+---------------------------------------
+-- シートデータを表示オブジェクトに反映します.
+---------------------------------------
+function SpriteSheet:updateSheets()
+    local texture = self.texture
+    if not texture then
+        return
     end
 
-    --  フレーム数の設定
-    if frameWidth and frameHeight then
-        self:setFrameSize(frameWidth, frameHeight)
+    local sheetCount = #self.sheets
+
+    -- texture size
+    local tw, th = texture:getSize()
+    
+    self.deck:reserve(sheetCount)
+    for i, rect in ipairs(self.sheets) do
+        local xMin, yMin = rect.x, rect.y
+        local xMax = rect.x + rect.width
+        local yMax = rect.y + rect.height
+        self.deck:setRect(i, 0, 0, rect.width, rect.height)
+        self.deck:setUVRect(i, xMin / tw, yMin / th, xMax / tw, yMax / th)
     end
 end
 
@@ -68,7 +123,7 @@ end
 -- MOAIDeckを生成します.
 ---------------------------------------
 function SpriteSheet:newDeck()
-    return MOAITileDeck2D.new()
+    return MOAIGfxQuadDeck2D.new()
 end
 
 ---------------------------------------
@@ -83,8 +138,6 @@ function SpriteSheet:setTexture(texture)
     local width, height = texture:getSize()
     self.deck:setTexture(texture)
     self._texture = texture
-
-    self:setSize(width / self.frameWidth, height / self.frameHeight)
 end
 
 ---------------------------------------
@@ -99,89 +152,83 @@ end
 -- 表示オブジェクトのサイズを設定します.
 ---------------------------------------
 function SpriteSheet:setSize(width, height)
-    DisplayObject.setSize(self, width, height)
-    self.deck:setRect(0, self.height, self.width, 0)
+    self._width = width
+    self._height = height
+    self:centerPivot()
 end
 
 ---------------------------------------
--- タイルのフレーム数を設定します.
+-- シート番号を設定します.
 ---------------------------------------
-function SpriteSheet:setFrameSize(width, height)
-    self._frameWidth = width
-    self._frameHeight = height
-    self.deck:setSize(width, height)
-    if self.texture then
-        self.texture = self.texture
-    end
+function SpriteSheet:setSheetIndex(value)
+    self._sheetIndex = value
+    self.prop:setIndex(value)
+    
+    local rect = self.sheets[value]
+    self:setSize(rect.width, rect.height)
 end
 
 ---------------------------------------
--- タイルのフレーム数を設定します.
+-- シート番号を返します.
 ---------------------------------------
-function SpriteSheet:setFrameWidth(width)
-    self:setFrameSize(width, self._frameHeight)
+function SpriteSheet:getSheetIndex()
+    return self._sheetIndex
 end
 
 ---------------------------------------
--- タイルのフレーム数を返します.
--- @return frameWidth
+-- フレームアニメーションデータを返します.
 ---------------------------------------
-function SpriteSheet:getFrameWidth()
-    return self._frameWidth
+function SpriteSheet:getSheetsAnimations()
+    return self._sheetsAnimations
 end
 
 ---------------------------------------
--- タイルのフレーム数を設定します.
+-- フレームアニメーションデータを設定します.
 ---------------------------------------
-function SpriteSheet:setFrameHeight(height)
-    self:setFrameSize(self._frameWidth, height)
+function SpriteSheet:setSheetsAnimations(animations)
+    self._sheetsAnimations = animations
 end
 
 ---------------------------------------
--- タイルのフレーム数を返します.
--- @return frameHeight
+-- フレームアニメーションデータを返します.
 ---------------------------------------
-function SpriteSheet:getFrameHeight()
-    return self._frameHeight
+function SpriteSheet:setSheetsAnimation(name)
+    return self._sheetsAnimations[name]
 end
 
 ---------------------------------------
--- タイルのフレーム番号を設定します.
+-- フレームアニメーションデータを設定します.
 ---------------------------------------
-function SpriteSheet:setFrame(value)
-    self._frame = value
-    self.deck:setIndex(value)
+function SpriteSheet:setSheetsAnimation(name, indexes, sec, mode)
+    self._sheetsAnimations[name] = {indexes = indexes, sec = sec, mode = mode}
 end
 
 ---------------------------------------
--- タイルのフレーム番号を返します.
+-- フレームアニメーションを開始します.
 ---------------------------------------
-function SpriteSheet:getFrame()
-    return self._frame
-end
-
----------------------------------------
--- フレームアニメーションを行います.
--- TODO:改善されたアニメーションに置き換わる
----------------------------------------
-function SpriteSheet:moveFrames(frames, sec, mode)
-    mode = mode and mode or MOAITimer.LOOP
-
-    local curve = self._frameCurve
-    curve:reserveKeys(#frames)
-    for i = 1, #frames do
-        curve:setKey ( i, sec * (i - 1), frames[i], MOAIEaseType.FLAT )
+function SpriteSheet:play(name)
+    local animData = self._sheetsAnimations[name]
+    if not animData then
+        return
     end
 
-    local anim = self._frameAnim
+    local anim = self._sheetAnim
+    if anim:isBusy() then
+        anim:stop()
+    end
+
+    local curve = self._sheetCurve
+    local indexes = animData.indexes
+    curve:reserveKeys(#indexes)
+    for i = 1, #indexes do
+        curve:setKey ( i, animData.sec * (i - 1), indexes[i], MOAIEaseType.FLAT )
+    end
+
+    local mode = animData.mode or MOAITimer.LOOP
     anim:reserveLinks(1)
     anim:setMode(mode)
     anim:setLink(1, curve, self.prop, MOAIProp2D.ATTR_INDEX )
     anim:setCurve(curve)
-    
-    if anim:isBusy() then
-        anim:stop()
-    end
     
     anim:start()
     return anim
@@ -190,22 +237,8 @@ end
 ---------------------------------------
 -- フレームアニメーションを停止します.
 ---------------------------------------
-function SpriteSheet:stopFrames()
-    self._frameAnim:stop()
-end
-
----------------------------------------
--- フレームアニメーションのループ時の処理を行います.
----------------------------------------
-function SpriteSheet:onFrameLoop(event)
-
-end
-
----------------------------------------
--- フレームアニメーション停止時の処理を行います.
----------------------------------------
-function SpriteSheet:onFrameStop(event)
-
+function SpriteSheet:stop()
+    self._sheetAnim:stop()
 end
 
 return SpriteSheet
