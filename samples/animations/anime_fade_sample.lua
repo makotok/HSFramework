@@ -7,5 +7,5 @@ function onCreate()
 end
 
 function onStart()
-    animation = display:newAnimation(sprite1, 1):move(50, 50):fadeOut():fadeIn():rotate(360):play()    
+    animation = display:newAnimation(sprite1, 1):moveLocation(50, 50):fadeOut():fadeIn():moveRotation(0, 0, 360):play()    
 end

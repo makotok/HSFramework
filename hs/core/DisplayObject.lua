@@ -1,6 +1,7 @@
 local table = require("hs/lang/table")
 local Logger = require("hs/core/Logger")
 local Transform = require("hs/core/Transform")
+local SceneManager
 
 --------------------------------------------------------------------------------
 -- 表示オブジェクトの基本クラスです.<br>
@@ -17,6 +18,7 @@ local DisplayObject = Transform()
 -- プロパティ定義
 DisplayObject:setPropertyName("width")
 DisplayObject:setPropertyName("height")
+DisplayObject:setPropertyName("depth")
 DisplayObject:setPropertyName("priority")
 DisplayObject:setPropertyName("alpha")
 DisplayObject:setPropertyName("red")
@@ -43,6 +45,7 @@ function DisplayObject:init(params)
     self._prop = self:newProp(self.deck)
     self._width = 0
     self._height = 0
+    self._depth = 0
     self._nestLevel = 1
     self._visible = true
     self._enabled = true
@@ -57,7 +60,7 @@ function DisplayObject:init(params)
     end
     
     -- 現在のシーンを設定
-    local SceneManager = require("hs/core/SceneManager")
+    SceneManager = SceneManager or require("hs/core/SceneManager")
     local scene = SceneManager.currentScene
     if scene then
         self.parent = scene
@@ -90,7 +93,7 @@ end
 -- デフォルトは適当です.
 ---------------------------------------
 function DisplayObject:newProp(deck)
-    local prop = MOAIProp2D.new()
+    local prop = MOAIProp.new()
     prop:setDeck(deck)
     return prop
 end
@@ -184,7 +187,7 @@ function DisplayObject:centerPivot()
     local w, h = self:getSize()
     local px = w / 2
     local py = h / 2
-    self:setPivot(px, py)
+    self:setPivot(px, py, 0)
 end
 
 ---------------------------------------
@@ -315,7 +318,6 @@ end
 -- 表示するか反映します.
 ---------------------------------------
 function DisplayObject:updateVisible()
-    -- FIXME:MOAIProp2D Bug?
     if self.prop then
         self.prop:setVisible(self.visible)
     end    

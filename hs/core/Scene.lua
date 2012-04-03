@@ -279,6 +279,26 @@ function Scene:moveColor(red, green, blue, alpha, sec, mode, completeHandler)
 end
 
 ---------------------------------------
+-- 色をアニメーション遷移させます.
+---------------------------------------
+function Scene:seekColor(red, green, blue, alpha, sec, mode, completeHandler)
+    local actionGroup = MOAIAction.new()
+    for i, layer in ipairs(self.layers) do
+        local action = layer:seekColor(red, green, blue, alpha, sec, mode)
+        actionGroup:addChild(action)
+    end
+    if completeHandler ~= nil then
+        actionGroup:setListener(MOAIAction.EVENT_STOP,
+            function(prop)
+                completeHandler(self)
+            end
+        )
+    end
+    actionGroup:start()
+    return actionGroup
+end
+
+---------------------------------------
 -- フェードインします.
 ---------------------------------------
 function Scene:fadeIn(sec, mode, completeHandler)

@@ -12,17 +12,20 @@ local Camera = Transform()
 ---------------------------------------
 function Camera:init()
     Camera:super(self)
+    self:setUpMode2D()
 end
 
 ---------------------------------------
---- MOAICamera2Dを生成して返します.
+--- MOAICameraを生成して返します.
 ---------------------------------------
 function Camera:newTransformObj()
-    return MOAICamera2D.new()
+    return MOAICamera.new()
 end
 
-function Camera:getTransformObj()
-    return self._transformObj
+function Camera:setUpMode2D()
+    self.transformObj:setOrtho(true)
+    self.transformObj:setNearPlane(1)
+    self.transformObj:setFarPlane(-1)
 end
 
 return Camera

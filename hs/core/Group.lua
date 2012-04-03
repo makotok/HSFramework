@@ -69,6 +69,7 @@ function Group:addChild(child)
     table.insert(self.children, child)
     child.layer = self.layer
     child.parent = self
+    child.nestLevel = self.nestLevel + 1
     self:setAttrLinkForChild(child)
     
     self:invalidateLayout()

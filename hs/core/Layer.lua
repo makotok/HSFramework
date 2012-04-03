@@ -48,14 +48,14 @@ end
 -- MOAILayer2Dを生成します.
 ---------------------------------------
 function Layer:newRenderPass()
-    local layer = MOAILayer2D.new ()
+    local layer = MOAILayer.new ()
     layer.viewport = MOAIViewport.new()
     layer.viewport:setOffset(-1, 1)
     layer.viewport:setScale(Application.window.width, -Application.window.height)
     layer.viewport:setSize(Application.stageWidth, Application.stageHeight)
     
     layer:setViewport(layer.viewport)
-    layer:setSortMode(MOAILayer2D.SORT_PRIORITY_ASCENDING)
+    layer:setSortMode(MOAILayer.SORT_PRIORITY_ASCENDING)
     layer:setPartition(MOAIPartition.new())
     return layer
 end
@@ -198,22 +198,14 @@ end
 -- レイヤー内のワールド座標から、
 -- 存在するDisplayObjectリストを返します.
 ---------------------------------------
-function Layer:getDisplayListForPoint(worldX, worldY)
+function Layer:getDisplayListForPoint(worldX, worldY, worldZ)
     local partition = self._partition
     local array = {}
-    local props = {partition:propListForPoint(worldX, worldY)}
+    local props = {partition:propListForPoint(worldX, worldY, worldZ or 0)}
     for i, prop in ipairs(props) do
         if prop._displayObject then
             table.insert(array, prop._displayObject)
         end
-        
-        --[[
-        for k, v in pairs(prop) do
-            if v._displayObject then
-                table.insert(array, v._displayObject)
-            end
-        end
-        --]]
     end
     return array
 end
@@ -221,15 +213,15 @@ end
 ---------------------------------------
 -- スクリーン座標からワールド座標に変換します.
 ---------------------------------------
-function Layer:windowToWorld(windowX, windowY)
-    return self.renderPass:wndToWorld(windowX, windowY)
+function Layer:windowToWorld(windowX, windowY, windowZ)
+    return self.renderPass:wndToWorld(windowX, windowY, windowZ or 0)
 end
 
 ---------------------------------------
 -- ワールド座標からスクリーン座標に変換します.
 ---------------------------------------
-function Layer:worldToWindow(worldX, worldY)
-    return self.renderPass:worldToWnd(worldX, worldY)
+function Layer:worldToWindow(worldX, worldY, worldZ)
+    return self.renderPass:worldToWnd(worldX, worldY, worldZ or 0)
 end
 
 ---------------------------------------
@@ -240,8 +232,8 @@ function Layer:onTouchDown(event)
         return
     end
     
-    local worldX, worldY = self:windowToWorld(event.x, event.y)
-    local displayList = self:getDisplayListForPoint(worldX, worldY)
+    local worldX, worldY, worldZ = self:windowToWorld(event.x, event.y, 0)
+    local displayList = self:getDisplayListForPoint(worldX, worldY, worldZ)
     self._touchDownDisplayList = displayList
     local max = #displayList
 
@@ -249,6 +241,7 @@ function Layer:onTouchDown(event)
     local e = Event:new(event.type)
     e.worldX = worldX
     e.worldY = worldY
+    e.worldZ = worldZ
     
     for i = max, 1, -1 do
         local display = displayList[i]
@@ -298,7 +291,7 @@ function Layer:onTouchCommon(event, funcName)
     -- ワールド座標の取得
     local e = Event:new(event.type)
     e.screenX, e.screenY = event.x, event.y
-    e.worldX, e.worldY = self:windowToWorld(event.x, event.y)
+    e.worldX, e.worldY, e.worldZ = self:windowToWorld(event.x, event.y, 0)
     
     local displayList = self._touchDownDisplayList
     local max = #displayList

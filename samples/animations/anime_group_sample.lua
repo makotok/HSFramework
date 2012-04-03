@@ -8,5 +8,5 @@ function onCreate()
 end
 
 function onStart()
-    animation = display:newAnimation({sprite1, sprite2}, 1):move(60, 0):fadeOut():fadeIn():rotate(360):play()
+    animation = display:newAnimation({sprite1, sprite2}, 1):moveLocation(60, 0):fadeOut():fadeIn():moveRotation(0, 0, 360):play()
 end

@@ -1,7 +1,3 @@
--- TODO:Version1.0 互換性の問題の対応
--- すぐに削除したい
-require("hs/moai")
-
 -- requires
 local Framework = require("hs/Framework")
 local Application = require("hs/core/Application")

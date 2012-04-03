@@ -74,28 +74,6 @@ end
 -- moai2D.lua - version 1.0 Beta
 ----------------------------------------------------------------
 
-MOAILayer.extend (
-
-	"MOAILayer2DHS",
-
-	-- extend the instance interface
-	function ( interface, super )
-            initTransform2DInterface ( interface, super )
-	end,
-	
-	-- extend the class
-	function ( class, super )
-
-        local new = class.new
-
-		function class.new ()
-            local self = new ()
-			self:setPartitionCull2D ( true )
-			return self
-		end
-	end
-)
-
 MOAITextBox.extend (
 
 	"MOAITextBox2D",

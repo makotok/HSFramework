@@ -25,9 +25,11 @@ end
 function SceneAnimation.popIn(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
     return Animation:new():parallel(
-        Animation:new(currentScene, sec):color(-0.5, -0.5, -0.5, -0.5),
-        Animation:new(nextScene, sec):copy({x = 0, y = 0, scaleX = 0, scaleY = 0, visible = true})
-            :scale(1, 1):copy({scaleX = 1, scaleY = 1})
+        Animation:new(currentScene, sec)
+            :seekColor(-0.5, -0.5, -0.5, -0.5),
+        Animation:new(nextScene, sec)
+            :copy({x = 0, y = 0, scaleX = 0, scaleY = 0, visible = true})
+            :seekScale(1, 1, 0)
     )
 end
 
@@ -38,8 +40,8 @@ end
 function SceneAnimation.popOut(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
     return Animation:new():parallel(
-        Animation:new(currentScene, sec):scale(-1, -1):copy({visible = false}),
-        Animation:new(nextScene, sec):color(0.5, 0.5, 0.5, 0.5):copy({red = 1, green = 1, blue = 1, alpha = 1})
+        Animation:new(currentScene, sec):seekScale(0, 0, 0):copy({visible = false}),
+        Animation:new(nextScene, sec):seekColor(1, 1, 1, 1)
     )
 end
 
@@ -72,8 +74,14 @@ function SceneAnimation.slideToTop(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
     local sw, sh = Application.screenWidth, Application.screenHeight
     return Animation:new():parallel(
-        Animation:new(currentScene, sec):copy({x = 0, y = 0}):move(0, -sh):copy({visible = false}),
-        Animation:new(nextScene, sec):copy({x = 0, y = sh, visible = true}):move(0, -sh):copy({y = 0})
+        Animation:new(currentScene, sec)
+            :copy({x = 0, y = 0, z = 0})
+            :moveLocation(0, -sh, 0)
+            :copy({visible = false}),
+        Animation:new(nextScene, sec)
+            :copy({x = 0, y = sh, z = 0, visible = true})
+            :moveLocation(0, -sh, 0)
+            :copy({y = 0})
     )
 end
 
@@ -84,8 +92,14 @@ function SceneAnimation.slideToBottom(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
     local sw, sh = Application.screenWidth, Application.screenHeight
     return Animation:new():parallel(
-        Animation:new(currentScene, sec):copy({x = 0, y = 0}):move(0, sh):copy({visible = false}),
-        Animation:new(nextScene, sec):copy({x = 0, y = -sh, visible = true}):move(0, sh):copy({y = 0})
+        Animation:new(currentScene, sec)
+            :copy({x = 0, y = 0})
+            :moveLocation(0, sh, 0)
+            :copy({visible = false}),
+        Animation:new(nextScene, sec)
+            :copy({x = 0, y = -sh, visible = true})
+            :moveLocation(0, sh, 0)
+            :copy({y = 0})
     )
 end
 
@@ -96,8 +110,14 @@ function SceneAnimation.slideToLeft(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
     local sw, sh = Application.screenWidth, Application.screenHeight
     return Animation:new():parallel(
-        Animation:new(currentScene, sec):copy({x = 0, y = 0}):move(-sw, 0):copy({visible = false}),
-        Animation:new(nextScene, sec):copy({x = sw, y = 0, visible = true}):move(-sw, 0):copy({x = 0})
+        Animation:new(currentScene, sec)
+            :copy({x = 0, y = 0})
+            :moveLocation(-sw, 0, 0)
+            :copy({visible = false}),
+        Animation:new(nextScene, sec)
+            :copy({x = sw, y = 0, visible = true})
+            :moveLocation(-sw, 0, 0)
+            :copy({x = 0})
     )
 end
 
@@ -108,8 +128,14 @@ function SceneAnimation.slideToRight(currentScene, nextScene, params)
     local sec = params.sec and params.sec or SceneAnimation.defaultSecond
     local sw, sh = Application.screenWidth, Application.screenHeight
     return Animation:new():parallel(
-        Animation:new(currentScene, sec):copy({x = 0, y = 0}):move(sw, 0):copy({visible = false}),
-        Animation:new(nextScene, sec):copy({x = -sw, y = 0, visible = true}):move(sw, 0):copy({x = 0})
+        Animation:new(currentScene, sec)
+            :copy({x = 0, y = 0})
+            :moveLocation(sw, 0, 0)
+            :copy({visible = false}),
+        Animation:new(nextScene, sec)
+            :copy({x = -sw, y = 0, visible = true})
+            :moveLocation(sw, 0, 0)
+            :copy({x = 0})
     )
 end
 

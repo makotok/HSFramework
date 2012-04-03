@@ -15,6 +15,18 @@ local Animation = EventDispatcher()
 Animation:setPropertyName("targets")
 Animation:setPropertyName("running", "setRunning", "isRunning")
 
+-- private functions
+local function getCommandSecond(self, sec)
+    return sec and sec or self._currentSecond
+end
+
+local function getCommandEaseType(self, easeType)
+    return easeType and easeType or self._currentEaseType
+end
+
+----------------------------------------------------------------
+-- public functions
+----------------------------------------------------------------
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
@@ -88,9 +100,21 @@ end
 ---------------------------------------
 -- 対象オブジェクトを移動させます.
 ---------------------------------------
-function Animation:move(moveX, moveY, sec, mode)
+function Animation:moveLocation(moveX, moveY, moveZ, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
-        return target:move(moveX, moveY, tSec, tMode, completeHandler)
+        return target:moveLocation(moveX, moveY, moveZ, tSec, tMode, completeHandler)
+    end
+    local command = self:newActionCommand(actionFunc, sec, mode)
+    self:addCommand(command)
+    return self
+end
+
+---------------------------------------
+-- 対象オブジェクトを移動させます.
+---------------------------------------
+function Animation:seekLocation(moveX, moveY, moveZ, sec, mode)
+    local actionFunc = function(target, tSec, tMode, completeHandler)
+        return target:seekLocation(moveX, moveY, moveZ, tSec, tMode, completeHandler)
     end
     local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
@@ -100,9 +124,21 @@ end
 ---------------------------------------
 -- 対象オブジェクトを回転させます.
 ---------------------------------------
-function Animation:rotate(rotation, sec, mode)
+function Animation:moveRotation(rx, ry, rz, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
-        return target:rotate(rotation, tSec, tMode, completeHandler)
+        return target:moveRotation(rx, ry, rz, tSec, tMode, completeHandler)
+    end
+    local command = self:newActionCommand(actionFunc, sec, mode)
+    self:addCommand(command)
+    return self
+end
+
+---------------------------------------
+-- 対象オブジェクトを回転させます.
+---------------------------------------
+function Animation:seekRotation(rx, ry, rz, sec, mode)
+    local actionFunc = function(target, tSec, tMode, completeHandler)
+        return target:seekRotation(rx, ry, rz, tSec, tMode, completeHandler)
     end
     local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
@@ -112,9 +148,21 @@ end
 ---------------------------------------
 -- 対象オブジェクトを拡大します.
 ---------------------------------------
-function Animation:scale(scaleX, scaleY, sec, mode)
+function Animation:moveScale(scaleX, scaleY, scaleZ, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
-        return target:scale(scaleX, scaleY, tSec, tMode, completeHandler)
+        return target:moveScale(scaleX, scaleY, scaleZ, tSec, tMode, completeHandler)
+    end
+    local command = self:newActionCommand(actionFunc, sec, mode)
+    self:addCommand(command)
+    return self
+end
+
+---------------------------------------
+-- 対象オブジェクトを拡大します.
+---------------------------------------
+function Animation:seekScale(scaleX, scaleY, scaleZ, sec, mode)
+    local actionFunc = function(target, tSec, tMode, completeHandler)
+        return target:seekScale(scaleX, scaleY, scaleZ, tSec, tMode, completeHandler)
     end
     local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
@@ -148,9 +196,21 @@ end
 ---------------------------------------
 -- 対象オブジェクトの色をアニメーションします.
 ---------------------------------------
-function Animation:color(red, green, blue, alpha, sec, mode)
+function Animation:moveColor(red, green, blue, alpha, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:moveColor(red, green, blue, alpha, tSec, tMode, completeHandler)
+    end
+    local command = self:newActionCommand(actionFunc, sec, mode)
+    self:addCommand(command)
+    return self
+end
+
+---------------------------------------
+-- 対象オブジェクトの色をアニメーションします.
+---------------------------------------
+function Animation:seekColor(red, green, blue, alpha, sec, mode)
+    local actionFunc = function(target, tSec, tMode, completeHandler)
+        return target:seekColor(red, green, blue, alpha, tSec, tMode, completeHandler)
     end
     local command = self:newActionCommand(actionFunc, sec, mode)
     self:addCommand(command)
@@ -280,7 +340,7 @@ function Animation:play(params)
     
     -- 即座に完了するパターン
     if #self.targets == 0 then
-        self:_onCommandComplete()
+        self:onCommandComplete()
         return self        
     end
     if #self._commands == 0 then
@@ -300,14 +360,14 @@ function Animation:_executeCommand(index)
     if index <= #self._commands then
         self._currentIndex = index
         self._currentCommand = self._commands[self._currentIndex]
-        self._currentCommand.play(self, self._onCommandComplete)
+        self._currentCommand.play(self, self.onCommandComplete)
     end
 end
 
 ---------------------------------------
 -- コマンド完了時のハンドラです.
 ---------------------------------------
-function Animation:_onCommandComplete()
+function Animation:onCommandComplete()
     if self._stoped then
         return
     end
@@ -395,8 +455,8 @@ function Animation:newActionCommand(actionFunc, sec, mode)
             end
 
             -- 対象オブジェクトの引数
-            local tSec = self:_getCommandSecond(sec)
-            local tMode = self:_getCommandEaseType(mode)
+            local tSec = getCommandSecond(self, sec)
+            local tMode = getCommandEaseType(self, mode)
             
             local max = #self.targets
             local count = 0
@@ -422,14 +482,6 @@ function Animation:newActionCommand(actionFunc, sec, mode)
         end
     )
     return command
-end
-
-function Animation:_getCommandSecond(sec)
-    return sec and sec or self._currentSecond
-end
-
-function Animation:_getCommandEaseType(easeType)
-    return easeType and easeType or self._currentEaseType
 end
 
 return Animation

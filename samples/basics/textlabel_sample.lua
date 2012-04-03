@@ -14,7 +14,7 @@ function onCreate()
 end
 
 function onStart()
-    animation = display:newAnimation(group, 1):move(0, 50):rotate(360):scale(1, 1):scale(-1, -1):play()
+    animation = display:newAnimation(group, 1):moveLocation(0, 50):moveRotation(0, 0, 360):moveScale(1, 1):moveScale(-1, -1):play()
 end
 
 function onPause()
