@@ -34,7 +34,7 @@ end
 --- MOAITransformを生成して返します.
 ---------------------------------------
 function Transform:newTransformObj()
-    return MOAITransform.new()
+    return MOAITransform2D.new()
 end
 
 function Transform:getTransformObj()

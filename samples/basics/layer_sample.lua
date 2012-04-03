@@ -19,5 +19,6 @@ function onCreate(params)
 end
 
 function onStart()
+    layer1:move(100, 100, 3)
     layer2.camera:move(100, 100, 3)
 end

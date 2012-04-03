@@ -6,6 +6,7 @@
 ----------------------------------------------------------------
 
 local Font = {}
+local defaultCharcodes = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,:;!?()&/-_'
 
 function Font:new(ttf, charcodes, points, dpi)
     local font = MOAIFont.new()

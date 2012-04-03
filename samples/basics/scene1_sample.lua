@@ -9,6 +9,9 @@ module(..., package.seeall)
 function onCreate()
     Logger.info("onCreate()", scene.name)
     
+    scene.sceneOpenAnimation = "crossFade"
+    scene.sceneCloseAnimation = "crossFade"
+    
     local sprite1 = display:newSprite("samples/resources/back_1.png")
     local sprite2 = display:newSprite("samples/resources/cathead.png")
     sprite2.x = 10

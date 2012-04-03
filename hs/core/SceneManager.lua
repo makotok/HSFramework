@@ -2,6 +2,7 @@ local table = require("hs/lang/table")
 local logger = require("hs/core/Logger")
 local EventDispatcher = require("hs/core/EventDispatcher")
 local SceneFactory = require("hs/core/SceneFactory")
+local SceneAnimation = require("hs/core/SceneAnimation")
 local Event = require("hs/core/Event")
 local InputManager = require("hs/core/InputManager")
 local Application = require("hs/core/Application")
@@ -99,6 +100,9 @@ function SceneManager:openScene(sceneName, params)
     -- アニメーションを行う
     local animation = nextScene.sceneOpenAnimation
     if animation then
+        if type(animation) == "string" then
+            animation = SceneAnimation[animation]
+        end 
         self.transitioning = true
         animation(currentScene, nextScene, params):play({onComplete = completeFunc})
     else
@@ -160,6 +164,9 @@ function SceneManager:closeScene(params)
     -- アニメーションを行う場合
     local animation = currentScene.sceneCloseAnimation
     if animation then
+        if type(animation) == "string" then
+            animation = SceneAnimation[animation]
+        end 
         self.transitioning = true
         animation(currentScene, nextScene, params):play({onComplete = completeFunc})
     else

@@ -1,9 +1,9 @@
 local Transform = require("hs/core/Transform")
 
 --------------------------------------------------------------------------------
--- 表示オブジェクトの移動や回転、拡大を行うためのクラスです
+-- LayerのCameraクラスです.
 -- @class table
--- @name Transform
+-- @name Camera
 --------------------------------------------------------------------------------
 local Camera = Transform()
 
@@ -15,7 +15,7 @@ function Camera:init()
 end
 
 ---------------------------------------
---- MOAITransformを生成して返します.
+--- MOAICamera2Dを生成して返します.
 ---------------------------------------
 function Camera:newTransformObj()
     return MOAICamera2D.new()

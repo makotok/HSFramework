@@ -1,17 +1,17 @@
-local Group = require("hs/core/Group")
-local Layer = require("hs/core/Layer")
-local Graphics = require("hs/core/Graphics")
-local Sprite = require("hs/core/Sprite")
-local SpriteSheet = require("hs/core/SpriteSheet")
-local MapSprite = require("hs/core/MapSprite")
-local NinePatch = require("hs/core/NinePatch")
-local TextLabel = require("hs/core/TextLabel")
-local Scene = require("hs/core/Scene")
-local SceneManager = require("hs/core/SceneManager")
-local BoxLayout = require("hs/core/BoxLayout")
-local VBoxLayout = require("hs/core/VBoxLayout")
-local HBoxLayout = require("hs/core/HBoxLayout")
-local Animation = require("hs/core/Animation")
+local Group
+local Layer
+local Graphics
+local Sprite
+local SpriteSheet
+local MapSprite
+local NinePatch
+local TextLabel
+local Scene
+local SceneManager
+local BoxLayout
+local VBoxLayout
+local HBoxLayout
+local Animation
 
 ----------------------------------------------------------------
 -- DisplayObject系のインスタンスを生成する為のクラスです.<br>
@@ -26,6 +26,7 @@ local display = {}
 -- Spriteインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newSprite(...)
+    Sprite = Sprite or require("hs/core/Sprite")
     return Sprite:new(...)
 end
 
@@ -33,6 +34,7 @@ end
 -- SpriteSheetインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newSpriteSheet(...)
+    SpriteSheet = SpriteSheet or require("hs/core/SpriteSheet")
     return SpriteSheet:new(...)
 end
 
@@ -40,6 +42,7 @@ end
 -- MapSpriteインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newMapSprite(...)
+    MapSprite = MapSprite or require("hs/core/MapSprite")
     return MapSprite:new(...)
 end
 
@@ -47,6 +50,7 @@ end
 -- TextLabelインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newText(...)
+    TextLabel = TextLabel or require("hs/core/TextLabel")
     return TextLabel:new(...)
 end
 
@@ -54,6 +58,7 @@ end
 -- Graphicsインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newGraphics(...)
+    Graphics = Graphics or require("hs/core/Graphics")
     return Graphics:new(...)
 end
 
@@ -61,6 +66,7 @@ end
 -- Groupインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newGroup(...)
+    Group = Group or require("hs/core/Group")
     return Group:new(...)
 end
 
@@ -68,6 +74,7 @@ end
 -- Layerインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newLayer(...)
+    Layer = Layer or require("hs/core/Layer")
     return Layer:new(...)
 end
 
@@ -75,6 +82,7 @@ end
 -- BoxLayoutインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newBoxLayout(...)
+    BoxLayout = BoxLayout or require("hs/core/BoxLayout")
     return BoxLayout:new(...)
 end
 
@@ -82,6 +90,7 @@ end
 -- VBoxLayoutインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newVBoxLayout(...)
+    VBoxLayout = VBoxLayout or require("hs/core/VBoxLayout")
     return VBoxLayout:new(...)
 end
 
@@ -89,6 +98,7 @@ end
 -- HBoxLayoutインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newHBoxLayout(...)
+    HBoxLayout = HBoxLayout or require("hs/core/HBoxLayout")
     return HBoxLayout:new(...)
 end
 
@@ -96,13 +106,23 @@ end
 -- Animationインスタンスを生成して返します.
 ----------------------------------------------------------------
 function display:newAnimation(...)
+    Animation = Animation or require("hs/core/Animation")
     return Animation:new(...)
+end
+
+----------------------------------------------------------------
+-- Sceneインスタンスを生成して返します.
+----------------------------------------------------------------
+function display:newScene(...)
+    Scene = Scene or require("hs/core/Scene")
+    return Scene:new(...)
 end
 
 ----------------------------------------------------------------
 -- SceneManager:openScene関数に処理を委譲します.
 ----------------------------------------------------------------
 function display:openScene(...)
+    SceneManager = SceneManager or require("hs/core/SceneManager")
     return SceneManager:openScene(...)
 end
 
@@ -110,6 +130,7 @@ end
 -- SceneManager:openNextScene関数に処理を委譲します.
 ----------------------------------------------------------------
 function display:openNextScene(...)
+    SceneManager = SceneManager or require("hs/core/SceneManager")
     return SceneManager:openNextScene(...)
 end
 
@@ -117,6 +138,7 @@ end
 -- SceneManager:closeScene関数に処理を委譲します.
 ----------------------------------------------------------------
 function display:closeScene(...)
+    SceneManager = SceneManager or require("hs/core/SceneManager")
     return SceneManager:closeScene(...)
 end
 

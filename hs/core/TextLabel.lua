@@ -37,7 +37,7 @@ TextLabel.ALIGN_TYPES = {
 -- デフォルト値
 -- 変更した場合、インスタンスの生成時にデフォルト値が使用されます.
 TextLabel.defaultCharcodes = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,:;!?()&/-_'
-TextLabel.defaultFontTTF = "hs/resources/ipag.ttf"
+TextLabel.defaultFontPath = "hs/resources/ipag.ttf"
 TextLabel.defaultFontSize = 9
 TextLabel.defaultFontDPI = 163
 
@@ -46,7 +46,7 @@ TextLabel:setPropertyName("text")
 TextLabel:setPropertyName("textAlign")
 TextLabel:setPropertyName("charcodes")
 TextLabel:setPropertyName("fontSize")
-TextLabel:setPropertyName("fontTTF")
+TextLabel:setPropertyName("fontPath")
 TextLabel:setPropertyName("fontDPI")
 
 ---------------------------------------
@@ -59,7 +59,7 @@ end
 function TextLabel:onInitial()
     -- 初期値
     self._fontSize = self.defaultFontSize
-    self._fontTTF = self.defaultFontTTF
+    self._fontPath = self.defaultFontPath
     self._fontDPI = self.defaultFontDPI
     self._textChanged = false
 end
@@ -142,7 +142,7 @@ function TextLabel:updateText()
         return
     end
 
-    self._font = FontCache:getFont(self.fontTTF, self.charcodes, self.fontSize, self.fontDPI)
+    self._font = FontCache:getFont(self.fontPath, self.charcodes, self.fontSize, self.fontDPI)
     
     self.prop:setFont (self._font)
     self.prop:setTextSize(self.fontSize, self.fontDPI)
@@ -208,16 +208,16 @@ end
 ---------------------------------------
 -- TrueTypeフォントのパスを設定します.
 ---------------------------------------
-function TextLabel:setFontTTF(ttfPath)
-    self._fontTTF = ttfPath
+function TextLabel:setFontPath(fontPath)
+    self._fontPath = fontPath
     self._textChanged = true
 end
 
 ---------------------------------------
 -- TrueTypeフォントのパスを返します.
 ---------------------------------------
-function TextLabel:getFontTTF()
-    return self._fontTTF
+function TextLabel:getFontPath()
+    return self._fontPath
 end
 
 ---------------------------------------

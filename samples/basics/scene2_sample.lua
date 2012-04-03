@@ -9,8 +9,8 @@ module(..., package.seeall)
 function onCreate()
     Logger.info("onCreate()", scene.name)
 
-    --scene.sceneOpenAnimation = SceneAnimation.popIn
-    --scene.sceneCloseAnimation = SceneAnimation.popOut
+    scene.sceneOpenAnimation = "popIn"
+    scene.sceneCloseAnimation = "popOut"
     
     display:newSprite("samples/resources/back_2.png")
     display:newSprite("samples/resources/cathead.png", {x = 50, y = 50})

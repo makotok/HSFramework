@@ -143,19 +143,19 @@ function ScrollView:onTouchMove(event)
 end
 
 function ScrollView:setVScrollEnabled(value)
-    rawset(self, "vScrollEnabled", value)
+    self._vScrollEnabled = value
 end
 
 function ScrollView:getVScrollEnabled()
-    return rawget(self, "vScrollEnabled")
+    return self._vScrollEnabled
 end
 
 function ScrollView:setHScrollEnabled(value)
-    rawset(self, "hScrollEnabled", value)
+    self._hScrollEnabled = value
 end
 
 function ScrollView:getHScrollEnabled()
-    return rawget(self, "hScrollEnabled")
+    return self._hScrollEnabled
 end
 
 return ScrollView

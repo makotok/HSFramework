@@ -18,7 +18,6 @@ local DisplayObject = Transform()
 DisplayObject:setPropertyName("width")
 DisplayObject:setPropertyName("height")
 DisplayObject:setPropertyName("priority")
-DisplayObject:setPropertyName("physicsObject")
 DisplayObject:setPropertyName("alpha")
 DisplayObject:setPropertyName("red")
 DisplayObject:setPropertyName("green")
@@ -26,6 +25,7 @@ DisplayObject:setPropertyName("blue")
 DisplayObject:setPropertyName("prop")
 DisplayObject:setPropertyName("deck")
 DisplayObject:setPropertyName("layer")
+DisplayObject:setPropertyName("nestLevel")
 DisplayObject:setPropertyName("visible", "setVisible", "isVisible")
 DisplayObject:setPropertyName("enabled", "setEnabled", "isEnabled")
 DisplayObject:setPropertyName("focus", "setFocus", "isFocus")
@@ -43,6 +43,7 @@ function DisplayObject:init(params)
     self._prop = self:newProp(self.deck)
     self._width = 0
     self._height = 0
+    self._nestLevel = 1
     self._visible = true
     self._enabled = true
     self._focus = false
@@ -424,6 +425,20 @@ end
 ---------------------------------------
 function DisplayObject:getProp()
     return self._prop
+end
+
+---------------------------------------
+-- オブジェクトのネストレベルを設定します.
+---------------------------------------
+function DisplayObject:setNestLevel(value)
+    self._nestLevel = value
+end
+
+---------------------------------------
+-- オブジェクトのネストレベルを返します.
+---------------------------------------
+function DisplayObject:getNestLevel()
+    return self._nestLevel
 end
 
 ---------------------------------------

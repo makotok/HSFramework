@@ -42,9 +42,7 @@ Scene:setPropertyName("visible", "setVisible", "isVisible")
 function Scene:init()
     Scene:super(self)
     
-    local SceneAnimation = require("hs/core/SceneAnimation")
-    local Application = require("hs/core/Application")
-
+    self.application = require("hs/core/Application")
     self.sceneManager = require("hs/core/SceneManager")
 
     -- 初期値
@@ -54,11 +52,11 @@ function Scene:init()
     self._visible = true
     self._topLayer = Layer:new()
     self.sceneHandler = {}
-    self.sceneOpenAnimation = SceneAnimation.crossFade
-    self.sceneCloseAnimation = SceneAnimation.crossFade
+    self.sceneOpenAnimation = "crossFade"
+    self.sceneCloseAnimation = "crossFade"
     self:addChild(self.topLayer)
     
-    self:setSize(Application.stageWidth, Application.stageHeight)
+    self:setSize(self.application.stageWidth, self.application.stageHeight)
 end
 
 ---------------------------------------
@@ -391,7 +389,7 @@ end
 function Scene:setVisible(visible)
     self._visible = visible
     if self:isOpened() then
-        SceneManager:refreshRenders()
+        self.sceneManager:refreshRenders()
     end
 end
 

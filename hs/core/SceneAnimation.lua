@@ -12,7 +12,7 @@ SceneAnimation.defaultSecond = 0.5
 ---------------------------------------
 -- 即座に表示します.
 ---------------------------------------
-function SceneAnimation.now(currentScene, nextScene, params)
+function SceneAnimation.none(currentScene, nextScene, params)
     return Animation:new():parallel(
         Animation:new(currentScene, sec):copy({visible = false}),
         Animation:new(nextScene, sec):copy({x = 0, y = 0, visible = true})
