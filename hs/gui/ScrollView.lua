@@ -31,6 +31,8 @@ function ScrollView:init(params)
     self._scrolling = false
 
     ScrollView:super(self, params)
+    
+    self.application:addListener("enterFrame", onEnterFrame, self)
 end
 
 ---------------------------------------

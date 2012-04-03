@@ -130,10 +130,8 @@
 		<a href="../../../files/hs/core/Layer.html">hs/core/Layer.lua</a>
 	</li>
 
-	<li>
-		<a href="../../../files/hs/core/LayoutManager.html">hs/core/LayoutManager.lua</a>
-	</li>
-
+	<li><strong>hs/core/LayoutManager.lua</strong></li>
+	
 	<li>
 		<a href="../../../files/hs/core/Logger.html">hs/core/Logger.lua</a>
 	</li>
@@ -234,8 +232,10 @@
 		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
-	<li><strong>hs/lang/Class.lua</strong></li>
-	
+	<li>
+		<a href="../../../files/hs/lang/Class.html">hs/lang/Class.lua</a>
+	</li>
+
 	<li>
 		<a href="../../../files/hs/lang/Globals.html">hs/lang/Globals.lua</a>
 	</li>
@@ -303,7 +303,7 @@
 
 <div id="content">
 
-<h1>File <code>hs/lang/Class.lua</code></h1>
+<h1>File <code>hs/core/LayoutManager.lua</code></h1>
 
 
 
@@ -315,59 +315,24 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Class:__call">Class:__call</a>&nbsp;()</td>
-	<td class="summary">クラス定義関数です.</td>
+	<td class="name" nowrap><a href="#LayoutManager:invalidateDisplay">LayoutManager:invalidateDisplay</a>&nbsp;(object)</td>
+	<td class="summary"> </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Class:equals">Class:equals</a>&nbsp;(o)</td>
-	<td class="summary">インスタンスが同値かどうか判定します.<br> デフォルトでは、参照が同一の場合に同値と判定します.</td>
+	<td class="name" nowrap><a href="#LayoutManager:invalidateProperties">LayoutManager:invalidateProperties</a>&nbsp;(object)</td>
+	<td class="summary"> </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Class:init">Class:init</a>&nbsp;(...)</td>
-	<td class="summary">コンストラクタです.<br> Classを継承した子クラスは、この関数で初期化します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Class:instanceOf">Class:instanceOf</a>&nbsp;(class)</td>
-	<td class="summary">インスタンスが指定したクラスのインスタンスかどうか判定を行います.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Class:isClass">Class:isClass</a>&nbsp;()</td>
-	<td class="summary">インスタンスかクラス判定して、クラスの場合にtrueを返します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Class:isInstance">Class:isInstance</a>&nbsp;()</td>
-	<td class="summary">インスタンスかクラス判定して、インスタンスの場合にtrueを返します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Class:new">Class:new</a>&nbsp;(...)</td>
-	<td class="summary">インスタンスの生成を行います.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Class:super">Class:super</a>&nbsp;(obj, ...)</td>
-	<td class="summary">親クラスのコンストラクタを呼びます.</td>
+	<td class="name" nowrap><a href="#LayoutManager:invalidateSize">LayoutManager:invalidateSize</a>&nbsp;(object)</td>
+	<td class="summary"> </td>
 	</tr>
 
 </table>
 
 
 
-
-<h2>Tables</h2>
-<table class="table_list">
-
-	<tr>
-	<td class="name" nowrap><a href="#Class ">Class </a></td>
-	<td class="summary">クラスベースなオブジェクト指向を簡単に実現するためのクラスです.<br> クラスの基本的な機能を有します.<br> setmetatableによる継承ではなく、テーブルに展開する事で<br> 継承が多くなった場合でもパフォーマンスが劣化しません.<br> </td>
-	</tr>
-
-</table>
 
 
 
@@ -382,36 +347,16 @@
 
 
 
-<dt><a name="Class:__call"></a><strong>Class:__call</strong>&nbsp;()</dt>
+<dt><a name="LayoutManager:invalidateDisplay"></a><strong>LayoutManager:invalidateDisplay</strong>&nbsp;(object)</dt>
 <dd>
-クラス定義関数です.
 
-
-
-
-
-
-
-<h3>Return value:</h3>
-Classのコピー 
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Class:equals"></a><strong>Class:equals</strong>&nbsp;(o)</dt>
-<dd>
-インスタンスが同値かどうか判定します.<br> デフォルトでは、参照が同一の場合に同値と判定します.
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  o: インスタンス 
+	  object: 
 	</li>
 	
 </ul>
@@ -428,16 +373,16 @@ Classのコピー
 
 
 
-<dt><a name="Class:init"></a><strong>Class:init</strong>&nbsp;(...)</dt>
+<dt><a name="LayoutManager:invalidateProperties"></a><strong>LayoutManager:invalidateProperties</strong>&nbsp;(object)</dt>
 <dd>
-コンストラクタです.<br> Classを継承した子クラスは、この関数で初期化します.
+
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  ...: パラメータ 
+	  object: 
 	</li>
 	
 </ul>
@@ -454,118 +399,16 @@ Classのコピー
 
 
 
-<dt><a name="Class:instanceOf"></a><strong>Class:instanceOf</strong>&nbsp;(class)</dt>
+<dt><a name="LayoutManager:invalidateSize"></a><strong>LayoutManager:invalidateSize</strong>&nbsp;(object)</dt>
 <dd>
-インスタンスが指定したクラスのインスタンスかどうか判定を行います.
+
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  class: 判定したいClassを指定.
-	</li>
-	
-</ul>
-
-
-
-
-
-
-<h3>Return value:</h3>
-classを継承していた場合はtrue. 
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Class:isClass"></a><strong>Class:isClass</strong>&nbsp;()</dt>
-<dd>
-インスタンスかクラス判定して、クラスの場合にtrueを返します.
-
-
-
-
-
-
-
-<h3>Return value:</h3>
-Classの場合はtrue 
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Class:isInstance"></a><strong>Class:isInstance</strong>&nbsp;()</dt>
-<dd>
-インスタンスかクラス判定して、インスタンスの場合にtrueを返します.
-
-
-
-
-
-
-
-<h3>Return value:</h3>
-Instanceの場合はtrue 
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Class:new"></a><strong>Class:new</strong>&nbsp;(...)</dt>
-<dd>
-インスタンスの生成を行います.
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  ...: コンストラクタに渡すパラメータ.
-	</li>
-	
-</ul>
-
-
-
-
-
-
-<h3>Return value:</h3>
-インスタンス 
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Class:super"></a><strong>Class:super</strong>&nbsp;(obj, ...)</dt>
-<dd>
-親クラスのコンストラクタを呼びます.
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  obj: 自身のオブジェクトを指定
-	</li>
-	
-	<li>
-	  ...: コンストラクタに渡すパラメータ 
+	  object: 
 	</li>
 	
 </ul>
@@ -584,19 +427,6 @@ Instanceの場合はtrue
 
 
 
-
-<h2><a name="tables"></a>Tables</h2>
-<dl class="table">
-
-<dt><a name="Class "></a><strong>Class </strong></dt>
-<dd>クラスベースなオブジェクト指向を簡単に実現するためのクラスです.<br> クラスの基本的な機能を有します.<br> setmetatableによる継承ではなく、テーブルに展開する事で<br> 継承が多くなった場合でもパフォーマンスが劣化しません.<br>
-
-
-
-</dd>
-
-
-</dl>
 
 
 

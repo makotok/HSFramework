@@ -29,6 +29,7 @@ function Group:onInitial()
     self._children = {}
     self._background = self:newBackground()
     self._autoLayout = true
+    self._layoutChanged = false
     if self._background then
         self._background._displayObject = self
     end
@@ -72,7 +73,8 @@ function Group:addChild(child)
     child.nestLevel = self.nestLevel + 1
     self:setAttrLinkForChild(child)
     
-    self:invalidateLayout()
+    self._layoutChanged = true
+    self:invalidateDisplay()
 end
 
 ---------------------------------------
@@ -85,7 +87,9 @@ function Group:removeChild(child)
         child.layer = nil
         child.parent = nil
         self:setAttrLinkForChild(child)
-        self:invalidateLayout()
+        
+        self._layoutChanged = true
+        self:invalidateDisplay()
     end
 end
 
@@ -145,6 +149,9 @@ end
 function Group:setSize(width, height)
     DisplayObject.setSize(self, width, height)
     self.background:setSize(width, height)
+    
+    self._layoutChanged = true
+    self:invalidateDisplay()
 end
 
 ---------------------------------------
@@ -243,6 +250,9 @@ end
 ---------------------------------------
 function Group:setLayout(layout)
     self._layout = layout
+    
+    self._layoutChanged = true
+    self:invalidateDisplay()
 end
 
 ---------------------------------------
@@ -257,6 +267,10 @@ end
 ---------------------------------------
 function Group:setAutoLayout(value)
     self._autoLayout = value
+    if value then
+        self._layoutChanged = true
+        self:invalidateDisplay()
+    end
 end
 
 ---------------------------------------
@@ -267,20 +281,10 @@ function Group:getAutoLayout()
 end
 
 ---------------------------------------
--- 表示オブジェクトの更新を予約します.
----------------------------------------
-function Group:invalidateLayout()
-    self.layoutInvalidated = true
-end
-
----------------------------------------
 -- 子オブジェクトのレイアウトを更新します.
 ---------------------------------------
-function Group:updateLayout(forceUpdate)
-    if not self.layoutInvalidated and not forceUpdate then
-        return
-    end
-    
+function Group:updateLayout()
+    -- レイアウトを変更した場合
     for i, child in ipairs(self.children) do
         if child.updateLayout then
             child:updateLayout()
@@ -289,7 +293,17 @@ function Group:updateLayout(forceUpdate)
     if self.layout and self.autoLayout then
         self.layout:update(self)
     end
-    self.layoutInvalidated = false
+    
+    self._layoutChanged = false
+end
+---------------------------------------
+-- 子オブジェクトのレイアウトを更新します.
+---------------------------------------
+function Group:updateDisplay()
+    -- レイアウトを変更した場合
+    if self._layoutChanged then
+        self:updateLayout()
+    end
 end
 
 ---------------------------------------
@@ -313,18 +327,6 @@ end
 ---------------------------------------
 function Group:dispose()
     self.parent = nil
-end
-
----------------------------------------
--- フレーム毎の処理を行います.
--- invalidateDisplayList関数が呼ばれていた場合、
--- updateDisplayList関数を実行します.
----------------------------------------
-function Group:onEnterFrame(event)
-    for i, child in ipairs(self.children) do
-        child:onEnterFrame(event)
-    end
-    self:updateLayout()
 end
 
 return Group

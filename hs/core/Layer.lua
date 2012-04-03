@@ -40,6 +40,7 @@ function Layer:onInitial()
     self._partition = self.renderPass:getPartition()
     self._lastPriority = 0
     self._touchEnabled = true
+    self._priorityChanged = false
     self.camera = Camera:new()
     self.camera:setPivot(Application.stageWidth / 2, Application.stageHeight / 2)
 end
@@ -104,8 +105,9 @@ end
 -- 描画オブジェクトを追加します.
 ---------------------------------------
 function Layer:addProp(prop)
-    self.invalidatedPriority = true
     self.renderPass:insertProp(prop)
+    self._priorityChanged = true
+    self:invalidateDisplay()
 end
 
 ---------------------------------------
@@ -171,11 +173,14 @@ end
 -- updateDisplayList関数を実行します.
 ---------------------------------------
 function Layer:onEnterFrame(event)
-    Group.onEnterFrame(self, event)
-    if self.invalidatedPriority then
+end
+
+function Layer:updateDisplay()
+    Group.updateDisplay(self)
+    if self._priorityChanged then
         self._lastPriority = 0
         self:updatePriority()
-        self.invalidatedPriority = false
+        self._priorityChanged = false
     end
 end
 
@@ -243,8 +248,10 @@ function Layer:onTouchDown(event)
     e.worldY = worldY
     e.worldZ = worldZ
     
+    print("touch:", worldX, e.worldY, e.worldZ)
     for i = max, 1, -1 do
         local display = displayList[i]
+        print("prop:", display.worldX, display.worldY, display.width, display.height)
         display:onTouchDown(e)
         if e.stoped then
             break

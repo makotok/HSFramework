@@ -129,6 +129,10 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/core/LayoutManager.html">hs/core/LayoutManager.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/core/Logger.html">hs/core/Logger.lua</a>
 	</li>
 
@@ -178,10 +182,6 @@
 
 	<li>
 		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TiledSprite.html">hs/core/TiledSprite.lua</a>
 	</li>
 
 	<li>
@@ -288,6 +288,10 @@
 		<a href="../../../files/hs/util/FunctionUtil.html">hs/util/FunctionUtil.lua</a>
 	</li>
 
+	<li>
+		<a href="../../../files/hs/util/PriorityQueue.html">hs/util/PriorityQueue.lua</a>
+	</li>
+
 </ul>
 
 
@@ -316,18 +320,8 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:_onCommandComplete">Animation:_onCommandComplete</a>&nbsp;()</td>
-	<td class="summary">コマンド完了時のハンドラです.</td>
-	</tr>
-
-	<tr>
 	<td class="name" nowrap><a href="#Animation:addCommand">Animation:addCommand</a>&nbsp;(command)</td>
 	<td class="summary">アニメーション実行コマンドを追加します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Animation:color">Animation:color</a>&nbsp;(red, green, blue, alpha, sec, mode)</td>
-	<td class="summary">対象オブジェクトの色をアニメーションします.</td>
 	</tr>
 
 	<tr>
@@ -352,7 +346,7 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#Animation:init">Animation:init</a>&nbsp;(targets, sec, easeType)</td>
-	<td class="summary">コンストラクタです  </td>
+	<td class="summary">public functions   コンストラクタです  </td>
 	</tr>
 
 	<tr>
@@ -366,8 +360,23 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:move">Animation:move</a>&nbsp;(moveX, moveY, sec, mode)</td>
+	<td class="name" nowrap><a href="#Animation:moveColor">Animation:moveColor</a>&nbsp;(red, green, blue, alpha, sec, mode)</td>
+	<td class="summary">対象オブジェクトの色をアニメーションします.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Animation:moveLocation">Animation:moveLocation</a>&nbsp;(moveX, moveY, moveZ, sec, mode)</td>
 	<td class="summary">対象オブジェクトを移動させます.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Animation:moveRotation">Animation:moveRotation</a>&nbsp;(rx, ry, rz, sec, mode)</td>
+	<td class="summary">対象オブジェクトを回転させます.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Animation:moveScale">Animation:moveScale</a>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</td>
+	<td class="summary">対象オブジェクトを拡大します.</td>
 	</tr>
 
 	<tr>
@@ -378,6 +387,11 @@
 	<tr>
 	<td class="name" nowrap><a href="#Animation:newCommand">Animation:newCommand</a>&nbsp;(playFunc, stopFunc)</td>
 	<td class="summary">アニメーション実行コマンドを生成します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Animation:onCommandComplete">Animation:onCommandComplete</a>&nbsp;()</td>
+	<td class="summary">コマンド完了時のハンドラです.</td>
 	</tr>
 
 	<tr>
@@ -396,12 +410,22 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:rotate">Animation:rotate</a>&nbsp;(rotation, sec, mode)</td>
+	<td class="name" nowrap><a href="#Animation:seekColor">Animation:seekColor</a>&nbsp;(red, green, blue, alpha, sec, mode)</td>
+	<td class="summary">対象オブジェクトの色をアニメーションします.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Animation:seekLocation">Animation:seekLocation</a>&nbsp;(moveX, moveY, moveZ, sec, mode)</td>
+	<td class="summary">対象オブジェクトを移動させます.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Animation:seekRotation">Animation:seekRotation</a>&nbsp;(rx, ry, rz, sec, mode)</td>
 	<td class="summary">対象オブジェクトを回転させます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:scale">Animation:scale</a>&nbsp;(scaleX, scaleY, sec, mode)</td>
+	<td class="name" nowrap><a href="#Animation:seekScale">Animation:seekScale</a>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</td>
 	<td class="summary">対象オブジェクトを拡大します.</td>
 	</tr>
 
@@ -479,23 +503,6 @@
 
 
 
-<dt><a name="Animation:_onCommandComplete"></a><strong>Animation:_onCommandComplete</strong>&nbsp;()</dt>
-<dd>
-コマンド完了時のハンドラです. 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
 <dt><a name="Animation:addCommand"></a><strong>Animation:addCommand</strong>&nbsp;(command)</dt>
 <dd>
 アニメーション実行コマンドを追加します. 通常は使用する必要がありませんが、 カスタムコマンドを追加する事もできます.
@@ -506,52 +513,6 @@
 	
 	<li>
 	  command: play,stop,restart関数 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Animation:color"></a><strong>Animation:color</strong>&nbsp;(red, green, blue, alpha, sec, mode)</dt>
-<dd>
-対象オブジェクトの色をアニメーションします. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  red: 
-	</li>
-	
-	<li>
-	  green: 
-	</li>
-	
-	<li>
-	  blue: 
-	</li>
-	
-	<li>
-	  alpha: 
-	</li>
-	
-	<li>
-	  sec: 
-	</li>
-	
-	<li>
-	  mode: 
 	</li>
 	
 </ul>
@@ -673,7 +634,7 @@
 
 <dt><a name="Animation:init"></a><strong>Animation:init</strong>&nbsp;(targets, sec, easeType)</dt>
 <dd>
-コンストラクタです 
+public functions   コンストラクタです 
 
 
 <h3>Parameters</h3>
@@ -756,7 +717,53 @@
 
 
 
-<dt><a name="Animation:move"></a><strong>Animation:move</strong>&nbsp;(moveX, moveY, sec, mode)</dt>
+<dt><a name="Animation:moveColor"></a><strong>Animation:moveColor</strong>&nbsp;(red, green, blue, alpha, sec, mode)</dt>
+<dd>
+対象オブジェクトの色をアニメーションします. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  red: 
+	</li>
+	
+	<li>
+	  green: 
+	</li>
+	
+	<li>
+	  blue: 
+	</li>
+	
+	<li>
+	  alpha: 
+	</li>
+	
+	<li>
+	  sec: 
+	</li>
+	
+	<li>
+	  mode: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Animation:moveLocation"></a><strong>Animation:moveLocation</strong>&nbsp;(moveX, moveY, moveZ, sec, mode)</dt>
 <dd>
 対象オブジェクトを移動させます. 
 
@@ -770,6 +777,94 @@
 	
 	<li>
 	  moveY: 
+	</li>
+	
+	<li>
+	  moveZ: 
+	</li>
+	
+	<li>
+	  sec: 
+	</li>
+	
+	<li>
+	  mode: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Animation:moveRotation"></a><strong>Animation:moveRotation</strong>&nbsp;(rx, ry, rz, sec, mode)</dt>
+<dd>
+対象オブジェクトを回転させます. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rx: 
+	</li>
+	
+	<li>
+	  ry: 
+	</li>
+	
+	<li>
+	  rz: 
+	</li>
+	
+	<li>
+	  sec: 
+	</li>
+	
+	<li>
+	  mode: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Animation:moveScale"></a><strong>Animation:moveScale</strong>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</dt>
+<dd>
+対象オブジェクトを拡大します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  scaleX: 
+	</li>
+	
+	<li>
+	  scaleY: 
+	</li>
+	
+	<li>
+	  scaleZ: 
 	</li>
 	
 	<li>
@@ -872,6 +967,23 @@ command コマンドテーブル
 
 
 
+<dt><a name="Animation:onCommandComplete"></a><strong>Animation:onCommandComplete</strong>&nbsp;()</dt>
+<dd>
+コマンド完了時のハンドラです. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
 <dt><a name="Animation:onComplete"></a><strong>Animation:onComplete</strong>&nbsp;(event)</dt>
 <dd>
 アニメーション完了時のイベント処理を行います. 継承して使用する事を想定します.
@@ -950,16 +1062,28 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:rotate"></a><strong>Animation:rotate</strong>&nbsp;(rotation, sec, mode)</dt>
+<dt><a name="Animation:seekColor"></a><strong>Animation:seekColor</strong>&nbsp;(red, green, blue, alpha, sec, mode)</dt>
 <dd>
-対象オブジェクトを回転させます. 
+対象オブジェクトの色をアニメーションします. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  rotation: 
+	  red: 
+	</li>
+	
+	<li>
+	  green: 
+	</li>
+	
+	<li>
+	  blue: 
+	</li>
+	
+	<li>
+	  alpha: 
 	</li>
 	
 	<li>
@@ -984,7 +1108,91 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:scale"></a><strong>Animation:scale</strong>&nbsp;(scaleX, scaleY, sec, mode)</dt>
+<dt><a name="Animation:seekLocation"></a><strong>Animation:seekLocation</strong>&nbsp;(moveX, moveY, moveZ, sec, mode)</dt>
+<dd>
+対象オブジェクトを移動させます. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  moveX: 
+	</li>
+	
+	<li>
+	  moveY: 
+	</li>
+	
+	<li>
+	  moveZ: 
+	</li>
+	
+	<li>
+	  sec: 
+	</li>
+	
+	<li>
+	  mode: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Animation:seekRotation"></a><strong>Animation:seekRotation</strong>&nbsp;(rx, ry, rz, sec, mode)</dt>
+<dd>
+対象オブジェクトを回転させます. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rx: 
+	</li>
+	
+	<li>
+	  ry: 
+	</li>
+	
+	<li>
+	  rz: 
+	</li>
+	
+	<li>
+	  sec: 
+	</li>
+	
+	<li>
+	  mode: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Animation:seekScale"></a><strong>Animation:seekScale</strong>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</dt>
 <dd>
 対象オブジェクトを拡大します. 
 
@@ -998,6 +1206,10 @@ command コマンドテーブル
 	
 	<li>
 	  scaleY: 
+	</li>
+	
+	<li>
+	  scaleZ: 
 	</li>
 	
 	<li>

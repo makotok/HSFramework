@@ -5,6 +5,7 @@ local Event = require("hs/core/Event")
 
 --------------------------------------------------------------------------------
 -- テクスチャを任意のシートに分割して、シート毎に描画するクラスです.<br>
+-- シートのアニメーション機能等を有します.<br>
 -- @class table
 -- @name SpriteSheet
 --------------------------------------------------------------------------------
@@ -59,7 +60,11 @@ function SpriteSheet:getSheets()
 end
 
 ---------------------------------------
--- シートデータを設定します.
+-- シートデータを設定します.<br>
+-- {x = X座標, y = Y座標, width = 幅, height = 高さ}
+-- の形式でテーブルを設定してください.<br>
+-- 設定後、updateSheets()が呼ばれます.
+-- @param value シートデータ
 ---------------------------------------
 function SpriteSheet:setSheets(value)
     self._sheets = value
@@ -67,7 +72,9 @@ function SpriteSheet:setSheets(value)
 end
 
 ---------------------------------------
--- シートデータを設定します.
+-- タイル形式のシートデータを設定します.
+-- @param tileX X方向のタイル数
+-- @param tileY Y方向のタイル数
 ---------------------------------------
 function SpriteSheet:loadSheetsFromTile(tileX, tileY)
     self._sheets = {}
@@ -80,7 +87,12 @@ function SpriteSheet:loadSheetsFromTile(tileX, tileY)
 end
 
 ---------------------------------------
--- シートを追加します.
+-- シートを追加します.<br>
+-- updateSheets()は呼ばれませんので、任意のタイミングで呼んでください.
+-- @param x x座標
+-- @param x y座標
+-- @param x 幅
+-- @param x 高さ
 ---------------------------------------
 function SpriteSheet:addSheet(x, y, width, height)
     local rect = {x = x, y = y, width = width, height = height}
@@ -88,7 +100,8 @@ function SpriteSheet:addSheet(x, y, width, height)
 end
 
 ---------------------------------------
--- シートを設定します.
+-- シートを設定します.<br>
+-- updateSheets()は呼ばれませんので、任意のタイミングで呼んでください.
 ---------------------------------------
 function SpriteSheet:setSheet(index, x, y, width, height)
     local rect = {x = x, y = y, width = width, height = height}

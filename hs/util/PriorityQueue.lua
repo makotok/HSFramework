@@ -2,11 +2,10 @@
 local Class = require("hs/lang/Class")
 
 --------------------------------------------------------------------------------
--- 多バイト(UTF8)に対応した文字列クラスです.<br>
--- UTF8として、1文字の長さは1と認識します.<br>
--- ソースコードがUTF8であれば問題なく使用できます.
+-- 優先度付きキューです.<br>
+-- comparetorによるソートを行いながらオブジェクトを追加します.<br>
 -- @class table
--- @name UString
+-- @name PriorityQueue
 --------------------------------------------------------------------------------
 local PriorityQueue = Class()
 
@@ -38,7 +37,7 @@ function PriorityQueue:add(object)
         end
     end
     index = index + 1
-    table.insert(self.queue, index, item)
+    table.insert(self.queue, index, object)
 end
 
 ----------------------------------------

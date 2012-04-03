@@ -1,6 +1,8 @@
 local table = require("hs/lang/table")
 local Logger = require("hs/core/Logger")
 local Transform = require("hs/core/Transform")
+local LayoutManager = require("hs/core/LayoutManager")
+local Application = require("hs/core/Application")
 local SceneManager
 
 --------------------------------------------------------------------------------
@@ -50,6 +52,7 @@ function DisplayObject:init(params)
     self._visible = true
     self._enabled = true
     self._focus = false
+    self.application = Application
 
     -- 初期化イベント
     self:onInitial()
@@ -76,6 +79,35 @@ end
 -- 初期化イベントハンドラです.
 ---------------------------------------
 function DisplayObject:onInitial()
+end
+
+---------------------------------------
+-- validateDisplayをスケジューリングします.
+---------------------------------------
+function DisplayObject:invalidateDisplay()
+    if not self.invalidateDisplayFlag then
+        self.invalidateDisplayFlag = true
+        LayoutManager:invalidateDisplay(self)
+    end
+end
+
+---------------------------------------
+-- 表示オブジェクトの更新メソッドを呼び出します.
+-- invalidateDisplay()をコールした場合に呼ばれます.
+-- ライブラリ使用者が直接呼ぶ必要はありません.
+---------------------------------------
+function DisplayObject:validateDisplay()
+    self:updateDisplay()
+    self.invalidateDisplayFlag = false
+end
+
+---------------------------------------
+-- 表示オブジェクトを更新します.
+-- invalidateDisplay()をコールした場合に呼ばれます.
+-- ライブラリ使用者が直接呼ぶ必要はありません.
+---------------------------------------
+function DisplayObject:updateDisplay()
+    Logger.info("call DisplayObject:updateDisplay()")
 end
 
 ---------------------------------------
@@ -441,12 +473,6 @@ end
 ---------------------------------------
 function DisplayObject:dispose()
     self.parent = nil
-end
-
----------------------------------------
--- フレーム毎の処理を行います.
----------------------------------------
-function DisplayObject:onEnterFrame(event)
 end
 
 ---------------------------------------

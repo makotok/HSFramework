@@ -157,6 +157,7 @@ function TextLabel:setText(text)
     self._charcodes = self:makeCharcodes(text)
     self._text = text
     self._textChanged = true
+    self:invalidateDisplay()
 end
 
 ---------------------------------------
@@ -196,6 +197,7 @@ end
 function TextLabel:setFontSize(size)
     self._fontSize = size
     self._textChanged = true
+    self:invalidateDisplay()
 end
 
 ---------------------------------------
@@ -211,6 +213,7 @@ end
 function TextLabel:setFontPath(fontPath)
     self._fontPath = fontPath
     self._textChanged = true
+    self:invalidateDisplay()
 end
 
 ---------------------------------------
@@ -228,6 +231,7 @@ end
 function TextLabel:setFontDPI(dpi)
     self._fontDPI = dpi
     self._textChanged = true
+    self:invalidateDisplay()
 end
 
 ---------------------------------------
@@ -240,12 +244,12 @@ end
 ---------------------------------------
 -- フレーム毎の処理を行います.
 ---------------------------------------
-function TextLabel:onEnterFrame(event)
+function TextLabel:updateDisplay()
+    DisplayObject.updateDisplay(self)
     if self._textChanged then
         self:updateText()
         self._textChanged = false
     end
-    DisplayObject.onEnterFrame(self, event)
 end
 
 return TextLabel

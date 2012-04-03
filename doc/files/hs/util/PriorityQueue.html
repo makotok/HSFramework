@@ -131,6 +131,10 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/core/LayoutManager.html">hs/core/LayoutManager.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/core/Logger.html">hs/core/Logger.lua</a>
 	</li>
 
@@ -182,8 +186,6 @@
 		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
 	</li>
 
-	<li><strong>hs/core/TiledSprite.lua</strong></li>
-	
 	<li>
 		<a href="../../../files/hs/core/Transform.html">hs/core/Transform.lua</a>
 	</li>
@@ -288,6 +290,8 @@
 		<a href="../../../files/hs/util/FunctionUtil.html">hs/util/FunctionUtil.lua</a>
 	</li>
 
+	<li><strong>hs/util/PriorityQueue.lua</strong></li>
+	
 </ul>
 
 
@@ -299,7 +303,7 @@
 
 <div id="content">
 
-<h1>File <code>hs/core/TiledSprite.lua</code></h1>
+<h1>File <code>hs/util/PriorityQueue.lua</code></h1>
 
 
 
@@ -311,83 +315,43 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:getFrame">TiledSprite:getFrame</a>&nbsp;()</td>
-	<td class="summary">タイルのフレーム番号を返します.</td>
+	<td class="name" nowrap><a href="#PriorityQueue:add">PriorityQueue:add</a>&nbsp;(object)</td>
+	<td class="summary">オブジェクトを順序付けて追加します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:getFrameHeight">TiledSprite:getFrameHeight</a>&nbsp;()</td>
-	<td class="summary">タイルのフレーム数を返します.</td>
+	<td class="name" nowrap><a href="#PriorityQueue:clear">PriorityQueue:clear</a>&nbsp;()</td>
+	<td class="summary">キューの内容をクリアします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:getFrameWidth">TiledSprite:getFrameWidth</a>&nbsp;()</td>
-	<td class="summary">タイルのフレーム数を返します.</td>
+	<td class="name" nowrap><a href="#PriorityQueue:each">PriorityQueue:each</a>&nbsp;()</td>
+	<td class="summary">for文で使用できる for each関数です.<br>  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:getTexture">TiledSprite:getTexture</a>&nbsp;()</td>
-	<td class="summary">テキスチャを返します.</td>
+	<td class="name" nowrap><a href="#PriorityQueue:get">PriorityQueue:get</a>&nbsp;(i)</td>
+	<td class="summary">指定したインデックスのオブジェクトを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:moveFrames">TiledSprite:moveFrames</a>&nbsp;(frames, sec, mode)</td>
-	<td class="summary">フレームアニメーションを行います.</td>
+	<td class="name" nowrap><a href="#PriorityQueue:init">PriorityQueue:init</a>&nbsp;(comparetor)</td>
+	<td class="summary">コンストラクタです.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:new ">TiledSprite:new </a>&nbsp;(texture, frameWidth, frameHeight, params)</td>
-	<td class="summary">コンストラクタです </td>
+	<td class="name" nowrap><a href="#PriorityQueue:poll">PriorityQueue:poll</a>&nbsp;()</td>
+	<td class="summary">キューの先頭オブジェクト削除してから返します.<br> キューに存在しない場合はnilを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:newDeck">TiledSprite:newDeck</a>&nbsp;()</td>
-	<td class="summary">MOAIDeckを生成します.</td>
+	<td class="name" nowrap><a href="#PriorityQueue:remove">PriorityQueue:remove</a>&nbsp;(object)</td>
+	<td class="summary">指定したオブジェクトが存在する場合削除します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:onFrameLoop">TiledSprite:onFrameLoop</a>&nbsp;(event)</td>
-	<td class="summary">フレームアニメーションのループ時の処理を行います.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:onFrameStop">TiledSprite:onFrameStop</a>&nbsp;(event)</td>
-	<td class="summary">フレームアニメーション停止時の処理を行います.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:setFrame">TiledSprite:setFrame</a>&nbsp;(value)</td>
-	<td class="summary">タイルのフレーム番号を設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:setFrameHeight">TiledSprite:setFrameHeight</a>&nbsp;(height)</td>
-	<td class="summary">タイルのフレーム数を設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:setFrameSize">TiledSprite:setFrameSize</a>&nbsp;(width, height)</td>
-	<td class="summary">タイルのフレーム数を設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:setFrameWidth">TiledSprite:setFrameWidth</a>&nbsp;(width)</td>
-	<td class="summary">タイルのフレーム数を設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:setSize">TiledSprite:setSize</a>&nbsp;(width, height)</td>
-	<td class="summary">表示オブジェクトのサイズを設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:setTexture">TiledSprite:setTexture</a>&nbsp;(texture)</td>
-	<td class="summary">テキスチャを設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TiledSprite:stopFrames">TiledSprite:stopFrames</a>&nbsp;()</td>
-	<td class="summary">フレームアニメーションを停止します.</td>
+	<td class="name" nowrap><a href="#PriorityQueue:size">PriorityQueue:size</a>&nbsp;()</td>
+	<td class="summary">キューのサイズを返します.</td>
 	</tr>
 
 </table>
@@ -399,8 +363,8 @@
 <table class="table_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#TiledSprite ">TiledSprite </a></td>
-	<td class="summary">テクスチャをタイル毎に分割して、タイル毎に描画するクラスです.<br> TODO:クラス名がTiledSpriteに変更される予定.TiledSpriteは任意のフレームに変更される.<br> </td>
+	<td class="name" nowrap><a href="#UString ">UString </a></td>
+	<td class="summary">多バイト(UTF8)に対応した文字列クラスです.<br> UTF8として、1文字の長さは1と認識します.<br> ソースコードがUTF8であれば問題なく使用できます.</td>
 	</tr>
 
 </table>
@@ -418,9 +382,35 @@
 
 
 
-<dt><a name="TiledSprite:getFrame"></a><strong>TiledSprite:getFrame</strong>&nbsp;()</dt>
+<dt><a name="PriorityQueue:add"></a><strong>PriorityQueue:add</strong>&nbsp;(object)</dt>
 <dd>
-タイルのフレーム番号を返します. 
+オブジェクトを順序付けて追加します.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  object: オブジェクト 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="PriorityQueue:clear"></a><strong>PriorityQueue:clear</strong>&nbsp;()</dt>
+<dd>
+キューの内容をクリアします. 
 
 
 
@@ -435,9 +425,81 @@
 
 
 
-<dt><a name="TiledSprite:getFrameHeight"></a><strong>TiledSprite:getFrameHeight</strong>&nbsp;()</dt>
+<dt><a name="PriorityQueue:each"></a><strong>PriorityQueue:each</strong>&nbsp;()</dt>
 <dd>
-タイルのフレーム数を返します.
+for文で使用できる for each関数です.<br> 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="PriorityQueue:get"></a><strong>PriorityQueue:get</strong>&nbsp;(i)</dt>
+<dd>
+指定したインデックスのオブジェクトを返します.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  i: インデックス
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+object 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="PriorityQueue:init"></a><strong>PriorityQueue:init</strong>&nbsp;(comparetor)</dt>
+<dd>
+コンストラクタです.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  comparetor: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="PriorityQueue:poll"></a><strong>PriorityQueue:poll</strong>&nbsp;()</dt>
+<dd>
+キューの先頭オブジェクト削除してから返します.<br> キューに存在しない場合はnilを返します.
 
 
 
@@ -446,7 +508,7 @@
 
 
 <h3>Return value:</h3>
-frameHeight 
+object 
 
 
 
@@ -455,9 +517,38 @@ frameHeight
 
 
 
-<dt><a name="TiledSprite:getFrameWidth"></a><strong>TiledSprite:getFrameWidth</strong>&nbsp;()</dt>
+<dt><a name="PriorityQueue:remove"></a><strong>PriorityQueue:remove</strong>&nbsp;(object)</dt>
 <dd>
-タイルのフレーム数を返します.
+指定したオブジェクトが存在する場合削除します. 存在しない場合は削除しません.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  object: オブジェクト
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+削除した場合はそのオブジェクト 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="PriorityQueue:size"></a><strong>PriorityQueue:size</strong>&nbsp;()</dt>
+<dd>
+キューのサイズを返します.
 
 
 
@@ -466,349 +557,7 @@ frameHeight
 
 
 <h3>Return value:</h3>
-frameWidth 
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:getTexture"></a><strong>TiledSprite:getTexture</strong>&nbsp;()</dt>
-<dd>
-テキスチャを返します.
-
-
-
-
-
-
-
-<h3>Return value:</h3>
-texture 
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:moveFrames"></a><strong>TiledSprite:moveFrames</strong>&nbsp;(frames, sec, mode)</dt>
-<dd>
-フレームアニメーションを行います. TODO:改善されたアニメーションに置き換わる 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  frames: 
-	</li>
-	
-	<li>
-	  sec: 
-	</li>
-	
-	<li>
-	  mode: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:new "></a><strong>TiledSprite:new </strong>&nbsp;(texture, frameWidth, frameHeight, params)</dt>
-<dd>
-コンストラクタです
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  texture: 
-	</li>
-	
-	<li>
-	  frameWidth: 
-	</li>
-	
-	<li>
-	  frameHeight: 
-	</li>
-	
-	<li>
-	  params: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:newDeck"></a><strong>TiledSprite:newDeck</strong>&nbsp;()</dt>
-<dd>
-MOAIDeckを生成します. 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:onFrameLoop"></a><strong>TiledSprite:onFrameLoop</strong>&nbsp;(event)</dt>
-<dd>
-フレームアニメーションのループ時の処理を行います. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  event: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:onFrameStop"></a><strong>TiledSprite:onFrameStop</strong>&nbsp;(event)</dt>
-<dd>
-フレームアニメーション停止時の処理を行います. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  event: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:setFrame"></a><strong>TiledSprite:setFrame</strong>&nbsp;(value)</dt>
-<dd>
-タイルのフレーム番号を設定します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  value: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:setFrameHeight"></a><strong>TiledSprite:setFrameHeight</strong>&nbsp;(height)</dt>
-<dd>
-タイルのフレーム数を設定します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  height: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:setFrameSize"></a><strong>TiledSprite:setFrameSize</strong>&nbsp;(width, height)</dt>
-<dd>
-タイルのフレーム数を設定します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  width: 
-	</li>
-	
-	<li>
-	  height: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:setFrameWidth"></a><strong>TiledSprite:setFrameWidth</strong>&nbsp;(width)</dt>
-<dd>
-タイルのフレーム数を設定します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  width: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:setSize"></a><strong>TiledSprite:setSize</strong>&nbsp;(width, height)</dt>
-<dd>
-表示オブジェクトのサイズを設定します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  width: 
-	</li>
-	
-	<li>
-	  height: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:setTexture"></a><strong>TiledSprite:setTexture</strong>&nbsp;(texture)</dt>
-<dd>
-テキスチャを設定します. サイズも自動で設定されます. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  texture: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TiledSprite:stopFrames"></a><strong>TiledSprite:stopFrames</strong>&nbsp;()</dt>
-<dd>
-フレームアニメーションを停止します. 
-
-
-
-
-
-
+キューのサイズ. 
 
 
 
@@ -823,8 +572,8 @@ MOAIDeckを生成します.
 <h2><a name="tables"></a>Tables</h2>
 <dl class="table">
 
-<dt><a name="TiledSprite "></a><strong>TiledSprite </strong></dt>
-<dd>テクスチャをタイル毎に分割して、タイル毎に描画するクラスです.<br> TODO:クラス名がTiledSpriteに変更される予定.TiledSpriteは任意のフレームに変更される.<br>
+<dt><a name="UString "></a><strong>UString </strong></dt>
+<dd>多バイト(UTF8)に対応した文字列クラスです.<br> UTF8として、1文字の長さは1と認識します.<br> ソースコードがUTF8であれば問題なく使用できます.
 
 
 

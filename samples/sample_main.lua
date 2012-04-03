@@ -5,6 +5,7 @@ module(..., package.seeall)
 
 -- create event
 function onCreate()
+    scene.topLayer.touchEnabled = false
     
     -- scrollView
     scrollView = widget:newScrollView({layout = display:newVBoxLayout(), hScrollEnabled = false, vScrollEnabled = true})

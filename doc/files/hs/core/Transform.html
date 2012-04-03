@@ -131,6 +131,10 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/core/LayoutManager.html">hs/core/LayoutManager.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/core/Logger.html">hs/core/Logger.lua</a>
 	</li>
 
@@ -180,10 +184,6 @@
 
 	<li>
 		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TiledSprite.html">hs/core/TiledSprite.lua</a>
 	</li>
 
 	<li><strong>hs/core/Transform.lua</strong></li>
@@ -288,6 +288,10 @@
 		<a href="../../../files/hs/util/FunctionUtil.html">hs/util/FunctionUtil.lua</a>
 	</li>
 
+	<li>
+		<a href="../../../files/hs/util/PriorityQueue.html">hs/util/PriorityQueue.lua</a>
+	</li>
+
 </ul>
 
 
@@ -322,37 +326,62 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:getPivot">Transform:getPivot</a>&nbsp;()</td>
-	<td class="summary">中心点を返します.</td>
+	<td class="summary">中心座標を返します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:getPivotX">Transform:getPivotX</a>&nbsp;()</td>
-	<td class="summary">pivotXを返します.</td>
+	<td class="summary">中心座標Xを返します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:getPivotY">Transform:getPivotY</a>&nbsp;()</td>
-	<td class="summary">pivotYを返します.</td>
+	<td class="summary">中心座標Yを返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:getPivotZ">Transform:getPivotZ</a>&nbsp;()</td>
+	<td class="summary">中心座標Zを返します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:getRotation">Transform:getRotation</a>&nbsp;()</td>
-	<td class="summary">rotationを返します.</td>
+	<td class="summary">回転量を返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:getRotationX">Transform:getRotationX</a>&nbsp;()</td>
+	<td class="summary">回転量Xを返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:getRotationY">Transform:getRotationY</a>&nbsp;()</td>
+	<td class="summary">回転量Yを返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:getRotationZ">Transform:getRotationZ</a>&nbsp;()</td>
+	<td class="summary">回転量Zを返します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:getScale">Transform:getScale</a>&nbsp;()</td>
-	<td class="summary">scaleX, scaleYを返します.</td>
+	<td class="summary">スケールを返します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:getScaleX">Transform:getScaleX</a>&nbsp;()</td>
-	<td class="summary">scaleXを返します.</td>
+	<td class="summary">スケールXを返します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:getScaleY">Transform:getScaleY</a>&nbsp;()</td>
-	<td class="summary">scaleYを返します.</td>
+	<td class="summary">スケールYを返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:getScaleZ">Transform:getScaleZ</a>&nbsp;()</td>
+	<td class="summary">スケールZを返します.</td>
 	</tr>
 
 	<tr>
@@ -371,6 +400,11 @@
 	</tr>
 
 	<tr>
+	<td class="name" nowrap><a href="#Transform:getWorldZ">Transform:getWorldZ</a>&nbsp;()</td>
+	<td class="summary">ワールドZ座標を返します.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#Transform:getX">Transform:getX</a>&nbsp;()</td>
 	<td class="summary">ローカルX座標を返します.</td>
 	</tr>
@@ -381,13 +415,28 @@
 	</tr>
 
 	<tr>
+	<td class="name" nowrap><a href="#Transform:getZ">Transform:getZ</a>&nbsp;()</td>
+	<td class="summary">ローカルZ座標を返します.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#Transform:init">Transform:init</a>&nbsp;()</td>
 	<td class="summary">コンストラクタです  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Transform:move">Transform:move</a>&nbsp;(x, y, sec, mode, completeHandler)</td>
+	<td class="name" nowrap><a href="#Transform:moveLocation">Transform:moveLocation</a>&nbsp;(x, y, z, sec, mode, completeHandler)</td>
 	<td class="summary">ローカル座標を移動します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:moveRotation">Transform:moveRotation</a>&nbsp;(rx, ry, rz, sec, mode, completeHandler)</td>
+	<td class="summary">現在座標から回転します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:moveScale">Transform:moveScale</a>&nbsp;(x, y, z, sec, mode, completeHandler)</td>
+	<td class="summary">現在位置からスケールを移動します.</td>
 	</tr>
 
 	<tr>
@@ -396,17 +445,22 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Transform:rotate">Transform:rotate</a>&nbsp;(rotation, sec, mode, completeHandler)</td>
-	<td class="summary">回転します.</td>
+	<td class="name" nowrap><a href="#Transform:seekLocation">Transform:seekLocation</a>&nbsp;(x, y, z, sec, mode, completeHandler)</td>
+	<td class="summary">ローカル座標を移動します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Transform:scale">Transform:scale</a>&nbsp;(x, y, sec, mode, completeHandler)</td>
-	<td class="summary">回転量を移動します.</td>
+	<td class="name" nowrap><a href="#Transform:seekRotation">Transform:seekRotation</a>&nbsp;(rx, ry, rz, sec, mode, completeHandler)</td>
+	<td class="summary">最終地点に向かって回転します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Transform:setLocation">Transform:setLocation</a>&nbsp;(x, y)</td>
+	<td class="name" nowrap><a href="#Transform:seekScale">Transform:seekScale</a>&nbsp;(x, y, z, sec, mode, completeHandler)</td>
+	<td class="summary">最終地点にスケールを移動します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:setLocation">Transform:setLocation</a>&nbsp;(x, y, z)</td>
 	<td class="summary">ローカル座標を設定します.</td>
 	</tr>
 
@@ -416,42 +470,67 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Transform:setPivot">Transform:setPivot</a>&nbsp;(pivotX, pivotY)</td>
-	<td class="summary">中心点を設定します.</td>
+	<td class="name" nowrap><a href="#Transform:setPivot">Transform:setPivot</a>&nbsp;(pivotX, pivotY, pivotZ)</td>
+	<td class="summary">中心座標を設定します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:setPivotX">Transform:setPivotX</a>&nbsp;(pivotX)</td>
-	<td class="summary">中心点を設定します.</td>
+	<td class="summary">中心座標を設定します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:setPivotY">Transform:setPivotY</a>&nbsp;(pivotY)</td>
-	<td class="summary">中心点を設定します.</td>
+	<td class="summary">中心座標Yを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Transform:setRotation">Transform:setRotation</a>&nbsp;(rotation)</td>
-	<td class="summary">rotationを設定します.</td>
+	<td class="name" nowrap><a href="#Transform:setPivotZ">Transform:setPivotZ</a>&nbsp;(pivotZ)</td>
+	<td class="summary">中心座標Zを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Transform:setScale">Transform:setScale</a>&nbsp;(scaleX, scaleY)</td>
-	<td class="summary">scaleX, scaleYを設定します.</td>
+	<td class="name" nowrap><a href="#Transform:setRotation">Transform:setRotation</a>&nbsp;(rx, ry, rz)</td>
+	<td class="summary">回転量を設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:setRotationX">Transform:setRotationX</a>&nbsp;(rx)</td>
+	<td class="summary">回転量Xを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:setRotationY">Transform:setRotationY</a>&nbsp;(ry)</td>
+	<td class="summary">回転量Yを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:setRotationZ">Transform:setRotationZ</a>&nbsp;(rz)</td>
+	<td class="summary">回転量Zを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:setScale">Transform:setScale</a>&nbsp;(scaleX, scaleY, scaleZ)</td>
+	<td class="summary">スケールを設定します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:setScaleX">Transform:setScaleX</a>&nbsp;(scaleX)</td>
-	<td class="summary">scaleXを設定します.</td>
+	<td class="summary">スケールXを設定します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Transform:setScaleY">Transform:setScaleY</a>&nbsp;(scaleY)</td>
-	<td class="summary">scaleYを設定します.</td>
+	<td class="summary">スケールYを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Transform:setWorldLocation">Transform:setWorldLocation</a>&nbsp;(x, y)</td>
+	<td class="name" nowrap><a href="#Transform:setScaleZ">Transform:setScaleZ</a>&nbsp;(scaleZ)</td>
+	<td class="summary">スケールZを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:setWorldLocation">Transform:setWorldLocation</a>&nbsp;(x, y, z)</td>
 	<td class="summary">ワールド座標を設定します.</td>
 	</tr>
 
@@ -466,6 +545,11 @@
 	</tr>
 
 	<tr>
+	<td class="name" nowrap><a href="#Transform:setWorldZ">Transform:setWorldZ</a>&nbsp;(z)</td>
+	<td class="summary">ワールドZ座標を設定します.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#Transform:setX">Transform:setX</a>&nbsp;(x)</td>
 	<td class="summary">ローカルX座標を設定します.</td>
 	</tr>
@@ -473,6 +557,11 @@
 	<tr>
 	<td class="name" nowrap><a href="#Transform:setY">Transform:setY</a>&nbsp;(y)</td>
 	<td class="summary">ローカルY座標を設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Transform:setZ">Transform:setZ</a>&nbsp;(z)</td>
+	<td class="summary">ローカルZ座標を設定します.</td>
 	</tr>
 
 </table>
@@ -505,13 +594,16 @@
 
 <dt><a name="Transform:getLocation"></a><strong>Transform:getLocation</strong>&nbsp;()</dt>
 <dd>
-ローカル座標を返します. 
+ローカル座標を返します.
 
 
 
 
 
 
+
+<h3>Return value:</h3>
+x, y, z 
 
 
 
@@ -548,7 +640,7 @@
 
 <dt><a name="Transform:getPivot"></a><strong>Transform:getPivot</strong>&nbsp;()</dt>
 <dd>
-中心点を返します. 
+中心座標を返します. 
 
 
 
@@ -565,7 +657,7 @@
 
 <dt><a name="Transform:getPivotX"></a><strong>Transform:getPivotX</strong>&nbsp;()</dt>
 <dd>
-pivotXを返します. 
+中心座標Xを返します. 
 
 
 
@@ -582,7 +674,24 @@ pivotXを返します.
 
 <dt><a name="Transform:getPivotY"></a><strong>Transform:getPivotY</strong>&nbsp;()</dt>
 <dd>
-pivotYを返します. 
+中心座標Yを返します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:getPivotZ"></a><strong>Transform:getPivotZ</strong>&nbsp;()</dt>
+<dd>
+中心座標Zを返します. 
 
 
 
@@ -599,7 +708,58 @@ pivotYを返します.
 
 <dt><a name="Transform:getRotation"></a><strong>Transform:getRotation</strong>&nbsp;()</dt>
 <dd>
-rotationを返します. 
+回転量を返します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:getRotationX"></a><strong>Transform:getRotationX</strong>&nbsp;()</dt>
+<dd>
+回転量Xを返します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:getRotationY"></a><strong>Transform:getRotationY</strong>&nbsp;()</dt>
+<dd>
+回転量Yを返します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:getRotationZ"></a><strong>Transform:getRotationZ</strong>&nbsp;()</dt>
+<dd>
+回転量Zを返します. 
 
 
 
@@ -616,13 +776,16 @@ rotationを返します.
 
 <dt><a name="Transform:getScale"></a><strong>Transform:getScale</strong>&nbsp;()</dt>
 <dd>
-scaleX, scaleYを返します. 
+スケールを返します.
 
 
 
 
 
 
+
+<h3>Return value:</h3>
+scaleX, scaleY, scaleZ 
 
 
 
@@ -633,7 +796,7 @@ scaleX, scaleYを返します.
 
 <dt><a name="Transform:getScaleX"></a><strong>Transform:getScaleX</strong>&nbsp;()</dt>
 <dd>
-scaleXを返します. 
+スケールXを返します. 
 
 
 
@@ -650,7 +813,24 @@ scaleXを返します.
 
 <dt><a name="Transform:getScaleY"></a><strong>Transform:getScaleY</strong>&nbsp;()</dt>
 <dd>
-scaleYを返します. 
+スケールYを返します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:getScaleZ"></a><strong>Transform:getScaleZ</strong>&nbsp;()</dt>
+<dd>
+スケールZを返します. 
 
 
 
@@ -716,6 +896,23 @@ scaleYを返します.
 
 
 
+<dt><a name="Transform:getWorldZ"></a><strong>Transform:getWorldZ</strong>&nbsp;()</dt>
+<dd>
+ワールドZ座標を返します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
 <dt><a name="Transform:getX"></a><strong>Transform:getX</strong>&nbsp;()</dt>
 <dd>
 ローカルX座標を返します. 
@@ -750,6 +947,23 @@ scaleYを返します.
 
 
 
+<dt><a name="Transform:getZ"></a><strong>Transform:getZ</strong>&nbsp;()</dt>
+<dd>
+ローカルZ座標を返します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
 <dt><a name="Transform:init"></a><strong>Transform:init</strong>&nbsp;()</dt>
 <dd>
 コンストラクタです 
@@ -767,9 +981,9 @@ scaleYを返します.
 
 
 
-<dt><a name="Transform:move"></a><strong>Transform:move</strong>&nbsp;(x, y, sec, mode, completeHandler)</dt>
+<dt><a name="Transform:moveLocation"></a><strong>Transform:moveLocation</strong>&nbsp;(x, y, z, sec, mode, completeHandler)</dt>
 <dd>
-ローカル座標を移動します. 
+ローカル座標を移動します.
 
 
 <h3>Parameters</h3>
@@ -781,6 +995,105 @@ scaleYを返します.
 	
 	<li>
 	  y: 
+	</li>
+	
+	<li>
+	  z: 
+	</li>
+	
+	<li>
+	  sec: 
+	</li>
+	
+	<li>
+	  mode: 
+	</li>
+	
+	<li>
+	  completeHandler: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+action 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:moveRotation"></a><strong>Transform:moveRotation</strong>&nbsp;(rx, ry, rz, sec, mode, completeHandler)</dt>
+<dd>
+現在座標から回転します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rx: 
+	</li>
+	
+	<li>
+	  ry: 
+	</li>
+	
+	<li>
+	  rz: 
+	</li>
+	
+	<li>
+	  sec: 
+	</li>
+	
+	<li>
+	  mode: 
+	</li>
+	
+	<li>
+	  completeHandler: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:moveScale"></a><strong>Transform:moveScale</strong>&nbsp;(x, y, z, sec, mode, completeHandler)</dt>
+<dd>
+現在位置からスケールを移動します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: 
+	</li>
+	
+	<li>
+	  y: 
+	</li>
+	
+	<li>
+	  z: 
 	</li>
 	
 	<li>
@@ -826,47 +1139,9 @@ MOAITransformを生成して返します.
 
 
 
-<dt><a name="Transform:rotate"></a><strong>Transform:rotate</strong>&nbsp;(rotation, sec, mode, completeHandler)</dt>
+<dt><a name="Transform:seekLocation"></a><strong>Transform:seekLocation</strong>&nbsp;(x, y, z, sec, mode, completeHandler)</dt>
 <dd>
-回転します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  rotation: 
-	</li>
-	
-	<li>
-	  sec: 
-	</li>
-	
-	<li>
-	  mode: 
-	</li>
-	
-	<li>
-	  completeHandler: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Transform:scale"></a><strong>Transform:scale</strong>&nbsp;(x, y, sec, mode, completeHandler)</dt>
-<dd>
-回転量を移動します. 
+ローカル座標を移動します.
 
 
 <h3>Parameters</h3>
@@ -881,6 +1156,59 @@ MOAITransformを生成して返します.
 	</li>
 	
 	<li>
+	  z: 
+	</li>
+	
+	<li>
+	  sec: 
+	</li>
+	
+	<li>
+	  mode: 
+	</li>
+	
+	<li>
+	  completeHandler: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+<h3>Return value:</h3>
+action 
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:seekRotation"></a><strong>Transform:seekRotation</strong>&nbsp;(rx, ry, rz, sec, mode, completeHandler)</dt>
+<dd>
+最終地点に向かって回転します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rx: 
+	</li>
+	
+	<li>
+	  ry: 
+	</li>
+	
+	<li>
+	  rz: 
+	</li>
+	
+	<li>
 	  sec: 
 	</li>
 	
@@ -906,7 +1234,53 @@ MOAITransformを生成して返します.
 
 
 
-<dt><a name="Transform:setLocation"></a><strong>Transform:setLocation</strong>&nbsp;(x, y)</dt>
+<dt><a name="Transform:seekScale"></a><strong>Transform:seekScale</strong>&nbsp;(x, y, z, sec, mode, completeHandler)</dt>
+<dd>
+最終地点にスケールを移動します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  x: 
+	</li>
+	
+	<li>
+	  y: 
+	</li>
+	
+	<li>
+	  z: 
+	</li>
+	
+	<li>
+	  sec: 
+	</li>
+	
+	<li>
+	  mode: 
+	</li>
+	
+	<li>
+	  completeHandler: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:setLocation"></a><strong>Transform:setLocation</strong>&nbsp;(x, y, z)</dt>
 <dd>
 ローカル座標を設定します. 
 
@@ -920,6 +1294,10 @@ MOAITransformを生成して返します.
 	
 	<li>
 	  y: 
+	</li>
+	
+	<li>
+	  z: 
 	</li>
 	
 </ul>
@@ -962,9 +1340,9 @@ MOAITransformを生成して返します.
 
 
 
-<dt><a name="Transform:setPivot"></a><strong>Transform:setPivot</strong>&nbsp;(pivotX, pivotY)</dt>
+<dt><a name="Transform:setPivot"></a><strong>Transform:setPivot</strong>&nbsp;(pivotX, pivotY, pivotZ)</dt>
 <dd>
-中心点を設定します. これは、回転や拡大・縮小で使用されます. 
+中心座標を設定します. これは、回転やスケールで使用されます. MOAIと違い、座標が変わりません. 
 
 
 <h3>Parameters</h3>
@@ -976,6 +1354,10 @@ MOAITransformを生成して返します.
 	
 	<li>
 	  pivotY: 
+	</li>
+	
+	<li>
+	  pivotZ: 
 	</li>
 	
 </ul>
@@ -994,7 +1376,7 @@ MOAITransformを生成して返します.
 
 <dt><a name="Transform:setPivotX"></a><strong>Transform:setPivotX</strong>&nbsp;(pivotX)</dt>
 <dd>
-中心点を設定します. これは、回転や拡大・縮小で使用されます. 
+中心座標を設定します. 
 
 
 <h3>Parameters</h3>
@@ -1020,7 +1402,7 @@ MOAITransformを生成して返します.
 
 <dt><a name="Transform:setPivotY"></a><strong>Transform:setPivotY</strong>&nbsp;(pivotY)</dt>
 <dd>
-中心点を設定します. これは、回転や拡大・縮小で使用されます. 
+中心座標Yを設定します. 
 
 
 <h3>Parameters</h3>
@@ -1044,16 +1426,16 @@ MOAITransformを生成して返します.
 
 
 
-<dt><a name="Transform:setRotation"></a><strong>Transform:setRotation</strong>&nbsp;(rotation)</dt>
+<dt><a name="Transform:setPivotZ"></a><strong>Transform:setPivotZ</strong>&nbsp;(pivotZ)</dt>
 <dd>
-rotationを設定します. 
+中心座標Zを設定します. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  rotation: 
+	  pivotZ: 
 	</li>
 	
 </ul>
@@ -1070,20 +1452,136 @@ rotationを設定します.
 
 
 
-<dt><a name="Transform:setScale"></a><strong>Transform:setScale</strong>&nbsp;(scaleX, scaleY)</dt>
+<dt><a name="Transform:setRotation"></a><strong>Transform:setRotation</strong>&nbsp;(rx, ry, rz)</dt>
 <dd>
-scaleX, scaleYを設定します. 
+回転量を設定します. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  scaleX: 
+	  rx: 
 	</li>
 	
 	<li>
-	  scaleY: 
+	  ry: 
+	</li>
+	
+	<li>
+	  rz: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:setRotationX"></a><strong>Transform:setRotationX</strong>&nbsp;(rx)</dt>
+<dd>
+回転量Xを設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rx: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:setRotationY"></a><strong>Transform:setRotationY</strong>&nbsp;(ry)</dt>
+<dd>
+回転量Yを設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  ry: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:setRotationZ"></a><strong>Transform:setRotationZ</strong>&nbsp;(rz)</dt>
+<dd>
+回転量Zを設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  rz: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:setScale"></a><strong>Transform:setScale</strong>&nbsp;(scaleX, scaleY, scaleZ)</dt>
+<dd>
+スケールを設定します.
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  scaleX: 比率X
+	</li>
+	
+	<li>
+	  scaleY: 比率Y
+	</li>
+	
+	<li>
+	  scaleZ: 比率Z 
 	</li>
 	
 </ul>
@@ -1102,7 +1600,7 @@ scaleX, scaleYを設定します.
 
 <dt><a name="Transform:setScaleX"></a><strong>Transform:setScaleX</strong>&nbsp;(scaleX)</dt>
 <dd>
-scaleXを設定します. 
+スケールXを設定します. 
 
 
 <h3>Parameters</h3>
@@ -1128,7 +1626,7 @@ scaleXを設定します.
 
 <dt><a name="Transform:setScaleY"></a><strong>Transform:setScaleY</strong>&nbsp;(scaleY)</dt>
 <dd>
-scaleYを設定します. 
+スケールYを設定します. 
 
 
 <h3>Parameters</h3>
@@ -1152,7 +1650,33 @@ scaleYを設定します.
 
 
 
-<dt><a name="Transform:setWorldLocation"></a><strong>Transform:setWorldLocation</strong>&nbsp;(x, y)</dt>
+<dt><a name="Transform:setScaleZ"></a><strong>Transform:setScaleZ</strong>&nbsp;(scaleZ)</dt>
+<dd>
+スケールZを設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  scaleZ: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:setWorldLocation"></a><strong>Transform:setWorldLocation</strong>&nbsp;(x, y, z)</dt>
 <dd>
 ワールド座標を設定します. 
 
@@ -1166,6 +1690,10 @@ scaleYを設定します.
 	
 	<li>
 	  y: 
+	</li>
+	
+	<li>
+	  z: 
 	</li>
 	
 </ul>
@@ -1234,6 +1762,32 @@ scaleYを設定します.
 
 
 
+<dt><a name="Transform:setWorldZ"></a><strong>Transform:setWorldZ</strong>&nbsp;(z)</dt>
+<dd>
+ワールドZ座標を設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  z: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
 <dt><a name="Transform:setX"></a><strong>Transform:setX</strong>&nbsp;(x)</dt>
 <dd>
 ローカルX座標を設定します. 
@@ -1270,6 +1824,32 @@ scaleYを設定します.
 	
 	<li>
 	  y: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Transform:setZ"></a><strong>Transform:setZ</strong>&nbsp;(z)</dt>
+<dd>
+ローカルZ座標を設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  z: 
 	</li>
 	
 </ul>

@@ -1,6 +1,8 @@
 local table = require("hs/lang/table")
 local PriorityQueue = require("hs/util/PriorityQueue")
 local Application = require("hs/core/Application")
+local Event = require("hs/core/Event")
+local Logger = require("hs/core/Logger")
 
 --------------------------------------------------------------------------------
 -- DisplayObjectのレイアウトを管理するマネージャです.
@@ -34,8 +36,19 @@ local descComparetor = function(a, b)
     end
 end
 
+-- queue
+local invalidatePropertiesQueue = PriorityQueue:new(ascComparetor)
+local invalidateSizeQueue = PriorityQueue:new(descComparetor)
+local invalidateDisplayQueue = PriorityQueue:new(descComparetor)
+
+-- flag
+local invalidatePropertiesFlag = false
+local invalidateSizeFlag = false
+local invalidateDisplayFlag = false
+
 -- プロパティの検証実施
 local function validateProperties()
+    Logger.debug("LayoutManager:validateProperties()")
     local object = invalidatePropertiesQueue:poll()
     while object do
         object:validateProperties()
@@ -45,6 +58,7 @@ end
 
 -- サイズの検証実施
 local function validateSize()
+    Logger.debug("LayoutManager:validateSize()")
     local object = invalidateSizeQueue:poll()
     while object do
         object:validateSize()
@@ -54,6 +68,7 @@ end
 
 -- 表示の更新
 local function validateDisplay()
+    Logger.debug("LayoutManager:validateDisplay()", invalidateDisplayQueue:size())
     local object = invalidateDisplayQueue:poll()
     while object do
         object:validateDisplay()
@@ -76,16 +91,6 @@ local function onEnterFrame(event)
         invalidateDisplayFlag = false
     end
 end
-
--- queue
-local invalidatePropertiesQueue = PriorityQueue:new(ascComparetor)
-local invalidateSizeQueue = PriorityQueue:new(descComparetor)
-local invalidateDisplayQueue = PriorityQueue:new(ascComparetor)
-
--- flag
-local invalidatePropertiesFlag = false
-local invalidateSizeFlag = false
-local invalidateDisplayFlag = false
 
 -- event handler
 Application:addListener(Event.ENTER_FRAME, onEnterFrame)
@@ -117,3 +122,5 @@ function LayoutManager:invalidateDisplay(object)
     invalidateDisplayFlag = true
     invalidateDisplayQueue:add(object)
 end
+
+return LayoutManager

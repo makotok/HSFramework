@@ -131,6 +131,10 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/core/LayoutManager.html">hs/core/LayoutManager.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/core/Logger.html">hs/core/Logger.lua</a>
 	</li>
 
@@ -178,10 +182,6 @@
 
 	<li>
 		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TiledSprite.html">hs/core/TiledSprite.lua</a>
 	</li>
 
 	<li>
@@ -288,6 +288,10 @@
 		<a href="../../../files/hs/util/FunctionUtil.html">hs/util/FunctionUtil.lua</a>
 	</li>
 
+	<li>
+		<a href="../../../files/hs/util/PriorityQueue.html">hs/util/PriorityQueue.lua</a>
+	</li>
+
 </ul>
 
 
@@ -321,13 +325,13 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:getFontSize">TextLabel:getFontSize</a>&nbsp;()</td>
-	<td class="summary">フォントのサイズを返します.</td>
+	<td class="name" nowrap><a href="#TextLabel:getFontPath">TextLabel:getFontPath</a>&nbsp;()</td>
+	<td class="summary">TrueTypeフォントのパスを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:getFontTTF">TextLabel:getFontTTF</a>&nbsp;()</td>
-	<td class="summary">TrueTypeフォントのパスを返します.</td>
+	<td class="name" nowrap><a href="#TextLabel:getFontSize">TextLabel:getFontSize</a>&nbsp;()</td>
+	<td class="summary">フォントのサイズを返します.</td>
 	</tr>
 
 	<tr>
@@ -376,13 +380,13 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:setFontSize">TextLabel:setFontSize</a>&nbsp;(size)</td>
-	<td class="summary">フォントのサイズを設定します.</td>
+	<td class="name" nowrap><a href="#TextLabel:setFontPath">TextLabel:setFontPath</a>&nbsp;(fontPath)</td>
+	<td class="summary">TrueTypeフォントのパスを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:setFontTTF">TextLabel:setFontTTF</a>&nbsp;(ttfPath)</td>
-	<td class="summary">TrueTypeフォントのパスを設定します.</td>
+	<td class="name" nowrap><a href="#TextLabel:setFontSize">TextLabel:setFontSize</a>&nbsp;(size)</td>
+	<td class="summary">フォントのサイズを設定します.</td>
 	</tr>
 
 	<tr>
@@ -467,9 +471,9 @@
 
 
 
-<dt><a name="TextLabel:getFontSize"></a><strong>TextLabel:getFontSize</strong>&nbsp;()</dt>
+<dt><a name="TextLabel:getFontPath"></a><strong>TextLabel:getFontPath</strong>&nbsp;()</dt>
 <dd>
-フォントのサイズを返します. 
+TrueTypeフォントのパスを返します. 
 
 
 
@@ -484,9 +488,9 @@
 
 
 
-<dt><a name="TextLabel:getFontTTF"></a><strong>TextLabel:getFontTTF</strong>&nbsp;()</dt>
+<dt><a name="TextLabel:getFontSize"></a><strong>TextLabel:getFontSize</strong>&nbsp;()</dt>
 <dd>
-TrueTypeフォントのパスを返します. 
+フォントのサイズを返します. 
 
 
 
@@ -708,16 +712,16 @@ MOAIPropを生成します. インスタンスはMOAITextBoxになります
 
 
 
-<dt><a name="TextLabel:setFontSize"></a><strong>TextLabel:setFontSize</strong>&nbsp;(size)</dt>
+<dt><a name="TextLabel:setFontPath"></a><strong>TextLabel:setFontPath</strong>&nbsp;(fontPath)</dt>
 <dd>
-フォントのサイズを設定します. 
+TrueTypeフォントのパスを設定します. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  size: 
+	  fontPath: 
 	</li>
 	
 </ul>
@@ -734,16 +738,16 @@ MOAIPropを生成します. インスタンスはMOAITextBoxになります
 
 
 
-<dt><a name="TextLabel:setFontTTF"></a><strong>TextLabel:setFontTTF</strong>&nbsp;(ttfPath)</dt>
+<dt><a name="TextLabel:setFontSize"></a><strong>TextLabel:setFontSize</strong>&nbsp;(size)</dt>
 <dd>
-TrueTypeフォントのパスを設定します. 
+フォントのサイズを設定します. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  ttfPath: 
+	  size: 
 	</li>
 	
 </ul>

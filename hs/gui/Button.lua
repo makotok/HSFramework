@@ -18,6 +18,12 @@ Button:setPropertyName("text")
 -- @param  params パラメータ
 ---------------------------------------
 function Button:init(params)
+    Button:super(self, params)
+end
+
+function Button:onInitial()
+    UIComponent.onInitial(self)
+
     -- public var
     self.upSkin = nil
     self.downSkin = nil
@@ -29,19 +35,12 @@ function Button:init(params)
     self._buttonGround = nil
     self._buttonLabel = nil
     self._buttonStyle = nil
-
-    Button:super(self, params)
-end
-
-function Button:onInitial()
-    UIComponent.onInitial(self)
-
 end
 
 ---------------------------------------
 -- 子オブジェクトを生成します。
 ---------------------------------------
-function Button:onCreateChildren()
+function Button:createChildren()
     -- skin情報
     self.upSkin = Skins.Button.upSkin
     self.downSkin = Skins.Button.downSkin
@@ -53,6 +52,7 @@ function Button:onCreateChildren()
     self._buttonLabel = TextLabel:new({text = self.text, width = self.width, height = self.height, parent = self})    
 
     -- イベント処理
+    
     function self._buttonGround.onTouchDown(background, e)
         self:onTouchDown_background(event)
     end

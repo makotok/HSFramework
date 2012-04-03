@@ -129,6 +129,10 @@
 	</li>
 
 	<li>
+		<a href="../../../files/hs/core/LayoutManager.html">hs/core/LayoutManager.lua</a>
+	</li>
+
+	<li>
 		<a href="../../../files/hs/core/Logger.html">hs/core/Logger.lua</a>
 	</li>
 
@@ -178,10 +182,6 @@
 
 	<li>
 		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TiledSprite.html">hs/core/TiledSprite.lua</a>
 	</li>
 
 	<li>
@@ -288,6 +288,10 @@
 		<a href="../../../files/hs/util/FunctionUtil.html">hs/util/FunctionUtil.lua</a>
 	</li>
 
+	<li>
+		<a href="../../../files/hs/util/PriorityQueue.html">hs/util/PriorityQueue.lua</a>
+	</li>
+
 </ul>
 
 
@@ -358,6 +362,11 @@
 	<tr>
 	<td class="name" nowrap><a href="#DisplayObject:getLayer">DisplayObject:getLayer</a>&nbsp;(layer)</td>
 	<td class="summary">レイヤーを返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#DisplayObject:getNestLevel">DisplayObject:getNestLevel</a>&nbsp;()</td>
+	<td class="summary">オブジェクトのネストレベルを返します.</td>
 	</tr>
 
 	<tr>
@@ -511,6 +520,11 @@
 	</tr>
 
 	<tr>
+	<td class="name" nowrap><a href="#DisplayObject:setNestLevel">DisplayObject:setNestLevel</a>&nbsp;(value)</td>
+	<td class="summary">オブジェクトのネストレベルを設定します.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#DisplayObject:setPriority">DisplayObject:setPriority</a>&nbsp;(priority)</td>
 	<td class="summary">描画順を返します.</td>
 	</tr>
@@ -543,11 +557,6 @@
 	<tr>
 	<td class="name" nowrap><a href="#DisplayObject:updatePriority">DisplayObject:updatePriority</a>&nbsp;()</td>
 	<td class="summary">子オブジェクトの表示順を更新します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#DisplayObject:updateVisible">DisplayObject:updateVisible</a>&nbsp;()</td>
-	<td class="summary">表示するか反映します.</td>
 	</tr>
 
 </table>
@@ -778,6 +787,23 @@ heightを返します.
 	</li>
 	
 </ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="DisplayObject:getNestLevel"></a><strong>DisplayObject:getNestLevel</strong>&nbsp;()</dt>
+<dd>
+オブジェクトのネストレベルを返します. 
+
 
 
 
@@ -1523,6 +1549,32 @@ heightを設定します.
 
 
 
+<dt><a name="DisplayObject:setNestLevel"></a><strong>DisplayObject:setNestLevel</strong>&nbsp;(value)</dt>
+<dd>
+オブジェクトのネストレベルを設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  value: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
 <dt><a name="DisplayObject:setPriority"></a><strong>DisplayObject:setPriority</strong>&nbsp;(priority)</dt>
 <dd>
 描画順を返します. 
@@ -1686,23 +1738,6 @@ widthを設定します.
 <dt><a name="DisplayObject:updatePriority"></a><strong>DisplayObject:updatePriority</strong>&nbsp;()</dt>
 <dd>
 子オブジェクトの表示順を更新します. 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="DisplayObject:updateVisible"></a><strong>DisplayObject:updateVisible</strong>&nbsp;()</dt>
-<dd>
-表示するか反映します. 
 
 
 
