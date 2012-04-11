@@ -12,9 +12,6 @@ local Transform = EventDispatcher()
 Transform:setPropertyName("x")
 Transform:setPropertyName("y")
 Transform:setPropertyName("z")
-Transform:setPropertyName("worldX")
-Transform:setPropertyName("worldY")
-Transform:setPropertyName("worldZ")
 Transform:setPropertyName("pivotX")
 Transform:setPropertyName("pivotY")
 Transform:setPropertyName("pivotZ")
@@ -53,13 +50,10 @@ end
 ---------------------------------------
 function Transform:setLocation(x, y, z)
     z = z or 0
-    local parent = self.parent
-    if parent then
-        x = x + parent.worldX
-        y = y + parent.worldY
-        z = z + parent.worldZ
-    end
-    self:setWorldLocation(x, y, z)
+    x = x + self.pivotX
+    y = y + self.pivotY
+    z = z + self.pivotZ
+    self.transformObj:setLoc(x, y, z)
 end
 
 ---------------------------------------
@@ -67,14 +61,10 @@ end
 -- @return x, y, z
 ---------------------------------------
 function Transform:getLocation()
-    local parent = self.parent
-    local x, y, z = self:getWorldLocation()
-    if parent then
-        local worldX, worldY, worldZ = parent:getWorldLocation()
-        x = x - worldX
-        y = y - worldY
-        z = z - worldZ
-    end
+    local x, y, z = self.transformObj:getLoc()
+    x = x - self.pivotX
+    y = y - self.pivotY
+    z = z - self.pivotZ
     return x, y, z
 end
 
@@ -144,73 +134,6 @@ end
 ---------------------------------------
 function Transform:getZ()
     local x, y, z = self:getLocation()
-    return z
-end
-
----------------------------------------
--- ワールド座標を設定します.
----------------------------------------
-function Transform:setWorldLocation(x, y, z)
-    z = z or 0
-    x = x + self.pivotX
-    y = y + self.pivotY
-    z = z + self.pivotZ
-    self.transformObj:setLoc(x, y, z)
-end
-
----------------------------------------
--- ワールド座標を返します.
----------------------------------------
-function Transform:getWorldLocation()
-    local x, y, z = self.transformObj:getLoc()
-    x = x - self.pivotX
-    y = y - self.pivotY
-    z = z - self.pivotZ
-    return x, y, z
-end
-
----------------------------------------
--- ワールドX座標を設定します.
----------------------------------------
-function Transform:setWorldX(x)
-    self:setWorldLocation(x, self.worldY, self.worldZ)
-end
-
----------------------------------------
--- ワールドX座標を返します.
----------------------------------------
-function Transform:getWorldX()
-    local x, y, z = self:getWorldLocation()
-    return x
-end
-
----------------------------------------
--- ワールドY座標を設定します.
----------------------------------------
-function Transform:setWorldY(y)
-    self:setWorldLocation(self.worldX, y, self.worldZ)
-end
-
----------------------------------------
--- ワールドY座標を返します.
----------------------------------------
-function Transform:getWorldY()
-    local x, y, z = self:getWorldLocation()
-    return y
-end
-
----------------------------------------
--- ワールドZ座標を設定します.
----------------------------------------
-function Transform:setWorldZ(z)
-    self:setWorldLocation(self.worldX, self.worldY, z)
-end
-
----------------------------------------
--- ワールドZ座標を返します.
----------------------------------------
-function Transform:getWorldZ()
-    local x, y, z = self:getWorldLocation()
     return z
 end
 
@@ -386,9 +309,9 @@ end
 -- MOAIと違い、座標が変わりません.
 ---------------------------------------
 function Transform:setPivot(pivotX, pivotY, pivotZ)
-    local x, y, z = self:getWorldLocation()
+    local x, y, z = self:getLocation()
     self.transformObj:setPiv(pivotX, pivotY, pivotZ)
-    self:setWorldLocation(x, y, z)
+    self:setLocation(x, y, z)
 end
 
 ---------------------------------------
@@ -462,9 +385,6 @@ function Transform:setParent(parent)
         return
     end
     
-    -- 現在の相対座標を取得
-    local x, y, z = self:getLocation()
-    
     -- 親から削除
     if myParent ~= nil then
         myParent:removeChild(self)
@@ -475,9 +395,6 @@ function Transform:setParent(parent)
     if parent ~= nil then
         parent:addChild(self)
     end
-    
-    -- 相対座標を元に戻す
-    self:setLocation(x, y, z)
 end
 
 ---------------------------------------

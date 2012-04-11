@@ -370,11 +370,6 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:invalidateLayout">Group:invalidateLayout</a>&nbsp;()</td>
-	<td class="summary">表示オブジェクトの更新を予約します.</td>
-	</tr>
-
-	<tr>
 	<td class="name" nowrap><a href="#Group:newBackground">Group:newBackground</a>&nbsp;()</td>
 	<td class="summary">背景を生成して返します.</td>
 	</tr>
@@ -387,11 +382,6 @@
 	<tr>
 	<td class="name" nowrap><a href="#Group:newProp">Group:newProp</a>&nbsp;(deck)</td>
 	<td class="summary">ダミーなので生成しません.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Group:onEnterFrame">Group:onEnterFrame</a>&nbsp;(event)</td>
-	<td class="summary">フレーム毎の処理を行います.</td>
 	</tr>
 
 	<tr>
@@ -450,7 +440,12 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:updateLayout">Group:updateLayout</a>&nbsp;(forceUpdate)</td>
+	<td class="name" nowrap><a href="#Group:updateDisplay">Group:updateDisplay</a>&nbsp;()</td>
+	<td class="summary">子オブジェクトのレイアウトを更新します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#Group:updateLayout">Group:updateLayout</a>&nbsp;()</td>
 	<td class="summary">子オブジェクトのレイアウトを更新します.</td>
 	</tr>
 
@@ -715,23 +710,6 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:invalidateLayout"></a><strong>Group:invalidateLayout</strong>&nbsp;()</dt>
-<dd>
-表示オブジェクトの更新を予約します. 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
 <dt><a name="Group:newBackground"></a><strong>Group:newBackground</strong>&nbsp;()</dt>
 <dd>
 背景を生成して返します. 
@@ -776,32 +754,6 @@ MOAIPropを返します.
 	
 	<li>
 	  deck: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Group:onEnterFrame"></a><strong>Group:onEnterFrame</strong>&nbsp;(event)</dt>
-<dd>
-フレーム毎の処理を行います. invalidateDisplayList関数が呼ばれていた場合、 updateDisplayList関数を実行します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  event: 
 	</li>
 	
 </ul>
@@ -1108,19 +1060,27 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:updateLayout"></a><strong>Group:updateLayout</strong>&nbsp;(forceUpdate)</dt>
+<dt><a name="Group:updateDisplay"></a><strong>Group:updateDisplay</strong>&nbsp;()</dt>
 <dd>
 子オブジェクトのレイアウトを更新します. 
 
 
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  forceUpdate: 
-	</li>
-	
-</ul>
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="Group:updateLayout"></a><strong>Group:updateLayout</strong>&nbsp;()</dt>
+<dd>
+子オブジェクトのレイアウトを更新します. 
+
 
 
 

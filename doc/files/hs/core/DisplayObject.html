@@ -400,6 +400,11 @@
 	</tr>
 
 	<tr>
+	<td class="name" nowrap><a href="#DisplayObject:invalidateDisplay">DisplayObject:invalidateDisplay</a>&nbsp;()</td>
+	<td class="summary">validateDisplayをスケジューリングします.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#DisplayObject:isEnabled">DisplayObject:isEnabled</a>&nbsp;()</td>
 	<td class="summary">有効かどうか返します.</td>
 	</tr>
@@ -437,11 +442,6 @@
 	<tr>
 	<td class="name" nowrap><a href="#DisplayObject:newTransformObj">DisplayObject:newTransformObj</a>&nbsp;()</td>
 	<td class="summary">MOAITransformを生成して返します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#DisplayObject:onEnterFrame">DisplayObject:onEnterFrame</a>&nbsp;(event)</td>
-	<td class="summary">フレーム毎の処理を行います.</td>
 	</tr>
 
 	<tr>
@@ -555,8 +555,18 @@
 	</tr>
 
 	<tr>
+	<td class="name" nowrap><a href="#DisplayObject:updateDisplay">DisplayObject:updateDisplay</a>&nbsp;()</td>
+	<td class="summary">表示オブジェクトを更新します.</td>
+	</tr>
+
+	<tr>
 	<td class="name" nowrap><a href="#DisplayObject:updatePriority">DisplayObject:updatePriority</a>&nbsp;()</td>
 	<td class="summary">子オブジェクトの表示順を更新します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#DisplayObject:validateDisplay">DisplayObject:validateDisplay</a>&nbsp;()</td>
+	<td class="summary">表示オブジェクトの更新メソッドを呼び出します.</td>
 	</tr>
 
 </table>
@@ -919,6 +929,23 @@ widthを返します.
 
 
 
+<dt><a name="DisplayObject:invalidateDisplay"></a><strong>DisplayObject:invalidateDisplay</strong>&nbsp;()</dt>
+<dd>
+validateDisplayをスケジューリングします. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
 <dt><a name="DisplayObject:isEnabled"></a><strong>DisplayObject:isEnabled</strong>&nbsp;()</dt>
 <dd>
 有効かどうか返します. 
@@ -1093,32 +1120,6 @@ MOAIPropを生成します. オーバーライドしてください. デフォ�
 <dd>
 MOAITransformを生成して返します. 
 
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="DisplayObject:onEnterFrame"></a><strong>DisplayObject:onEnterFrame</strong>&nbsp;(event)</dt>
-<dd>
-フレーム毎の処理を行います. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  event: 
-	</li>
-	
-</ul>
 
 
 
@@ -1735,9 +1736,43 @@ widthを設定します.
 
 
 
+<dt><a name="DisplayObject:updateDisplay"></a><strong>DisplayObject:updateDisplay</strong>&nbsp;()</dt>
+<dd>
+表示オブジェクトを更新します. invalidateDisplay()をコールした場合に呼ばれます. ライブラリ使用者が直接呼ぶ必要はありません. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
 <dt><a name="DisplayObject:updatePriority"></a><strong>DisplayObject:updatePriority</strong>&nbsp;()</dt>
 <dd>
 子オブジェクトの表示順を更新します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="DisplayObject:validateDisplay"></a><strong>DisplayObject:validateDisplay</strong>&nbsp;()</dt>
+<dd>
+表示オブジェクトの更新メソッドを呼び出します. invalidateDisplay()をコールした場合に呼ばれます. ライブラリ使用者が直接呼ぶ必要はありません. 
 
 
 

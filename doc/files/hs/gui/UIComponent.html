@@ -315,8 +315,8 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#UIComponent:invalidateProperties">UIComponent:invalidateProperties</a>&nbsp;()</td>
-	<td class="summary">プロパティが変更された事をマークする関数です。 この関数を実行すると、onCommitProperties() が後で呼び出されます。  </td>
+	<td class="name" nowrap><a href="#UIComponent:createChildren">UIComponent:createChildren</a>&nbsp;()</td>
+	<td class="summary">子オブジェクト作成処理です.</td>
 	</tr>
 
 	<tr>
@@ -325,17 +325,7 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#UIComponent:onCommitProperties">UIComponent:onCommitProperties</a>&nbsp;()</td>
-	<td class="summary">プロパティが変更された場合に フレームの最初に一回だけ呼ばれます。 デフォルトでは何もしません。  </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#UIComponent:onCreateChildren">UIComponent:onCreateChildren</a>&nbsp;()</td>
-	<td class="summary">子オブジェクト作成処理です.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#UIComponent:onEnterFrame">UIComponent:onEnterFrame</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#UIComponent:updateDisplay">UIComponent:updateDisplay</a>&nbsp;()</td>
 	<td class="summary">フレーム毎の処理を行います。 invalidateDisplayList関数が呼ばれていた場合、 updateDisplayList関数を実行します。  </td>
 	</tr>
 
@@ -357,9 +347,9 @@
 
 
 
-<dt><a name="UIComponent:invalidateProperties"></a><strong>UIComponent:invalidateProperties</strong>&nbsp;()</dt>
+<dt><a name="UIComponent:createChildren"></a><strong>UIComponent:createChildren</strong>&nbsp;()</dt>
 <dd>
-プロパティが変更された事をマークする関数です。 この関数を実行すると、onCommitProperties() が後で呼び出されます。 
+子オブジェクト作成処理です. フレームの最初に一回だけ呼ばれます. デフォルトでは何もしません. 
 
 
 
@@ -400,53 +390,10 @@
 
 
 
-<dt><a name="UIComponent:onCommitProperties"></a><strong>UIComponent:onCommitProperties</strong>&nbsp;()</dt>
-<dd>
-プロパティが変更された場合に フレームの最初に一回だけ呼ばれます。 デフォルトでは何もしません。 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="UIComponent:onCreateChildren"></a><strong>UIComponent:onCreateChildren</strong>&nbsp;()</dt>
-<dd>
-子オブジェクト作成処理です. フレームの最初に一回だけ呼ばれます. デフォルトでは何もしません. 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="UIComponent:onEnterFrame"></a><strong>UIComponent:onEnterFrame</strong>&nbsp;(event)</dt>
+<dt><a name="UIComponent:updateDisplay"></a><strong>UIComponent:updateDisplay</strong>&nbsp;()</dt>
 <dd>
 フレーム毎の処理を行います。 invalidateDisplayList関数が呼ばれていた場合、 updateDisplayList関数を実行します。 
 
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  event: 
-	</li>
-	
-</ul>
 
 
 

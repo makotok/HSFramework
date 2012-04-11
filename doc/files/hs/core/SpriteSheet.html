@@ -316,7 +316,7 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#SpriteSheet:addSheet">SpriteSheet:addSheet</a>&nbsp;(x, y, width, height)</td>
-	<td class="summary">シートを追加します.</td>
+	<td class="summary">シートを追加します.<br> updateSheets()は呼ばれませんので、任意のタイミングで呼んでください.</td>
 	</tr>
 
 	<tr>
@@ -341,7 +341,7 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#SpriteSheet:loadSheetsFromTile">SpriteSheet:loadSheetsFromTile</a>&nbsp;(tileX, tileY)</td>
-	<td class="summary">シートデータを設定します.</td>
+	<td class="summary">タイル形式のシートデータを設定します.</td>
 	</tr>
 
 	<tr>
@@ -361,7 +361,7 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#SpriteSheet:setSheet">SpriteSheet:setSheet</a>&nbsp;(index, x, y, width, height)</td>
-	<td class="summary">シートを設定します.</td>
+	<td class="summary">シートを設定します.<br> updateSheets()は呼ばれませんので、任意のタイミングで呼んでください.</td>
 	</tr>
 
 	<tr>
@@ -371,7 +371,7 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#SpriteSheet:setSheets">SpriteSheet:setSheets</a>&nbsp;(value)</td>
-	<td class="summary">シートデータを設定します.</td>
+	<td class="summary">シートデータを設定します.<br> {x = X座標, y = Y座標, width = 幅, height = 高さ} の形式でテーブルを設定してください.<br> 設定後、updateSheets()が呼ばれます.</td>
 	</tr>
 
 	<tr>
@@ -419,7 +419,7 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#SpriteSheet ">SpriteSheet </a></td>
-	<td class="summary">テクスチャを任意のシートに分割して、シート毎に描画するクラスです.<br> </td>
+	<td class="summary">テクスチャを任意のシートに分割して、シート毎に描画するクラスです.<br> シートのアニメーション機能等を有します.<br> </td>
 	</tr>
 
 </table>
@@ -439,14 +439,14 @@
 
 <dt><a name="SpriteSheet:addSheet"></a><strong>SpriteSheet:addSheet</strong>&nbsp;(x, y, width, height)</dt>
 <dd>
-シートを追加します. 
+シートを追加します.<br> updateSheets()は呼ばれませんので、任意のタイミングで呼んでください.
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  x: 
+	  x: 高さ 
 	</li>
 	
 	<li>
@@ -551,18 +551,18 @@ texture
 
 <dt><a name="SpriteSheet:loadSheetsFromTile"></a><strong>SpriteSheet:loadSheetsFromTile</strong>&nbsp;(tileX, tileY)</dt>
 <dd>
-シートデータを設定します. 
+タイル形式のシートデータを設定します.
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  tileX: 
+	  tileX: X方向のタイル数
 	</li>
 	
 	<li>
-	  tileY: 
+	  tileY: Y方向のタイル数 
 	</li>
 	
 </ul>
@@ -650,7 +650,7 @@ MOAIDeckを生成します.
 
 <dt><a name="SpriteSheet:setSheet"></a><strong>SpriteSheet:setSheet</strong>&nbsp;(index, x, y, width, height)</dt>
 <dd>
-シートを設定します. 
+シートを設定します.<br> updateSheets()は呼ばれませんので、任意のタイミングで呼んでください. 
 
 
 <h3>Parameters</h3>
@@ -718,14 +718,14 @@ MOAIDeckを生成します.
 
 <dt><a name="SpriteSheet:setSheets"></a><strong>SpriteSheet:setSheets</strong>&nbsp;(value)</dt>
 <dd>
-シートデータを設定します. 
+シートデータを設定します.<br> {x = X座標, y = Y座標, width = 幅, height = 高さ} の形式でテーブルを設定してください.<br> 設定後、updateSheets()が呼ばれます.
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  value: 
+	  value: シートデータ 
 	</li>
 	
 </ul>
@@ -941,7 +941,7 @@ MOAIDeckを生成します.
 <dl class="table">
 
 <dt><a name="SpriteSheet "></a><strong>SpriteSheet </strong></dt>
-<dd>テクスチャを任意のシートに分割して、シート毎に描画するクラスです.<br>
+<dd>テクスチャを任意のシートに分割して、シート毎に描画するクラスです.<br> シートのアニメーション機能等を有します.<br>
 
 
 

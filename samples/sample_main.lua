@@ -16,6 +16,8 @@ function onCreate()
             {text = item.text, width = 200, height = 30, parent = scrollView,
             onTouchDown = onTouchDown_button, sceneName = item.scene})
     end
+    
+    scrollView:updateDisplay()
 end
 
 -- scene names

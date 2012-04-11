@@ -370,11 +370,6 @@
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:onEnterFrame">TextLabel:onEnterFrame</a>&nbsp;(event)</td>
-	<td class="summary">フレーム毎の処理を行います.</td>
-	</tr>
-
-	<tr>
 	<td class="name" nowrap><a href="#TextLabel:setFontDPI">TextLabel:setFontDPI</a>&nbsp;(dpi)</td>
 	<td class="summary">フォントのDPIを設定します.</td>
 	</tr>
@@ -402,6 +397,11 @@
 	<tr>
 	<td class="name" nowrap><a href="#TextLabel:setTextAlign">TextLabel:setTextAlign</a>&nbsp;(align)</td>
 	<td class="summary">表示文字列を設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#TextLabel:updateDisplay">TextLabel:updateDisplay</a>&nbsp;()</td>
+	<td class="summary">フレーム毎の処理を行います.</td>
 	</tr>
 
 	<tr>
@@ -660,32 +660,6 @@ MOAIPropを生成します. インスタンスはMOAITextBoxになります
 
 
 
-<dt><a name="TextLabel:onEnterFrame"></a><strong>TextLabel:onEnterFrame</strong>&nbsp;(event)</dt>
-<dd>
-フレーム毎の処理を行います. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  event: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
 <dt><a name="TextLabel:setFontDPI"></a><strong>TextLabel:setFontDPI</strong>&nbsp;(dpi)</dt>
 <dd>
 フォントのDPIを設定します. ライブラリ使用者側で意識しないでいいはずなので、 明示的に設定する必要はありません. 
@@ -833,6 +807,23 @@ TrueTypeフォントのパスを設定します.
 	</li>
 	
 </ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="TextLabel:updateDisplay"></a><strong>TextLabel:updateDisplay</strong>&nbsp;()</dt>
+<dd>
+フレーム毎の処理を行います. 
+
 
 
 

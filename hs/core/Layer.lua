@@ -87,10 +87,12 @@ end
 -- 子オブジェクトの属性連携を設定します.
 ---------------------------------------
 function Layer:setAttrLinkForChild(child)
+    --[[
     child.prop:clearAttrLink(MOAIColor.INHERIT_COLOR)
     if child.parent then
         child.prop:setAttrLink(MOAIColor.INHERIT_COLOR, child.parent.prop, MOAIColor.COLOR_TRAIT)
     end
+    --]]
 end
 
 ---------------------------------------
