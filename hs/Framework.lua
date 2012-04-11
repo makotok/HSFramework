@@ -73,7 +73,7 @@ local Application = require("hs/core/Application")
 -- モジュールの参照、初期化を担います.
 ----------------------------------------------------------------
 local Framework = {initialObjects = {}}
-Framework.VERSION = "0.4.2"
+Framework.VERSION = "0.5.1"
 
 ---------------------------------------
 -- フレームワークの初期化処理です.
