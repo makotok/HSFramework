@@ -35,7 +35,7 @@ end
 -- TODO:割り切れない時の動作を厳密にしたい
 ---------------------------------------
 function TMXLayer:drawLayer(parent)
-    if not self.visible then
+    if self.visible == 0 then
         return
     end
 

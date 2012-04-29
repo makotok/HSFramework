@@ -2,7 +2,7 @@
 --
 -- HSFramework(Hana Saurus Framework)
 -- Makoto
--- Version:0.5.1
+-- Version:0.5.2
 -- MOAI SDK:Moai SDK Version 1.0 
 -------------------------------------------------------------------
 
