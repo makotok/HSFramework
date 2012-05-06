@@ -8,7 +8,7 @@ local Logger = require("hs/core/Logger")
 -- DisplayObjectのレイアウトを管理するマネージャです.
 --------------------------------------------------------------------------------
 
-local LayoutManager = {}
+local M = {}
 
 --------------------------------------------------------------------------------
 -- private
@@ -100,27 +100,27 @@ Application:addListener(Event.ENTER_FRAME, onEnterFrame)
 --------------------------------------------------------------------------------
 
 ---------------------------------------
---
+-- validatePropertiesをスケジューリングします.
 ---------------------------------------
-function LayoutManager:invalidateProperties(object)
+function M:invalidateProperties(object)
     invalidatePropertiesFlag = true
     invalidatePropertiesQueue:add(object)
 end
 
 ---------------------------------------
---
+-- invalidateSizeをスケジューリングします.
 ---------------------------------------
-function LayoutManager:invalidateSize(object)
+function M:invalidateSize(object)
     invalidateSizeFlag = true
     invalidateSizeQueue:add(object)
 end
 
 ---------------------------------------
---
+-- invalidateDisplayをスケジューリングします.
 ---------------------------------------
-function LayoutManager:invalidateDisplay(object)
+function M:invalidateDisplay(object)
     invalidateDisplayFlag = true
     invalidateDisplayQueue:add(object)
 end
 
-return LayoutManager
+return M

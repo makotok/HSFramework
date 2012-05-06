@@ -93,19 +93,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -145,10 +137,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,52 +295,52 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Application:enterFrame">Application:enterFrame</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:enterFrame">M:enterFrame</a>&nbsp;()</td>
 	<td class="summary">フレーム毎の処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Application:getScreenHeight">Application:getScreenHeight</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getScreenHeight">M:getScreenHeight</a>&nbsp;()</td>
 	<td class="summary">画面の高さを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Application:getScreenWidth">Application:getScreenWidth</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getScreenWidth">M:getScreenWidth</a>&nbsp;()</td>
 	<td class="summary">画面の幅を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Application:getStageHeight">Application:getStageHeight</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getStageHeight">M:getStageHeight</a>&nbsp;()</td>
 	<td class="summary">ステージの高さを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Application:getStageWidth">Application:getStageWidth</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getStageWidth">M:getStageWidth</a>&nbsp;()</td>
 	<td class="summary">ステージの幅を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Application:getWindow">Application:getWindow</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getWindow">M:getWindow</a>&nbsp;()</td>
 	<td class="summary">ウインドウを返します..</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Application:initialize">Application:initialize</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:initialize">M:initialize</a>&nbsp;()</td>
 	<td class="summary">初期化処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Application:isDesktop">Application:isDesktop</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:isDesktop">M:isDesktop</a>&nbsp;()</td>
 	<td class="summary">実行環境がデスクトップかどうか返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Application:isMobile">Application:isMobile</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:isMobile">M:isMobile</a>&nbsp;()</td>
 	<td class="summary">実行環境がモバイルかどうか返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Application:openWindow">Application:openWindow</a>&nbsp;(title, width, height, screenMode)</td>
+	<td class="name" nowrap><a href="#M:openWindow">M:openWindow</a>&nbsp;(title, width, height, screenMode)</td>
 	<td class="summary">Windowを起動します.</td>
 	</tr>
 
@@ -392,7 +372,7 @@
 
 
 
-<dt><a name="Application:enterFrame"></a><strong>Application:enterFrame</strong>&nbsp;()</dt>
+<dt><a name="M:enterFrame"></a><strong>M:enterFrame</strong>&nbsp;()</dt>
 <dd>
 フレーム毎の処理を行います. 
 
@@ -409,7 +389,7 @@
 
 
 
-<dt><a name="Application:getScreenHeight"></a><strong>Application:getScreenHeight</strong>&nbsp;()</dt>
+<dt><a name="M:getScreenHeight"></a><strong>M:getScreenHeight</strong>&nbsp;()</dt>
 <dd>
 画面の高さを返します. モバイル環境の場合、シーンのサイズとは一致しません. 
 
@@ -426,7 +406,7 @@
 
 
 
-<dt><a name="Application:getScreenWidth"></a><strong>Application:getScreenWidth</strong>&nbsp;()</dt>
+<dt><a name="M:getScreenWidth"></a><strong>M:getScreenWidth</strong>&nbsp;()</dt>
 <dd>
 画面の幅を返します. モバイル環境の場合、シーンのサイズとは一致しません. 
 
@@ -443,7 +423,7 @@
 
 
 
-<dt><a name="Application:getStageHeight"></a><strong>Application:getStageHeight</strong>&nbsp;()</dt>
+<dt><a name="M:getStageHeight"></a><strong>M:getStageHeight</strong>&nbsp;()</dt>
 <dd>
 ステージの高さを返します. シーンのサイズと一致します. 
 
@@ -460,7 +440,7 @@
 
 
 
-<dt><a name="Application:getStageWidth"></a><strong>Application:getStageWidth</strong>&nbsp;()</dt>
+<dt><a name="M:getStageWidth"></a><strong>M:getStageWidth</strong>&nbsp;()</dt>
 <dd>
 ステージの幅を返します. シーンのサイズと一致します. 
 
@@ -477,7 +457,7 @@
 
 
 
-<dt><a name="Application:getWindow"></a><strong>Application:getWindow</strong>&nbsp;()</dt>
+<dt><a name="M:getWindow"></a><strong>M:getWindow</strong>&nbsp;()</dt>
 <dd>
 ウインドウを返します.. 
 
@@ -494,7 +474,7 @@
 
 
 
-<dt><a name="Application:initialize"></a><strong>Application:initialize</strong>&nbsp;()</dt>
+<dt><a name="M:initialize"></a><strong>M:initialize</strong>&nbsp;()</dt>
 <dd>
 初期化処理を行います. 
 
@@ -511,7 +491,7 @@
 
 
 
-<dt><a name="Application:isDesktop"></a><strong>Application:isDesktop</strong>&nbsp;()</dt>
+<dt><a name="M:isDesktop"></a><strong>M:isDesktop</strong>&nbsp;()</dt>
 <dd>
 実行環境がデスクトップかどうか返します. 
 
@@ -528,7 +508,7 @@
 
 
 
-<dt><a name="Application:isMobile"></a><strong>Application:isMobile</strong>&nbsp;()</dt>
+<dt><a name="M:isMobile"></a><strong>M:isMobile</strong>&nbsp;()</dt>
 <dd>
 実行環境がモバイルかどうか返します. 
 
@@ -545,7 +525,7 @@
 
 
 
-<dt><a name="Application:openWindow"></a><strong>Application:openWindow</strong>&nbsp;(title, width, height, screenMode)</dt>
+<dt><a name="M:openWindow"></a><strong>M:openWindow</strong>&nbsp;(title, width, height, screenMode)</dt>
 <dd>
 Windowを起動します. titleは、ウィンドウのタイトルで使用されます. width,heightは、ウィンドウのサイズになります.  ただし、モバイルアプリケーションの場合、 サイズが一致するわけではなく、サイズが固定の為、 StageにstageModeを指定する事で、描画領域の 任意のロジックで引き伸ばしを行う事ができます. 
 

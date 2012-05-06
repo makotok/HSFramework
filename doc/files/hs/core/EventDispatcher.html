@@ -93,19 +93,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -145,10 +137,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,32 +295,32 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#EventDispatcher:addListener">EventDispatcher:addListener</a>&nbsp;(eventType, callback, source, priority)</td>
+	<td class="name" nowrap><a href="#M:addListener">M:addListener</a>&nbsp;(eventType, callback, source, priority)</td>
 	<td class="summary">イベントリスナを登録します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#EventDispatcher:clearListeners">EventDispatcher:clearListeners</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:clearListeners">M:clearListeners</a>&nbsp;()</td>
 	<td class="summary">イベントリスナをすべて削除します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#EventDispatcher:dispatchEvent">EventDispatcher:dispatchEvent</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:dispatchEvent">M:dispatchEvent</a>&nbsp;(event)</td>
 	<td class="summary">イベントをディスパッチします  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#EventDispatcher:hasListener">EventDispatcher:hasListener</a>&nbsp;(eventType, callback, source)</td>
+	<td class="name" nowrap><a href="#M:hasListener">M:hasListener</a>&nbsp;(eventType, callback, source)</td>
 	<td class="summary">イベントリスナを登録済か返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#EventDispatcher:init">EventDispatcher:init</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:init">M:init</a>&nbsp;()</td>
 	<td class="summary">コンストラクタです  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#EventDispatcher:removeListener">EventDispatcher:removeListener</a>&nbsp;(eventType, callback, source)</td>
+	<td class="name" nowrap><a href="#M:removeListener">M:removeListener</a>&nbsp;(eventType, callback, source)</td>
 	<td class="summary">イベントリスナを削除します.</td>
 	</tr>
 
@@ -372,7 +352,7 @@
 
 
 
-<dt><a name="EventDispatcher:addListener"></a><strong>EventDispatcher:addListener</strong>&nbsp;(eventType, callback, source, priority)</dt>
+<dt><a name="M:addListener"></a><strong>M:addListener</strong>&nbsp;(eventType, callback, source, priority)</dt>
 <dd>
 イベントリスナを登録します. callbackは、呼び出されるコールバック関数です. sourceは、オブジェクトの関数だった場合に指定します. nilの場合は、callback(event)となり、 指定ありの場合、callback(self, event)で呼ばれます. priorityは、優先度です. 優先度が小さい値程、最初に関数が呼ばれます. 
 
@@ -410,7 +390,7 @@
 
 
 
-<dt><a name="EventDispatcher:clearListeners"></a><strong>EventDispatcher:clearListeners</strong>&nbsp;()</dt>
+<dt><a name="M:clearListeners"></a><strong>M:clearListeners</strong>&nbsp;()</dt>
 <dd>
 イベントリスナをすべて削除します. 
 
@@ -427,7 +407,7 @@
 
 
 
-<dt><a name="EventDispatcher:dispatchEvent"></a><strong>EventDispatcher:dispatchEvent</strong>&nbsp;(event)</dt>
+<dt><a name="M:dispatchEvent"></a><strong>M:dispatchEvent</strong>&nbsp;(event)</dt>
 <dd>
 イベントをディスパッチします 
 
@@ -453,7 +433,7 @@
 
 
 
-<dt><a name="EventDispatcher:hasListener"></a><strong>EventDispatcher:hasListener</strong>&nbsp;(eventType, callback, source)</dt>
+<dt><a name="M:hasListener"></a><strong>M:hasListener</strong>&nbsp;(eventType, callback, source)</dt>
 <dd>
 イベントリスナを登録済か返します. 
 
@@ -487,7 +467,7 @@
 
 
 
-<dt><a name="EventDispatcher:init"></a><strong>EventDispatcher:init</strong>&nbsp;()</dt>
+<dt><a name="M:init"></a><strong>M:init</strong>&nbsp;()</dt>
 <dd>
 コンストラクタです 
 
@@ -504,7 +484,7 @@
 
 
 
-<dt><a name="EventDispatcher:removeListener"></a><strong>EventDispatcher:removeListener</strong>&nbsp;(eventType, callback, source)</dt>
+<dt><a name="M:removeListener"></a><strong>M:removeListener</strong>&nbsp;(eventType, callback, source)</dt>
 <dd>
 イベントリスナを削除します. 
 

@@ -1,6 +1,5 @@
 local table = require("hs/lang/table")
-local UString = require("hs/lang/UString")
-local FontCache = require("hs/core/FontCache")
+local FontManager = require("hs/core/FontManager")
 local DisplayObject = require("hs/core/DisplayObject")
 
 --------------------------------------------------------------------------------
@@ -21,46 +20,41 @@ local DisplayObject = require("hs/core/DisplayObject")
 -- @class table
 -- @name TextLabel
 --------------------------------------------------------------------------------
-local TextLabel = DisplayObject()
+local M = DisplayObject()
 
 -- 定数
-TextLabel.ALIGN_LEFT = MOAITextBox.LEFT_JUSTIFY
-TextLabel.ALIGN_CENTER = MOAITextBox.CENTER_JUSTIFY
-TextLabel.ALIGN_RIGHT = MOAITextBox.RIGHT_JUSTIFY
+M.ALIGN_LEFT = MOAITextBox.LEFT_JUSTIFY
+M.ALIGN_CENTER = MOAITextBox.CENTER_JUSTIFY
+M.ALIGN_RIGHT = MOAITextBox.RIGHT_JUSTIFY
 
-TextLabel.ALIGN_TYPES = {
-    left = TextLabel.ALIGN_LEFT,
-    center = TextLabel.ALIGN_CENTER,
-    right = TextLabel.ALIGN_RIGHT
+M.ALIGN_TYPES = {
+    left = M.ALIGN_LEFT,
+    center = M.ALIGN_CENTER,
+    right = M.ALIGN_RIGHT
 }
 
 -- デフォルト値
 -- 変更した場合、インスタンスの生成時にデフォルト値が使用されます.
-TextLabel.defaultCharcodes = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789 .,:;!?()&/-_'
-TextLabel.defaultFontPath = "hs/resources/ipag.ttf"
-TextLabel.defaultFontSize = 9
-TextLabel.defaultFontDPI = 163
+M.defaultFontPath = "hs/resources/ipag.ttf"
+M.defaultFontSize = 24
 
 -- properties
-TextLabel:setPropertyName("text")
-TextLabel:setPropertyName("textAlign")
-TextLabel:setPropertyName("charcodes")
-TextLabel:setPropertyName("fontSize")
-TextLabel:setPropertyName("fontPath")
-TextLabel:setPropertyName("fontDPI")
+M:setPropertyName("text")
+M:setPropertyName("textAlign")
+M:setPropertyName("fontSize")
+M:setPropertyName("fontPath")
 
 ---------------------------------------
 -- コンストラクタです.
 ---------------------------------------
-function TextLabel:init(params)
-    TextLabel:super(self, params)
+function M:init(params)
+    M:super(self, params)
 end
 
-function TextLabel:onInitial()
+function M:onInitial()
     -- 初期値
     self._fontSize = self.defaultFontSize
     self._fontPath = self.defaultFontPath
-    self._fontDPI = self.defaultFontDPI
     self._textChanged = false
 end
 
@@ -68,7 +62,7 @@ end
 -- MOAIDeckを生成します.
 -- 実際には生成しません.
 ---------------------------------------
-function TextLabel:newDeck()
+function M:newDeck()
     return nil
 end
 
@@ -76,7 +70,7 @@ end
 -- MOAIPropを生成します.
 -- インスタンスはMOAITextBoxになります
 ---------------------------------------
-function TextLabel:newProp(deck)
+function M:newProp(deck)
     local prop = MOAITextBox.new()
     return prop
 end
@@ -84,7 +78,7 @@ end
 ---------------------------------------
 -- サイズを設定します.
 ---------------------------------------
-function TextLabel:setSize(width, height)
+function M:setSize(width, height)
     self._width = width
     self._height = height
     if self.prop then
@@ -94,58 +88,13 @@ function TextLabel:setSize(width, height)
 end
 
 ---------------------------------------
--- フォントのキャラコードを生成します.
--- マルチバイトを考慮して、ユニークとなる
--- キャラコードを生成します.
----------------------------------------
-function TextLabel:makeCharcodes(text)
-    if self:isDefaultCharcodesOnly(text) then
-        return self.defaultCharcodes
-    end
-    
-    charMap = {}
-    charcodes = ""
-    
-    for c in UString:each(text) do
-        charMap[c] = c
-    end
-    for k, v in pairs(charMap) do
-        charcodes = charcodes .. v
-    end
-    
-    return charcodes
-end
-
----------------------------------------
--- デフォルトのキャラコードのみで構成された
--- 文字列のみかどうか判定します.
----------------------------------------
-function TextLabel:isDefaultCharcodesOnly(text)
-    local charMap = {}
-    for s in UString:each(self.defaultCharcodes) do
-        charMap[s] = s
-    end
-    
-    for s in UString:each(text) do
-        if charMap[s] == nil then
-            return false
-        end
-    end
-    return true
-end
-
----------------------------------------
 -- 設定値をMOAITextBoxに反映します.
 ---------------------------------------
-function TextLabel:updateText()
-    if not (self.text and self.charcodes) then
-        return
-    end
-
-    self._font = FontCache:getFont(self.fontPath, self.charcodes, self.fontSize, self.fontDPI)
+function M:updateText()
+    self._font = FontManager:getFont(self.fontPath)
     
     self.prop:setFont (self._font)
-    self.prop:setTextSize(self.fontSize, self.fontDPI)
+    self.prop:setTextSize(self.fontSize)
     self.prop:setString(self.text)
     
 end
@@ -153,8 +102,7 @@ end
 ---------------------------------------
 -- 表示文字列を設定します.
 ---------------------------------------
-function TextLabel:setText(text)
-    self._charcodes = self:makeCharcodes(text)
+function M:setText(text)
     self._text = text
     self._textChanged = true
     self:invalidateDisplay()
@@ -163,38 +111,31 @@ end
 ---------------------------------------
 -- 表示文字列を返します.
 ---------------------------------------
-function TextLabel:getText()
+function M:getText()
     return self._text
 end
 
 ---------------------------------------
 -- 表示文字列を設定します.
 ---------------------------------------
-function TextLabel:setTextAlign(align)
+function M:setTextAlign(align)
     self._textAlign = align
     if self.prop then
-        self.prop:setAlignment(TextLabel.ALIGN_TYPES[align])
+        self.prop:setAlignment(M.ALIGN_TYPES[align])
     end
 end
 
 ---------------------------------------
 -- 表示文字列を返します.
 ---------------------------------------
-function TextLabel:getTextAlign()
+function M:getTextAlign()
     return self._text
-end
-
----------------------------------------
--- フォントのキャラコードを返します.
----------------------------------------
-function TextLabel:getCharcodes()
-    return self._charcodes
 end
 
 ---------------------------------------
 -- フォントのサイズを設定します.
 ---------------------------------------
-function TextLabel:setFontSize(size)
+function M:setFontSize(size)
     self._fontSize = size
     self._textChanged = true
     self:invalidateDisplay()
@@ -203,14 +144,14 @@ end
 ---------------------------------------
 -- フォントのサイズを返します.
 ---------------------------------------
-function TextLabel:getFontSize()
+function M:getFontSize()
     return self._fontSize
 end
 
 ---------------------------------------
 -- TrueTypeフォントのパスを設定します.
 ---------------------------------------
-function TextLabel:setFontPath(fontPath)
+function M:setFontPath(fontPath)
     self._fontPath = fontPath
     self._textChanged = true
     self:invalidateDisplay()
@@ -219,32 +160,14 @@ end
 ---------------------------------------
 -- TrueTypeフォントのパスを返します.
 ---------------------------------------
-function TextLabel:getFontPath()
+function M:getFontPath()
     return self._fontPath
-end
-
----------------------------------------
--- フォントのDPIを設定します.
--- ライブラリ使用者側で意識しないでいいはずなので、
--- 明示的に設定する必要はありません.
----------------------------------------
-function TextLabel:setFontDPI(dpi)
-    self._fontDPI = dpi
-    self._textChanged = true
-    self:invalidateDisplay()
-end
-
----------------------------------------
--- フォントのDPIを返します.
----------------------------------------
-function TextLabel:getFontDPI()
-    return self._fontDPI
 end
 
 ---------------------------------------
 -- フレーム毎の処理を行います.
 ---------------------------------------
-function TextLabel:updateDisplay()
+function M:updateDisplay()
     DisplayObject.updateDisplay(self)
     if self._textChanged then
         self:updateText()
@@ -252,4 +175,4 @@ function TextLabel:updateDisplay()
     end
 end
 
-return TextLabel
+return M

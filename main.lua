@@ -6,7 +6,7 @@ local Logger = require("hs/core/Logger")
 
 -- Use global imports
 -- Please select by your coding style.
---require("hs/import")
+--Framework:importClasses(_G)
 
 Logger.level = Logger.LEVEL_DEBUG
 

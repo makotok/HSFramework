@@ -7,7 +7,7 @@ local Scene = require("hs/core/Scene")
 -- @class table
 -- @name SceneFactory
 ----------------------------------------------------------------
-local SceneFactory = Class()
+local M = Class()
 
 ---------------------------------------
 -- シーンを生成します.
@@ -22,7 +22,7 @@ local SceneFactory = Class()
 --     sceneClassがある場合、同クラスを生成します.
 --     handlerがある場合、sceneHandlerに設定されます.
 ---------------------------------------
-function SceneFactory:createScene(name, params)
+function M:createScene(name, params)
     local sceneClass = params.sceneClass and params.sceneClass or Scene
     local scene = sceneClass:new()
     scene.sceneHandler = params.handler and params.handler or require(name)
@@ -32,4 +32,4 @@ function SceneFactory:createScene(name, params)
     return scene
 end
 
-return SceneFactory
+return M

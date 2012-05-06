@@ -95,19 +95,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -145,10 +137,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,127 +295,127 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:addChild">Layer:addChild</a>&nbsp;(child)</td>
+	<td class="name" nowrap><a href="#M:addChild">M:addChild</a>&nbsp;(child)</td>
 	<td class="summary">子オブジェクトを追加します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:addProp">Layer:addProp</a>&nbsp;(prop)</td>
+	<td class="name" nowrap><a href="#M:addProp">M:addProp</a>&nbsp;(prop)</td>
 	<td class="summary">描画オブジェクトを追加します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:getCamera">Layer:getCamera</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getCamera">M:getCamera</a>&nbsp;()</td>
 	<td class="summary">カメラを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:getDisplayListForPoint">Layer:getDisplayListForPoint</a>&nbsp;(worldX, worldY, worldZ)</td>
+	<td class="name" nowrap><a href="#M:getDisplayListForPoint">M:getDisplayListForPoint</a>&nbsp;(worldX, worldY, worldZ)</td>
 	<td class="summary">レイヤー内のワールド座標から、 存在するDisplayObjectリストを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:getProp">Layer:getProp</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getProp">M:getProp</a>&nbsp;()</td>
 	<td class="summary">MOAIPropを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:getRenderPass">Layer:getRenderPass</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getRenderPass">M:getRenderPass</a>&nbsp;()</td>
 	<td class="summary">レンダラーパスを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:getViewport">Layer:getViewport</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getViewport">M:getViewport</a>&nbsp;()</td>
 	<td class="summary">Viewportを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:init">Layer:init</a>&nbsp;(params)</td>
+	<td class="name" nowrap><a href="#M:init">M:init</a>&nbsp;(params)</td>
 	<td class="summary">コンストラクタです  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:isTouchEnabled">Layer:isTouchEnabled</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:isTouchEnabled">M:isTouchEnabled</a>&nbsp;()</td>
 	<td class="summary">タッチ可能かどうか返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:lastPriority">Layer:lastPriority</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:lastPriority">M:lastPriority</a>&nbsp;()</td>
 	<td class="summary">最後のプライオリティを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:newRenderPass">Layer:newRenderPass</a>&nbsp;()</td>
-	<td class="summary">MOAILayer2Dを生成します.</td>
+	<td class="name" nowrap><a href="#M:newRenderPass">M:newRenderPass</a>&nbsp;()</td>
+	<td class="summary">MOAILayerを生成します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:nextPriority">Layer:nextPriority</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:nextPriority">M:nextPriority</a>&nbsp;()</td>
 	<td class="summary">次のプライオリティを採番して返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:onEnterFrame">Layer:onEnterFrame</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onEnterFrame">M:onEnterFrame</a>&nbsp;(event)</td>
 	<td class="summary">フレーム毎の処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:onTouchCancel">Layer:onTouchCancel</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onTouchCancel">M:onTouchCancel</a>&nbsp;(event)</td>
 	<td class="summary">レイヤーのタッチする処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:onTouchCommon">Layer:onTouchCommon</a>&nbsp;(event, funcName)</td>
+	<td class="name" nowrap><a href="#M:onTouchCommon">M:onTouchCommon</a>&nbsp;(event, funcName)</td>
 	<td class="summary">レイヤーのタッチする共通処理です.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:onTouchDown">Layer:onTouchDown</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onTouchDown">M:onTouchDown</a>&nbsp;(event)</td>
 	<td class="summary">レイヤーのタッチする処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:onTouchMove">Layer:onTouchMove</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onTouchMove">M:onTouchMove</a>&nbsp;(event)</td>
 	<td class="summary">レイヤーのタッチする処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:onTouchUp">Layer:onTouchUp</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onTouchUp">M:onTouchUp</a>&nbsp;(event)</td>
 	<td class="summary">レイヤーのタッチする処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:removeProp">Layer:removeProp</a>&nbsp;(prop)</td>
+	<td class="name" nowrap><a href="#M:removeProp">M:removeProp</a>&nbsp;(prop)</td>
 	<td class="summary">描画オブジェクトを削除します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:setAttrLinkForChild">Layer:setAttrLinkForChild</a>&nbsp;(child)</td>
+	<td class="name" nowrap><a href="#M:setAttrLinkForChild">M:setAttrLinkForChild</a>&nbsp;(child)</td>
 	<td class="summary">子オブジェクトの属性連携を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:setCamera">Layer:setCamera</a>&nbsp;(camera)</td>
+	<td class="name" nowrap><a href="#M:setCamera">M:setCamera</a>&nbsp;(camera)</td>
 	<td class="summary">カメラを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:setParent">Layer:setParent</a>&nbsp;(parent)</td>
+	<td class="name" nowrap><a href="#M:setParent">M:setParent</a>&nbsp;(parent)</td>
 	<td class="summary">親オブジェクトを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:setTouchEnabled">Layer:setTouchEnabled</a>&nbsp;(enabled)</td>
+	<td class="name" nowrap><a href="#M:setTouchEnabled">M:setTouchEnabled</a>&nbsp;(enabled)</td>
 	<td class="summary">タッチ可能かどうか設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:windowToWorld">Layer:windowToWorld</a>&nbsp;(windowX, windowY, windowZ)</td>
+	<td class="name" nowrap><a href="#M:windowToWorld">M:windowToWorld</a>&nbsp;(windowX, windowY, windowZ)</td>
 	<td class="summary">スクリーン座標からワールド座標に変換します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Layer:worldToWindow">Layer:worldToWindow</a>&nbsp;(worldX, worldY, worldZ)</td>
+	<td class="name" nowrap><a href="#M:worldToWindow">M:worldToWindow</a>&nbsp;(worldX, worldY, worldZ)</td>
 	<td class="summary">ワールド座標からスクリーン座標に変換します.</td>
 	</tr>
 
@@ -449,7 +429,7 @@
 
 	<tr>
 	<td class="name" nowrap><a href="#Layer ">Layer </a></td>
-	<td class="summary">シーンに追加できるレイヤークラスです レイヤーは、ビューポートを持ち、MOAILayer2Dに対応するクラスとなります.</td>
+	<td class="summary">シーンに追加できるレイヤークラスです レイヤーは、ビューポートを持ち、MOAILayerに対応するクラスとなります.</td>
 	</tr>
 
 </table>
@@ -467,7 +447,7 @@
 
 
 
-<dt><a name="Layer:addChild"></a><strong>Layer:addChild</strong>&nbsp;(child)</dt>
+<dt><a name="M:addChild"></a><strong>M:addChild</strong>&nbsp;(child)</dt>
 <dd>
 子オブジェクトを追加します. 
 
@@ -493,7 +473,7 @@
 
 
 
-<dt><a name="Layer:addProp"></a><strong>Layer:addProp</strong>&nbsp;(prop)</dt>
+<dt><a name="M:addProp"></a><strong>M:addProp</strong>&nbsp;(prop)</dt>
 <dd>
 描画オブジェクトを追加します. 
 
@@ -519,7 +499,7 @@
 
 
 
-<dt><a name="Layer:getCamera"></a><strong>Layer:getCamera</strong>&nbsp;()</dt>
+<dt><a name="M:getCamera"></a><strong>M:getCamera</strong>&nbsp;()</dt>
 <dd>
 カメラを返します. 
 
@@ -536,7 +516,7 @@
 
 
 
-<dt><a name="Layer:getDisplayListForPoint"></a><strong>Layer:getDisplayListForPoint</strong>&nbsp;(worldX, worldY, worldZ)</dt>
+<dt><a name="M:getDisplayListForPoint"></a><strong>M:getDisplayListForPoint</strong>&nbsp;(worldX, worldY, worldZ)</dt>
 <dd>
 レイヤー内のワールド座標から、 存在するDisplayObjectリストを返します. 
 
@@ -570,7 +550,7 @@
 
 
 
-<dt><a name="Layer:getProp"></a><strong>Layer:getProp</strong>&nbsp;()</dt>
+<dt><a name="M:getProp"></a><strong>M:getProp</strong>&nbsp;()</dt>
 <dd>
 MOAIPropを返します. 
 
@@ -587,7 +567,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Layer:getRenderPass"></a><strong>Layer:getRenderPass</strong>&nbsp;()</dt>
+<dt><a name="M:getRenderPass"></a><strong>M:getRenderPass</strong>&nbsp;()</dt>
 <dd>
 レンダラーパスを返します. 
 
@@ -604,7 +584,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Layer:getViewport"></a><strong>Layer:getViewport</strong>&nbsp;()</dt>
+<dt><a name="M:getViewport"></a><strong>M:getViewport</strong>&nbsp;()</dt>
 <dd>
 Viewportを返します. 
 
@@ -621,7 +601,7 @@ Viewportを返します.
 
 
 
-<dt><a name="Layer:init"></a><strong>Layer:init</strong>&nbsp;(params)</dt>
+<dt><a name="M:init"></a><strong>M:init</strong>&nbsp;(params)</dt>
 <dd>
 コンストラクタです 
 
@@ -647,7 +627,7 @@ Viewportを返します.
 
 
 
-<dt><a name="Layer:isTouchEnabled"></a><strong>Layer:isTouchEnabled</strong>&nbsp;()</dt>
+<dt><a name="M:isTouchEnabled"></a><strong>M:isTouchEnabled</strong>&nbsp;()</dt>
 <dd>
 タッチ可能かどうか返します. 
 
@@ -664,7 +644,7 @@ Viewportを返します.
 
 
 
-<dt><a name="Layer:lastPriority"></a><strong>Layer:lastPriority</strong>&nbsp;()</dt>
+<dt><a name="M:lastPriority"></a><strong>M:lastPriority</strong>&nbsp;()</dt>
 <dd>
 最後のプライオリティを返します. 
 
@@ -681,9 +661,9 @@ Viewportを返します.
 
 
 
-<dt><a name="Layer:newRenderPass"></a><strong>Layer:newRenderPass</strong>&nbsp;()</dt>
+<dt><a name="M:newRenderPass"></a><strong>M:newRenderPass</strong>&nbsp;()</dt>
 <dd>
-MOAILayer2Dを生成します. 
+MOAILayerを生成します. 
 
 
 
@@ -698,7 +678,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:nextPriority"></a><strong>Layer:nextPriority</strong>&nbsp;()</dt>
+<dt><a name="M:nextPriority"></a><strong>M:nextPriority</strong>&nbsp;()</dt>
 <dd>
 次のプライオリティを採番して返します. 
 
@@ -715,7 +695,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:onEnterFrame"></a><strong>Layer:onEnterFrame</strong>&nbsp;(event)</dt>
+<dt><a name="M:onEnterFrame"></a><strong>M:onEnterFrame</strong>&nbsp;(event)</dt>
 <dd>
 フレーム毎の処理を行います. invalidateDisplayList関数が呼ばれていた場合、 updateDisplayList関数を実行します. 
 
@@ -741,7 +721,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:onTouchCancel"></a><strong>Layer:onTouchCancel</strong>&nbsp;(event)</dt>
+<dt><a name="M:onTouchCancel"></a><strong>M:onTouchCancel</strong>&nbsp;(event)</dt>
 <dd>
 レイヤーのタッチする処理を行います. 
 
@@ -767,7 +747,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:onTouchCommon"></a><strong>Layer:onTouchCommon</strong>&nbsp;(event, funcName)</dt>
+<dt><a name="M:onTouchCommon"></a><strong>M:onTouchCommon</strong>&nbsp;(event, funcName)</dt>
 <dd>
 レイヤーのタッチする共通処理です. 
 
@@ -797,7 +777,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:onTouchDown"></a><strong>Layer:onTouchDown</strong>&nbsp;(event)</dt>
+<dt><a name="M:onTouchDown"></a><strong>M:onTouchDown</strong>&nbsp;(event)</dt>
 <dd>
 レイヤーのタッチする処理を行います. 
 
@@ -823,7 +803,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:onTouchMove"></a><strong>Layer:onTouchMove</strong>&nbsp;(event)</dt>
+<dt><a name="M:onTouchMove"></a><strong>M:onTouchMove</strong>&nbsp;(event)</dt>
 <dd>
 レイヤーのタッチする処理を行います. 
 
@@ -849,7 +829,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:onTouchUp"></a><strong>Layer:onTouchUp</strong>&nbsp;(event)</dt>
+<dt><a name="M:onTouchUp"></a><strong>M:onTouchUp</strong>&nbsp;(event)</dt>
 <dd>
 レイヤーのタッチする処理を行います. 
 
@@ -875,7 +855,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:removeProp"></a><strong>Layer:removeProp</strong>&nbsp;(prop)</dt>
+<dt><a name="M:removeProp"></a><strong>M:removeProp</strong>&nbsp;(prop)</dt>
 <dd>
 描画オブジェクトを削除します. 
 
@@ -901,7 +881,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:setAttrLinkForChild"></a><strong>Layer:setAttrLinkForChild</strong>&nbsp;(child)</dt>
+<dt><a name="M:setAttrLinkForChild"></a><strong>M:setAttrLinkForChild</strong>&nbsp;(child)</dt>
 <dd>
 子オブジェクトの属性連携を設定します. 
 
@@ -927,7 +907,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:setCamera"></a><strong>Layer:setCamera</strong>&nbsp;(camera)</dt>
+<dt><a name="M:setCamera"></a><strong>M:setCamera</strong>&nbsp;(camera)</dt>
 <dd>
 カメラを設定します. 
 
@@ -953,7 +933,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:setParent"></a><strong>Layer:setParent</strong>&nbsp;(parent)</dt>
+<dt><a name="M:setParent"></a><strong>M:setParent</strong>&nbsp;(parent)</dt>
 <dd>
 親オブジェクトを設定します. 親オブジェクトはSceneである必要があります. nilを設定した場合、親オブジェクトはクリアされます. 
 
@@ -979,7 +959,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:setTouchEnabled"></a><strong>Layer:setTouchEnabled</strong>&nbsp;(enabled)</dt>
+<dt><a name="M:setTouchEnabled"></a><strong>M:setTouchEnabled</strong>&nbsp;(enabled)</dt>
 <dd>
 タッチ可能かどうか設定します. 
 
@@ -1005,7 +985,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:windowToWorld"></a><strong>Layer:windowToWorld</strong>&nbsp;(windowX, windowY, windowZ)</dt>
+<dt><a name="M:windowToWorld"></a><strong>M:windowToWorld</strong>&nbsp;(windowX, windowY, windowZ)</dt>
 <dd>
 スクリーン座標からワールド座標に変換します. 
 
@@ -1039,7 +1019,7 @@ MOAILayer2Dを生成します.
 
 
 
-<dt><a name="Layer:worldToWindow"></a><strong>Layer:worldToWindow</strong>&nbsp;(worldX, worldY, worldZ)</dt>
+<dt><a name="M:worldToWindow"></a><strong>M:worldToWindow</strong>&nbsp;(worldX, worldY, worldZ)</dt>
 <dd>
 ワールド座標からスクリーン座標に変換します. 
 
@@ -1080,7 +1060,7 @@ MOAILayer2Dを生成します.
 <dl class="table">
 
 <dt><a name="Layer "></a><strong>Layer </strong></dt>
-<dd>シーンに追加できるレイヤークラスです レイヤーは、ビューポートを持ち、MOAILayer2Dに対応するクラスとなります.  レイヤー内の子オブジェクトの移動は、カメラを使用して移動してください. レイヤーの直接的な移動は、画面内の座標を移動する事になります.
+<dd>シーンに追加できるレイヤークラスです レイヤーは、ビューポートを持ち、MOAILayerに対応するクラスとなります.  レイヤー内の子オブジェクトの移動は、カメラを使用して移動してください. レイヤーの直接的な移動は、画面内の座標を移動する事になります.
 
 
 

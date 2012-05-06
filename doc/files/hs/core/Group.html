@@ -95,19 +95,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -145,10 +137,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,147 +295,147 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:addChild">Group:addChild</a>&nbsp;(child)</td>
+	<td class="name" nowrap><a href="#M:addChild">M:addChild</a>&nbsp;(child)</td>
 	<td class="summary">子オブジェクトを追加します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:dispose">Group:dispose</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:dispose">M:dispose</a>&nbsp;()</td>
 	<td class="summary">リソースを削除します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:findChildByName">Group:findChildByName</a>&nbsp;(name)</td>
+	<td class="name" nowrap><a href="#M:findChildByName">M:findChildByName</a>&nbsp;(name)</td>
 	<td class="summary">一致する名前の子オブジェクトを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:getAutoLayout">Group:getAutoLayout</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getAutoLayout">M:getAutoLayout</a>&nbsp;()</td>
 	<td class="summary">自動的にレイアウトを調整するか返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:getBackground">Group:getBackground</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getBackground">M:getBackground</a>&nbsp;()</td>
 	<td class="summary">背景オブジェクトを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:getChildAt">Group:getChildAt</a>&nbsp;(i)</td>
+	<td class="name" nowrap><a href="#M:getChildAt">M:getChildAt</a>&nbsp;(i)</td>
 	<td class="summary">子オブジェクトを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:getChildren">Group:getChildren</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getChildren">M:getChildren</a>&nbsp;()</td>
 	<td class="summary">子オブジェクトリストを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:getDeck">Group:getDeck</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getDeck">M:getDeck</a>&nbsp;()</td>
 	<td class="summary">MOAIDeckを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:getLayout">Group:getLayout</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getLayout">M:getLayout</a>&nbsp;()</td>
 	<td class="summary">グループのレイアウトを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:getProp">Group:getProp</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getProp">M:getProp</a>&nbsp;()</td>
 	<td class="summary">MOAIPropを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:init">Group:init</a>&nbsp;(params)</td>
+	<td class="name" nowrap><a href="#M:init">M:init</a>&nbsp;(params)</td>
 	<td class="summary">コンストラクタです  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:newBackground">Group:newBackground</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:newBackground">M:newBackground</a>&nbsp;()</td>
 	<td class="summary">背景を生成して返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:newDeck">Group:newDeck</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:newDeck">M:newDeck</a>&nbsp;()</td>
 	<td class="summary">ダミーなので生成しません.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:newProp">Group:newProp</a>&nbsp;(deck)</td>
+	<td class="name" nowrap><a href="#M:newProp">M:newProp</a>&nbsp;(deck)</td>
 	<td class="summary">ダミーなので生成しません.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:removeChild">Group:removeChild</a>&nbsp;(child)</td>
+	<td class="name" nowrap><a href="#M:removeChild">M:removeChild</a>&nbsp;(child)</td>
 	<td class="summary">子オブジェクトを削除します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:setAttrLinkForChild">Group:setAttrLinkForChild</a>&nbsp;(child)</td>
+	<td class="name" nowrap><a href="#M:setAttrLinkForChild">M:setAttrLinkForChild</a>&nbsp;(child)</td>
 	<td class="summary">子オブジェクトの属性連携を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:setAutoLayout">Group:setAutoLayout</a>&nbsp;(value)</td>
+	<td class="name" nowrap><a href="#M:setAutoLayout">M:setAutoLayout</a>&nbsp;(value)</td>
 	<td class="summary">自動的にレイアウトを調整するか設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:setBackground">Group:setBackground</a>&nbsp;(background)</td>
+	<td class="name" nowrap><a href="#M:setBackground">M:setBackground</a>&nbsp;(background)</td>
 	<td class="summary">背景オブジェクトを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:setDeck">Group:setDeck</a>&nbsp;(deck)</td>
+	<td class="name" nowrap><a href="#M:setDeck">M:setDeck</a>&nbsp;(deck)</td>
 	<td class="summary">@Deprecated このメソッドは非推奨です.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:setLayer">Group:setLayer</a>&nbsp;(layer)</td>
+	<td class="name" nowrap><a href="#M:setLayer">M:setLayer</a>&nbsp;(layer)</td>
 	<td class="summary">レイヤーをセットします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:setLayout">Group:setLayout</a>&nbsp;(layout)</td>
+	<td class="name" nowrap><a href="#M:setLayout">M:setLayout</a>&nbsp;(layout)</td>
 	<td class="summary">グループのレイアウトを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:setParent">Group:setParent</a>&nbsp;(parent)</td>
+	<td class="name" nowrap><a href="#M:setParent">M:setParent</a>&nbsp;(parent)</td>
 	<td class="summary">親オブジェクトを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:setProp">Group:setProp</a>&nbsp;(prop)</td>
+	<td class="name" nowrap><a href="#M:setProp">M:setProp</a>&nbsp;(prop)</td>
 	<td class="summary">@Deprecated このメソッドは非推奨です.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:setSize">Group:setSize</a>&nbsp;(width, height)</td>
+	<td class="name" nowrap><a href="#M:setSize">M:setSize</a>&nbsp;(width, height)</td>
 	<td class="summary">サイズを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:setVisible">Group:setVisible</a>&nbsp;(visible)</td>
+	<td class="name" nowrap><a href="#M:setVisible">M:setVisible</a>&nbsp;(visible)</td>
 	<td class="summary">表示するか設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:updateDisplay">Group:updateDisplay</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:updateDisplay">M:updateDisplay</a>&nbsp;()</td>
 	<td class="summary">子オブジェクトのレイアウトを更新します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:updateLayout">Group:updateLayout</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:updateLayout">M:updateLayout</a>&nbsp;()</td>
 	<td class="summary">子オブジェクトのレイアウトを更新します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:updatePriority">Group:updatePriority</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:updatePriority">M:updatePriority</a>&nbsp;()</td>
 	<td class="summary">子オブジェクトの表示順を更新します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Group:updateVisible">Group:updateVisible</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:updateVisible">M:updateVisible</a>&nbsp;()</td>
 	<td class="summary">表示するか反映します.</td>
 	</tr>
 
@@ -487,7 +467,7 @@
 
 
 
-<dt><a name="Group:addChild"></a><strong>Group:addChild</strong>&nbsp;(child)</dt>
+<dt><a name="M:addChild"></a><strong>M:addChild</strong>&nbsp;(child)</dt>
 <dd>
 子オブジェクトを追加します. 
 
@@ -513,7 +493,7 @@
 
 
 
-<dt><a name="Group:dispose"></a><strong>Group:dispose</strong>&nbsp;()</dt>
+<dt><a name="M:dispose"></a><strong>M:dispose</strong>&nbsp;()</dt>
 <dd>
 リソースを削除します. 
 
@@ -530,7 +510,7 @@
 
 
 
-<dt><a name="Group:findChildByName"></a><strong>Group:findChildByName</strong>&nbsp;(name)</dt>
+<dt><a name="M:findChildByName"></a><strong>M:findChildByName</strong>&nbsp;(name)</dt>
 <dd>
 一致する名前の子オブジェクトを返します. 
 
@@ -556,7 +536,7 @@
 
 
 
-<dt><a name="Group:getAutoLayout"></a><strong>Group:getAutoLayout</strong>&nbsp;()</dt>
+<dt><a name="M:getAutoLayout"></a><strong>M:getAutoLayout</strong>&nbsp;()</dt>
 <dd>
 自動的にレイアウトを調整するか返します. 
 
@@ -573,7 +553,7 @@
 
 
 
-<dt><a name="Group:getBackground"></a><strong>Group:getBackground</strong>&nbsp;()</dt>
+<dt><a name="M:getBackground"></a><strong>M:getBackground</strong>&nbsp;()</dt>
 <dd>
 背景オブジェクトを返します. 
 
@@ -590,7 +570,7 @@
 
 
 
-<dt><a name="Group:getChildAt"></a><strong>Group:getChildAt</strong>&nbsp;(i)</dt>
+<dt><a name="M:getChildAt"></a><strong>M:getChildAt</strong>&nbsp;(i)</dt>
 <dd>
 子オブジェクトを返します. 
 
@@ -616,7 +596,7 @@
 
 
 
-<dt><a name="Group:getChildren"></a><strong>Group:getChildren</strong>&nbsp;()</dt>
+<dt><a name="M:getChildren"></a><strong>M:getChildren</strong>&nbsp;()</dt>
 <dd>
 子オブジェクトリストを返します. 
 
@@ -633,7 +613,7 @@
 
 
 
-<dt><a name="Group:getDeck"></a><strong>Group:getDeck</strong>&nbsp;()</dt>
+<dt><a name="M:getDeck"></a><strong>M:getDeck</strong>&nbsp;()</dt>
 <dd>
 MOAIDeckを返します. 
 
@@ -650,7 +630,7 @@ MOAIDeckを返します.
 
 
 
-<dt><a name="Group:getLayout"></a><strong>Group:getLayout</strong>&nbsp;()</dt>
+<dt><a name="M:getLayout"></a><strong>M:getLayout</strong>&nbsp;()</dt>
 <dd>
 グループのレイアウトを返します. 
 
@@ -667,7 +647,7 @@ MOAIDeckを返します.
 
 
 
-<dt><a name="Group:getProp"></a><strong>Group:getProp</strong>&nbsp;()</dt>
+<dt><a name="M:getProp"></a><strong>M:getProp</strong>&nbsp;()</dt>
 <dd>
 MOAIPropを返します. 
 
@@ -684,7 +664,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:init"></a><strong>Group:init</strong>&nbsp;(params)</dt>
+<dt><a name="M:init"></a><strong>M:init</strong>&nbsp;(params)</dt>
 <dd>
 コンストラクタです 
 
@@ -710,7 +690,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:newBackground"></a><strong>Group:newBackground</strong>&nbsp;()</dt>
+<dt><a name="M:newBackground"></a><strong>M:newBackground</strong>&nbsp;()</dt>
 <dd>
 背景を生成して返します. 
 
@@ -727,7 +707,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:newDeck"></a><strong>Group:newDeck</strong>&nbsp;()</dt>
+<dt><a name="M:newDeck"></a><strong>M:newDeck</strong>&nbsp;()</dt>
 <dd>
 ダミーなので生成しません. 
 
@@ -744,7 +724,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:newProp"></a><strong>Group:newProp</strong>&nbsp;(deck)</dt>
+<dt><a name="M:newProp"></a><strong>M:newProp</strong>&nbsp;(deck)</dt>
 <dd>
 ダミーなので生成しません. 
 
@@ -770,7 +750,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:removeChild"></a><strong>Group:removeChild</strong>&nbsp;(child)</dt>
+<dt><a name="M:removeChild"></a><strong>M:removeChild</strong>&nbsp;(child)</dt>
 <dd>
 子オブジェクトを削除します. 
 
@@ -796,7 +776,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:setAttrLinkForChild"></a><strong>Group:setAttrLinkForChild</strong>&nbsp;(child)</dt>
+<dt><a name="M:setAttrLinkForChild"></a><strong>M:setAttrLinkForChild</strong>&nbsp;(child)</dt>
 <dd>
 子オブジェクトの属性連携を設定します. 
 
@@ -822,7 +802,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:setAutoLayout"></a><strong>Group:setAutoLayout</strong>&nbsp;(value)</dt>
+<dt><a name="M:setAutoLayout"></a><strong>M:setAutoLayout</strong>&nbsp;(value)</dt>
 <dd>
 自動的にレイアウトを調整するか設定します. 
 
@@ -848,7 +828,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:setBackground"></a><strong>Group:setBackground</strong>&nbsp;(background)</dt>
+<dt><a name="M:setBackground"></a><strong>M:setBackground</strong>&nbsp;(background)</dt>
 <dd>
 背景オブジェクトを設定します. TODO:変更時の子の反映 
 
@@ -874,7 +854,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:setDeck"></a><strong>Group:setDeck</strong>&nbsp;(deck)</dt>
+<dt><a name="M:setDeck"></a><strong>M:setDeck</strong>&nbsp;(deck)</dt>
 <dd>
 @Deprecated このメソッドは非推奨です. 設定してもbackgroundのdeckが使用されます. 
 
@@ -900,7 +880,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:setLayer"></a><strong>Group:setLayer</strong>&nbsp;(layer)</dt>
+<dt><a name="M:setLayer"></a><strong>M:setLayer</strong>&nbsp;(layer)</dt>
 <dd>
 レイヤーをセットします. 描画オブジェクトをMOAILayerに追加します. 
 
@@ -926,7 +906,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:setLayout"></a><strong>Group:setLayout</strong>&nbsp;(layout)</dt>
+<dt><a name="M:setLayout"></a><strong>M:setLayout</strong>&nbsp;(layout)</dt>
 <dd>
 グループのレイアウトを設定します. レイアウトクラスを設定すると、子オブジェクトの 座標やサイズを自動的に設定する事が可能になります. 
 
@@ -952,7 +932,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:setParent"></a><strong>Group:setParent</strong>&nbsp;(parent)</dt>
+<dt><a name="M:setParent"></a><strong>M:setParent</strong>&nbsp;(parent)</dt>
 <dd>
 親オブジェクトを設定します. 親オブジェクトはGroupである必要があります. nilを設定した場合、親オブジェクトはクリアされます. TODO:要リファクタリング 
 
@@ -978,7 +958,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:setProp"></a><strong>Group:setProp</strong>&nbsp;(prop)</dt>
+<dt><a name="M:setProp"></a><strong>M:setProp</strong>&nbsp;(prop)</dt>
 <dd>
 @Deprecated このメソッドは非推奨です. 設定してもbackgroundのpropが使用されます. 
 
@@ -1004,7 +984,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:setSize"></a><strong>Group:setSize</strong>&nbsp;(width, height)</dt>
+<dt><a name="M:setSize"></a><strong>M:setSize</strong>&nbsp;(width, height)</dt>
 <dd>
 サイズを設定します. 
 
@@ -1034,7 +1014,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:setVisible"></a><strong>Group:setVisible</strong>&nbsp;(visible)</dt>
+<dt><a name="M:setVisible"></a><strong>M:setVisible</strong>&nbsp;(visible)</dt>
 <dd>
 表示するか設定します. 
 
@@ -1060,7 +1040,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:updateDisplay"></a><strong>Group:updateDisplay</strong>&nbsp;()</dt>
+<dt><a name="M:updateDisplay"></a><strong>M:updateDisplay</strong>&nbsp;()</dt>
 <dd>
 子オブジェクトのレイアウトを更新します. 
 
@@ -1077,7 +1057,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:updateLayout"></a><strong>Group:updateLayout</strong>&nbsp;()</dt>
+<dt><a name="M:updateLayout"></a><strong>M:updateLayout</strong>&nbsp;()</dt>
 <dd>
 子オブジェクトのレイアウトを更新します. 
 
@@ -1094,7 +1074,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:updatePriority"></a><strong>Group:updatePriority</strong>&nbsp;()</dt>
+<dt><a name="M:updatePriority"></a><strong>M:updatePriority</strong>&nbsp;()</dt>
 <dd>
 子オブジェクトの表示順を更新します. 
 
@@ -1111,7 +1091,7 @@ MOAIPropを返します.
 
 
 
-<dt><a name="Group:updateVisible"></a><strong>Group:updateVisible</strong>&nbsp;()</dt>
+<dt><a name="M:updateVisible"></a><strong>M:updateVisible</strong>&nbsp;()</dt>
 <dd>
 表示するか反映します.  [[
 

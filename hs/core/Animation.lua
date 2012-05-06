@@ -9,11 +9,11 @@ local EventDispatcher = require("hs/core/EventDispatcher")
 -- @class table
 -- @name Animation
 ----------------------------------------------------------------
-local Animation = EventDispatcher()
+local M = EventDispatcher()
 
 -- properties
-Animation:setPropertyName("targets")
-Animation:setPropertyName("running", "setRunning", "isRunning")
+M:setPropertyName("targets")
+M:setPropertyName("running", "setRunning", "isRunning")
 
 -- private functions
 local function getCommandSecond(self, sec)
@@ -30,8 +30,8 @@ end
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function Animation:init(targets, sec, easeType)
-    Animation:super(self)
+function M:init(targets, sec, easeType)
+    M:super(self)
     targets = targets and targets or {}
     
     -- コンストラクタが存在する場合、配列に代入
@@ -56,21 +56,21 @@ end
 ---------------------------------------
 -- アニメーション中かどうか返します.
 ---------------------------------------
-function Animation:isRunning()
+function M:isRunning()
     return self._running
 end
 
 ---------------------------------------
 -- 対象オブジェクトを返します.
 ---------------------------------------
-function Animation:getTargets()
+function M:getTargets()
     return self._targets
 end
 
 ---------------------------------------
 -- アニメーションのプロパティを設定します.
 ---------------------------------------
-function Animation:setting(src)
+function M:setting(src)
     local command = self:newCommand(
         function(obj, callback)
             table.copy(src, self)
@@ -84,7 +84,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトのプロパティを設定します.
 ---------------------------------------
-function Animation:copy(src)
+function M:copy(src)
     local command = self:newCommand(
         function(obj, callback)
             for i, target in ipairs(self.targets) do
@@ -100,7 +100,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトを移動させます.
 ---------------------------------------
-function Animation:moveLocation(moveX, moveY, moveZ, sec, mode)
+function M:moveLocation(moveX, moveY, moveZ, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:moveLocation(moveX, moveY, moveZ, tSec, tMode, completeHandler)
     end
@@ -112,7 +112,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトを移動させます.
 ---------------------------------------
-function Animation:seekLocation(moveX, moveY, moveZ, sec, mode)
+function M:seekLocation(moveX, moveY, moveZ, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:seekLocation(moveX, moveY, moveZ, tSec, tMode, completeHandler)
     end
@@ -124,7 +124,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトを回転させます.
 ---------------------------------------
-function Animation:moveRotation(rx, ry, rz, sec, mode)
+function M:moveRotation(rx, ry, rz, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:moveRotation(rx, ry, rz, tSec, tMode, completeHandler)
     end
@@ -136,7 +136,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトを回転させます.
 ---------------------------------------
-function Animation:seekRotation(rx, ry, rz, sec, mode)
+function M:seekRotation(rx, ry, rz, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:seekRotation(rx, ry, rz, tSec, tMode, completeHandler)
     end
@@ -148,7 +148,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトを拡大します.
 ---------------------------------------
-function Animation:moveScale(scaleX, scaleY, scaleZ, sec, mode)
+function M:moveScale(scaleX, scaleY, scaleZ, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:moveScale(scaleX, scaleY, scaleZ, tSec, tMode, completeHandler)
     end
@@ -160,7 +160,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトを拡大します.
 ---------------------------------------
-function Animation:seekScale(scaleX, scaleY, scaleZ, sec, mode)
+function M:seekScale(scaleX, scaleY, scaleZ, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:seekScale(scaleX, scaleY, scaleZ, tSec, tMode, completeHandler)
     end
@@ -172,7 +172,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトをフェードインします.
 ---------------------------------------
-function Animation:fadeIn(sec, mode)
+function M:fadeIn(sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:fadeIn(tSec, tMode, completeHandler)
     end
@@ -184,7 +184,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトをフェードアウトします.
 ---------------------------------------
-function Animation:fadeOut(sec, mode)
+function M:fadeOut(sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:fadeOut(tSec, tMode, completeHandler)
     end
@@ -196,7 +196,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトの色をアニメーションします.
 ---------------------------------------
-function Animation:moveColor(red, green, blue, alpha, sec, mode)
+function M:moveColor(red, green, blue, alpha, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:moveColor(red, green, blue, alpha, tSec, tMode, completeHandler)
     end
@@ -208,7 +208,7 @@ end
 ---------------------------------------
 -- 対象オブジェクトの色をアニメーションします.
 ---------------------------------------
-function Animation:seekColor(red, green, blue, alpha, sec, mode)
+function M:seekColor(red, green, blue, alpha, sec, mode)
     local actionFunc = function(target, tSec, tMode, completeHandler)
         return target:seekColor(red, green, blue, alpha, tSec, tMode, completeHandler)
     end
@@ -220,7 +220,7 @@ end
 ---------------------------------------
 -- 指定されたアニメーションを並列実行します.
 ---------------------------------------
-function Animation:parallel(...)
+function M:parallel(...)
     local animations = {...}
     local command = self:newCommand(
         -- start
@@ -251,7 +251,7 @@ end
 ---------------------------------------
 -- 指定されたアニメーションを順次実行します.
 ---------------------------------------
-function Animation:sequence(...)
+function M:sequence(...)
     local animations = {...}
     local currentAnimation = nil
     local command = self:newCommand(
@@ -291,7 +291,7 @@ end
 -- @param onLoop ループの判定関数
 -- @param ... アニメーション
 ---------------------------------------
-function Animation:loop(count, onLoop, ...)
+function M:loop(count, onLoop, ...)
     -- 未実装
 end
 
@@ -299,7 +299,7 @@ end
 -- 一定時間待機します.
 -- @param sec 待機時間
 ---------------------------------------
-function Animation:wait(sec)
+function M:wait(sec)
     local timer = MOAITimer.new()
     timer:setTime(sec)
     
@@ -325,7 +325,7 @@ end
 -- params.onComplete(e)に関数を指定すると
 -- 完了時に関数がコールされます.
 ---------------------------------------
-function Animation:play(params)
+function M:play(params)
     if self.running then
         return self
     end
@@ -356,7 +356,7 @@ end
 ---------------------------------------
 -- コマンドを実行します.
 ---------------------------------------
-function Animation:_executeCommand(index)
+function M:_executeCommand(index)
     if index <= #self._commands then
         self._currentIndex = index
         self._currentCommand = self._commands[self._currentIndex]
@@ -367,7 +367,7 @@ end
 ---------------------------------------
 -- コマンド完了時のハンドラです.
 ---------------------------------------
-function Animation:onCommandComplete()
+function M:onCommandComplete()
     if self._stoped then
         return
     end
@@ -387,7 +387,7 @@ end
 ---------------------------------------
 -- アニメーションを停止します.
 ---------------------------------------
-function Animation:stop()
+function M:stop()
     if not self.running then
         return self
     end
@@ -403,7 +403,7 @@ end
 -- 継承して使用する事を想定します.
 -- @param event
 ---------------------------------------
-function Animation:onComplete(event)
+function M:onComplete(event)
 
 end
 
@@ -413,7 +413,7 @@ end
 -- カスタムコマンドを追加する事もできます.
 -- @param command play,stop,restart関数
 ---------------------------------------
-function Animation:addCommand(command)
+function M:addCommand(command)
     table.insert(self._commands, command)
     return self
 end
@@ -426,7 +426,7 @@ end
 -- @param stopFunc 停止 stopFunc()
 -- @return command コマンドテーブル
 ---------------------------------------
-function Animation:newCommand(playFunc, stopFunc)
+function M:newCommand(playFunc, stopFunc)
     local emptyFunc = function(obj, callback) end
     playFunc = playFunc
     stopFunc = stopFunc and stopFunc or emptyFunc
@@ -444,7 +444,7 @@ end
 -- @param mode EaseType
 -- @return command コマンドテーブル
 ---------------------------------------
-function Animation:newActionCommand(actionFunc, sec, mode)
+function M:newActionCommand(actionFunc, sec, mode)
     local actions = nil
     local command = self:newCommand(
         -- play
@@ -484,4 +484,4 @@ function Animation:newActionCommand(actionFunc, sec, mode)
     return command
 end
 
-return Animation
+return M

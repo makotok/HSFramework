@@ -1,24 +1,26 @@
-local Texture = require("hs/core/Texture")
-
 ----------------------------------------------------------------
 -- MOAITextureのCacheです.
 -- フレームワーク内部で使用します.
 -- @class table
--- @name TextureCache
+-- @name TextureManager
 ----------------------------------------------------------------
-local TextureCache = {
+local M = {
     cache = {}
 }
+
+setmetatable(M.cache, {__mode = "v"})
 
 ---------------------------------------
 --- テクスチャをロードして返します.
 --- テクスチャはキャッシュされます.
 ---------------------------------------
-function TextureCache:get(path)
+function M:get(path)
     if self.cache[path] == nil then
-        self.cache[path] = Texture:new(path)
+        local texture = MOAITexture.new ()
+        texture:load (path)
+        self.cache[path] = texture
     end
     return self.cache[path]
 end
 
-return TextureCache
+return M

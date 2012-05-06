@@ -13,7 +13,7 @@ function onCreate()
     -- sample list
     for i, item in ipairs(sceneItems) do
         local button = widget:newButton(
-            {text = item.text, width = 200, height = 30, parent = scrollView,
+            {text = item.text, width = 250, height = 30, parent = scrollView,
             onTouchDown = onTouchDown_button, sceneName = item.scene})
     end
     

@@ -95,19 +95,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -147,10 +139,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,82 +295,82 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:addScene">SceneManager:addScene</a>&nbsp;(scene)</td>
+	<td class="name" nowrap><a href="#M:addScene">M:addScene</a>&nbsp;(scene)</td>
 	<td class="summary">シーンを追加します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:closeScene">SceneManager:closeScene</a>&nbsp;(params)</td>
+	<td class="name" nowrap><a href="#M:closeScene">M:closeScene</a>&nbsp;(params)</td>
 	<td class="summary">現在のシーンを終了します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:findSceneByName">SceneManager:findSceneByName</a>&nbsp;(sceneName)</td>
+	<td class="name" nowrap><a href="#M:findSceneByName">M:findSceneByName</a>&nbsp;(sceneName)</td>
 	<td class="summary">シーン名からシーンを検索して返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:initialize">SceneManager:initialize</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:initialize">M:initialize</a>&nbsp;()</td>
 	<td class="summary">コンストラクタです.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:onEnterFrame">SceneManager:onEnterFrame</a>&nbsp;(e)</td>
+	<td class="name" nowrap><a href="#M:onEnterFrame">M:onEnterFrame</a>&nbsp;(e)</td>
 	<td class="summary">毎フレームの処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:onKeyboard">SceneManager:onKeyboard</a>&nbsp;(e)</td>
+	<td class="name" nowrap><a href="#M:onKeyboard">M:onKeyboard</a>&nbsp;(e)</td>
 	<td class="summary">キーボード入力する処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:onTouchCancel">SceneManager:onTouchCancel</a>&nbsp;(e)</td>
+	<td class="name" nowrap><a href="#M:onTouchCancel">M:onTouchCancel</a>&nbsp;(e)</td>
 	<td class="summary">画面をタッチする処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:onTouchDown">SceneManager:onTouchDown</a>&nbsp;(e)</td>
+	<td class="name" nowrap><a href="#M:onTouchDown">M:onTouchDown</a>&nbsp;(e)</td>
 	<td class="summary">画面をタッチする処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:onTouchMove">SceneManager:onTouchMove</a>&nbsp;(e)</td>
+	<td class="name" nowrap><a href="#M:onTouchMove">M:onTouchMove</a>&nbsp;(e)</td>
 	<td class="summary">画面をタッチする処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:onTouchUp">SceneManager:onTouchUp</a>&nbsp;(e)</td>
+	<td class="name" nowrap><a href="#M:onTouchUp">M:onTouchUp</a>&nbsp;(e)</td>
 	<td class="summary">画面をタッチする処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:openNextScene">SceneManager:openNextScene</a>&nbsp;(sceneName, params)</td>
+	<td class="name" nowrap><a href="#M:openNextScene">M:openNextScene</a>&nbsp;(sceneName, params)</td>
 	<td class="summary">次のシーンに遷移します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:openScene">SceneManager:openScene</a>&nbsp;(sceneName, params)</td>
+	<td class="name" nowrap><a href="#M:openScene">M:openScene</a>&nbsp;(sceneName, params)</td>
 	<td class="summary">新しいシーンを表示します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:orderToBack">SceneManager:orderToBack</a>&nbsp;(scene)</td>
+	<td class="name" nowrap><a href="#M:orderToBack">M:orderToBack</a>&nbsp;(scene)</td>
 	<td class="summary">シーンを最背面に移動します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:orderToFront">SceneManager:orderToFront</a>&nbsp;(scene)</td>
+	<td class="name" nowrap><a href="#M:orderToFront">M:orderToFront</a>&nbsp;(scene)</td>
 	<td class="summary">シーンを最前面に移動します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:refreshRenders">SceneManager:refreshRenders</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:refreshRenders">M:refreshRenders</a>&nbsp;()</td>
 	<td class="summary">レンダラーパスの表示順を反映します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneManager:removeScene">SceneManager:removeScene</a>&nbsp;(scene)</td>
+	<td class="name" nowrap><a href="#M:removeScene">M:removeScene</a>&nbsp;(scene)</td>
 	<td class="summary">シーンを削除します.</td>
 	</tr>
 
@@ -422,7 +402,7 @@
 
 
 
-<dt><a name="SceneManager:addScene"></a><strong>SceneManager:addScene</strong>&nbsp;(scene)</dt>
+<dt><a name="M:addScene"></a><strong>M:addScene</strong>&nbsp;(scene)</dt>
 <dd>
 シーンを追加します. 
 
@@ -448,7 +428,7 @@
 
 
 
-<dt><a name="SceneManager:closeScene"></a><strong>SceneManager:closeScene</strong>&nbsp;(params)</dt>
+<dt><a name="M:closeScene"></a><strong>M:closeScene</strong>&nbsp;(params)</dt>
 <dd>
 現在のシーンを終了します. 前のシーンに遷移します. 
 
@@ -474,7 +454,7 @@
 
 
 
-<dt><a name="SceneManager:findSceneByName"></a><strong>SceneManager:findSceneByName</strong>&nbsp;(sceneName)</dt>
+<dt><a name="M:findSceneByName"></a><strong>M:findSceneByName</strong>&nbsp;(sceneName)</dt>
 <dd>
 シーン名からシーンを検索して返します. 見つからない場合はnilを返します. 
 
@@ -500,7 +480,7 @@
 
 
 
-<dt><a name="SceneManager:initialize"></a><strong>SceneManager:initialize</strong>&nbsp;()</dt>
+<dt><a name="M:initialize"></a><strong>M:initialize</strong>&nbsp;()</dt>
 <dd>
 コンストラクタです. 
 
@@ -517,7 +497,7 @@
 
 
 
-<dt><a name="SceneManager:onEnterFrame"></a><strong>SceneManager:onEnterFrame</strong>&nbsp;(e)</dt>
+<dt><a name="M:onEnterFrame"></a><strong>M:onEnterFrame</strong>&nbsp;(e)</dt>
 <dd>
 毎フレームの処理を行います. シーン遷移中でもイベントは行われます. 
 
@@ -543,7 +523,7 @@
 
 
 
-<dt><a name="SceneManager:onKeyboard"></a><strong>SceneManager:onKeyboard</strong>&nbsp;(e)</dt>
+<dt><a name="M:onKeyboard"></a><strong>M:onKeyboard</strong>&nbsp;(e)</dt>
 <dd>
 キーボード入力する処理を行います. 
 
@@ -569,7 +549,7 @@
 
 
 
-<dt><a name="SceneManager:onTouchCancel"></a><strong>SceneManager:onTouchCancel</strong>&nbsp;(e)</dt>
+<dt><a name="M:onTouchCancel"></a><strong>M:onTouchCancel</strong>&nbsp;(e)</dt>
 <dd>
 画面をタッチする処理を行います. 
 
@@ -595,7 +575,7 @@
 
 
 
-<dt><a name="SceneManager:onTouchDown"></a><strong>SceneManager:onTouchDown</strong>&nbsp;(e)</dt>
+<dt><a name="M:onTouchDown"></a><strong>M:onTouchDown</strong>&nbsp;(e)</dt>
 <dd>
 画面をタッチする処理を行います. 
 
@@ -621,7 +601,7 @@
 
 
 
-<dt><a name="SceneManager:onTouchMove"></a><strong>SceneManager:onTouchMove</strong>&nbsp;(e)</dt>
+<dt><a name="M:onTouchMove"></a><strong>M:onTouchMove</strong>&nbsp;(e)</dt>
 <dd>
 画面をタッチする処理を行います. 
 
@@ -647,7 +627,7 @@
 
 
 
-<dt><a name="SceneManager:onTouchUp"></a><strong>SceneManager:onTouchUp</strong>&nbsp;(e)</dt>
+<dt><a name="M:onTouchUp"></a><strong>M:onTouchUp</strong>&nbsp;(e)</dt>
 <dd>
 画面をタッチする処理を行います. 
 
@@ -673,7 +653,7 @@
 
 
 
-<dt><a name="SceneManager:openNextScene"></a><strong>SceneManager:openNextScene</strong>&nbsp;(sceneName, params)</dt>
+<dt><a name="M:openNextScene"></a><strong>M:openNextScene</strong>&nbsp;(sceneName, params)</dt>
 <dd>
 次のシーンに遷移します. 現在のシーンは終了します. 
 
@@ -703,7 +683,7 @@
 
 
 
-<dt><a name="SceneManager:openScene"></a><strong>SceneManager:openScene</strong>&nbsp;(sceneName, params)</dt>
+<dt><a name="M:openScene"></a><strong>M:openScene</strong>&nbsp;(sceneName, params)</dt>
 <dd>
 新しいシーンを表示します. 現在のシーンはそのままスタックされた状態で、 次のシーンを表示します.  params引数で、いくつかの動作を変更できます. 1. params.sceneClassを指定した場合、 Sceneクラスではなく、別のクラスをnewします. 2. params.animationを指定した場合、  
 
@@ -733,7 +713,7 @@
 
 
 
-<dt><a name="SceneManager:orderToBack"></a><strong>SceneManager:orderToBack</strong>&nbsp;(scene)</dt>
+<dt><a name="M:orderToBack"></a><strong>M:orderToBack</strong>&nbsp;(scene)</dt>
 <dd>
 シーンを最背面に移動します. 
 
@@ -759,7 +739,7 @@
 
 
 
-<dt><a name="SceneManager:orderToFront"></a><strong>SceneManager:orderToFront</strong>&nbsp;(scene)</dt>
+<dt><a name="M:orderToFront"></a><strong>M:orderToFront</strong>&nbsp;(scene)</dt>
 <dd>
 シーンを最前面に移動します. 
 
@@ -785,7 +765,7 @@
 
 
 
-<dt><a name="SceneManager:refreshRenders"></a><strong>SceneManager:refreshRenders</strong>&nbsp;()</dt>
+<dt><a name="M:refreshRenders"></a><strong>M:refreshRenders</strong>&nbsp;()</dt>
 <dd>
 レンダラーパスの表示順を反映します. 
 
@@ -802,7 +782,7 @@
 
 
 
-<dt><a name="SceneManager:removeScene"></a><strong>SceneManager:removeScene</strong>&nbsp;(scene)</dt>
+<dt><a name="M:removeScene"></a><strong>M:removeScene</strong>&nbsp;(scene)</dt>
 <dd>
 シーンを削除します. 
 

@@ -93,19 +93,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -145,10 +137,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,137 +295,137 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:_executeCommand">Animation:_executeCommand</a>&nbsp;(index)</td>
+	<td class="name" nowrap><a href="#M:_executeCommand">M:_executeCommand</a>&nbsp;(index)</td>
 	<td class="summary">コマンドを実行します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:addCommand">Animation:addCommand</a>&nbsp;(command)</td>
+	<td class="name" nowrap><a href="#M:addCommand">M:addCommand</a>&nbsp;(command)</td>
 	<td class="summary">アニメーション実行コマンドを追加します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:copy">Animation:copy</a>&nbsp;(src)</td>
+	<td class="name" nowrap><a href="#M:copy">M:copy</a>&nbsp;(src)</td>
 	<td class="summary">対象オブジェクトのプロパティを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:fadeIn">Animation:fadeIn</a>&nbsp;(sec, mode)</td>
+	<td class="name" nowrap><a href="#M:fadeIn">M:fadeIn</a>&nbsp;(sec, mode)</td>
 	<td class="summary">対象オブジェクトをフェードインします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:fadeOut">Animation:fadeOut</a>&nbsp;(sec, mode)</td>
+	<td class="name" nowrap><a href="#M:fadeOut">M:fadeOut</a>&nbsp;(sec, mode)</td>
 	<td class="summary">対象オブジェクトをフェードアウトします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:getTargets">Animation:getTargets</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getTargets">M:getTargets</a>&nbsp;()</td>
 	<td class="summary">対象オブジェクトを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:init">Animation:init</a>&nbsp;(targets, sec, easeType)</td>
+	<td class="name" nowrap><a href="#M:init">M:init</a>&nbsp;(targets, sec, easeType)</td>
 	<td class="summary">public functions   コンストラクタです  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:isRunning">Animation:isRunning</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:isRunning">M:isRunning</a>&nbsp;()</td>
 	<td class="summary">アニメーション中かどうか返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:loop">Animation:loop</a>&nbsp;(count, onLoop, ...)</td>
+	<td class="name" nowrap><a href="#M:loop">M:loop</a>&nbsp;(count, onLoop, ...)</td>
 	<td class="summary">指定されたアニメーションを指定回数だけ実行します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:moveColor">Animation:moveColor</a>&nbsp;(red, green, blue, alpha, sec, mode)</td>
+	<td class="name" nowrap><a href="#M:moveColor">M:moveColor</a>&nbsp;(red, green, blue, alpha, sec, mode)</td>
 	<td class="summary">対象オブジェクトの色をアニメーションします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:moveLocation">Animation:moveLocation</a>&nbsp;(moveX, moveY, moveZ, sec, mode)</td>
+	<td class="name" nowrap><a href="#M:moveLocation">M:moveLocation</a>&nbsp;(moveX, moveY, moveZ, sec, mode)</td>
 	<td class="summary">対象オブジェクトを移動させます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:moveRotation">Animation:moveRotation</a>&nbsp;(rx, ry, rz, sec, mode)</td>
+	<td class="name" nowrap><a href="#M:moveRotation">M:moveRotation</a>&nbsp;(rx, ry, rz, sec, mode)</td>
 	<td class="summary">対象オブジェクトを回転させます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:moveScale">Animation:moveScale</a>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</td>
+	<td class="name" nowrap><a href="#M:moveScale">M:moveScale</a>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</td>
 	<td class="summary">対象オブジェクトを拡大します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:newActionCommand">Animation:newActionCommand</a>&nbsp;(actionFunc, sec, mode, funcName, args)</td>
+	<td class="name" nowrap><a href="#M:newActionCommand">M:newActionCommand</a>&nbsp;(actionFunc, sec, mode, funcName, args)</td>
 	<td class="summary">非同期なアクションを伴う、 アニメーション実行コマンドを生成します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:newCommand">Animation:newCommand</a>&nbsp;(playFunc, stopFunc)</td>
+	<td class="name" nowrap><a href="#M:newCommand">M:newCommand</a>&nbsp;(playFunc, stopFunc)</td>
 	<td class="summary">アニメーション実行コマンドを生成します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:onCommandComplete">Animation:onCommandComplete</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:onCommandComplete">M:onCommandComplete</a>&nbsp;()</td>
 	<td class="summary">コマンド完了時のハンドラです.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:onComplete">Animation:onComplete</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onComplete">M:onComplete</a>&nbsp;(event)</td>
 	<td class="summary">アニメーション完了時のイベント処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:parallel">Animation:parallel</a>&nbsp;(...)</td>
+	<td class="name" nowrap><a href="#M:parallel">M:parallel</a>&nbsp;(...)</td>
 	<td class="summary">指定されたアニメーションを並列実行します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:play">Animation:play</a>&nbsp;(params)</td>
+	<td class="name" nowrap><a href="#M:play">M:play</a>&nbsp;(params)</td>
 	<td class="summary">アニメーションを開始します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:seekColor">Animation:seekColor</a>&nbsp;(red, green, blue, alpha, sec, mode)</td>
+	<td class="name" nowrap><a href="#M:seekColor">M:seekColor</a>&nbsp;(red, green, blue, alpha, sec, mode)</td>
 	<td class="summary">対象オブジェクトの色をアニメーションします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:seekLocation">Animation:seekLocation</a>&nbsp;(moveX, moveY, moveZ, sec, mode)</td>
+	<td class="name" nowrap><a href="#M:seekLocation">M:seekLocation</a>&nbsp;(moveX, moveY, moveZ, sec, mode)</td>
 	<td class="summary">対象オブジェクトを移動させます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:seekRotation">Animation:seekRotation</a>&nbsp;(rx, ry, rz, sec, mode)</td>
+	<td class="name" nowrap><a href="#M:seekRotation">M:seekRotation</a>&nbsp;(rx, ry, rz, sec, mode)</td>
 	<td class="summary">対象オブジェクトを回転させます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:seekScale">Animation:seekScale</a>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</td>
+	<td class="name" nowrap><a href="#M:seekScale">M:seekScale</a>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</td>
 	<td class="summary">対象オブジェクトを拡大します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:sequence">Animation:sequence</a>&nbsp;(...)</td>
+	<td class="name" nowrap><a href="#M:sequence">M:sequence</a>&nbsp;(...)</td>
 	<td class="summary">指定されたアニメーションを順次実行します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:setting">Animation:setting</a>&nbsp;(src)</td>
+	<td class="name" nowrap><a href="#M:setting">M:setting</a>&nbsp;(src)</td>
 	<td class="summary">アニメーションのプロパティを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:stop">Animation:stop</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:stop">M:stop</a>&nbsp;()</td>
 	<td class="summary">アニメーションを停止します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Animation:wait">Animation:wait</a>&nbsp;(sec)</td>
+	<td class="name" nowrap><a href="#M:wait">M:wait</a>&nbsp;(sec)</td>
 	<td class="summary">一定時間待機します.</td>
 	</tr>
 
@@ -477,7 +457,7 @@
 
 
 
-<dt><a name="Animation:_executeCommand"></a><strong>Animation:_executeCommand</strong>&nbsp;(index)</dt>
+<dt><a name="M:_executeCommand"></a><strong>M:_executeCommand</strong>&nbsp;(index)</dt>
 <dd>
 コマンドを実行します. 
 
@@ -503,7 +483,7 @@
 
 
 
-<dt><a name="Animation:addCommand"></a><strong>Animation:addCommand</strong>&nbsp;(command)</dt>
+<dt><a name="M:addCommand"></a><strong>M:addCommand</strong>&nbsp;(command)</dt>
 <dd>
 アニメーション実行コマンドを追加します. 通常は使用する必要がありませんが、 カスタムコマンドを追加する事もできます.
 
@@ -529,7 +509,7 @@
 
 
 
-<dt><a name="Animation:copy"></a><strong>Animation:copy</strong>&nbsp;(src)</dt>
+<dt><a name="M:copy"></a><strong>M:copy</strong>&nbsp;(src)</dt>
 <dd>
 対象オブジェクトのプロパティを設定します. 
 
@@ -555,7 +535,7 @@
 
 
 
-<dt><a name="Animation:fadeIn"></a><strong>Animation:fadeIn</strong>&nbsp;(sec, mode)</dt>
+<dt><a name="M:fadeIn"></a><strong>M:fadeIn</strong>&nbsp;(sec, mode)</dt>
 <dd>
 対象オブジェクトをフェードインします. 
 
@@ -585,7 +565,7 @@
 
 
 
-<dt><a name="Animation:fadeOut"></a><strong>Animation:fadeOut</strong>&nbsp;(sec, mode)</dt>
+<dt><a name="M:fadeOut"></a><strong>M:fadeOut</strong>&nbsp;(sec, mode)</dt>
 <dd>
 対象オブジェクトをフェードアウトします. 
 
@@ -615,7 +595,7 @@
 
 
 
-<dt><a name="Animation:getTargets"></a><strong>Animation:getTargets</strong>&nbsp;()</dt>
+<dt><a name="M:getTargets"></a><strong>M:getTargets</strong>&nbsp;()</dt>
 <dd>
 対象オブジェクトを返します. 
 
@@ -632,7 +612,7 @@
 
 
 
-<dt><a name="Animation:init"></a><strong>Animation:init</strong>&nbsp;(targets, sec, easeType)</dt>
+<dt><a name="M:init"></a><strong>M:init</strong>&nbsp;(targets, sec, easeType)</dt>
 <dd>
 public functions   コンストラクタです 
 
@@ -666,7 +646,7 @@ public functions   コンストラクタです
 
 
 
-<dt><a name="Animation:isRunning"></a><strong>Animation:isRunning</strong>&nbsp;()</dt>
+<dt><a name="M:isRunning"></a><strong>M:isRunning</strong>&nbsp;()</dt>
 <dd>
 アニメーション中かどうか返します. 
 
@@ -683,7 +663,7 @@ public functions   コンストラクタです
 
 
 
-<dt><a name="Animation:loop"></a><strong>Animation:loop</strong>&nbsp;(count, onLoop, ...)</dt>
+<dt><a name="M:loop"></a><strong>M:loop</strong>&nbsp;(count, onLoop, ...)</dt>
 <dd>
 指定されたアニメーションを指定回数だけ実行します. 0の場合は、無限にアニメーションし続けます. onLoop関数がtrueを返すと、ループは終了します. 
 
@@ -717,7 +697,7 @@ public functions   コンストラクタです
 
 
 
-<dt><a name="Animation:moveColor"></a><strong>Animation:moveColor</strong>&nbsp;(red, green, blue, alpha, sec, mode)</dt>
+<dt><a name="M:moveColor"></a><strong>M:moveColor</strong>&nbsp;(red, green, blue, alpha, sec, mode)</dt>
 <dd>
 対象オブジェクトの色をアニメーションします. 
 
@@ -763,7 +743,7 @@ public functions   コンストラクタです
 
 
 
-<dt><a name="Animation:moveLocation"></a><strong>Animation:moveLocation</strong>&nbsp;(moveX, moveY, moveZ, sec, mode)</dt>
+<dt><a name="M:moveLocation"></a><strong>M:moveLocation</strong>&nbsp;(moveX, moveY, moveZ, sec, mode)</dt>
 <dd>
 対象オブジェクトを移動させます. 
 
@@ -805,7 +785,7 @@ public functions   コンストラクタです
 
 
 
-<dt><a name="Animation:moveRotation"></a><strong>Animation:moveRotation</strong>&nbsp;(rx, ry, rz, sec, mode)</dt>
+<dt><a name="M:moveRotation"></a><strong>M:moveRotation</strong>&nbsp;(rx, ry, rz, sec, mode)</dt>
 <dd>
 対象オブジェクトを回転させます. 
 
@@ -847,7 +827,7 @@ public functions   コンストラクタです
 
 
 
-<dt><a name="Animation:moveScale"></a><strong>Animation:moveScale</strong>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</dt>
+<dt><a name="M:moveScale"></a><strong>M:moveScale</strong>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</dt>
 <dd>
 対象オブジェクトを拡大します. 
 
@@ -889,7 +869,7 @@ public functions   コンストラクタです
 
 
 
-<dt><a name="Animation:newActionCommand"></a><strong>Animation:newActionCommand</strong>&nbsp;(actionFunc, sec, mode, funcName, args)</dt>
+<dt><a name="M:newActionCommand"></a><strong>M:newActionCommand</strong>&nbsp;(actionFunc, sec, mode, funcName, args)</dt>
 <dd>
 非同期なアクションを伴う、 アニメーション実行コマンドを生成します.
 
@@ -934,7 +914,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:newCommand"></a><strong>Animation:newCommand</strong>&nbsp;(playFunc, stopFunc)</dt>
+<dt><a name="M:newCommand"></a><strong>M:newCommand</strong>&nbsp;(playFunc, stopFunc)</dt>
 <dd>
 アニメーション実行コマンドを生成します. 実行コマンドは単純なテーブルです. 指定しなかった関数は空関数がセットされます.
 
@@ -967,7 +947,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:onCommandComplete"></a><strong>Animation:onCommandComplete</strong>&nbsp;()</dt>
+<dt><a name="M:onCommandComplete"></a><strong>M:onCommandComplete</strong>&nbsp;()</dt>
 <dd>
 コマンド完了時のハンドラです. 
 
@@ -984,7 +964,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:onComplete"></a><strong>Animation:onComplete</strong>&nbsp;(event)</dt>
+<dt><a name="M:onComplete"></a><strong>M:onComplete</strong>&nbsp;(event)</dt>
 <dd>
 アニメーション完了時のイベント処理を行います. 継承して使用する事を想定します.
 
@@ -1010,7 +990,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:parallel"></a><strong>Animation:parallel</strong>&nbsp;(...)</dt>
+<dt><a name="M:parallel"></a><strong>M:parallel</strong>&nbsp;(...)</dt>
 <dd>
 指定されたアニメーションを並列実行します. 
 
@@ -1036,7 +1016,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:play"></a><strong>Animation:play</strong>&nbsp;(params)</dt>
+<dt><a name="M:play"></a><strong>M:play</strong>&nbsp;(params)</dt>
 <dd>
 アニメーションを開始します. 一時停止していた場合は最初から再開します.  引数のparamsでいくつかの動作を制御できます. params.onComplete(e)に関数を指定すると 完了時に関数がコールされます. 
 
@@ -1062,7 +1042,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:seekColor"></a><strong>Animation:seekColor</strong>&nbsp;(red, green, blue, alpha, sec, mode)</dt>
+<dt><a name="M:seekColor"></a><strong>M:seekColor</strong>&nbsp;(red, green, blue, alpha, sec, mode)</dt>
 <dd>
 対象オブジェクトの色をアニメーションします. 
 
@@ -1108,7 +1088,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:seekLocation"></a><strong>Animation:seekLocation</strong>&nbsp;(moveX, moveY, moveZ, sec, mode)</dt>
+<dt><a name="M:seekLocation"></a><strong>M:seekLocation</strong>&nbsp;(moveX, moveY, moveZ, sec, mode)</dt>
 <dd>
 対象オブジェクトを移動させます. 
 
@@ -1150,7 +1130,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:seekRotation"></a><strong>Animation:seekRotation</strong>&nbsp;(rx, ry, rz, sec, mode)</dt>
+<dt><a name="M:seekRotation"></a><strong>M:seekRotation</strong>&nbsp;(rx, ry, rz, sec, mode)</dt>
 <dd>
 対象オブジェクトを回転させます. 
 
@@ -1192,7 +1172,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:seekScale"></a><strong>Animation:seekScale</strong>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</dt>
+<dt><a name="M:seekScale"></a><strong>M:seekScale</strong>&nbsp;(scaleX, scaleY, scaleZ, sec, mode)</dt>
 <dd>
 対象オブジェクトを拡大します. 
 
@@ -1234,7 +1214,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:sequence"></a><strong>Animation:sequence</strong>&nbsp;(...)</dt>
+<dt><a name="M:sequence"></a><strong>M:sequence</strong>&nbsp;(...)</dt>
 <dd>
 指定されたアニメーションを順次実行します. 
 
@@ -1260,7 +1240,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:setting"></a><strong>Animation:setting</strong>&nbsp;(src)</dt>
+<dt><a name="M:setting"></a><strong>M:setting</strong>&nbsp;(src)</dt>
 <dd>
 アニメーションのプロパティを設定します. 
 
@@ -1286,7 +1266,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:stop"></a><strong>Animation:stop</strong>&nbsp;()</dt>
+<dt><a name="M:stop"></a><strong>M:stop</strong>&nbsp;()</dt>
 <dd>
 アニメーションを停止します. 
 
@@ -1303,7 +1283,7 @@ command コマンドテーブル
 
 
 
-<dt><a name="Animation:wait"></a><strong>Animation:wait</strong>&nbsp;(sec)</dt>
+<dt><a name="M:wait"></a><strong>M:wait</strong>&nbsp;(sec)</dt>
 <dd>
 一定時間待機します.
 

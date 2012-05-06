@@ -8,7 +8,7 @@ local Application = require("hs/core/Application")
 
 --------------------------------------------------------------------------------
 -- シーンに追加できるレイヤークラスです
--- レイヤーは、ビューポートを持ち、MOAILayer2Dに対応するクラスとなります.
+-- レイヤーは、ビューポートを持ち、MOAILayerに対応するクラスとなります.
 --
 -- レイヤー内の子オブジェクトの移動は、カメラを使用して移動してください.
 -- レイヤーの直接的な移動は、画面内の座標を移動する事になります.
@@ -16,24 +16,24 @@ local Application = require("hs/core/Application")
 -- @name Layer
 --------------------------------------------------------------------------------
 
-local Layer = Group()
+local M = Group()
 
 -- プロパティ定義
-Layer:setPropertyName("camera")
-Layer:setPropertyName("touchEnabled")
-Layer:setPropertyName("renderPass")
-Layer:setPropertyName("viewport")
-Layer:setPropertyName("lastPriority")
-Layer:setPropertyName("touchEnabled", "setTouchEnabled", "isTouchEnabled")
+M:setPropertyName("camera")
+M:setPropertyName("touchEnabled")
+M:setPropertyName("renderPass")
+M:setPropertyName("viewport")
+M:setPropertyName("lastPriority")
+M:setPropertyName("touchEnabled", "setTouchEnabled", "isTouchEnabled")
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function Layer:init(params)
-    Layer:super(self, params)
+function M:init(params)
+    M:super(self, params)
 end
 
-function Layer:onInitial()
+function M:onInitial()
     Group.onInitial(self)
     
     self._renderPass = self:newRenderPass()
@@ -46,9 +46,9 @@ function Layer:onInitial()
 end
 
 ---------------------------------------
--- MOAILayer2Dを生成します.
+-- MOAILayerを生成します.
 ---------------------------------------
-function Layer:newRenderPass()
+function M:newRenderPass()
     local layer = MOAILayer.new ()
     layer.viewport = MOAIViewport.new()
     layer.viewport:setOffset(-1, 1)
@@ -66,7 +66,7 @@ end
 -- 親オブジェクトはSceneである必要があります.
 -- nilを設定した場合、親オブジェクトはクリアされます.
 ---------------------------------------
-function Layer:setParent(parent)
+function M:setParent(parent)
     local myParent = self.parent
     if myParent == parent then
         return
@@ -86,7 +86,7 @@ end
 ---------------------------------------
 -- 子オブジェクトの属性連携を設定します.
 ---------------------------------------
-function Layer:setAttrLinkForChild(child)
+function M:setAttrLinkForChild(child)
     --[[
     child.prop:clearAttrLink(MOAIColor.INHERIT_COLOR)
     if child.parent then
@@ -98,7 +98,7 @@ end
 ---------------------------------------
 -- 子オブジェクトを追加します.
 ---------------------------------------
-function Layer:addChild(child)
+function M:addChild(child)
     Group.addChild(self, child)
     child.layer = self
 end
@@ -106,7 +106,7 @@ end
 ---------------------------------------
 -- 描画オブジェクトを追加します.
 ---------------------------------------
-function Layer:addProp(prop)
+function M:addProp(prop)
     self.renderPass:insertProp(prop)
     self._priorityChanged = true
     self:invalidateDisplay()
@@ -115,35 +115,35 @@ end
 ---------------------------------------
 -- 描画オブジェクトを削除します.
 ---------------------------------------
-function Layer:removeProp(prop)
+function M:removeProp(prop)
     self.renderPass:removeProp(prop)
 end
 
 ---------------------------------------
 -- レンダラーパスを返します.
 ---------------------------------------
-function Layer:getRenderPass()
+function M:getRenderPass()
     return self._renderPass
 end
 
 ---------------------------------------
 -- Viewportを返します.
 ---------------------------------------
-function Layer:getViewport()
+function M:getViewport()
     return self._renderPass.viewport
 end
 
 ---------------------------------------
 -- MOAIPropを返します.
 ---------------------------------------
-function Layer:getProp()
+function M:getProp()
     return self.renderPass
 end
 
 ---------------------------------------
 -- カメラを設定します.
 ---------------------------------------
-function Layer:setCamera(camera)
+function M:setCamera(camera)
     self._camera = camera
     self.renderPass:setCamera(camera.transformObj)
 end
@@ -151,21 +151,21 @@ end
 ---------------------------------------
 -- カメラを返します.
 ---------------------------------------
-function Layer:getCamera()
+function M:getCamera()
     return self._camera
 end
 
 ---------------------------------------
 -- タッチ可能かどうか設定します.
 ---------------------------------------
-function Layer:setTouchEnabled(enabled)
+function M:setTouchEnabled(enabled)
     self._touchEnabled = enabled
 end
 
 ---------------------------------------
 -- タッチ可能かどうか返します.
 ---------------------------------------
-function Layer:isTouchEnabled()
+function M:isTouchEnabled()
     return self._touchEnabled
 end
 
@@ -174,10 +174,10 @@ end
 -- invalidateDisplayList関数が呼ばれていた場合、
 -- updateDisplayList関数を実行します.
 ---------------------------------------
-function Layer:onEnterFrame(event)
+function M:onEnterFrame(event)
 end
 
-function Layer:updateDisplay()
+function M:updateDisplay()
     Group.updateDisplay(self)
     if self._priorityChanged then
         self._lastPriority = 0
@@ -189,7 +189,7 @@ end
 ---------------------------------------
 -- 次のプライオリティを採番して返します.
 ---------------------------------------
-function Layer:nextPriority()
+function M:nextPriority()
     self._lastPriority = self._lastPriority + 1
     return self._lastPriority
 end
@@ -197,7 +197,7 @@ end
 ---------------------------------------
 -- 最後のプライオリティを返します.
 ---------------------------------------
-function Layer:lastPriority()
+function M:lastPriority()
     return self._lastPriority
 end
 
@@ -205,7 +205,7 @@ end
 -- レイヤー内のワールド座標から、
 -- 存在するDisplayObjectリストを返します.
 ---------------------------------------
-function Layer:getDisplayListForPoint(worldX, worldY, worldZ)
+function M:getDisplayListForPoint(worldX, worldY, worldZ)
     local partition = self._partition
     local array = {}
     local props = {partition:propListForPoint(worldX, worldY, worldZ or 0)}
@@ -220,21 +220,21 @@ end
 ---------------------------------------
 -- スクリーン座標からワールド座標に変換します.
 ---------------------------------------
-function Layer:windowToWorld(windowX, windowY, windowZ)
+function M:windowToWorld(windowX, windowY, windowZ)
     return self.renderPass:wndToWorld(windowX, windowY, windowZ or 0)
 end
 
 ---------------------------------------
 -- ワールド座標からスクリーン座標に変換します.
 ---------------------------------------
-function Layer:worldToWindow(worldX, worldY, worldZ)
+function M:worldToWindow(worldX, worldY, worldZ)
     return self.renderPass:worldToWnd(worldX, worldY, worldZ or 0)
 end
 
 ---------------------------------------
 -- レイヤーのタッチする処理を行います.
 ---------------------------------------
-function Layer:onTouchDown(event)
+function M:onTouchDown(event)
     if not self.touchEnabled then
         return
     end
@@ -250,10 +250,8 @@ function Layer:onTouchDown(event)
     e.worldY = worldY
     e.worldZ = worldZ
     
-    print("touch:", worldX, e.worldY, e.worldZ)
     for i = max, 1, -1 do
         local display = displayList[i]
-        print("prop:", display.worldX, display.worldY, display.width, display.height)
         display:onTouchDown(e)
         if e.stoped then
             break
@@ -267,28 +265,28 @@ end
 ---------------------------------------
 -- レイヤーのタッチする処理を行います.
 ---------------------------------------
-function Layer:onTouchUp(event)
+function M:onTouchUp(event)
     self:onTouchCommon(event, "onTouchUp")
 end
 
 ---------------------------------------
 -- レイヤーのタッチする処理を行います.
 ---------------------------------------
-function Layer:onTouchMove(event)
+function M:onTouchMove(event)
     self:onTouchCommon(event, "onTouchMove")
 end
 
 ---------------------------------------
 -- レイヤーのタッチする処理を行います.
 ---------------------------------------
-function Layer:onTouchCancel(event)
+function M:onTouchCancel(event)
     self:onTouchCommon(event, "onTouchCancel")
 end
 
 ---------------------------------------
 -- レイヤーのタッチする共通処理です.
 ---------------------------------------
-function Layer:onTouchCommon(event, funcName)
+function M:onTouchCommon(event, funcName)
     if not self.touchEnabled then
         return
     end
@@ -317,4 +315,4 @@ function Layer:onTouchCommon(event, funcName)
     end
 end
 
-return Layer
+return M

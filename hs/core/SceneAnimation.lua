@@ -6,13 +6,13 @@ local Animation = require("hs/core/Animation")
 -- @class table
 -- @name SceneAnimation
 --------------------------------------------------------------------------------
-local SceneAnimation = {}
-SceneAnimation.defaultSecond = 0.5
+local M = {}
+M.defaultSecond = 0.5
 
 ---------------------------------------
 -- 即座に表示します.
 ---------------------------------------
-function SceneAnimation.none(currentScene, nextScene, params)
+function M.none(currentScene, nextScene, params)
     return Animation:new():parallel(
         Animation:new(currentScene, sec):copy({visible = false}),
         Animation:new(nextScene, sec):copy({x = 0, y = 0, visible = true})
@@ -22,8 +22,8 @@ end
 ---------------------------------------
 -- ポップアップ表示します.
 ---------------------------------------
-function SceneAnimation.popIn(currentScene, nextScene, params)
-    local sec = params.sec and params.sec or SceneAnimation.defaultSecond
+function M.popIn(currentScene, nextScene, params)
+    local sec = params.sec and params.sec or M.defaultSecond
     return Animation:new():parallel(
         Animation:new(currentScene, sec)
             :seekColor(-0.5, -0.5, -0.5, -0.5),
@@ -37,8 +37,8 @@ end
 -- ポップアップ表示をクローズします.
 -- ポップアップ表示したシーンに対してのみ有効です.
 ---------------------------------------
-function SceneAnimation.popOut(currentScene, nextScene, params)
-    local sec = params.sec and params.sec or SceneAnimation.defaultSecond
+function M.popOut(currentScene, nextScene, params)
+    local sec = params.sec and params.sec or M.defaultSecond
     return Animation:new():parallel(
         Animation:new(currentScene, sec):seekScale(0, 0, 0):copy({visible = false}),
         Animation:new(nextScene, sec):seekColor(1, 1, 1, 1)
@@ -48,8 +48,8 @@ end
 ---------------------------------------
 -- fadeOut,fadeInを順次行います.
 ---------------------------------------
-function SceneAnimation.fade(currentScene, nextScene, params)
-    local sec = params.sec and params.sec or SceneAnimation.defaultSecond
+function M.fade(currentScene, nextScene, params)
+    local sec = params.sec and params.sec or M.defaultSecond
     return Animation:new():sequence(
         Animation:new(currentScene, sec):fadeOut(),
         Animation:new(nextScene, sec):fadeIn()
@@ -59,8 +59,8 @@ end
 ---------------------------------------
 -- fadeOut,fadeInを並列して行います.
 ---------------------------------------
-function SceneAnimation.crossFade(currentScene, nextScene, params)
-    local sec = params.sec and params.sec or SceneAnimation.defaultSecond
+function M.crossFade(currentScene, nextScene, params)
+    local sec = params.sec and params.sec or M.defaultSecond
     return Animation:new():parallel(
         Animation:new(currentScene, sec):fadeOut(),
         Animation:new(nextScene, sec):fadeIn()
@@ -70,8 +70,8 @@ end
 ---------------------------------------
 -- 画面上の移動します.
 ---------------------------------------
-function SceneAnimation.slideToTop(currentScene, nextScene, params)
-    local sec = params.sec and params.sec or SceneAnimation.defaultSecond
+function M.slideToTop(currentScene, nextScene, params)
+    local sec = params.sec and params.sec or M.defaultSecond
     local sw, sh = Application.screenWidth, Application.screenHeight
     return Animation:new():parallel(
         Animation:new(currentScene, sec)
@@ -88,8 +88,8 @@ end
 ---------------------------------------
 -- 画面下の移動します.
 ---------------------------------------
-function SceneAnimation.slideToBottom(currentScene, nextScene, params)
-    local sec = params.sec and params.sec or SceneAnimation.defaultSecond
+function M.slideToBottom(currentScene, nextScene, params)
+    local sec = params.sec and params.sec or M.defaultSecond
     local sw, sh = Application.screenWidth, Application.screenHeight
     return Animation:new():parallel(
         Animation:new(currentScene, sec)
@@ -106,8 +106,8 @@ end
 ---------------------------------------
 -- 画面左の移動します.
 ---------------------------------------
-function SceneAnimation.slideToLeft(currentScene, nextScene, params)
-    local sec = params.sec and params.sec or SceneAnimation.defaultSecond
+function M.slideToLeft(currentScene, nextScene, params)
+    local sec = params.sec and params.sec or M.defaultSecond
     local sw, sh = Application.screenWidth, Application.screenHeight
     return Animation:new():parallel(
         Animation:new(currentScene, sec)
@@ -124,8 +124,8 @@ end
 ---------------------------------------
 -- 画面右の移動します.
 ---------------------------------------
-function SceneAnimation.slideToRight(currentScene, nextScene, params)
-    local sec = params.sec and params.sec or SceneAnimation.defaultSecond
+function M.slideToRight(currentScene, nextScene, params)
+    local sec = params.sec and params.sec or M.defaultSecond
     local sw, sh = Application.screenWidth, Application.screenHeight
     return Animation:new():parallel(
         Animation:new(currentScene, sec)
@@ -139,4 +139,4 @@ function SceneAnimation.slideToRight(currentScene, nextScene, params)
     )
 end
 
-return SceneAnimation
+return M

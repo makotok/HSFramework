@@ -21,12 +21,12 @@ local Animation
 -- @class table
 -- @name display
 ----------------------------------------------------------------
-local display = {}
+local M = {}
 
 ----------------------------------------------------------------
 -- Spriteインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newSprite(...)
+function M:newSprite(...)
     Sprite = Sprite or require("hs/core/Sprite")
     return Sprite:new(...)
 end
@@ -34,7 +34,7 @@ end
 ----------------------------------------------------------------
 -- SpriteSheetインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newSpriteSheet(...)
+function M:newSpriteSheet(...)
     SpriteSheet = SpriteSheet or require("hs/core/SpriteSheet")
     return SpriteSheet:new(...)
 end
@@ -42,7 +42,7 @@ end
 ----------------------------------------------------------------
 -- MapSpriteインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newMapSprite(...)
+function M:newMapSprite(...)
     MapSprite = MapSprite or require("hs/core/MapSprite")
     return MapSprite:new(...)
 end
@@ -50,7 +50,7 @@ end
 ----------------------------------------------------------------
 -- TextLabelインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newText(...)
+function M:newText(...)
     TextLabel = TextLabel or require("hs/core/TextLabel")
     return TextLabel:new(...)
 end
@@ -58,7 +58,7 @@ end
 ----------------------------------------------------------------
 -- Graphicsインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newGraphics(...)
+function M:newGraphics(...)
     Graphics = Graphics or require("hs/core/Graphics")
     return Graphics:new(...)
 end
@@ -66,7 +66,7 @@ end
 ----------------------------------------------------------------
 -- Groupインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newGroup(...)
+function M:newGroup(...)
     Group = Group or require("hs/core/Group")
     return Group:new(...)
 end
@@ -74,7 +74,7 @@ end
 ----------------------------------------------------------------
 -- Layerインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newLayer(...)
+function M:newLayer(...)
     Layer = Layer or require("hs/core/Layer")
     return Layer:new(...)
 end
@@ -82,7 +82,7 @@ end
 ----------------------------------------------------------------
 -- BoxLayoutインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newBoxLayout(...)
+function M:newBoxLayout(...)
     BoxLayout = BoxLayout or require("hs/core/BoxLayout")
     return BoxLayout:new(...)
 end
@@ -90,7 +90,7 @@ end
 ----------------------------------------------------------------
 -- VBoxLayoutインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newVBoxLayout(...)
+function M:newVBoxLayout(...)
     VBoxLayout = VBoxLayout or require("hs/core/VBoxLayout")
     return VBoxLayout:new(...)
 end
@@ -98,7 +98,7 @@ end
 ----------------------------------------------------------------
 -- HBoxLayoutインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newHBoxLayout(...)
+function M:newHBoxLayout(...)
     HBoxLayout = HBoxLayout or require("hs/core/HBoxLayout")
     return HBoxLayout:new(...)
 end
@@ -106,7 +106,7 @@ end
 ----------------------------------------------------------------
 -- Animationインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newAnimation(...)
+function M:newAnimation(...)
     Animation = Animation or require("hs/core/Animation")
     return Animation:new(...)
 end
@@ -114,7 +114,7 @@ end
 ----------------------------------------------------------------
 -- Sceneインスタンスを生成して返します.
 ----------------------------------------------------------------
-function display:newScene(...)
+function M:newScene(...)
     Scene = Scene or require("hs/core/Scene")
     return Scene:new(...)
 end
@@ -122,7 +122,7 @@ end
 ----------------------------------------------------------------
 -- SceneManager:openScene関数に処理を委譲します.
 ----------------------------------------------------------------
-function display:openScene(...)
+function M:openScene(...)
     SceneManager = SceneManager or require("hs/core/SceneManager")
     return SceneManager:openScene(...)
 end
@@ -130,7 +130,7 @@ end
 ----------------------------------------------------------------
 -- SceneManager:openNextScene関数に処理を委譲します.
 ----------------------------------------------------------------
-function display:openNextScene(...)
+function M:openNextScene(...)
     SceneManager = SceneManager or require("hs/core/SceneManager")
     return SceneManager:openNextScene(...)
 end
@@ -138,9 +138,9 @@ end
 ----------------------------------------------------------------
 -- SceneManager:closeScene関数に処理を委譲します.
 ----------------------------------------------------------------
-function display:closeScene(...)
+function M:closeScene(...)
     SceneManager = SceneManager or require("hs/core/SceneManager")
     return SceneManager:closeScene(...)
 end
 
-return display
+return M

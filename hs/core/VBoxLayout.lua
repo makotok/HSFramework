@@ -5,14 +5,14 @@ local BoxLayout = require("hs/core/BoxLayout")
 -- @class table
 -- @name VBoxLayout
 ----------------------------------------------------------------
-local VBoxLayout = BoxLayout()
+local M = BoxLayout()
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function VBoxLayout:init(params)
-    VBoxLayout:super(self, params)
+function M:init(params)
+    M:super(self, params)
     self.direction = BoxLayout.DIRECTION_V
 end
 
-return VBoxLayout
+return M

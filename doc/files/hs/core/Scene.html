@@ -95,19 +95,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -146,10 +138,6 @@
 		<a href="../../../files/hs/core/NinePatch.html">hs/core/NinePatch.lua</a>
 	</li>
 
-	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
 	<li><strong>hs/core/Scene.lua</strong></li>
 	
 	<li>
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,252 +295,252 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:addChild">Scene:addChild</a>&nbsp;(child)</td>
+	<td class="name" nowrap><a href="#M:addChild">M:addChild</a>&nbsp;(child)</td>
 	<td class="summary">子レイヤーを追加します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:centerPivot">Scene:centerPivot</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:centerPivot">M:centerPivot</a>&nbsp;()</td>
 	<td class="summary">中心点を中央に設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:dispose">Scene:dispose</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:dispose">M:dispose</a>&nbsp;()</td>
 	<td class="summary">リソースを削除します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:fadeIn">Scene:fadeIn</a>&nbsp;(sec, mode, completeHandler)</td>
+	<td class="name" nowrap><a href="#M:fadeIn">M:fadeIn</a>&nbsp;(sec, mode, completeHandler)</td>
 	<td class="summary">フェードインします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:fadeOut">Scene:fadeOut</a>&nbsp;(sec, mode, completeHandler)</td>
+	<td class="name" nowrap><a href="#M:fadeOut">M:fadeOut</a>&nbsp;(sec, mode, completeHandler)</td>
 	<td class="summary">フェードアウトします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:getAlpha">Scene:getAlpha</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getAlpha">M:getAlpha</a>&nbsp;()</td>
 	<td class="summary">alpha値を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:getBlue">Scene:getBlue</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getBlue">M:getBlue</a>&nbsp;()</td>
 	<td class="summary">blue値を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:getGreen">Scene:getGreen</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getGreen">M:getGreen</a>&nbsp;()</td>
 	<td class="summary">green値を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:getHeight">Scene:getHeight</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getHeight">M:getHeight</a>&nbsp;()</td>
 	<td class="summary">heightを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:getLayers">Scene:getLayers</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getLayers">M:getLayers</a>&nbsp;()</td>
 	<td class="summary">レイヤーリストを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:getRed">Scene:getRed</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getRed">M:getRed</a>&nbsp;()</td>
 	<td class="summary">red値を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:getSize">Scene:getSize</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getSize">M:getSize</a>&nbsp;()</td>
 	<td class="summary">サイズを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:getTopLayer">Scene:getTopLayer</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getTopLayer">M:getTopLayer</a>&nbsp;()</td>
 	<td class="summary">最初に描画するレイヤーを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:getWidth">Scene:getWidth</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getWidth">M:getWidth</a>&nbsp;()</td>
 	<td class="summary">widthを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:init">Scene:init</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:init">M:init</a>&nbsp;()</td>
 	<td class="summary">コンストラクタです  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:isCurrentScene">Scene:isCurrentScene</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:isCurrentScene">M:isCurrentScene</a>&nbsp;()</td>
 	<td class="summary">カレントシーンかどうか返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:isOpened">Scene:isOpened</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:isOpened">M:isOpened</a>&nbsp;()</td>
 	<td class="summary">起動したかどうか返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:isVisible">Scene:isVisible</a>&nbsp;(visible)</td>
+	<td class="name" nowrap><a href="#M:isVisible">M:isVisible</a>&nbsp;(visible)</td>
 	<td class="summary">表示するか返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:moveColor">Scene:moveColor</a>&nbsp;(red, green, blue, alpha, sec, mode, completeHandler)</td>
+	<td class="name" nowrap><a href="#M:moveColor">M:moveColor</a>&nbsp;(red, green, blue, alpha, sec, mode, completeHandler)</td>
 	<td class="summary">色をアニメーション遷移させます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onCreate">Scene:onCreate</a>&nbsp;(params)</td>
+	<td class="name" nowrap><a href="#M:onCreate">M:onCreate</a>&nbsp;(params)</td>
 	<td class="summary">シーンの生成処理時に一度だけ呼ばれます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onDestroy">Scene:onDestroy</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:onDestroy">M:onDestroy</a>&nbsp;()</td>
 	<td class="summary">シーンの破棄時に呼ばれます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onEnterFrame">Scene:onEnterFrame</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onEnterFrame">M:onEnterFrame</a>&nbsp;(event)</td>
 	<td class="summary">フレーム毎の処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onKeyboard">Scene:onKeyboard</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onKeyboard">M:onKeyboard</a>&nbsp;(event)</td>
 	<td class="summary">キーボード入力時の処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onPause">Scene:onPause</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:onPause">M:onPause</a>&nbsp;()</td>
 	<td class="summary">シーンの一時停止時に呼ばれます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onResume">Scene:onResume</a>&nbsp;(params)</td>
+	<td class="name" nowrap><a href="#M:onResume">M:onResume</a>&nbsp;(params)</td>
 	<td class="summary">シーンの再開時に呼ばれます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onSceneTouchCancel">Scene:onSceneTouchCancel</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onSceneTouchCancel">M:onSceneTouchCancel</a>&nbsp;(event)</td>
 	<td class="summary">画面をタッチした時のイベント処理です.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onSceneTouchCommon">Scene:onSceneTouchCommon</a>&nbsp;(event, funcName)</td>
+	<td class="name" nowrap><a href="#M:onSceneTouchCommon">M:onSceneTouchCommon</a>&nbsp;(event, funcName)</td>
 	<td class="summary">画面をタッチした時の共通処理です.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onSceneTouchDown">Scene:onSceneTouchDown</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onSceneTouchDown">M:onSceneTouchDown</a>&nbsp;(event)</td>
 	<td class="summary">画面をタッチした時のイベント処理です.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onSceneTouchMove">Scene:onSceneTouchMove</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onSceneTouchMove">M:onSceneTouchMove</a>&nbsp;(event)</td>
 	<td class="summary">画面をタッチした時のイベント処理です.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onSceneTouchUp">Scene:onSceneTouchUp</a>&nbsp;(event)</td>
+	<td class="name" nowrap><a href="#M:onSceneTouchUp">M:onSceneTouchUp</a>&nbsp;(event)</td>
 	<td class="summary">画面をタッチした時のイベント処理です.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onStart">Scene:onStart</a>&nbsp;(params)</td>
+	<td class="name" nowrap><a href="#M:onStart">M:onStart</a>&nbsp;(params)</td>
 	<td class="summary">シーンの開始時に一度だけ呼ばれます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:onStop">Scene:onStop</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:onStop">M:onStop</a>&nbsp;()</td>
 	<td class="summary">シーンの停止時に呼ばれます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:orderToBack">Scene:orderToBack</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:orderToBack">M:orderToBack</a>&nbsp;()</td>
 	<td class="summary">シーンを最背面に表示します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:orderToFront">Scene:orderToFront</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:orderToFront">M:orderToFront</a>&nbsp;()</td>
 	<td class="summary">シーンを最前面に表示します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:removeChild">Scene:removeChild</a>&nbsp;(child)</td>
+	<td class="name" nowrap><a href="#M:removeChild">M:removeChild</a>&nbsp;(child)</td>
 	<td class="summary">レイヤーを削除します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:seekColor">Scene:seekColor</a>&nbsp;(red, green, blue, alpha, sec, mode, completeHandler)</td>
+	<td class="name" nowrap><a href="#M:seekColor">M:seekColor</a>&nbsp;(red, green, blue, alpha, sec, mode, completeHandler)</td>
 	<td class="summary">色をアニメーション遷移させます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setAlpha">Scene:setAlpha</a>&nbsp;(alpha)</td>
+	<td class="name" nowrap><a href="#M:setAlpha">M:setAlpha</a>&nbsp;(alpha)</td>
 	<td class="summary">alpha値を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setAttrLinkForChild">Scene:setAttrLinkForChild</a>&nbsp;(child)</td>
+	<td class="name" nowrap><a href="#M:setAttrLinkForChild">M:setAttrLinkForChild</a>&nbsp;(child)</td>
 	<td class="summary">子オブジェクトの属性連携を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setBlue">Scene:setBlue</a>&nbsp;(blue)</td>
+	<td class="name" nowrap><a href="#M:setBlue">M:setBlue</a>&nbsp;(blue)</td>
 	<td class="summary">blue値を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setColor">Scene:setColor</a>&nbsp;(red, green, blue, alpha)</td>
+	<td class="name" nowrap><a href="#M:setColor">M:setColor</a>&nbsp;(red, green, blue, alpha)</td>
 	<td class="summary">色を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setGreen">Scene:setGreen</a>&nbsp;(green)</td>
+	<td class="name" nowrap><a href="#M:setGreen">M:setGreen</a>&nbsp;(green)</td>
 	<td class="summary">green値を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setHeight">Scene:setHeight</a>&nbsp;(height)</td>
+	<td class="name" nowrap><a href="#M:setHeight">M:setHeight</a>&nbsp;(height)</td>
 	<td class="summary">heightを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setLayer">Scene:setLayer</a>&nbsp;(layer)</td>
+	<td class="name" nowrap><a href="#M:setLayer">M:setLayer</a>&nbsp;(layer)</td>
 	<td class="summary">SceneにLayerはセットできません.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setParent">Scene:setParent</a>&nbsp;(parent)</td>
+	<td class="name" nowrap><a href="#M:setParent">M:setParent</a>&nbsp;(parent)</td>
 	<td class="summary">親オブジェクトを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setRed">Scene:setRed</a>&nbsp;(red)</td>
+	<td class="name" nowrap><a href="#M:setRed">M:setRed</a>&nbsp;(red)</td>
 	<td class="summary">red値を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setSize">Scene:setSize</a>&nbsp;(width, height)</td>
+	<td class="name" nowrap><a href="#M:setSize">M:setSize</a>&nbsp;(width, height)</td>
 	<td class="summary">サイズを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setVisible">Scene:setVisible</a>&nbsp;(visible)</td>
+	<td class="name" nowrap><a href="#M:setVisible">M:setVisible</a>&nbsp;(visible)</td>
 	<td class="summary">表示するか設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:setWidth">Scene:setWidth</a>&nbsp;(width)</td>
+	<td class="name" nowrap><a href="#M:setWidth">M:setWidth</a>&nbsp;(width)</td>
 	<td class="summary">widthを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:showRenders">Scene:showRenders</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:showRenders">M:showRenders</a>&nbsp;()</td>
 	<td class="summary">描画レイヤーを表示します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Scene:updateLayout">Scene:updateLayout</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:updateLayout">M:updateLayout</a>&nbsp;()</td>
 	<td class="summary">子オブジェクトのレイアウトを更新します.</td>
 	</tr>
 
@@ -592,7 +572,7 @@
 
 
 
-<dt><a name="Scene:addChild"></a><strong>Scene:addChild</strong>&nbsp;(child)</dt>
+<dt><a name="M:addChild"></a><strong>M:addChild</strong>&nbsp;(child)</dt>
 <dd>
 子レイヤーを追加します. レイヤー以外を指定した場合、topLayerに追加されます. レイヤーの場合はシーンに追加されます. 
 
@@ -618,7 +598,7 @@
 
 
 
-<dt><a name="Scene:centerPivot"></a><strong>Scene:centerPivot</strong>&nbsp;()</dt>
+<dt><a name="M:centerPivot"></a><strong>M:centerPivot</strong>&nbsp;()</dt>
 <dd>
 中心点を中央に設定します. 
 
@@ -635,7 +615,7 @@
 
 
 
-<dt><a name="Scene:dispose"></a><strong>Scene:dispose</strong>&nbsp;()</dt>
+<dt><a name="M:dispose"></a><strong>M:dispose</strong>&nbsp;()</dt>
 <dd>
 リソースを削除します. 
 
@@ -652,7 +632,7 @@
 
 
 
-<dt><a name="Scene:fadeIn"></a><strong>Scene:fadeIn</strong>&nbsp;(sec, mode, completeHandler)</dt>
+<dt><a name="M:fadeIn"></a><strong>M:fadeIn</strong>&nbsp;(sec, mode, completeHandler)</dt>
 <dd>
 フェードインします. 
 
@@ -686,7 +666,7 @@
 
 
 
-<dt><a name="Scene:fadeOut"></a><strong>Scene:fadeOut</strong>&nbsp;(sec, mode, completeHandler)</dt>
+<dt><a name="M:fadeOut"></a><strong>M:fadeOut</strong>&nbsp;(sec, mode, completeHandler)</dt>
 <dd>
 フェードアウトします. 
 
@@ -720,7 +700,7 @@
 
 
 
-<dt><a name="Scene:getAlpha"></a><strong>Scene:getAlpha</strong>&nbsp;()</dt>
+<dt><a name="M:getAlpha"></a><strong>M:getAlpha</strong>&nbsp;()</dt>
 <dd>
 alpha値を返します. 
 
@@ -737,7 +717,7 @@ alpha値を返します.
 
 
 
-<dt><a name="Scene:getBlue"></a><strong>Scene:getBlue</strong>&nbsp;()</dt>
+<dt><a name="M:getBlue"></a><strong>M:getBlue</strong>&nbsp;()</dt>
 <dd>
 blue値を返します. 
 
@@ -754,7 +734,7 @@ blue値を返します.
 
 
 
-<dt><a name="Scene:getGreen"></a><strong>Scene:getGreen</strong>&nbsp;()</dt>
+<dt><a name="M:getGreen"></a><strong>M:getGreen</strong>&nbsp;()</dt>
 <dd>
 green値を返します. 
 
@@ -771,7 +751,7 @@ green値を返します.
 
 
 
-<dt><a name="Scene:getHeight"></a><strong>Scene:getHeight</strong>&nbsp;()</dt>
+<dt><a name="M:getHeight"></a><strong>M:getHeight</strong>&nbsp;()</dt>
 <dd>
 heightを返します. 
 
@@ -788,7 +768,7 @@ heightを返します.
 
 
 
-<dt><a name="Scene:getLayers"></a><strong>Scene:getLayers</strong>&nbsp;()</dt>
+<dt><a name="M:getLayers"></a><strong>M:getLayers</strong>&nbsp;()</dt>
 <dd>
 レイヤーリストを返します. 
 
@@ -805,7 +785,7 @@ heightを返します.
 
 
 
-<dt><a name="Scene:getRed"></a><strong>Scene:getRed</strong>&nbsp;()</dt>
+<dt><a name="M:getRed"></a><strong>M:getRed</strong>&nbsp;()</dt>
 <dd>
 red値を返します. 
 
@@ -822,7 +802,7 @@ red値を返します.
 
 
 
-<dt><a name="Scene:getSize"></a><strong>Scene:getSize</strong>&nbsp;()</dt>
+<dt><a name="M:getSize"></a><strong>M:getSize</strong>&nbsp;()</dt>
 <dd>
 サイズを返します. 
 
@@ -839,7 +819,7 @@ red値を返します.
 
 
 
-<dt><a name="Scene:getTopLayer"></a><strong>Scene:getTopLayer</strong>&nbsp;()</dt>
+<dt><a name="M:getTopLayer"></a><strong>M:getTopLayer</strong>&nbsp;()</dt>
 <dd>
 最初に描画するレイヤーを返します. つまり、実際の表示は後ろです. デフォルトで一つだけ追加されているので、 必ず使用できます. 
 
@@ -856,7 +836,7 @@ red値を返します.
 
 
 
-<dt><a name="Scene:getWidth"></a><strong>Scene:getWidth</strong>&nbsp;()</dt>
+<dt><a name="M:getWidth"></a><strong>M:getWidth</strong>&nbsp;()</dt>
 <dd>
 widthを返します. 
 
@@ -873,7 +853,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:init"></a><strong>Scene:init</strong>&nbsp;()</dt>
+<dt><a name="M:init"></a><strong>M:init</strong>&nbsp;()</dt>
 <dd>
 コンストラクタです 
 
@@ -890,7 +870,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:isCurrentScene"></a><strong>Scene:isCurrentScene</strong>&nbsp;()</dt>
+<dt><a name="M:isCurrentScene"></a><strong>M:isCurrentScene</strong>&nbsp;()</dt>
 <dd>
 カレントシーンかどうか返します. 
 
@@ -907,7 +887,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:isOpened"></a><strong>Scene:isOpened</strong>&nbsp;()</dt>
+<dt><a name="M:isOpened"></a><strong>M:isOpened</strong>&nbsp;()</dt>
 <dd>
 起動したかどうか返します. 
 
@@ -924,7 +904,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:isVisible"></a><strong>Scene:isVisible</strong>&nbsp;(visible)</dt>
+<dt><a name="M:isVisible"></a><strong>M:isVisible</strong>&nbsp;(visible)</dt>
 <dd>
 表示するか返します. 
 
@@ -950,7 +930,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:moveColor"></a><strong>Scene:moveColor</strong>&nbsp;(red, green, blue, alpha, sec, mode, completeHandler)</dt>
+<dt><a name="M:moveColor"></a><strong>M:moveColor</strong>&nbsp;(red, green, blue, alpha, sec, mode, completeHandler)</dt>
 <dd>
 色をアニメーション遷移させます. 
 
@@ -1000,7 +980,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onCreate"></a><strong>Scene:onCreate</strong>&nbsp;(params)</dt>
+<dt><a name="M:onCreate"></a><strong>M:onCreate</strong>&nbsp;(params)</dt>
 <dd>
 シーンの生成処理時に一度だけ呼ばれます. 
 
@@ -1026,7 +1006,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onDestroy"></a><strong>Scene:onDestroy</strong>&nbsp;()</dt>
+<dt><a name="M:onDestroy"></a><strong>M:onDestroy</strong>&nbsp;()</dt>
 <dd>
 シーンの破棄時に呼ばれます. この時点でシーンは破棄されて使用できなくなります. 
 
@@ -1043,7 +1023,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onEnterFrame"></a><strong>Scene:onEnterFrame</strong>&nbsp;(event)</dt>
+<dt><a name="M:onEnterFrame"></a><strong>M:onEnterFrame</strong>&nbsp;(event)</dt>
 <dd>
 フレーム毎の処理を行います. 
 
@@ -1069,7 +1049,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onKeyboard"></a><strong>Scene:onKeyboard</strong>&nbsp;(event)</dt>
+<dt><a name="M:onKeyboard"></a><strong>M:onKeyboard</strong>&nbsp;(event)</dt>
 <dd>
 キーボード入力時の処理を行います. 
 
@@ -1095,7 +1075,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onPause"></a><strong>Scene:onPause</strong>&nbsp;()</dt>
+<dt><a name="M:onPause"></a><strong>M:onPause</strong>&nbsp;()</dt>
 <dd>
 シーンの一時停止時に呼ばれます. 
 
@@ -1112,7 +1092,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onResume"></a><strong>Scene:onResume</strong>&nbsp;(params)</dt>
+<dt><a name="M:onResume"></a><strong>M:onResume</strong>&nbsp;(params)</dt>
 <dd>
 シーンの再開時に呼ばれます. pauseした場合に、再開処理で呼ばれます. 
 
@@ -1138,7 +1118,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onSceneTouchCancel"></a><strong>Scene:onSceneTouchCancel</strong>&nbsp;(event)</dt>
+<dt><a name="M:onSceneTouchCancel"></a><strong>M:onSceneTouchCancel</strong>&nbsp;(event)</dt>
 <dd>
 画面をタッチした時のイベント処理です. 
 
@@ -1164,7 +1144,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onSceneTouchCommon"></a><strong>Scene:onSceneTouchCommon</strong>&nbsp;(event, funcName)</dt>
+<dt><a name="M:onSceneTouchCommon"></a><strong>M:onSceneTouchCommon</strong>&nbsp;(event, funcName)</dt>
 <dd>
 画面をタッチした時の共通処理です. 
 
@@ -1194,7 +1174,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onSceneTouchDown"></a><strong>Scene:onSceneTouchDown</strong>&nbsp;(event)</dt>
+<dt><a name="M:onSceneTouchDown"></a><strong>M:onSceneTouchDown</strong>&nbsp;(event)</dt>
 <dd>
 画面をタッチした時のイベント処理です. 
 
@@ -1220,7 +1200,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onSceneTouchMove"></a><strong>Scene:onSceneTouchMove</strong>&nbsp;(event)</dt>
+<dt><a name="M:onSceneTouchMove"></a><strong>M:onSceneTouchMove</strong>&nbsp;(event)</dt>
 <dd>
 画面をタッチした時のイベント処理です. 
 
@@ -1246,7 +1226,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onSceneTouchUp"></a><strong>Scene:onSceneTouchUp</strong>&nbsp;(event)</dt>
+<dt><a name="M:onSceneTouchUp"></a><strong>M:onSceneTouchUp</strong>&nbsp;(event)</dt>
 <dd>
 画面をタッチした時のイベント処理です. 
 
@@ -1272,7 +1252,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onStart"></a><strong>Scene:onStart</strong>&nbsp;(params)</dt>
+<dt><a name="M:onStart"></a><strong>M:onStart</strong>&nbsp;(params)</dt>
 <dd>
 シーンの開始時に一度だけ呼ばれます. 
 
@@ -1298,7 +1278,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:onStop"></a><strong>Scene:onStop</strong>&nbsp;()</dt>
+<dt><a name="M:onStop"></a><strong>M:onStop</strong>&nbsp;()</dt>
 <dd>
 シーンの停止時に呼ばれます. 停止された後、他シーン遷移が完了した後に onDestoryが呼ばれます. 
 
@@ -1315,7 +1295,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:orderToBack"></a><strong>Scene:orderToBack</strong>&nbsp;()</dt>
+<dt><a name="M:orderToBack"></a><strong>M:orderToBack</strong>&nbsp;()</dt>
 <dd>
 シーンを最背面に表示します. 
 
@@ -1332,7 +1312,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:orderToFront"></a><strong>Scene:orderToFront</strong>&nbsp;()</dt>
+<dt><a name="M:orderToFront"></a><strong>M:orderToFront</strong>&nbsp;()</dt>
 <dd>
 シーンを最前面に表示します. 
 
@@ -1349,7 +1329,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:removeChild"></a><strong>Scene:removeChild</strong>&nbsp;(child)</dt>
+<dt><a name="M:removeChild"></a><strong>M:removeChild</strong>&nbsp;(child)</dt>
 <dd>
 レイヤーを削除します. 
 
@@ -1375,7 +1355,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:seekColor"></a><strong>Scene:seekColor</strong>&nbsp;(red, green, blue, alpha, sec, mode, completeHandler)</dt>
+<dt><a name="M:seekColor"></a><strong>M:seekColor</strong>&nbsp;(red, green, blue, alpha, sec, mode, completeHandler)</dt>
 <dd>
 色をアニメーション遷移させます. 
 
@@ -1425,7 +1405,7 @@ widthを返します.
 
 
 
-<dt><a name="Scene:setAlpha"></a><strong>Scene:setAlpha</strong>&nbsp;(alpha)</dt>
+<dt><a name="M:setAlpha"></a><strong>M:setAlpha</strong>&nbsp;(alpha)</dt>
 <dd>
 alpha値を設定します. 
 
@@ -1451,7 +1431,7 @@ alpha値を設定します.
 
 
 
-<dt><a name="Scene:setAttrLinkForChild"></a><strong>Scene:setAttrLinkForChild</strong>&nbsp;(child)</dt>
+<dt><a name="M:setAttrLinkForChild"></a><strong>M:setAttrLinkForChild</strong>&nbsp;(child)</dt>
 <dd>
 子オブジェクトの属性連携を設定します. 
 
@@ -1477,7 +1457,7 @@ alpha値を設定します.
 
 
 
-<dt><a name="Scene:setBlue"></a><strong>Scene:setBlue</strong>&nbsp;(blue)</dt>
+<dt><a name="M:setBlue"></a><strong>M:setBlue</strong>&nbsp;(blue)</dt>
 <dd>
 blue値を設定します. 
 
@@ -1503,7 +1483,7 @@ blue値を設定します.
 
 
 
-<dt><a name="Scene:setColor"></a><strong>Scene:setColor</strong>&nbsp;(red, green, blue, alpha)</dt>
+<dt><a name="M:setColor"></a><strong>M:setColor</strong>&nbsp;(red, green, blue, alpha)</dt>
 <dd>
 色を設定します. 
 
@@ -1541,7 +1521,7 @@ blue値を設定します.
 
 
 
-<dt><a name="Scene:setGreen"></a><strong>Scene:setGreen</strong>&nbsp;(green)</dt>
+<dt><a name="M:setGreen"></a><strong>M:setGreen</strong>&nbsp;(green)</dt>
 <dd>
 green値を設定します. 
 
@@ -1567,7 +1547,7 @@ green値を設定します.
 
 
 
-<dt><a name="Scene:setHeight"></a><strong>Scene:setHeight</strong>&nbsp;(height)</dt>
+<dt><a name="M:setHeight"></a><strong>M:setHeight</strong>&nbsp;(height)</dt>
 <dd>
 heightを設定します. 
 
@@ -1593,7 +1573,7 @@ heightを設定します.
 
 
 
-<dt><a name="Scene:setLayer"></a><strong>Scene:setLayer</strong>&nbsp;(layer)</dt>
+<dt><a name="M:setLayer"></a><strong>M:setLayer</strong>&nbsp;(layer)</dt>
 <dd>
 SceneにLayerはセットできません. 
 
@@ -1619,7 +1599,7 @@ SceneにLayerはセットできません.
 
 
 
-<dt><a name="Scene:setParent"></a><strong>Scene:setParent</strong>&nbsp;(parent)</dt>
+<dt><a name="M:setParent"></a><strong>M:setParent</strong>&nbsp;(parent)</dt>
 <dd>
 親オブジェクトを設定します. トップレベルコンテナなので、親はありません. 
 
@@ -1645,7 +1625,7 @@ SceneにLayerはセットできません.
 
 
 
-<dt><a name="Scene:setRed"></a><strong>Scene:setRed</strong>&nbsp;(red)</dt>
+<dt><a name="M:setRed"></a><strong>M:setRed</strong>&nbsp;(red)</dt>
 <dd>
 red値を設定します. 
 
@@ -1671,7 +1651,7 @@ red値を設定します.
 
 
 
-<dt><a name="Scene:setSize"></a><strong>Scene:setSize</strong>&nbsp;(width, height)</dt>
+<dt><a name="M:setSize"></a><strong>M:setSize</strong>&nbsp;(width, height)</dt>
 <dd>
 サイズを設定します. 基本的にはstageのサイズのみを設定すべきであり、 フレームワーク外部から設定すべきではありません. 
 
@@ -1701,7 +1681,7 @@ red値を設定します.
 
 
 
-<dt><a name="Scene:setVisible"></a><strong>Scene:setVisible</strong>&nbsp;(visible)</dt>
+<dt><a name="M:setVisible"></a><strong>M:setVisible</strong>&nbsp;(visible)</dt>
 <dd>
 表示するか設定します. 
 
@@ -1727,7 +1707,7 @@ red値を設定します.
 
 
 
-<dt><a name="Scene:setWidth"></a><strong>Scene:setWidth</strong>&nbsp;(width)</dt>
+<dt><a name="M:setWidth"></a><strong>M:setWidth</strong>&nbsp;(width)</dt>
 <dd>
 widthを設定します. 
 
@@ -1753,7 +1733,7 @@ widthを設定します.
 
 
 
-<dt><a name="Scene:showRenders"></a><strong>Scene:showRenders</strong>&nbsp;()</dt>
+<dt><a name="M:showRenders"></a><strong>M:showRenders</strong>&nbsp;()</dt>
 <dd>
 描画レイヤーを表示します. 
 
@@ -1770,7 +1750,7 @@ widthを設定します.
 
 
 
-<dt><a name="Scene:updateLayout"></a><strong>Scene:updateLayout</strong>&nbsp;()</dt>
+<dt><a name="M:updateLayout"></a><strong>M:updateLayout</strong>&nbsp;()</dt>
 <dd>
 子オブジェクトのレイアウトを更新します. 
 

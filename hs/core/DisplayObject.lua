@@ -15,31 +15,31 @@ local SceneManager
 -- @name DisplayObject
 --------------------------------------------------------------------------------
 
-local DisplayObject = Transform()
+local M = Transform()
 
 -- プロパティ定義
-DisplayObject:setPropertyName("width")
-DisplayObject:setPropertyName("height")
-DisplayObject:setPropertyName("depth")
-DisplayObject:setPropertyName("priority")
-DisplayObject:setPropertyName("alpha")
-DisplayObject:setPropertyName("red")
-DisplayObject:setPropertyName("green")
-DisplayObject:setPropertyName("blue")
-DisplayObject:setPropertyName("prop")
-DisplayObject:setPropertyName("deck")
-DisplayObject:setPropertyName("layer")
-DisplayObject:setPropertyName("nestLevel")
-DisplayObject:setPropertyName("visible", "setVisible", "isVisible")
-DisplayObject:setPropertyName("enabled", "setEnabled", "isEnabled")
-DisplayObject:setPropertyName("focus", "setFocus", "isFocus")
+M:setPropertyName("width")
+M:setPropertyName("height")
+M:setPropertyName("depth")
+M:setPropertyName("priority")
+M:setPropertyName("alpha")
+M:setPropertyName("red")
+M:setPropertyName("green")
+M:setPropertyName("blue")
+M:setPropertyName("prop")
+M:setPropertyName("deck")
+M:setPropertyName("layer")
+M:setPropertyName("nestLevel")
+M:setPropertyName("visible", "setVisible", "isVisible")
+M:setPropertyName("enabled", "setEnabled", "isEnabled")
+M:setPropertyName("focus", "setFocus", "isFocus")
 
 ---------------------------------------
 -- コンストラクタです
 -- @name DisplayObject:new
 ---------------------------------------
-function DisplayObject:init(params)
-    DisplayObject:super(self)
+function M:init(params)
+    M:super(self)
 
     -- 変数
     self.name = ""
@@ -78,13 +78,13 @@ end
 ---------------------------------------
 -- 初期化イベントハンドラです.
 ---------------------------------------
-function DisplayObject:onInitial()
+function M:onInitial()
 end
 
 ---------------------------------------
 -- validateDisplayをスケジューリングします.
 ---------------------------------------
-function DisplayObject:invalidateDisplay()
+function M:invalidateDisplay()
     if not self.invalidateDisplayFlag then
         self.invalidateDisplayFlag = true
         LayoutManager:invalidateDisplay(self)
@@ -96,7 +96,7 @@ end
 -- invalidateDisplay()をコールした場合に呼ばれます.
 -- ライブラリ使用者が直接呼ぶ必要はありません.
 ---------------------------------------
-function DisplayObject:validateDisplay()
+function M:validateDisplay()
     self:updateDisplay()
     self.invalidateDisplayFlag = false
 end
@@ -106,8 +106,7 @@ end
 -- invalidateDisplay()をコールした場合に呼ばれます.
 -- ライブラリ使用者が直接呼ぶ必要はありません.
 ---------------------------------------
-function DisplayObject:updateDisplay()
-    Logger.info("call DisplayObject:updateDisplay()")
+function M:updateDisplay()
 end
 
 ---------------------------------------
@@ -115,7 +114,7 @@ end
 -- オーバーライドしてください.
 -- デフォルトは適当です.
 ---------------------------------------
-function DisplayObject:newDeck()
+function M:newDeck()
     return MOAIScriptDeck.new()
 end
 
@@ -124,7 +123,7 @@ end
 -- オーバーライドしてください.
 -- デフォルトは適当です.
 ---------------------------------------
-function DisplayObject:newProp(deck)
+function M:newProp(deck)
     local prop = MOAIProp.new()
     prop:setDeck(deck)
     return prop
@@ -133,14 +132,14 @@ end
 ---------------------------------------
 --- MOAITransformを生成して返します.
 ---------------------------------------
-function DisplayObject:newTransformObj()
+function M:newTransformObj()
     return nil
 end
 
 ---------------------------------------
 -- 子オブジェクトの表示順を更新します.
 ---------------------------------------
-function DisplayObject:updatePriority()
+function M:updatePriority()
     if not self.layer then
         return
     end
@@ -152,14 +151,14 @@ end
 ---------------------------------------
 -- 描画順を返します.
 ---------------------------------------
-function DisplayObject:setPriority(priority)
+function M:setPriority(priority)
     self.prop:setPriority(priority)
 end
 
 ---------------------------------------
 -- 描画順を返します.
 ---------------------------------------
-function DisplayObject:getPriority()
+function M:getPriority()
     return self.prop:getPriority()
 end
 
@@ -168,7 +167,7 @@ end
 -- デフォルト動作では、deckに対してrectを設定する為、
 -- 必要により継承して動作を変更する事を期待します.
 ---------------------------------------
-function DisplayObject:setSize(width, height)
+function M:setSize(width, height)
     self._width = width
     self._height = height
     if self.deck then
@@ -180,42 +179,42 @@ end
 ---------------------------------------
 -- サイズを返します.
 ---------------------------------------
-function DisplayObject:getSize()
+function M:getSize()
     return self._width, self._height
 end
 
 ---------------------------------------
 -- widthを設定します.
 ---------------------------------------
-function DisplayObject:setWidth(width)
+function M:setWidth(width)
     self:setSize(width, self._height)
 end
 
 ---------------------------------------
 -- widthを返します.
 ---------------------------------------
-function DisplayObject:getWidth()
+function M:getWidth()
     return self._width
 end
 
 ---------------------------------------
 -- heightを設定します.
 ---------------------------------------
-function DisplayObject:setHeight(height)
+function M:setHeight(height)
     self:setSize(self._width, height)
 end
 
 ---------------------------------------
 -- heightを返します.
 ---------------------------------------
-function DisplayObject:getHeight()
+function M:getHeight()
     return self._height
 end
 
 ---------------------------------------
 -- 中心点を中央に設定します.
 ---------------------------------------
-function DisplayObject:centerPivot()
+function M:centerPivot()
     local w, h = self:getSize()
     local px = w / 2
     local py = h / 2
@@ -225,7 +224,7 @@ end
 ---------------------------------------
 -- 色をアニメーション遷移させます.
 ---------------------------------------
-function DisplayObject:moveColor(red, green, blue, alpha, sec, mode, completeHandler)
+function M:moveColor(red, green, blue, alpha, sec, mode, completeHandler)
     local action = self.prop:moveColor(red, green, blue, alpha, sec, mode)
     if completeHandler ~= nil then
         action:setListener(MOAIAction.EVENT_STOP, function(prop) completeHandler(self) end)
@@ -236,7 +235,7 @@ end
 ---------------------------------------
 -- 色をアニメーション遷移させます.
 ---------------------------------------
-function DisplayObject:seekColor(red, green, blue, alpha, sec, mode, completeHandler)
+function M:seekColor(red, green, blue, alpha, sec, mode, completeHandler)
     local action = self.prop:seekColor(red, green, blue, alpha, sec, mode)
     if completeHandler ~= nil then
         action:setListener(MOAIAction.EVENT_STOP, function(prop) completeHandler(self) end)
@@ -247,7 +246,7 @@ end
 ---------------------------------------
 -- フェードインします.
 ---------------------------------------
-function DisplayObject:fadeIn(sec, mode, completeHandler)
+function M:fadeIn(sec, mode, completeHandler)
     self.visible = true
     self:setColor(0, 0, 0, 0)
     local action = self.prop:moveColor(1, 1, 1, 1, sec, mode)
@@ -264,7 +263,7 @@ end
 ---------------------------------------
 -- フェードアウトします.
 ---------------------------------------
-function DisplayObject:fadeOut(sec, mode, completeHandler)
+function M:fadeOut(sec, mode, completeHandler)
     self:setColor(1, 1, 1, 1)
     self.visible = true
     local action = self.prop:seekColor(0, 0, 0, 0, sec, mode)
@@ -282,7 +281,7 @@ end
 ---------------------------------------
 -- 色を設定します.
 ---------------------------------------
-function DisplayObject:setColor(red, green, blue, alpha)
+function M:setColor(red, green, blue, alpha)
     red = red and red or self.red
     green = green and green or self.green
     blue = blue and blue or self.blue
@@ -293,63 +292,63 @@ end
 ---------------------------------------
 -- alpha値を設定します.
 ---------------------------------------
-function DisplayObject:setAlpha(alpha)
+function M:setAlpha(alpha)
     self:setColor(self.red, self.green, self.blue, alpha)
 end
 
 ---------------------------------------
 -- alpha値を返します.
 ---------------------------------------
-function DisplayObject:getAlpha()
+function M:getAlpha()
     return self.prop:getAttr(MOAIColor.ATTR_A_COL)
 end
 
 ---------------------------------------
 -- red値を設定します.
 ---------------------------------------
-function DisplayObject:setRed(red)
+function M:setRed(red)
     self:setColor(red, self.green, self.blue, self.alpha)
 end
 
 ---------------------------------------
 -- red値を返します.
 ---------------------------------------
-function DisplayObject:getRed()
+function M:getRed()
     return self.prop:getAttr(MOAIColor.ATTR_R_COL)
 end
 
 ---------------------------------------
 -- green値を設定します.
 ---------------------------------------
-function DisplayObject:setGreen(green)
+function M:setGreen(green)
     self:setColor(self.red, green, self.blue, self.alpha)
 end
 
 ---------------------------------------
 -- green値を返します.
 ---------------------------------------
-function DisplayObject:getGreen()
+function M:getGreen()
     return self.prop:getAttr(MOAIColor.ATTR_G_COL)
 end
 
 ---------------------------------------
 -- blue値を設定します.
 ---------------------------------------
-function DisplayObject:setBlue(blue)
+function M:setBlue(blue)
     self:setColor(self.red, self.green, blue, self.alpha)
 end
 
 ---------------------------------------
 -- blue値を返します.
 ---------------------------------------
-function DisplayObject:getBlue()
+function M:getBlue()
     return self.prop:getAttr(MOAIColor.ATTR_B_COL)
 end
 
 ---------------------------------------
 -- 表示するか設定します.
 ---------------------------------------
-function DisplayObject:setVisible(visible)
+function M:setVisible(visible)
     self._visible = visible
     if self.prop then
         self.prop:setVisible(self.visible)
@@ -359,35 +358,35 @@ end
 ---------------------------------------
 -- 表示するか返します.
 ---------------------------------------
-function DisplayObject:isVisible()
+function M:isVisible()
     return self._visible
 end
 
 ---------------------------------------
 -- 有効かどうか設定します.
 ---------------------------------------
-function DisplayObject:setEnabled(value)
+function M:setEnabled(value)
     self._enabled = value
 end
 
 ---------------------------------------
 -- 有効かどうか返します.
 ---------------------------------------
-function DisplayObject:isEnabled()
+function M:isEnabled()
     return self._enabled
 end
 
 ---------------------------------------
 -- フォーカスを設定します.
 ---------------------------------------
-function DisplayObject:setFocus(value)
+function M:setFocus(value)
     self._focus = value
 end
 
 ---------------------------------------
 -- フォーカスを返します.
 ---------------------------------------
-function DisplayObject:isFocus()
+function M:isFocus()
     return self._focus
 end
 
@@ -395,7 +394,7 @@ end
 -- レイヤーをセットします.
 -- 描画オブジェクトをMOAILayerに追加します.
 ---------------------------------------
-function DisplayObject:setLayer(layer)
+function M:setLayer(layer)
     local myLayer = self.layer
     if myLayer == layer then
         return
@@ -414,49 +413,49 @@ end
 ---------------------------------------
 -- レイヤーを返します.
 ---------------------------------------
-function DisplayObject:getLayer(layer)
+function M:getLayer(layer)
     return self._layer
 end
 
 ---------------------------------------
 -- MOAIDeckを設定します.
 ---------------------------------------
-function DisplayObject:setDeck(deck)
+function M:setDeck(deck)
     self._deck = deck
 end
 
 ---------------------------------------
 -- MOAIDeckを返します.
 ---------------------------------------
-function DisplayObject:getDeck()
+function M:getDeck()
     return self._deck
 end
 
 ---------------------------------------
 -- MOAIPropを設定します.
 ---------------------------------------
-function DisplayObject:setProp(prop)
+function M:setProp(prop)
     self._prop = prop
 end
 
 ---------------------------------------
 -- MOAIPropを返します.
 ---------------------------------------
-function DisplayObject:getProp()
+function M:getProp()
     return self._prop
 end
 
 ---------------------------------------
 -- オブジェクトのネストレベルを設定します.
 ---------------------------------------
-function DisplayObject:setNestLevel(value)
+function M:setNestLevel(value)
     self._nestLevel = value
 end
 
 ---------------------------------------
 -- オブジェクトのネストレベルを返します.
 ---------------------------------------
-function DisplayObject:getNestLevel()
+function M:getNestLevel()
     return self._nestLevel
 end
 
@@ -464,39 +463,39 @@ end
 -- MOAITransformを返します.
 -- デフォルトではpropと同一を返します.
 ---------------------------------------
-function DisplayObject:getTransformObj()
+function M:getTransformObj()
     return self.prop
 end
 
 ---------------------------------------
 -- リソースを削除します.
 ---------------------------------------
-function DisplayObject:dispose()
+function M:dispose()
     self.parent = nil
 end
 
 ---------------------------------------
 -- タッチ処理を行います.
 ---------------------------------------
-function DisplayObject:onTouchDown(event)
+function M:onTouchDown(event)
 end
 
 ---------------------------------------
 -- タッチ処理を行います.
 ---------------------------------------
-function DisplayObject:onTouchUp(event)
+function M:onTouchUp(event)
 end
 
 ---------------------------------------
 -- タッチ処理を行います.
 ---------------------------------------
-function DisplayObject:onTouchMove(event)
+function M:onTouchMove(event)
 end
 
 ---------------------------------------
 -- タッチ処理を行います.
 ---------------------------------------
-function DisplayObject:onTouchCancel(event)
+function M:onTouchCancel(event)
 end
 
-return DisplayObject
+return M

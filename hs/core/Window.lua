@@ -8,15 +8,15 @@ local Application = require("hs/core/Application")
 -- @class table
 -- @name Window
 ----------------------------------------------------------------
-local Window = Class()
+local M = Class()
 
 -- 定数
-Window.MODE_STRETCH = 1
-Window.MODE_EXPAND = 2
-Window.MODE_FIXED_RATIO = 3
-Window.MODE_EXACT = 4
+M.MODE_STRETCH = 1
+M.MODE_EXPAND = 2
+M.MODE_FIXED_RATIO = 3
+M.MODE_EXACT = 4
 
-function Window:init()    
+function M:init()    
     self.opened = false
     self.title = ""
     self.screenWidth = 0
@@ -39,7 +39,7 @@ end
 -- StageにstageModeを指定する事で、描画領域の
 -- 任意のロジックで引き伸ばしを行う事ができます.
 ---------------------------------------
-function Window:open(title, width, height, stageMode)
+function M:open(title, width, height, stageMode)
     if self.opened == false then
         self.title = title        
         self.stageMode = stageMode
@@ -50,7 +50,7 @@ function Window:open(title, width, height, stageMode)
     end
 end
 
-function Window:initScreenSize(width, height)
+function M:initScreenSize(width, height)
 
     -- モバイルの場合、指定されたモードにより、
     -- Viewportのサイズを変更する.
@@ -63,7 +63,7 @@ function Window:initScreenSize(width, height)
     -- モードをMODE_EXACTに強制する
     local deviceWidth, deviceHeight
     if Application:isMobile() == false then
-        self.stageMode = Window.MODE_EXACT
+        self.stageMode = M.MODE_EXACT
         deviceWidth = width
         deviceHeight = height
     else
@@ -71,12 +71,12 @@ function Window:initScreenSize(width, height)
     end
 
     -- 伸張
-    if self.stageMode == Window.MODE_STRETCH then
+    if self.stageMode == M.MODE_STRETCH then
         stageWidth = deviceWidth
         stageHeight = deviceHeight
 
     -- 拡大
-    elseif self.stageMode == Window.MODE_EXPAND then
+    elseif self.stageMode == M.MODE_EXPAND then
          -- 比率を求める
          -- TODO:実装を考える
          --[[
@@ -92,7 +92,7 @@ function Window:initScreenSize(width, height)
         --]]
 
     -- 比率は同一
-    elseif self.stageMode == Window.MODE_FIXED_RATIO then
+    elseif self.stageMode == M.MODE_FIXED_RATIO then
         -- 比率を求める
         local scaleX = deviceWidth / width
         local scaleY = deviceHeight / height
@@ -103,7 +103,7 @@ function Window:initScreenSize(width, height)
         stageWidth = math.floor(height * scalaY)
 
     -- そのまま
-    elseif self.stageMode == Window.MODE_EXACT then
+    elseif self.stageMode == M.MODE_EXACT then
     end
 
     -- サイズを設定
@@ -128,4 +128,4 @@ function Window:initScreenSize(width, height)
     
 end
 
-return Window
+return M

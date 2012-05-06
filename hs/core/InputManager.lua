@@ -9,48 +9,48 @@ local EventDispatcher = require("hs/core/EventDispatcher")
 -- @name InputManager
 ----------------------------------------------------------------
 
-local InputManager = EventDispatcher:new()
-InputManager.pointer = {x = 0, y = 0, down = false}
-InputManager.keyboard = {key = 0, down = false}
+local M = EventDispatcher:new()
+M.pointer = {x = 0, y = 0, down = false}
+M.keyboard = {key = 0, down = false}
 
 ---------------------------------------
 -- InputManagerの初期化処理です
 -- フレームワークで初期化する必要があります.
 ---------------------------------------
-function InputManager:initialize()
+function M:initialize()
     -- コールバック関数の登録
     if MOAIInputMgr.device.pointer then
         -- mouse input
-        MOAIInputMgr.device.pointer:setCallback (InputManager.onPointer)
-        MOAIInputMgr.device.mouseLeft:setCallback (InputManager.onClick)
+        MOAIInputMgr.device.pointer:setCallback (M.onPointer)
+        MOAIInputMgr.device.mouseLeft:setCallback (M.onClick)
     else
         -- touch input
-        MOAIInputMgr.device.touch:setCallback (InputManager.onTouch)
+        MOAIInputMgr.device.touch:setCallback (M.onTouch)
     end
 
     -- keyboard input
     if MOAIInputMgr.device.keyboard then
-        MOAIInputMgr.device.keyboard:setCallback(InputManager.onKeyboard)
+        MOAIInputMgr.device.keyboard:setCallback(M.onKeyboard)
     end
 end
 
 ---------------------------------------
 -- マウスを動かした時のイベント処理です
 ---------------------------------------
-function InputManager.onPointer(x, y)
-    InputManager.pointer.x = x
-    InputManager.pointer.y = y
+function M.onPointer(x, y)
+    M.pointer.x = x
+    M.pointer.y = y
 
-    if InputManager.pointer.down then
-        InputManager.onTouch(MOAITouchSensor.TOUCH_MOVE, 1, x, y)
+    if M.pointer.down then
+        M.onTouch(MOAITouchSensor.TOUCH_MOVE, 1, x, y)
     end
 end
 
 ---------------------------------------
 -- マウスを押下した時のイベント処理です
 ---------------------------------------
-function InputManager.onClick(down)
-    InputManager.pointer.down = down
+function M.onClick(down)
+    M.pointer.down = down
 
     local eventType = nil
     if down then
@@ -59,15 +59,15 @@ function InputManager.onClick(down)
         eventType = MOAITouchSensor.TOUCH_UP
     end
     
-    InputManager.onTouch(eventType, 1, InputManager.pointer.x, InputManager.pointer.y)
+    M.onTouch(eventType, 1, M.pointer.x, M.pointer.y)
 end
 
 ---------------------------------------
 -- 画面をタッチした時のイベント処理です
 ---------------------------------------
-function InputManager.onTouch(eventType, idx, x, y, tapCount)
+function M.onTouch(eventType, idx, x, y, tapCount)
     -- event
-    local event = Event:new(Event.TOUCH, InputManager)
+    local event = Event:new(Event.TOUCH, M)
     if eventType == MOAITouchSensor.TOUCH_DOWN then
         event.type = Event.TOUCH_DOWN
     elseif eventType == MOAITouchSensor.TOUCH_UP then
@@ -82,21 +82,21 @@ function InputManager.onTouch(eventType, idx, x, y, tapCount)
     event.y = y
     event.tapCount = tapCount
 
-    InputManager:dispatchEvent(event)
+    M:dispatchEvent(event)
 end
 
 ---------------------------------------
 -- キーボード入力時のイベント処理です.
 ---------------------------------------
-function InputManager.onKeyboard( key, down )
-    InputManager.keyboard.key = key
-    InputManager.keyboard.down = down
+function M.onKeyboard( key, down )
+    M.keyboard.key = key
+    M.keyboard.down = down
 
-    local event = Event:new(Event.KEYBOARD, InputManager)
+    local event = Event:new(Event.KEYBOARD)
     event.key = key
     event.down = down
 
-    InputManager:dispatchEvent(event)
+    M:dispatchEvent(event)
 end
 
-return InputManager
+return M

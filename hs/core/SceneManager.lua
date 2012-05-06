@@ -13,12 +13,12 @@ local Application = require("hs/core/Application")
 -- @class table
 -- @name SceneManager
 ----------------------------------------------------------------
-local SceneManager = EventDispatcher:new()
+local M = EventDispatcher:new()
 
 ---------------------------------------
 -- コンストラクタです.
 ---------------------------------------
-function SceneManager:initialize()
+function M:initialize()
     self.scenes = {}
     self.sceneFactory = SceneFactory:new()
     self.currentScene = nil
@@ -46,7 +46,7 @@ end
 -- 2. params.animationを指定した場合、
 --    
 ---------------------------------------
-function SceneManager:openScene(sceneName, params)
+function M:openScene(sceneName, params)
     if self.transitioning then
         logger.warn("[SceneManager:openScene]", "scene transitioning!")
         return nil
@@ -116,7 +116,7 @@ end
 -- 次のシーンに遷移します.
 -- 現在のシーンは終了します.
 ---------------------------------------
-function SceneManager:openNextScene(sceneName, params)
+function M:openNextScene(sceneName, params)
     params = params and params or {}
     params.currentClosing = true
     self:openScene(sceneName, params)
@@ -126,7 +126,7 @@ end
 -- 現在のシーンを終了します.
 -- 前のシーンに遷移します.
 ---------------------------------------
-function SceneManager:closeScene(params)
+function M:closeScene(params)
     if self.transitioning then
         return nil
     end
@@ -179,7 +179,7 @@ end
 ---------------------------------------
 -- レンダラーパスの表示順を反映します.
 ---------------------------------------
-function SceneManager:refreshRenders()
+function M:refreshRenders()
     MOAISim.clearRenderStack()
     for i, scene in ipairs(self.scenes) do
         scene:showRenders()
@@ -189,7 +189,7 @@ end
 ---------------------------------------
 -- シーンを追加します.
 ---------------------------------------
-function SceneManager:addScene(scene)
+function M:addScene(scene)
     if table.indexOf(self.scenes, scene) == 0 then
         table.insert(self.scenes, scene)
         self.currentScene = scene
@@ -200,7 +200,7 @@ end
 ---------------------------------------
 -- シーンを削除します.
 ---------------------------------------
-function SceneManager:removeScene(scene)
+function M:removeScene(scene)
     local i = table.indexOf(self.scenes, scene)
     if i > 0 then
         table.remove(self.scenes, i)
@@ -220,7 +220,7 @@ end
 -- シーン名からシーンを検索して返します.
 -- 見つからない場合はnilを返します.
 ---------------------------------------
-function SceneManager:findSceneByName(sceneName)
+function M:findSceneByName(sceneName)
     for i, scene in ipairs(self.scenes) do
         if scene.name == sceneName then
             return scene
@@ -232,7 +232,7 @@ end
 ---------------------------------------
 -- シーンを最前面に移動します.
 ---------------------------------------
-function SceneManager:orderToFront(scene)
+function M:orderToFront(scene)
     if #self.scenes <= 1 then
         return
     end
@@ -249,7 +249,7 @@ end
 ---------------------------------------
 -- シーンを最背面に移動します.
 ---------------------------------------
-function SceneManager:orderToBack(scene)
+function M:orderToBack(scene)
     if #self.scenes <= 1 then
         return
     end    
@@ -265,7 +265,7 @@ end
 ---------------------------------------
 -- 画面をタッチする処理を行います.
 ---------------------------------------
-function SceneManager:onTouchDown(e)
+function M:onTouchDown(e)
     local currentScene = self.currentScene
     if currentScene and not self.transitioning then
         currentScene:onSceneTouchDown(e)
@@ -275,7 +275,7 @@ end
 ---------------------------------------
 -- 画面をタッチする処理を行います.
 ---------------------------------------
-function SceneManager:onTouchUp(e)
+function M:onTouchUp(e)
     local currentScene = self.currentScene
     if currentScene and not self.transitioning then
         currentScene:onSceneTouchUp(e)
@@ -285,7 +285,7 @@ end
 ---------------------------------------
 -- 画面をタッチする処理を行います.
 ---------------------------------------
-function SceneManager:onTouchMove(e)
+function M:onTouchMove(e)
     local currentScene = self.currentScene
     if currentScene and not self.transitioning then
         currentScene:onSceneTouchMove(e)
@@ -295,7 +295,7 @@ end
 ---------------------------------------
 -- 画面をタッチする処理を行います.
 ---------------------------------------
-function SceneManager:onTouchCancel(e)
+function M:onTouchCancel(e)
     local currentScene = self.currentScene
     if currentScene and not self.transitioning then
         currentScene:onSceneTouchCancel(e)
@@ -305,7 +305,7 @@ end
 ---------------------------------------
 -- キーボード入力する処理を行います.
 ---------------------------------------
-function SceneManager:onKeyboard(e)
+function M:onKeyboard(e)
     local currentScene = self.currentScene
     if currentScene and not self.transitioning then
         currentScene:onKeyboard(e)
@@ -316,11 +316,11 @@ end
 -- 毎フレームの処理を行います.
 -- シーン遷移中でもイベントは行われます.
 ---------------------------------------
-function SceneManager:onEnterFrame(e)
+function M:onEnterFrame(e)
     local currentScene = self.currentScene
     if currentScene then
         currentScene:onEnterFrame(e)
     end
 end
 
-return SceneManager
+return M

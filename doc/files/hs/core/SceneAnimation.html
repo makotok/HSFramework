@@ -95,19 +95,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -147,10 +139,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,47 +295,47 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneAnimation.crossFade">SceneAnimation.crossFade</a>&nbsp;(currentScene, nextScene, params)</td>
+	<td class="name" nowrap><a href="#M.crossFade">M.crossFade</a>&nbsp;(currentScene, nextScene, params)</td>
 	<td class="summary">fadeOut,fadeInを並列して行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneAnimation.fade">SceneAnimation.fade</a>&nbsp;(currentScene, nextScene, params)</td>
+	<td class="name" nowrap><a href="#M.fade">M.fade</a>&nbsp;(currentScene, nextScene, params)</td>
 	<td class="summary">fadeOut,fadeInを順次行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneAnimation.none">SceneAnimation.none</a>&nbsp;(currentScene, nextScene, params)</td>
+	<td class="name" nowrap><a href="#M.none">M.none</a>&nbsp;(currentScene, nextScene, params)</td>
 	<td class="summary">即座に表示します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneAnimation.popIn">SceneAnimation.popIn</a>&nbsp;(currentScene, nextScene, params)</td>
+	<td class="name" nowrap><a href="#M.popIn">M.popIn</a>&nbsp;(currentScene, nextScene, params)</td>
 	<td class="summary">ポップアップ表示します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneAnimation.popOut">SceneAnimation.popOut</a>&nbsp;(currentScene, nextScene, params)</td>
+	<td class="name" nowrap><a href="#M.popOut">M.popOut</a>&nbsp;(currentScene, nextScene, params)</td>
 	<td class="summary">ポップアップ表示をクローズします.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneAnimation.slideToBottom">SceneAnimation.slideToBottom</a>&nbsp;(currentScene, nextScene, params)</td>
+	<td class="name" nowrap><a href="#M.slideToBottom">M.slideToBottom</a>&nbsp;(currentScene, nextScene, params)</td>
 	<td class="summary">画面下の移動します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneAnimation.slideToLeft">SceneAnimation.slideToLeft</a>&nbsp;(currentScene, nextScene, params)</td>
+	<td class="name" nowrap><a href="#M.slideToLeft">M.slideToLeft</a>&nbsp;(currentScene, nextScene, params)</td>
 	<td class="summary">画面左の移動します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneAnimation.slideToRight">SceneAnimation.slideToRight</a>&nbsp;(currentScene, nextScene, params)</td>
+	<td class="name" nowrap><a href="#M.slideToRight">M.slideToRight</a>&nbsp;(currentScene, nextScene, params)</td>
 	<td class="summary">画面右の移動します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SceneAnimation.slideToTop">SceneAnimation.slideToTop</a>&nbsp;(currentScene, nextScene, params)</td>
+	<td class="name" nowrap><a href="#M.slideToTop">M.slideToTop</a>&nbsp;(currentScene, nextScene, params)</td>
 	<td class="summary">画面上の移動します.</td>
 	</tr>
 
@@ -387,7 +367,7 @@
 
 
 
-<dt><a name="SceneAnimation.crossFade"></a><strong>SceneAnimation.crossFade</strong>&nbsp;(currentScene, nextScene, params)</dt>
+<dt><a name="M.crossFade"></a><strong>M.crossFade</strong>&nbsp;(currentScene, nextScene, params)</dt>
 <dd>
 fadeOut,fadeInを並列して行います. 
 
@@ -421,7 +401,7 @@ fadeOut,fadeInを並列して行います.
 
 
 
-<dt><a name="SceneAnimation.fade"></a><strong>SceneAnimation.fade</strong>&nbsp;(currentScene, nextScene, params)</dt>
+<dt><a name="M.fade"></a><strong>M.fade</strong>&nbsp;(currentScene, nextScene, params)</dt>
 <dd>
 fadeOut,fadeInを順次行います. 
 
@@ -455,7 +435,7 @@ fadeOut,fadeInを順次行います.
 
 
 
-<dt><a name="SceneAnimation.none"></a><strong>SceneAnimation.none</strong>&nbsp;(currentScene, nextScene, params)</dt>
+<dt><a name="M.none"></a><strong>M.none</strong>&nbsp;(currentScene, nextScene, params)</dt>
 <dd>
 即座に表示します. 
 
@@ -489,7 +469,7 @@ fadeOut,fadeInを順次行います.
 
 
 
-<dt><a name="SceneAnimation.popIn"></a><strong>SceneAnimation.popIn</strong>&nbsp;(currentScene, nextScene, params)</dt>
+<dt><a name="M.popIn"></a><strong>M.popIn</strong>&nbsp;(currentScene, nextScene, params)</dt>
 <dd>
 ポップアップ表示します. 
 
@@ -523,7 +503,7 @@ fadeOut,fadeInを順次行います.
 
 
 
-<dt><a name="SceneAnimation.popOut"></a><strong>SceneAnimation.popOut</strong>&nbsp;(currentScene, nextScene, params)</dt>
+<dt><a name="M.popOut"></a><strong>M.popOut</strong>&nbsp;(currentScene, nextScene, params)</dt>
 <dd>
 ポップアップ表示をクローズします. ポップアップ表示したシーンに対してのみ有効です. 
 
@@ -557,7 +537,7 @@ fadeOut,fadeInを順次行います.
 
 
 
-<dt><a name="SceneAnimation.slideToBottom"></a><strong>SceneAnimation.slideToBottom</strong>&nbsp;(currentScene, nextScene, params)</dt>
+<dt><a name="M.slideToBottom"></a><strong>M.slideToBottom</strong>&nbsp;(currentScene, nextScene, params)</dt>
 <dd>
 画面下の移動します. 
 
@@ -591,7 +571,7 @@ fadeOut,fadeInを順次行います.
 
 
 
-<dt><a name="SceneAnimation.slideToLeft"></a><strong>SceneAnimation.slideToLeft</strong>&nbsp;(currentScene, nextScene, params)</dt>
+<dt><a name="M.slideToLeft"></a><strong>M.slideToLeft</strong>&nbsp;(currentScene, nextScene, params)</dt>
 <dd>
 画面左の移動します. 
 
@@ -625,7 +605,7 @@ fadeOut,fadeInを順次行います.
 
 
 
-<dt><a name="SceneAnimation.slideToRight"></a><strong>SceneAnimation.slideToRight</strong>&nbsp;(currentScene, nextScene, params)</dt>
+<dt><a name="M.slideToRight"></a><strong>M.slideToRight</strong>&nbsp;(currentScene, nextScene, params)</dt>
 <dd>
 画面右の移動します. 
 
@@ -659,7 +639,7 @@ fadeOut,fadeInを順次行います.
 
 
 
-<dt><a name="SceneAnimation.slideToTop"></a><strong>SceneAnimation.slideToTop</strong>&nbsp;(currentScene, nextScene, params)</dt>
+<dt><a name="M.slideToTop"></a><strong>M.slideToTop</strong>&nbsp;(currentScene, nextScene, params)</dt>
 <dd>
 画面上の移動します. 
 

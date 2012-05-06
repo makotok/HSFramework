@@ -93,19 +93,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -145,10 +137,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,47 +295,47 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:getChildX">BoxLayout:getChildX</a>&nbsp;(parentWidth, childWidth)</td>
+	<td class="name" nowrap><a href="#M:getChildX">M:getChildX</a>&nbsp;(parentWidth, childWidth)</td>
 	<td class="summary">子オブジェクトのX座標を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:getChildY">BoxLayout:getChildY</a>&nbsp;(parentHeight, childHeight)</td>
+	<td class="name" nowrap><a href="#M:getChildY">M:getChildY</a>&nbsp;(parentHeight, childHeight)</td>
 	<td class="summary">子オブジェクトのY座標を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:getHorizotalLayoutSize">BoxLayout:getHorizotalLayoutSize</a>&nbsp;(children)</td>
+	<td class="name" nowrap><a href="#M:getHorizotalLayoutSize">M:getHorizotalLayoutSize</a>&nbsp;(children)</td>
 	<td class="summary">水平方向に子オブジェクトを配置した時の 全体のレイアウトサイズを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:getVerticalLayoutSize">BoxLayout:getVerticalLayoutSize</a>&nbsp;(children)</td>
+	<td class="name" nowrap><a href="#M:getVerticalLayoutSize">M:getVerticalLayoutSize</a>&nbsp;(children)</td>
 	<td class="summary">垂直方向に子オブジェクトを配置した時の 全体のレイアウトサイズを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:init">BoxLayout:init</a>&nbsp;(params)</td>
+	<td class="name" nowrap><a href="#M:init">M:init</a>&nbsp;(params)</td>
 	<td class="summary">コンストラクタです  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:setPadding">BoxLayout:setPadding</a>&nbsp;(left, top, right, bottom)</td>
+	<td class="name" nowrap><a href="#M:setPadding">M:setPadding</a>&nbsp;(left, top, right, bottom)</td>
 	<td class="summary">上下左右の余白を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:update">BoxLayout:update</a>&nbsp;(group)</td>
+	<td class="name" nowrap><a href="#M:update">M:update</a>&nbsp;(group)</td>
 	<td class="summary">指定したGroupのレイアウトを更新します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:updateHorizotal">BoxLayout:updateHorizotal</a>&nbsp;(parent)</td>
+	<td class="name" nowrap><a href="#M:updateHorizotal">M:updateHorizotal</a>&nbsp;(parent)</td>
 	<td class="summary">指定した四角形内に、 水平方向に子オブジェクトを配置します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#BoxLayout:updateVertical">BoxLayout:updateVertical</a>&nbsp;(parent)</td>
+	<td class="name" nowrap><a href="#M:updateVertical">M:updateVertical</a>&nbsp;(parent)</td>
 	<td class="summary">指定した四角形内に、 垂直方向に子オブジェクトを配置します.</td>
 	</tr>
 
@@ -387,7 +367,7 @@
 
 
 
-<dt><a name="BoxLayout:getChildX"></a><strong>BoxLayout:getChildX</strong>&nbsp;(parentWidth, childWidth)</dt>
+<dt><a name="M:getChildX"></a><strong>M:getChildX</strong>&nbsp;(parentWidth, childWidth)</dt>
 <dd>
 子オブジェクトのX座標を返します. 
 
@@ -417,7 +397,7 @@
 
 
 
-<dt><a name="BoxLayout:getChildY"></a><strong>BoxLayout:getChildY</strong>&nbsp;(parentHeight, childHeight)</dt>
+<dt><a name="M:getChildY"></a><strong>M:getChildY</strong>&nbsp;(parentHeight, childHeight)</dt>
 <dd>
 子オブジェクトのY座標を返します. 
 
@@ -447,7 +427,7 @@
 
 
 
-<dt><a name="BoxLayout:getHorizotalLayoutSize"></a><strong>BoxLayout:getHorizotalLayoutSize</strong>&nbsp;(children)</dt>
+<dt><a name="M:getHorizotalLayoutSize"></a><strong>M:getHorizotalLayoutSize</strong>&nbsp;(children)</dt>
 <dd>
 水平方向に子オブジェクトを配置した時の 全体のレイアウトサイズを返します. 
 
@@ -473,7 +453,7 @@
 
 
 
-<dt><a name="BoxLayout:getVerticalLayoutSize"></a><strong>BoxLayout:getVerticalLayoutSize</strong>&nbsp;(children)</dt>
+<dt><a name="M:getVerticalLayoutSize"></a><strong>M:getVerticalLayoutSize</strong>&nbsp;(children)</dt>
 <dd>
 垂直方向に子オブジェクトを配置した時の 全体のレイアウトサイズを返します. 
 
@@ -499,7 +479,7 @@
 
 
 
-<dt><a name="BoxLayout:init"></a><strong>BoxLayout:init</strong>&nbsp;(params)</dt>
+<dt><a name="M:init"></a><strong>M:init</strong>&nbsp;(params)</dt>
 <dd>
 コンストラクタです 
 
@@ -525,7 +505,7 @@
 
 
 
-<dt><a name="BoxLayout:setPadding"></a><strong>BoxLayout:setPadding</strong>&nbsp;(left, top, right, bottom)</dt>
+<dt><a name="M:setPadding"></a><strong>M:setPadding</strong>&nbsp;(left, top, right, bottom)</dt>
 <dd>
 上下左右の余白を設定します. 
 
@@ -563,7 +543,7 @@
 
 
 
-<dt><a name="BoxLayout:update"></a><strong>BoxLayout:update</strong>&nbsp;(group)</dt>
+<dt><a name="M:update"></a><strong>M:update</strong>&nbsp;(group)</dt>
 <dd>
 指定したGroupのレイアウトを更新します. 
 
@@ -589,7 +569,7 @@
 
 
 
-<dt><a name="BoxLayout:updateHorizotal"></a><strong>BoxLayout:updateHorizotal</strong>&nbsp;(parent)</dt>
+<dt><a name="M:updateHorizotal"></a><strong>M:updateHorizotal</strong>&nbsp;(parent)</dt>
 <dd>
 指定した四角形内に、 水平方向に子オブジェクトを配置します. 
 
@@ -615,7 +595,7 @@
 
 
 
-<dt><a name="BoxLayout:updateVertical"></a><strong>BoxLayout:updateVertical</strong>&nbsp;(parent)</dt>
+<dt><a name="M:updateVertical"></a><strong>M:updateVertical</strong>&nbsp;(parent)</dt>
 <dd>
 指定した四角形内に、 垂直方向に子オブジェクトを配置します. 
 

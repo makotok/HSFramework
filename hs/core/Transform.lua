@@ -6,29 +6,29 @@ local Scene -- 遅延してrequireします
 -- @class table
 -- @name Transform
 --------------------------------------------------------------------------------
-local Transform = EventDispatcher()
+local M = EventDispatcher()
 
 -- プロパティ定義
-Transform:setPropertyName("x")
-Transform:setPropertyName("y")
-Transform:setPropertyName("z")
-Transform:setPropertyName("pivotX")
-Transform:setPropertyName("pivotY")
-Transform:setPropertyName("pivotZ")
-Transform:setPropertyName("rotationX")
-Transform:setPropertyName("rotationY")
-Transform:setPropertyName("rotationZ")
-Transform:setPropertyName("scaleX")
-Transform:setPropertyName("scaleY")
-Transform:setPropertyName("scaleZ")
-Transform:setPropertyName("parent")
-Transform:setPropertyName("transformObj")
+M:setPropertyName("x")
+M:setPropertyName("y")
+M:setPropertyName("z")
+M:setPropertyName("pivotX")
+M:setPropertyName("pivotY")
+M:setPropertyName("pivotZ")
+M:setPropertyName("rotationX")
+M:setPropertyName("rotationY")
+M:setPropertyName("rotationZ")
+M:setPropertyName("scaleX")
+M:setPropertyName("scaleY")
+M:setPropertyName("scaleZ")
+M:setPropertyName("parent")
+M:setPropertyName("transformObj")
 
 ---------------------------------------
 --- コンストラクタです
 ---------------------------------------
-function Transform:init()
-    Transform:super(self)
+function M:init()
+    M:super(self)
 
     -- 変数
     self._transformObj = self:newTransformObj()
@@ -37,18 +37,18 @@ end
 ---------------------------------------
 --- MOAITransformを生成して返します.
 ---------------------------------------
-function Transform:newTransformObj()
+function M:newTransformObj()
     return MOAITransform.new()
 end
 
-function Transform:getTransformObj()
+function M:getTransformObj()
     return self._transformObj
 end
 
 ---------------------------------------
 -- ローカル座標を設定します.
 ---------------------------------------
-function Transform:setLocation(x, y, z)
+function M:setLocation(x, y, z)
     z = z or 0
     x = x + self.pivotX
     y = y + self.pivotY
@@ -60,7 +60,7 @@ end
 -- ローカル座標を返します.
 -- @return x, y, z
 ---------------------------------------
-function Transform:getLocation()
+function M:getLocation()
     local x, y, z = self.transformObj:getLoc()
     x = x - self.pivotX
     y = y - self.pivotY
@@ -72,7 +72,7 @@ end
 -- ローカル座標を移動します.
 -- @return action
 ---------------------------------------
-function Transform:moveLocation(x, y, z, sec, mode, completeHandler)
+function M:moveLocation(x, y, z, sec, mode, completeHandler)
     local action = self.transformObj:moveLoc(x, y, z, sec, mode)
     if completeHandler ~= nil then
         action:setListener(MOAIAction.EVENT_STOP, function(prop) completeHandler(self) end)
@@ -84,7 +84,7 @@ end
 -- ローカル座標を移動します.
 -- @return action
 ---------------------------------------
-function Transform:seekLocation(x, y, z, sec, mode, completeHandler)
+function M:seekLocation(x, y, z, sec, mode, completeHandler)
     local action = self.transformObj:seekLoc(x, y, z, sec, mode)
     if completeHandler ~= nil then
         action:setListener(MOAIAction.EVENT_STOP, function(prop) completeHandler(self) end)
@@ -95,14 +95,14 @@ end
 ---------------------------------------
 -- ローカルX座標を設定します.
 ---------------------------------------
-function Transform:setX(x)
+function M:setX(x)
     self:setLocation(x, self.y, self.z)
 end
 
 ---------------------------------------
 -- ローカルX座標を返します.
 ---------------------------------------
-function Transform:getX()
+function M:getX()
     local x, y, z = self:getLocation()
     return x
 end
@@ -110,14 +110,14 @@ end
 ---------------------------------------
 -- ローカルY座標を設定します.
 ---------------------------------------
-function Transform:setY(y)
+function M:setY(y)
     self:setLocation(self.x, y, self.z)
 end
 
 ---------------------------------------
 -- ローカルY座標を返します.
 ---------------------------------------
-function Transform:getY()
+function M:getY()
     local x, y, z = self:getLocation()
     return y
 end
@@ -125,14 +125,14 @@ end
 ---------------------------------------
 -- ローカルZ座標を設定します.
 ---------------------------------------
-function Transform:setZ(z)
+function M:setZ(z)
     self:setLocation(self.x, self.y, z)
 end
 
 ---------------------------------------
 -- ローカルZ座標を返します.
 ---------------------------------------
-function Transform:getZ()
+function M:getZ()
     local x, y, z = self:getLocation()
     return z
 end
@@ -140,28 +140,28 @@ end
 ---------------------------------------
 -- 回転量を設定します.
 ---------------------------------------
-function Transform:setRotation(rx, ry, rz)
+function M:setRotation(rx, ry, rz)
     self.transformObj:setRot(rx, ry, rz)
 end
 
 ---------------------------------------
 -- 回転量を返します.
 ---------------------------------------
-function Transform:getRotation()
+function M:getRotation()
     return self.transformObj:getRot()
 end
 
 ---------------------------------------
 -- 回転量Xを設定します.
 ---------------------------------------
-function Transform:setRotationX(rx)
+function M:setRotationX(rx)
     self:setRotation(rx, self.rotationY, self.rotationZ)
 end
 
 ---------------------------------------
 -- 回転量Xを返します.
 ---------------------------------------
-function Transform:getRotationX()
+function M:getRotationX()
     local rx, ry, rz = self.transformObj:getRot()
     return rx
 end
@@ -169,14 +169,14 @@ end
 ---------------------------------------
 -- 回転量Yを設定します.
 ---------------------------------------
-function Transform:setRotationY(ry)
+function M:setRotationY(ry)
     self:setRotation(self.rotationX, ry, self.rotationZ)
 end
 
 ---------------------------------------
 -- 回転量Yを返します.
 ---------------------------------------
-function Transform:getRotationY()
+function M:getRotationY()
     local rx, ry, rz = self.transformObj:getRot()
     return ry
 end
@@ -184,14 +184,14 @@ end
 ---------------------------------------
 -- 回転量Zを設定します.
 ---------------------------------------
-function Transform:setRotationZ(rz)
+function M:setRotationZ(rz)
     self:setRotation(self.rotationX, self.rotationY, rz)
 end
 
 ---------------------------------------
 -- 回転量Zを返します.
 ---------------------------------------
-function Transform:getRotationZ()
+function M:getRotationZ()
     local rx, ry, rz = self.transformObj:getRot()
     return rz
 end
@@ -199,7 +199,7 @@ end
 ---------------------------------------
 -- 現在座標から回転します.
 ---------------------------------------
-function Transform:moveRotation(rx, ry, rz, sec, mode, completeHandler)
+function M:moveRotation(rx, ry, rz, sec, mode, completeHandler)
     local action = self.transformObj:moveRot(rx, ry, rz, sec, mode)
     if completeHandler then
         action:setListener(MOAIAction.EVENT_STOP, function() completeHandler(self) end)
@@ -210,7 +210,7 @@ end
 ---------------------------------------
 -- 最終地点に向かって回転します.
 ---------------------------------------
-function Transform:seekRotation(rx, ry, rz, sec, mode, completeHandler)
+function M:seekRotation(rx, ry, rz, sec, mode, completeHandler)
     local action = self.transformObj:seekRot(rx, ry, rz, sec, mode)
     if completeHandler then
         action:setListener(MOAIAction.EVENT_STOP, function() completeHandler(self) end)
@@ -224,7 +224,7 @@ end
 -- @param scaleY 比率Y
 -- @param scaleZ 比率Z
 ---------------------------------------
-function Transform:setScale(scaleX, scaleY, scaleZ)
+function M:setScale(scaleX, scaleY, scaleZ)
     self.transformObj:setScl(scaleX, scaleY, scaleZ)
 end
 
@@ -232,14 +232,14 @@ end
 -- スケールを返します.
 -- @return scaleX, scaleY, scaleZ
 ---------------------------------------
-function Transform:getScale()
+function M:getScale()
     return self.transformObj:getScl()
 end
 
 ---------------------------------------
 -- 現在位置からスケールを移動します.
 ---------------------------------------
-function Transform:moveScale(x, y, z, sec, mode, completeHandler)
+function M:moveScale(x, y, z, sec, mode, completeHandler)
     local action = self.transformObj:moveScl(x, y, z, sec, mode)
     if completeHandler then
         action:setListener(MOAIAction.EVENT_STOP, function() completeHandler(self) end)
@@ -250,7 +250,7 @@ end
 ---------------------------------------
 -- 最終地点にスケールを移動します.
 ---------------------------------------
-function Transform:seekScale(x, y, z, sec, mode, completeHandler)
+function M:seekScale(x, y, z, sec, mode, completeHandler)
     local action = self.transformObj:seekScl(x, y, z, sec, mode)
     if completeHandler then
         action:setListener(MOAIAction.EVENT_STOP, function() completeHandler(self) end)
@@ -261,14 +261,14 @@ end
 ---------------------------------------
 -- スケールXを設定します.
 ---------------------------------------
-function Transform:setScaleX(scaleX)
+function M:setScaleX(scaleX)
     self:setScale(scaleX, self.scaleY, self.Z)
 end
 
 ---------------------------------------
 -- スケールXを返します.
 ---------------------------------------
-function Transform:getScaleX()
+function M:getScaleX()
     local scaleX, scaleY, scaleZ = self:getScale()
     return scaleX
 end
@@ -276,14 +276,14 @@ end
 ---------------------------------------
 -- スケールYを設定します.
 ---------------------------------------
-function Transform:setScaleY(scaleY)
+function M:setScaleY(scaleY)
     self:setScale(self.scaleX, scaleY, self.scaleZ)
 end
 
 ---------------------------------------
 -- スケールYを返します.
 ---------------------------------------
-function Transform:getScaleY()
+function M:getScaleY()
     local scaleX, scaleY, scaleZ = self:getScale()
     return scaleY
 end
@@ -291,14 +291,14 @@ end
 ---------------------------------------
 -- スケールZを設定します.
 ---------------------------------------
-function Transform:setScaleZ(scaleZ)
+function M:setScaleZ(scaleZ)
     self:setScale(self.scaleX, self.scaleY, scaleZ)
 end
 
 ---------------------------------------
 -- スケールZを返します.
 ---------------------------------------
-function Transform:getScaleZ()
+function M:getScaleZ()
     local scaleX, scaleY, scaleZ = self:getScale()
     return scaleZ
 end
@@ -308,7 +308,7 @@ end
 -- これは、回転やスケールで使用されます.
 -- MOAIと違い、座標が変わりません.
 ---------------------------------------
-function Transform:setPivot(pivotX, pivotY, pivotZ)
+function M:setPivot(pivotX, pivotY, pivotZ)
     local x, y, z = self:getLocation()
     self.transformObj:setPiv(pivotX, pivotY, pivotZ)
     self:setLocation(x, y, z)
@@ -317,21 +317,21 @@ end
 ---------------------------------------
 -- 中心座標を返します.
 ---------------------------------------
-function Transform:getPivot()
+function M:getPivot()
     return self.transformObj:getPiv()
 end
 
 ---------------------------------------
 -- 中心座標を設定します.
 ---------------------------------------
-function Transform:setPivotX(pivotX)
+function M:setPivotX(pivotX)
     self:setPivot(pivotX, self.pivotY, self.pivotZ)
 end
 
 ---------------------------------------
 -- 中心座標Xを返します.
 ---------------------------------------
-function Transform:getPivotX()
+function M:getPivotX()
     local pivotX, pivotY, pivotZ = self:getPivot()
     return pivotX
 end
@@ -339,14 +339,14 @@ end
 ---------------------------------------
 -- 中心座標Yを設定します.
 ---------------------------------------
-function Transform:setPivotY(pivotY)
+function M:setPivotY(pivotY)
     self:setPivot(self.pivotX, pivotY, self.pivotZ)
 end
 
 ---------------------------------------
 -- 中心座標Yを返します.
 ---------------------------------------
-function Transform:getPivotY()
+function M:getPivotY()
     local pivotX, pivotY, pivotZ = self:getPivot()
     return pivotY
 end
@@ -354,14 +354,14 @@ end
 ---------------------------------------
 -- 中心座標Zを設定します.
 ---------------------------------------
-function Transform:setPivotZ(pivotZ)
+function M:setPivotZ(pivotZ)
     self:setPivot(self.pivotX, self.pivotY, pivotZ)
 end
 
 ---------------------------------------
 -- 中心座標Zを返します.
 ---------------------------------------
-function Transform:getPivotZ()
+function M:getPivotZ()
     local pivotX, pivotY, pivotZ = self:getPivot()
     return pivotZ
 end
@@ -371,7 +371,7 @@ end
 -- 親オブジェクトはGroupである必要があります.
 -- nilを設定した場合、親オブジェクトはクリアされます.
 ---------------------------------------
-function Transform:setParent(parent)
+function M:setParent(parent)
     Scene = Scene or require("hs/core/Scene")
     
     -- sceneを指定された場合はtopLayerを取得
@@ -400,8 +400,8 @@ end
 ---------------------------------------
 -- 親オブジェクトを返します.
 ---------------------------------------
-function Transform:getParent(parent)
+function M:getParent(parent)
     return self._parent
 end
 
-return Transform
+return M

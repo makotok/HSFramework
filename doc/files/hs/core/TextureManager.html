@@ -95,19 +95,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -146,8 +138,6 @@
 		<a href="../../../files/hs/core/NinePatch.html">hs/core/NinePatch.lua</a>
 	</li>
 
-	<li><strong>hs/core/ObjectPool.lua</strong></li>
-	
 	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
@@ -176,14 +166,8 @@
 		<a href="../../../files/hs/core/TextLabel.html">hs/core/TextLabel.lua</a>
 	</li>
 
-	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
-	</li>
-
+	<li><strong>hs/core/TextureManager.lua</strong></li>
+	
 	<li>
 		<a href="../../../files/hs/core/Transform.html">hs/core/Transform.lua</a>
 	</li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -303,7 +283,7 @@
 
 <div id="content">
 
-<h1>File <code>hs/core/ObjectPool.lua</code></h1>
+<h1>File <code>hs/core/TextureManager.lua</code></h1>
 
 
 
@@ -315,28 +295,8 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#ObjectPool:createObject">ObjectPool:createObject</a>&nbsp;(...)</td>
-	<td class="summary">オブジェクトの生成関数です.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#ObjectPool:getObject">ObjectPool:getObject</a>&nbsp;(...)</td>
-	<td class="summary">オブジェクトを返します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#ObjectPool:init">ObjectPool:init</a>&nbsp;()</td>
-	<td class="summary">インスタンスの初期化処理を行います.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#ObjectPool:initObject">ObjectPool:initObject</a>&nbsp;(obj, ...)</td>
-	<td class="summary">オブジェクトの初期化関数です.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#ObjectPool:releaseObject">ObjectPool:releaseObject</a>&nbsp;(object)</td>
-	<td class="summary">オブジェクトをプールに戻します.</td>
+	<td class="name" nowrap><a href="#M:get">M:get</a>&nbsp;(path)</td>
+	<td class="summary">テクスチャをロードして返します.</td>
 	</tr>
 
 </table>
@@ -348,8 +308,8 @@
 <table class="table_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#ObjectPool ">ObjectPool </a></td>
-	<td class="summary">オブジェクトプールの実装です.</td>
+	<td class="name" nowrap><a href="#TextureManager ">TextureManager </a></td>
+	<td class="summary">MOAITextureのCacheです.</td>
 	</tr>
 
 </table>
@@ -367,115 +327,16 @@
 
 
 
-<dt><a name="ObjectPool:createObject"></a><strong>ObjectPool:createObject</strong>&nbsp;(...)</dt>
+<dt><a name="M:get"></a><strong>M:get</strong>&nbsp;(path)</dt>
 <dd>
-オブジェクトの生成関数です. 子クラスで継承して使用してください. 
+テクスチャをロードして返します. テクスチャはキャッシュされます. 
 
 
 <h3>Parameters</h3>
 <ul>
 	
 	<li>
-	  ...: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="ObjectPool:getObject"></a><strong>ObjectPool:getObject</strong>&nbsp;(...)</dt>
-<dd>
-オブジェクトを返します. プールにない場合、factoryメソッドから、 オブジェクトを生成して返します.  引数を指定した場合、factoryに渡されます. また、プールに存在する場合はinitial関数に渡されます. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  ...: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="ObjectPool:init"></a><strong>ObjectPool:init</strong>&nbsp;()</dt>
-<dd>
-インスタンスの初期化処理を行います. 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="ObjectPool:initObject"></a><strong>ObjectPool:initObject</strong>&nbsp;(obj, ...)</dt>
-<dd>
-オブジェクトの初期化関数です. 子クラスで継承して使用してください. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  obj: 
-	</li>
-	
-	<li>
-	  ...: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="ObjectPool:releaseObject"></a><strong>ObjectPool:releaseObject</strong>&nbsp;(object)</dt>
-<dd>
-オブジェクトをプールに戻します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  object: 
+	  path: 
 	</li>
 	
 </ul>
@@ -498,8 +359,8 @@
 <h2><a name="tables"></a>Tables</h2>
 <dl class="table">
 
-<dt><a name="ObjectPool "></a><strong>ObjectPool </strong></dt>
-<dd>オブジェクトプールの実装です. テーブルの再利用等を目的とします.
+<dt><a name="TextureManager "></a><strong>TextureManager </strong></dt>
+<dd>MOAITextureのCacheです. フレームワーク内部で使用します.
 
 
 

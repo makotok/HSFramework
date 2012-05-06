@@ -1,4 +1,3 @@
--- import
 local PropertySupport = require("hs/lang/PropertySupport")
 local EventListener = require("hs/core/EventListener")
 
@@ -9,13 +8,13 @@ local EventListener = require("hs/core/EventListener")
 -- @class table
 -- @name EventDispatcher
 ----------------------------------------------------------------
-local EventDispatcher = PropertySupport()
+local M = PropertySupport()
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function EventDispatcher:init()
-    EventDispatcher:super(self)
+function M:init()
+    M:super(self)
     self.listeners = {}
 end
 
@@ -28,7 +27,7 @@ end
 -- priorityは、優先度です.
 -- 優先度が小さい値程、最初に関数が呼ばれます.
 ---------------------------------------
-function EventDispatcher:addListener(eventType, callback, source, priority)
+function M:addListener(eventType, callback, source, priority)
     if self:hasListener(eventType, callback, source) then
         return false
     end
@@ -49,7 +48,7 @@ end
 ---------------------------------------
 --- イベントリスナを削除します.
 ---------------------------------------
-function EventDispatcher:removeListener(eventType, callback, source)
+function M:removeListener(eventType, callback, source)
     for key, obj in ipairs(self.listeners) do
         if obj.type == eventType and obj.callback == callback and obj.source == source then
             table.remove(self.listeners, key)
@@ -62,7 +61,7 @@ end
 ---------------------------------------
 --- イベントリスナを登録済か返します.
 ---------------------------------------
-function EventDispatcher:hasListener(eventType, callback, source)
+function M:hasListener(eventType, callback, source)
     for key, obj in ipairs(self.listeners) do
         if obj.type == eventType and obj.callback == callback and obj.source == source then
             return true
@@ -74,7 +73,7 @@ end
 ---------------------------------------
 -- イベントをディスパッチします
 ---------------------------------------
-function EventDispatcher:dispatchEvent(event)
+function M:dispatchEvent(event)
     event.stoped = false
     event.target = event.target and event.target or self
     for key, obj in ipairs(self.listeners) do
@@ -91,8 +90,8 @@ end
 ---------------------------------------
 -- イベントリスナをすべて削除します.
 ---------------------------------------
-function EventDispatcher:clearListeners()
+function M:clearListeners()
     self.listeners = {}
 end
 
-return EventDispatcher
+return M

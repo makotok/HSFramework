@@ -7,46 +7,46 @@ local Class = require("hs/lang/Class")
 -- @name Event
 --------------------------------------------------------------------------------
 
-local Event = Class()
+local M = Class()
 
 -- 定数
 -- 典型的なイベントを定義
-Event.OPEN = "open"
-Event.CLOSE = "close"
-Event.ACTIVATE = "activate"
-Event.DEACTIVATE = "deactivate"
-Event.DOWN = "down"
-Event.UP = "up"
-Event.MOVE = "move"
-Event.CLICK = "click"
-Event.CANCEL = "cancel"
-Event.KEYBOARD = "keyboard"
-Event.COMPLETE = "complete"
-Event.FRAME_LOOP = "frameLoop"
-Event.FRAME_STOP = "frameStop"
+M.OPEN = "open"
+M.CLOSE = "close"
+M.ACTIVATE = "activate"
+M.DEACTIVATE = "deactivate"
+M.DOWN = "down"
+M.UP = "up"
+M.MOVE = "move"
+M.CLICK = "click"
+M.CANCEL = "cancel"
+M.KEYBOARD = "keyboard"
+M.COMPLETE = "complete"
+M.FRAME_LOOP = "frameLoop"
+M.FRAME_STOP = "frameStop"
 
-Event.TOUCH = "touch"
-Event.TOUCH_DOWN = "touchDown"
-Event.TOUCH_UP = "touchUp"
-Event.TOUCH_MOVE = "touchMove"
-Event.TOUCH_CANCEL = "touchCancel"
+M.TOUCH = "touch"
+M.TOUCH_DOWN = "touchDown"
+M.TOUCH_UP = "touchUp"
+M.TOUCH_MOVE = "touchMove"
+M.TOUCH_CANCEL = "touchCancel"
 
 ---------------------------------------
 --- コンストラクタです
 ---------------------------------------
-function Event:init(eventType, target)
+function M:init(eventType, target)
     self.type = eventType
     self.target = target
     self.stoped = false
 end
 
-function Event:setListener(callback, source)
+function M:setListener(callback, source)
     self.callback = callback
     self.source = source
 end
 
-function Event:stop()
+function M:stop()
     self.stoped = true
 end
 
-return Event
+return M

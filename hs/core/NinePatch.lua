@@ -1,6 +1,6 @@
 local table = require("hs/lang/table")
 local DisplayObject = require("hs/core/DisplayObject")
-local TextureCache = require("hs/core/TextureCache")
+local TextureManager = require("hs/core/TextureManager")
 
 --------------------------------------------------------------------------------
 -- 画像のサイズにあわせて、部分的に伸張するスプライトクラスです.
@@ -9,16 +9,16 @@ local TextureCache = require("hs/core/TextureCache")
 -- @name NinePatch
 --------------------------------------------------------------------------------
 
-local NinePatch = DisplayObject()
+local M = DisplayObject()
 
 -- プロパティ定義
-NinePatch:setPropertyName("texture")
+M:setPropertyName("texture")
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function NinePatch:init(texture, params)
-    NinePatch:super(self)
+function M:init(texture, params)
+    M:super(self)
 
     -- 初期化
     if texture then
@@ -33,7 +33,7 @@ end
 ---------------------------------------
 -- MOAIDeckを生成します.
 ---------------------------------------
-function NinePatch:newDeck()
+function M:newDeck()
     local deck = MOAIStretchPatch2D.new()
     
     deck:reserveRows(3)
@@ -55,9 +55,9 @@ end
 -- テキスチャを設定します.
 -- サイズも自動で設定されます.
 ---------------------------------------
-function NinePatch:setTexture(texture)
+function M:setTexture(texture)
     if type(texture) == "string" then
-        texture = TextureCache:get(texture)
+        texture = TextureManager:get(texture)
     end
 
     local width, height = texture:getSize()
@@ -69,16 +69,16 @@ function NinePatch:setTexture(texture)
     end
 end
 
-function NinePatch:getTexture()
+function M:getTexture()
     return self._texture
 end
 
 ---------------------------------------
 -- 表示オブジェクトのサイズを設定します.
 ---------------------------------------
-function NinePatch:setSize(width, height)
+function M:setSize(width, height)
     DisplayObject.setSize(self, width, height)
     self.deck:setRect(0, 0, self.width, self.height)
 end
 
-return NinePatch
+return M

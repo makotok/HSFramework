@@ -1,6 +1,6 @@
 local table = require("hs/lang/table")
 local Class = require("hs/lang/Class")
-local TextureCache = require("hs/core/TextureCache")
+local TextureManager = require("hs/core/TextureManager")
 
 --------------------------------------------------------------------------------
 -- TMXMapのタイルセットクラスです.
@@ -43,7 +43,7 @@ function TMXTileset:loadTexture()
     local directory = self.tmxMap.resourceDirectory
     local path = directory .. self.image.source
 
-    self.texture = TextureCache:get(path)
+    self.texture = TextureManager:get(path)
     return self.texture
 end
 

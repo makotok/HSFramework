@@ -1,6 +1,6 @@
 local table = require("hs/lang/table")
 local DisplayObject = require("hs/core/DisplayObject")
-local TextureCache = require("hs/core/TextureCache")
+local TextureManager = require("hs/core/TextureManager")
 
 --------------------------------------------------------------------------------
 -- 単一のテクスチャをグリッドで描画するクラスです.
@@ -9,26 +9,26 @@ local TextureCache = require("hs/core/TextureCache")
 -- @name MapSprite
 --------------------------------------------------------------------------------
 
-local MapSprite = DisplayObject()
+local M = DisplayObject()
 
 -- プロパティ定義
-MapSprite:setPropertyName("texture")
-MapSprite:setPropertyName("textureWidth")
-MapSprite:setPropertyName("textureHeight")
-MapSprite:setPropertyName("grid")
-MapSprite:setPropertyName("gridWidth")
-MapSprite:setPropertyName("gridHeight")
-MapSprite:setPropertyName("cellWidth")
-MapSprite:setPropertyName("cellHeight")
-MapSprite:setPropertyName("tileWidth")
-MapSprite:setPropertyName("tileHeight")
-MapSprite:setPropertyName("repeat")
+M:setPropertyName("texture")
+M:setPropertyName("textureWidth")
+M:setPropertyName("textureHeight")
+M:setPropertyName("grid")
+M:setPropertyName("gridWidth")
+M:setPropertyName("gridHeight")
+M:setPropertyName("cellWidth")
+M:setPropertyName("cellHeight")
+M:setPropertyName("tileWidth")
+M:setPropertyName("tileHeight")
+M:setPropertyName("repeat")
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function MapSprite:init(texture, gridWidth, gridHeight, tileWidth, tileHeight, cellWidth, cellHeight)
-    MapSprite:super(self)
+function M:init(texture, gridWidth, gridHeight, tileWidth, tileHeight, cellWidth, cellHeight)
+    M:super(self)
     
     -- 初期値
     self._grid = self:newGrid()
@@ -58,7 +58,7 @@ end
 ---------------------------------------
 -- MOAIDeckを生成します.
 ---------------------------------------
-function MapSprite:newDeck()
+function M:newDeck()
     local deck = MOAITileDeck2D.new()
     return deck
 end
@@ -66,7 +66,7 @@ end
 ---------------------------------------
 -- MOAIGridを生成します.
 ---------------------------------------
-function MapSprite:newGrid()
+function M:newGrid()
     local grid = MOAIGrid.new()
     grid:setRepeat(false)
     return grid
@@ -76,9 +76,9 @@ end
 -- テキスチャを設定します.
 -- サイズも自動で設定されます.
 ---------------------------------------
-function MapSprite:setTexture(texture)
+function M:setTexture(texture)
     if type(texture) == "string" then
-        texture = TextureCache:get(texture)
+        texture = TextureManager:get(texture)
     end
 
     local w, h = texture:getSize()
@@ -91,28 +91,28 @@ end
 ---------------------------------------
 -- textureを返します.
 ---------------------------------------
-function MapSprite:getTexture()
+function M:getTexture()
     return self._texture
 end
 
 ---------------------------------------
 -- textureの幅を返します.
 ---------------------------------------
-function MapSprite:getTextureWidth()
+function M:getTextureWidth()
     return self._textureWidth
 end
 
 ---------------------------------------
 -- textureの高さを返します.
 ---------------------------------------
-function MapSprite:getTextureHeight()
+function M:getTextureHeight()
     return self._textureHeight
 end
 
 ---------------------------------------
 -- MOAIGridの幅を返します.
 ---------------------------------------
-function MapSprite:getGrid()
+function M:getGrid()
     return self._grid
 end
 
@@ -120,7 +120,7 @@ end
 -- 二次元配列のマップデータを設定します.
 -- マップデータは、行の配列です.
 ---------------------------------------
-function MapSprite:setMapData(data)
+function M:setMapData(data)
     local row = #data
     local col = #data[1]
     for i, v in ipairs(data) do
@@ -131,21 +131,21 @@ end
 ---------------------------------------
 -- 指定した行のデータを設定します.
 ---------------------------------------
-function MapSprite:setRowData(row, ...)
+function M:setRowData(row, ...)
     self.grid:setRow(row, ...)
 end
 
 ---------------------------------------
 -- グリッドのタイルを指定します.
 ---------------------------------------
-function MapSprite:setTile(x, y, i)
+function M:setTile(x, y, i)
     self.grid:setTile(x, y, i)
 end
 
 ---------------------------------------
 -- グリッドのサイズを更新します.
 ---------------------------------------
-function MapSprite:updateGridSize()
+function M:updateGridSize()
     if not (self.gridWidth and self.gridHeight and self.cellWidth and self.cellHeight) then
         return
     end
@@ -157,7 +157,7 @@ end
 ---------------------------------------
 -- サイズを設定します.
 ---------------------------------------
-function MapSprite:setSize(width, height)
+function M:setSize(width, height)
     self._width = width
     self._height = height
 end
@@ -166,7 +166,7 @@ end
 ---------------------------------------
 -- グリッドのサイズを設定します.
 ---------------------------------------
-function MapSprite:setGridSize(width, height)
+function M:setGridSize(width, height)
     self._gridWidth = width
     self._gridHeight = height
     self:updateGridSize()
@@ -175,35 +175,35 @@ end
 ---------------------------------------
 -- グリッドの列数を設定します.
 ---------------------------------------
-function MapSprite:setGridWidth(width)
+function M:setGridWidth(width)
     self:setGridSize(width, self.gridHeight)
 end
 
 ---------------------------------------
 -- グリッドの列数を返します.
 ---------------------------------------
-function MapSprite:getGridWidth()
+function M:getGridWidth()
     return self._gridWidth
 end
 
 ---------------------------------------
 -- グリッドの行数を設定します.
 ---------------------------------------
-function MapSprite:setGridHeight(height)
+function M:setGridHeight(height)
     self:setGridSize(self.gridWidth, height)
 end
 
 ---------------------------------------
 -- グリッドの行数を返します.
 ---------------------------------------
-function MapSprite:getGridHeight()
+function M:getGridHeight()
     return self._gridHeight
 end
 
 ---------------------------------------
 -- セルのサイズを設定します.
 ---------------------------------------
-function MapSprite:setCellSize(width, height)
+function M:setCellSize(width, height)
     self._cellWidth = width
     self._cellHeight = height
     self:updateGridSize()
@@ -212,35 +212,35 @@ end
 ---------------------------------------
 -- セルの幅を設定します.
 ---------------------------------------
-function MapSprite:setCellWidth(width)
+function M:setCellWidth(width)
     self:setCellSize(width, self.cellHeight)
 end
 
 ---------------------------------------
 -- セルの幅を返します.
 ---------------------------------------
-function MapSprite:getCellWidth()
+function M:getCellWidth()
     return self._cellWidth
 end
 
 ---------------------------------------
 -- セルの高さを設定します.
 ---------------------------------------
-function MapSprite:setCellHeight(height)
+function M:setCellHeight(height)
     self:setCellSize(self.cellWidth, height)
 end
 
 ---------------------------------------
 -- セルの高さを返します.
 ---------------------------------------
-function MapSprite:getCellHeight()
+function M:getCellHeight()
     return self._cellHeight
 end
 
 ---------------------------------------
 -- タイルの行列数を設定します.
 ---------------------------------------
-function MapSprite:setTileSize(width, height)
+function M:setTileSize(width, height)
     self._tileWidth = width
     self._tileHeight = height
     
@@ -254,35 +254,35 @@ end
 ---------------------------------------
 -- タイルの列数を設定します.
 ---------------------------------------
-function MapSprite:setTileWidth(width)
+function M:setTileWidth(width)
     self:setTileSize(width, self.tileHeight)
 end
 
 ---------------------------------------
 -- タイルの列数を返します.
 ---------------------------------------
-function MapSprite:getTileWidth()
+function M:getTileWidth()
     return self._tileWidth
 end
 
 ---------------------------------------
 -- タイルの行数を設定します.
 ---------------------------------------
-function MapSprite:setTileHeight(height)
+function M:setTileHeight(height)
     self:setTileSize(self.tileWidth, height)
 end
 
 ---------------------------------------
 -- タイルの行数を返します.
 ---------------------------------------
-function MapSprite:getTileHeight()
+function M:getTileHeight()
     return self._tileHeight
 end
 
 ---------------------------------------
 -- リピート描画するか設定します.
 ---------------------------------------
-function MapSprite:setRepeat(value)
+function M:setRepeat(value)
     self.grid:setRepeat(value)
     self._repeat = value
 end
@@ -290,8 +290,8 @@ end
 ---------------------------------------
 -- タイルの行数を返します.
 ---------------------------------------
-function MapSprite:getRepeat()
+function M:getRepeat()
     return self._repeat
 end
 
-return MapSprite
+return M

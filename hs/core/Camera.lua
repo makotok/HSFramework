@@ -5,27 +5,27 @@ local Transform = require("hs/core/Transform")
 -- @class table
 -- @name Camera
 --------------------------------------------------------------------------------
-local Camera = Transform()
+local M = Transform()
 
 ---------------------------------------
 --- コンストラクタです
 ---------------------------------------
-function Camera:init()
-    Camera:super(self)
+function M:init()
+    M:super(self)
     self:setUpMode2D()
 end
 
 ---------------------------------------
 --- MOAICameraを生成して返します.
 ---------------------------------------
-function Camera:newTransformObj()
+function M:newTransformObj()
     return MOAICamera.new()
 end
 
-function Camera:setUpMode2D()
+function M:setUpMode2D()
     self.transformObj:setOrtho(true)
     self.transformObj:setNearPlane(1)
     self.transformObj:setFarPlane(-1)
 end
 
-return Camera
+return M

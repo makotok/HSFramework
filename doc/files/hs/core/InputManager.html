@@ -95,19 +95,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -145,10 +137,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,27 +295,27 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#InputManager.onClick">InputManager.onClick</a>&nbsp;(down)</td>
+	<td class="name" nowrap><a href="#M.onClick">M.onClick</a>&nbsp;(down)</td>
 	<td class="summary">マウスを押下した時のイベント処理です  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#InputManager.onKeyboard">InputManager.onKeyboard</a>&nbsp;(key, down)</td>
+	<td class="name" nowrap><a href="#M.onKeyboard">M.onKeyboard</a>&nbsp;(key, down)</td>
 	<td class="summary">キーボード入力時のイベント処理です.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#InputManager.onPointer">InputManager.onPointer</a>&nbsp;(x, y)</td>
+	<td class="name" nowrap><a href="#M.onPointer">M.onPointer</a>&nbsp;(x, y)</td>
 	<td class="summary">マウスを動かした時のイベント処理です  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#InputManager.onTouch">InputManager.onTouch</a>&nbsp;(eventType, idx, x, y, tapCount)</td>
+	<td class="name" nowrap><a href="#M.onTouch">M.onTouch</a>&nbsp;(eventType, idx, x, y, tapCount)</td>
 	<td class="summary">画面をタッチした時のイベント処理です  </td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#InputManager:initialize">InputManager:initialize</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:initialize">M:initialize</a>&nbsp;()</td>
 	<td class="summary">InputManagerの初期化処理です フレームワークで初期化する必要があります.</td>
 	</tr>
 
@@ -367,7 +347,7 @@
 
 
 
-<dt><a name="InputManager.onClick"></a><strong>InputManager.onClick</strong>&nbsp;(down)</dt>
+<dt><a name="M.onClick"></a><strong>M.onClick</strong>&nbsp;(down)</dt>
 <dd>
 マウスを押下した時のイベント処理です 
 
@@ -393,7 +373,7 @@
 
 
 
-<dt><a name="InputManager.onKeyboard"></a><strong>InputManager.onKeyboard</strong>&nbsp;(key, down)</dt>
+<dt><a name="M.onKeyboard"></a><strong>M.onKeyboard</strong>&nbsp;(key, down)</dt>
 <dd>
 キーボード入力時のイベント処理です. 
 
@@ -423,7 +403,7 @@
 
 
 
-<dt><a name="InputManager.onPointer"></a><strong>InputManager.onPointer</strong>&nbsp;(x, y)</dt>
+<dt><a name="M.onPointer"></a><strong>M.onPointer</strong>&nbsp;(x, y)</dt>
 <dd>
 マウスを動かした時のイベント処理です 
 
@@ -453,7 +433,7 @@
 
 
 
-<dt><a name="InputManager.onTouch"></a><strong>InputManager.onTouch</strong>&nbsp;(eventType, idx, x, y, tapCount)</dt>
+<dt><a name="M.onTouch"></a><strong>M.onTouch</strong>&nbsp;(eventType, idx, x, y, tapCount)</dt>
 <dd>
 画面をタッチした時のイベント処理です 
 
@@ -495,7 +475,7 @@
 
 
 
-<dt><a name="InputManager:initialize"></a><strong>InputManager:initialize</strong>&nbsp;()</dt>
+<dt><a name="M:initialize"></a><strong>M:initialize</strong>&nbsp;()</dt>
 <dd>
 InputManagerの初期化処理です フレームワークで初期化する必要があります. 
 

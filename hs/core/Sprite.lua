@@ -1,5 +1,5 @@
 local table = require("hs/lang/table")
-local TextureCache = require("hs/core/TextureCache")
+local TextureManager = require("hs/core/TextureManager")
 local DisplayObject = require("hs/core/DisplayObject")
 local Event = require("hs/core/Event")
 
@@ -9,12 +9,12 @@ local Event = require("hs/core/Event")
 -- @class table
 -- @name Sprite
 --------------------------------------------------------------------------------
-local Sprite = DisplayObject()
+local M = DisplayObject()
 
 -- プロパティ定義
-Sprite:setPropertyName("texture")
-Sprite:setPropertyName("flipX")
-Sprite:setPropertyName("flipY")
+M:setPropertyName("texture")
+M:setPropertyName("flipX")
+M:setPropertyName("flipY")
 
 ---------------------------------------
 -- コンストラクタです.
@@ -22,8 +22,8 @@ Sprite:setPropertyName("flipY")
 -- @param texture テクスチャ、もしくは、パス
 -- @param params 設定プロパティテーブル
 ---------------------------------------
-function Sprite:init(texture, params)
-    Sprite:super(self)
+function M:init(texture, params)
+    M:super(self)
     
     -- textureの設定
     if texture then
@@ -36,7 +36,7 @@ function Sprite:init(texture, params)
     self:updateUVRect()
 end
 
-function Sprite:onInitial()
+function M:onInitial()
     DisplayObject.onInitial(self)
     
     self._flipX = false
@@ -46,7 +46,7 @@ end
 ---------------------------------------
 -- MOAIDeckを生成します.
 ---------------------------------------
-function Sprite:newDeck()
+function M:newDeck()
     local deck = MOAIGfxQuad2D.new()
     deck:setUVRect(0, 0, 1, 1)
     return deck
@@ -55,7 +55,7 @@ end
 ---------------------------------------
 -- UVマッピングを更新します.
 ---------------------------------------
-function Sprite:updateUVRect()
+function M:updateUVRect()
     local x1 = self.flipX and 1 or 0
     local y1 = self.flipY and 1 or 0
     local x2 = self.flipX and 0 or 1
@@ -67,9 +67,9 @@ end
 -- テキスチャを設定します.
 -- サイズも自動で設定されます.
 ---------------------------------------
-function Sprite:setTexture(texture)
+function M:setTexture(texture)
     if type(texture) == "string" then
-        texture = TextureCache:get(texture)
+        texture = TextureManager:get(texture)
     end
     
     if not self._initialized and texture then
@@ -85,14 +85,14 @@ end
 ---------------------------------------
 -- テクスチャを返します.
 ---------------------------------------
-function Sprite:getTexture()
+function M:getTexture()
     return self._texture
 end
 
 ---------------------------------------
 -- flipXを設定します.
 ---------------------------------------
-function Sprite:setFlipX(value)
+function M:setFlipX(value)
     self._flipX = value
     self:updateUVRect()
 end
@@ -100,14 +100,14 @@ end
 ---------------------------------------
 -- flipXを返します.
 ---------------------------------------
-function Sprite:getFlipX()
+function M:getFlipX()
     return self._flipX
 end
 
 ---------------------------------------
 -- flipYを設定します.
 ---------------------------------------
-function Sprite:setFlipY(value)
+function M:setFlipY(value)
     self._flipY = value
     self:updateUVRect()
 end
@@ -115,16 +115,16 @@ end
 ---------------------------------------
 -- flipYを返します.
 ---------------------------------------
-function Sprite:getFlipY()
+function M:getFlipY()
     return self._flipY
 end
 
 ---------------------------------------
 -- 表示オブジェクトのサイズを設定します.
 ---------------------------------------
-function Sprite:setSize(width, height)
+function M:setSize(width, height)
     DisplayObject.setSize(self, width, height)
     self.deck:setRect(0, 0, self.width, self.height)
 end
 
-return Sprite
+return M

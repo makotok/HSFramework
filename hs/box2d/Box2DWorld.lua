@@ -11,22 +11,22 @@ local Box2DFixture = require("hs/box2d/Box2DFixture")
 -- TODO:オーバーヘッドがどの程度か後で計測したい
 ----------------------------------------------------------------
 
-local Box2DWorld = PropertySupport()
+local M = PropertySupport()
 
-Box2DWorld:setPropertyName("layer")
-Box2DWorld:setPropertyName("angularSleepTolerance")
-Box2DWorld:setPropertyName("autoClearForces")
-Box2DWorld:setPropertyName("linearSleepTolerance")
-Box2DWorld:setPropertyName("timeToSleep")
-Box2DWorld:setPropertyName("gravityX")
-Box2DWorld:setPropertyName("gravityY")
-Box2DWorld:setPropertyName("unitsToMeters")
-Box2DWorld:setPropertyName("debugDraw")
+M:setPropertyName("layer")
+M:setPropertyName("angularSleepTolerance")
+M:setPropertyName("autoClearForces")
+M:setPropertyName("linearSleepTolerance")
+M:setPropertyName("timeToSleep")
+M:setPropertyName("gravityX")
+M:setPropertyName("gravityY")
+M:setPropertyName("unitsToMeters")
+M:setPropertyName("debugDraw")
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function Box2DWorld:init(params)
+function M:init(params)
     self.world = MOAIBox2DWorld.new()
     self.displays = {}
     self.bodies = {}
@@ -44,11 +44,11 @@ end
 -- Function
 ---------------------------------------
 
-function Box2DWorld:start()
+function M:start()
     self.world:start()
 end
 
-function Box2DWorld:addBodyFromDisplay(displayObject, params)
+function M:addBodyFromDisplay(displayObject, params)
     local world = self.world
     
     -- displayObject
@@ -79,7 +79,7 @@ function Box2DWorld:addBodyFromDisplay(displayObject, params)
 end
 
 
-function Box2DWorld:addBody(bodyType, params)
+function M:addBody(bodyType, params)
     local body = Box2DBody:new(world, self.world:addBody(bodyType))
     if params then
         table.copy(params, body)
@@ -87,61 +87,61 @@ function Box2DWorld:addBody(bodyType, params)
     return body
 end
 
-function Box2DWorld:addDistanceJoint(...)
+function M:addDistanceJoint(...)
     local joint = self.world:addDistanceJoint(...)
     table.insert(self.joints, joint)
     return joint
 end
 
-function Box2DWorld:addFrictionJoint(...)
+function M:addFrictionJoint(...)
     local joint = self.world:addFrictionJoint(...)
     table.insert(self.joints, joint)
     return joint
 end
 
-function Box2DWorld:addGearJoint(...)
+function M:addGearJoint(...)
     local joint = self.world:addGearJoint(...)
     table.insert(self.joints, joint)
     return joint
 end
 
-function Box2DWorld:addMouseJoint(...)
+function M:addMouseJoint(...)
     local joint = self.world:addMouseJoint(...)
     table.insert(self.joints, joint)
     return joint
 end
 
-function Box2DWorld:addPrismaticJoint(...)
+function M:addPrismaticJoint(...)
     local joint = self.world:addPrismaticJoint(...)
     table.insert(self.joints, joint)
     return joint
 end
 
-function Box2DWorld:addPulleyJoint(...)
+function M:addPulleyJoint(...)
     local joint = self.world:addPulleyJoint(...)
     table.insert(self.joints, joint)
     return joint
 end
 
-function Box2DWorld:addRevoluteJoint(...)
+function M:addRevoluteJoint(...)
     local joint = self.world:addRevoluteJoint(...)
     table.insert(self.joints, joint)
     return joint
 end
 
-function Box2DWorld:addRopeJoint(...)
+function M:addRopeJoint(...)
     local joint = self.world:addRopeJoint(...)
     table.insert(self.joints, joint)
     return joint
 end
 
-function Box2DWorld:addWeldJoint(...)
+function M:addWeldJoint(...)
     local joint = self.world:addWeldJoint(...)
     table.insert(self.joints, joint)
     return joint
 end
 
-function Box2DWorld:addWheelJoint(...)
+function M:addWheelJoint(...)
     local joint = self.world:addWheelJoint(...)
     table.insert(self.joints, joint)
     return joint
@@ -155,11 +155,11 @@ end
 -- layer
 ---------------------------------------
 
-function Box2DWorld:getLayer()
+function M:getLayer()
     return self._layer
 end
 
-function Box2DWorld:setLayer(layer)
+function M:setLayer(layer)
     self._layer = layer
     if self.debugDraw and layer then
         layer.renderPass:setBox2DWorld(self.world)
@@ -170,11 +170,11 @@ end
 -- angularSleepTolerance
 ---------------------------------------
 
-function Box2DWorld:getAngularSleepTolerance()
+function M:getAngularSleepTolerance()
     return self.world:getAngularSleepTolerance()
 end
 
-function Box2DWorld:setAngularSleepTolerance(value)
+function M:setAngularSleepTolerance(value)
     self.world:setAngularSleepTolerance(value)
 end
 
@@ -182,11 +182,11 @@ end
 -- autoClearForces
 ---------------------------------------
 
-function Box2DWorld:getAutoClearForces()
+function M:getAutoClearForces()
     return self.world:getAutoClearForces()
 end
 
-function Box2DWorld:setAutoClearForces(value)
+function M:setAutoClearForces(value)
     self.world:setAutoClearForces(value)
 end
 
@@ -194,11 +194,11 @@ end
 -- linearSleepTolerance
 ---------------------------------------
 
-function Box2DWorld:getLinearSleepTolerance()
+function M:getLinearSleepTolerance()
     return self.world:getLinearSleepTolerance()
 end
 
-function Box2DWorld:setLinearSleepTolerance(value)
+function M:setLinearSleepTolerance(value)
     self.world:setLinearSleepTolerance(value)
 end
 
@@ -206,11 +206,11 @@ end
 -- timeToSleep
 ---------------------------------------
 
-function Box2DWorld:getTimeToSleep()
+function M:getTimeToSleep()
     return self.world:getTimeToSleep()
 end
 
-function Box2DWorld:setTimeToSleep(value)
+function M:setTimeToSleep(value)
     self.world:setTimeToSleep(value)
 end
 
@@ -218,29 +218,29 @@ end
 -- gravity
 ---------------------------------------
 
-function Box2DWorld:getGravity()
+function M:getGravity()
     return self.world:getGravity()
 end
 
-function Box2DWorld:getGravityX()
+function M:getGravityX()
     local x, y = self.world:getGravity()
     return x
 end
 
-function Box2DWorld:getGravityY()
+function M:getGravityY()
     local x, y = self.world:getGravity()
     return y
 end
 
-function Box2DWorld:setGravity(x, y)
+function M:setGravity(x, y)
     self.world:setGravity(x, y)
 end
 
-function Box2DWorld:setGravityX(x)
+function M:setGravityX(x)
     self:setGravity(x, self.gravityY)
 end
 
-function Box2DWorld:setGravityY(y)
+function M:setGravityY(y)
     self:setGravity(self.gravityX, y)
 end
 
@@ -248,11 +248,11 @@ end
 -- unitsToMeters
 ---------------------------------------
 
-function Box2DWorld:getUnitsToMeters()
+function M:getUnitsToMeters()
     return self.world._unitsToMeters
 end
 
-function Box2DWorld:setUnitsToMeters(value)
+function M:setUnitsToMeters(value)
     self.world._unitsToMeters = value
     self.world:setUnitsToMeters(value)
 end
@@ -261,7 +261,7 @@ end
 -- debugDraw
 ---------------------------------------
 
-function Box2DWorld:setDebugDraw(value)
+function M:setDebugDraw(value)
     self._debugDraw = value
     
     if value and self.layer then
@@ -269,8 +269,8 @@ function Box2DWorld:setDebugDraw(value)
     end
 end
 
-function Box2DWorld:getDebugDraw()
+function M:getDebugDraw()
     return self._debugDraw
 end
 
-return Box2DWorld
+return M

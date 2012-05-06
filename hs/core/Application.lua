@@ -11,19 +11,19 @@ local EventDispatcher = require("hs/core/EventDispatcher")
 -- @name Application
 ----------------------------------------------------------------
 
-local Application = EventDispatcher():new()
+local M = EventDispatcher():new()
 
 -- プロパティ定義
-Application:setPropertyName("window")
-Application:setPropertyName("screenWidth")
-Application:setPropertyName("screenHeight")
-Application:setPropertyName("stageWidth")
-Application:setPropertyName("stageHeight")
+M:setPropertyName("window")
+M:setPropertyName("screenWidth")
+M:setPropertyName("screenHeight")
+M:setPropertyName("stageWidth")
+M:setPropertyName("stageHeight")
 
 ---------------------------------------
 -- 初期化処理を行います.
 ---------------------------------------
-function Application:initialize()
+function M:initialize()
     local Window = require("hs/core/Window")
     self._window = Window:new()
 
@@ -38,7 +38,7 @@ end
 ---------------------------------------
 -- フレーム毎の処理を行います.
 ---------------------------------------
-function Application:enterFrame()
+function M:enterFrame()
     local event = Event:new(Event.ENTER_FRAME)
     while true do
         self:dispatchEvent(event)
@@ -56,21 +56,21 @@ end
 -- StageにstageModeを指定する事で、描画領域の
 -- 任意のロジックで引き伸ばしを行う事ができます.
 ---------------------------------------
-function Application:openWindow(title, width, height, screenMode)
+function M:openWindow(title, width, height, screenMode)
     self.window:open(title, width, height, screenMode)
 end
 
 ---------------------------------------
 --- ウインドウを返します..
 ---------------------------------------
-function Application:getWindow()
+function M:getWindow()
     return self._window
 end
 
 ---------------------------------------
 --- 実行環境がモバイルかどうか返します.
 ---------------------------------------
-function Application:isMobile()
+function M:isMobile()
     local bland = MOAIEnvironment.osBrand
     return bland == MOAIEnvironment.OS_BRAND_ANDROID or bland == MOAIEnvironment.OS_BRAND_IOS
 end
@@ -78,7 +78,7 @@ end
 ---------------------------------------
 --- 実行環境がデスクトップかどうか返します.
 ---------------------------------------
-function Application:isDesktop()
+function M:isDesktop()
     return not self:isMobile()
 end
 
@@ -86,7 +86,7 @@ end
 -- 画面の幅を返します.
 -- モバイル環境の場合、シーンのサイズとは一致しません.
 ---------------------------------------
-function Application:getScreenWidth()
+function M:getScreenWidth()
     return self.window.screenWidth
 end
 
@@ -94,7 +94,7 @@ end
 -- 画面の高さを返します.
 -- モバイル環境の場合、シーンのサイズとは一致しません.
 ---------------------------------------
-function Application:getScreenHeight()
+function M:getScreenHeight()
     return self.window.screenHeight
 end
 
@@ -102,7 +102,7 @@ end
 -- ステージの幅を返します.
 -- シーンのサイズと一致します.
 ---------------------------------------
-function Application:getStageWidth()
+function M:getStageWidth()
     return self.window.stageWidth
 end
 
@@ -110,8 +110,8 @@ end
 -- ステージの高さを返します.
 -- シーンのサイズと一致します.
 ---------------------------------------
-function Application:getStageHeight()
+function M:getStageHeight()
     return self.window.stageHeight
 end
 
-return Application
+return M

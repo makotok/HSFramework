@@ -7,20 +7,20 @@ local Class = require("hs/lang/Class")
 -- @class table
 -- @name EventListener
 --------------------------------------------------------------------------------
-local EventListener = Class()
+local M = Class()
 
 -- 定数
-EventListener.PRIORITY_MIN = 0
-EventListener.PRIORITY_MAX = 999999
+M.PRIORITY_MIN = 0
+M.PRIORITY_MAX = 999999
 
-function EventListener:init(eventType, callback, source, priority)
+function M:init(eventType, callback, source, priority)
     self.type = eventType
     self.callback = callback
     self.source = source
     self.priority = priority and priority or 0
 end
 
-function EventListener:call(event)
+function M:call(event)
     if self.source then
         self.callback(self.source, event)
     else
@@ -28,4 +28,4 @@ function EventListener:call(event)
     end
 end
 
-return EventListener
+return M

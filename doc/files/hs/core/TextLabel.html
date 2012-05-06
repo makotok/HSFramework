@@ -95,19 +95,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -147,10 +139,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	<li><strong>hs/core/TextLabel.lua</strong></li>
 	
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,97 +295,72 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:getCharcodes">TextLabel:getCharcodes</a>&nbsp;()</td>
-	<td class="summary">フォントのキャラコードを返します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TextLabel:getFontDPI">TextLabel:getFontDPI</a>&nbsp;()</td>
-	<td class="summary">フォントのDPIを返します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TextLabel:getFontPath">TextLabel:getFontPath</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getFontPath">M:getFontPath</a>&nbsp;()</td>
 	<td class="summary">TrueTypeフォントのパスを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:getFontSize">TextLabel:getFontSize</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getFontSize">M:getFontSize</a>&nbsp;()</td>
 	<td class="summary">フォントのサイズを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:getText">TextLabel:getText</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getText">M:getText</a>&nbsp;()</td>
 	<td class="summary">表示文字列を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:getTextAlign">TextLabel:getTextAlign</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getTextAlign">M:getTextAlign</a>&nbsp;()</td>
 	<td class="summary">表示文字列を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:init">TextLabel:init</a>&nbsp;(params)</td>
+	<td class="name" nowrap><a href="#M:init">M:init</a>&nbsp;(params)</td>
 	<td class="summary">コンストラクタです.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:isDefaultCharcodesOnly">TextLabel:isDefaultCharcodesOnly</a>&nbsp;(text)</td>
-	<td class="summary">デフォルトのキャラコードのみで構成された 文字列のみかどうか判定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TextLabel:makeCharcodes">TextLabel:makeCharcodes</a>&nbsp;(text)</td>
-	<td class="summary">フォントのキャラコードを生成します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TextLabel:newDeck">TextLabel:newDeck</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:newDeck">M:newDeck</a>&nbsp;()</td>
 	<td class="summary">MOAIDeckを生成します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:newProp">TextLabel:newProp</a>&nbsp;(deck)</td>
+	<td class="name" nowrap><a href="#M:newProp">M:newProp</a>&nbsp;(deck)</td>
 	<td class="summary">MOAIPropを生成します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:setFontDPI">TextLabel:setFontDPI</a>&nbsp;(dpi)</td>
-	<td class="summary">フォントのDPIを設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#TextLabel:setFontPath">TextLabel:setFontPath</a>&nbsp;(fontPath)</td>
+	<td class="name" nowrap><a href="#M:setFontPath">M:setFontPath</a>&nbsp;(fontPath)</td>
 	<td class="summary">TrueTypeフォントのパスを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:setFontSize">TextLabel:setFontSize</a>&nbsp;(size)</td>
+	<td class="name" nowrap><a href="#M:setFontSize">M:setFontSize</a>&nbsp;(size)</td>
 	<td class="summary">フォントのサイズを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:setSize">TextLabel:setSize</a>&nbsp;(width, height)</td>
+	<td class="name" nowrap><a href="#M:setSize">M:setSize</a>&nbsp;(width, height)</td>
 	<td class="summary">サイズを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:setText">TextLabel:setText</a>&nbsp;(text)</td>
+	<td class="name" nowrap><a href="#M:setText">M:setText</a>&nbsp;(text)</td>
 	<td class="summary">表示文字列を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:setTextAlign">TextLabel:setTextAlign</a>&nbsp;(align)</td>
+	<td class="name" nowrap><a href="#M:setTextAlign">M:setTextAlign</a>&nbsp;(align)</td>
 	<td class="summary">表示文字列を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:updateDisplay">TextLabel:updateDisplay</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:updateDisplay">M:updateDisplay</a>&nbsp;()</td>
 	<td class="summary">フレーム毎の処理を行います.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#TextLabel:updateText">TextLabel:updateText</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:updateText">M:updateText</a>&nbsp;()</td>
 	<td class="summary">設定値をMOAITextBoxに反映します.</td>
 	</tr>
 
@@ -437,41 +392,7 @@
 
 
 
-<dt><a name="TextLabel:getCharcodes"></a><strong>TextLabel:getCharcodes</strong>&nbsp;()</dt>
-<dd>
-フォントのキャラコードを返します. 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TextLabel:getFontDPI"></a><strong>TextLabel:getFontDPI</strong>&nbsp;()</dt>
-<dd>
-フォントのDPIを返します. 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TextLabel:getFontPath"></a><strong>TextLabel:getFontPath</strong>&nbsp;()</dt>
+<dt><a name="M:getFontPath"></a><strong>M:getFontPath</strong>&nbsp;()</dt>
 <dd>
 TrueTypeフォントのパスを返します. 
 
@@ -488,7 +409,7 @@ TrueTypeフォントのパスを返します.
 
 
 
-<dt><a name="TextLabel:getFontSize"></a><strong>TextLabel:getFontSize</strong>&nbsp;()</dt>
+<dt><a name="M:getFontSize"></a><strong>M:getFontSize</strong>&nbsp;()</dt>
 <dd>
 フォントのサイズを返します. 
 
@@ -505,7 +426,7 @@ TrueTypeフォントのパスを返します.
 
 
 
-<dt><a name="TextLabel:getText"></a><strong>TextLabel:getText</strong>&nbsp;()</dt>
+<dt><a name="M:getText"></a><strong>M:getText</strong>&nbsp;()</dt>
 <dd>
 表示文字列を返します. 
 
@@ -522,7 +443,7 @@ TrueTypeフォントのパスを返します.
 
 
 
-<dt><a name="TextLabel:getTextAlign"></a><strong>TextLabel:getTextAlign</strong>&nbsp;()</dt>
+<dt><a name="M:getTextAlign"></a><strong>M:getTextAlign</strong>&nbsp;()</dt>
 <dd>
 表示文字列を返します. 
 
@@ -539,7 +460,7 @@ TrueTypeフォントのパスを返します.
 
 
 
-<dt><a name="TextLabel:init"></a><strong>TextLabel:init</strong>&nbsp;(params)</dt>
+<dt><a name="M:init"></a><strong>M:init</strong>&nbsp;(params)</dt>
 <dd>
 コンストラクタです. 
 
@@ -565,59 +486,7 @@ TrueTypeフォントのパスを返します.
 
 
 
-<dt><a name="TextLabel:isDefaultCharcodesOnly"></a><strong>TextLabel:isDefaultCharcodesOnly</strong>&nbsp;(text)</dt>
-<dd>
-デフォルトのキャラコードのみで構成された 文字列のみかどうか判定します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  text: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TextLabel:makeCharcodes"></a><strong>TextLabel:makeCharcodes</strong>&nbsp;(text)</dt>
-<dd>
-フォントのキャラコードを生成します. マルチバイトを考慮して、ユニークとなる キャラコードを生成します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  text: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TextLabel:newDeck"></a><strong>TextLabel:newDeck</strong>&nbsp;()</dt>
+<dt><a name="M:newDeck"></a><strong>M:newDeck</strong>&nbsp;()</dt>
 <dd>
 MOAIDeckを生成します. 実際には生成しません. 
 
@@ -634,7 +503,7 @@ MOAIDeckを生成します. 実際には生成しません.
 
 
 
-<dt><a name="TextLabel:newProp"></a><strong>TextLabel:newProp</strong>&nbsp;(deck)</dt>
+<dt><a name="M:newProp"></a><strong>M:newProp</strong>&nbsp;(deck)</dt>
 <dd>
 MOAIPropを生成します. インスタンスはMOAITextBoxになります 
 
@@ -660,33 +529,7 @@ MOAIPropを生成します. インスタンスはMOAITextBoxになります
 
 
 
-<dt><a name="TextLabel:setFontDPI"></a><strong>TextLabel:setFontDPI</strong>&nbsp;(dpi)</dt>
-<dd>
-フォントのDPIを設定します. ライブラリ使用者側で意識しないでいいはずなので、 明示的に設定する必要はありません. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  dpi: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="TextLabel:setFontPath"></a><strong>TextLabel:setFontPath</strong>&nbsp;(fontPath)</dt>
+<dt><a name="M:setFontPath"></a><strong>M:setFontPath</strong>&nbsp;(fontPath)</dt>
 <dd>
 TrueTypeフォントのパスを設定します. 
 
@@ -712,7 +555,7 @@ TrueTypeフォントのパスを設定します.
 
 
 
-<dt><a name="TextLabel:setFontSize"></a><strong>TextLabel:setFontSize</strong>&nbsp;(size)</dt>
+<dt><a name="M:setFontSize"></a><strong>M:setFontSize</strong>&nbsp;(size)</dt>
 <dd>
 フォントのサイズを設定します. 
 
@@ -738,7 +581,7 @@ TrueTypeフォントのパスを設定します.
 
 
 
-<dt><a name="TextLabel:setSize"></a><strong>TextLabel:setSize</strong>&nbsp;(width, height)</dt>
+<dt><a name="M:setSize"></a><strong>M:setSize</strong>&nbsp;(width, height)</dt>
 <dd>
 サイズを設定します. 
 
@@ -768,7 +611,7 @@ TrueTypeフォントのパスを設定します.
 
 
 
-<dt><a name="TextLabel:setText"></a><strong>TextLabel:setText</strong>&nbsp;(text)</dt>
+<dt><a name="M:setText"></a><strong>M:setText</strong>&nbsp;(text)</dt>
 <dd>
 表示文字列を設定します. 
 
@@ -794,7 +637,7 @@ TrueTypeフォントのパスを設定します.
 
 
 
-<dt><a name="TextLabel:setTextAlign"></a><strong>TextLabel:setTextAlign</strong>&nbsp;(align)</dt>
+<dt><a name="M:setTextAlign"></a><strong>M:setTextAlign</strong>&nbsp;(align)</dt>
 <dd>
 表示文字列を設定します. 
 
@@ -820,7 +663,7 @@ TrueTypeフォントのパスを設定します.
 
 
 
-<dt><a name="TextLabel:updateDisplay"></a><strong>TextLabel:updateDisplay</strong>&nbsp;()</dt>
+<dt><a name="M:updateDisplay"></a><strong>M:updateDisplay</strong>&nbsp;()</dt>
 <dd>
 フレーム毎の処理を行います. 
 
@@ -837,7 +680,7 @@ TrueTypeフォントのパスを設定します.
 
 
 
-<dt><a name="TextLabel:updateText"></a><strong>TextLabel:updateText</strong>&nbsp;()</dt>
+<dt><a name="M:updateText"></a><strong>M:updateText</strong>&nbsp;()</dt>
 <dd>
 設定値をMOAITextBoxに反映します. 
 

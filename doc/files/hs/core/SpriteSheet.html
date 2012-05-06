@@ -95,19 +95,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -147,10 +139,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,97 +295,97 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:addSheet">SpriteSheet:addSheet</a>&nbsp;(x, y, width, height)</td>
+	<td class="name" nowrap><a href="#M:addSheet">M:addSheet</a>&nbsp;(x, y, width, height)</td>
 	<td class="summary">シートを追加します.<br> updateSheets()は呼ばれませんので、任意のタイミングで呼んでください.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:getSheetIndex">SpriteSheet:getSheetIndex</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getSheetIndex">M:getSheetIndex</a>&nbsp;()</td>
 	<td class="summary">シート番号を返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:getSheets">SpriteSheet:getSheets</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getSheets">M:getSheets</a>&nbsp;()</td>
 	<td class="summary">全てのシートデータを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:getSheetsAnimations">SpriteSheet:getSheetsAnimations</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getSheetsAnimations">M:getSheetsAnimations</a>&nbsp;()</td>
 	<td class="summary">フレームアニメーションデータを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:getTexture">SpriteSheet:getTexture</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getTexture">M:getTexture</a>&nbsp;()</td>
 	<td class="summary">テキスチャを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:loadSheetsFromTile">SpriteSheet:loadSheetsFromTile</a>&nbsp;(tileX, tileY)</td>
+	<td class="name" nowrap><a href="#M:init">M:init</a>&nbsp;(params)</td>
+	<td class="summary">コンストラクタです  </td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#M:loadSheetsFromTile">M:loadSheetsFromTile</a>&nbsp;(tileX, tileY)</td>
 	<td class="summary">タイル形式のシートデータを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:new ">SpriteSheet:new </a>&nbsp;(params)</td>
-	<td class="summary">コンストラクタです </td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:newDeck">SpriteSheet:newDeck</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:newDeck">M:newDeck</a>&nbsp;()</td>
 	<td class="summary">MOAIDeckを生成します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:play">SpriteSheet:play</a>&nbsp;(name)</td>
+	<td class="name" nowrap><a href="#M:play">M:play</a>&nbsp;(name)</td>
 	<td class="summary">フレームアニメーションを開始します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:setSheet">SpriteSheet:setSheet</a>&nbsp;(index, x, y, width, height)</td>
+	<td class="name" nowrap><a href="#M:setSheet">M:setSheet</a>&nbsp;(index, x, y, width, height)</td>
 	<td class="summary">シートを設定します.<br> updateSheets()は呼ばれませんので、任意のタイミングで呼んでください.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:setSheetIndex">SpriteSheet:setSheetIndex</a>&nbsp;(value)</td>
+	<td class="name" nowrap><a href="#M:setSheetIndex">M:setSheetIndex</a>&nbsp;(value)</td>
 	<td class="summary">シート番号を設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:setSheets">SpriteSheet:setSheets</a>&nbsp;(value)</td>
+	<td class="name" nowrap><a href="#M:setSheets">M:setSheets</a>&nbsp;(value)</td>
 	<td class="summary">シートデータを設定します.<br> {x = X座標, y = Y座標, width = 幅, height = 高さ} の形式でテーブルを設定してください.<br> 設定後、updateSheets()が呼ばれます.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:setSheetsAnimation">SpriteSheet:setSheetsAnimation</a>&nbsp;(name, indexes, sec, mode)</td>
+	<td class="name" nowrap><a href="#M:setSheetsAnimation">M:setSheetsAnimation</a>&nbsp;(name, indexes, sec, mode)</td>
 	<td class="summary">フレームアニメーションデータを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:setSheetsAnimation">SpriteSheet:setSheetsAnimation</a>&nbsp;(name, indexes, sec, mode)</td>
+	<td class="name" nowrap><a href="#M:setSheetsAnimation">M:setSheetsAnimation</a>&nbsp;(name, indexes, sec, mode)</td>
 	<td class="summary">フレームアニメーションデータを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:setSheetsAnimations">SpriteSheet:setSheetsAnimations</a>&nbsp;(animations)</td>
+	<td class="name" nowrap><a href="#M:setSheetsAnimations">M:setSheetsAnimations</a>&nbsp;(animations)</td>
 	<td class="summary">フレームアニメーションデータを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:setSize">SpriteSheet:setSize</a>&nbsp;(width, height)</td>
+	<td class="name" nowrap><a href="#M:setSize">M:setSize</a>&nbsp;(width, height)</td>
 	<td class="summary">表示オブジェクトのサイズを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:setTexture">SpriteSheet:setTexture</a>&nbsp;(texture)</td>
+	<td class="name" nowrap><a href="#M:setTexture">M:setTexture</a>&nbsp;(texture)</td>
 	<td class="summary">テキスチャを設定します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:stop">SpriteSheet:stop</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:stop">M:stop</a>&nbsp;()</td>
 	<td class="summary">フレームアニメーションを停止します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#SpriteSheet:updateSheets">SpriteSheet:updateSheets</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:updateSheets">M:updateSheets</a>&nbsp;()</td>
 	<td class="summary">シートデータを表示オブジェクトに反映します.</td>
 	</tr>
 
@@ -437,7 +417,7 @@
 
 
 
-<dt><a name="SpriteSheet:addSheet"></a><strong>SpriteSheet:addSheet</strong>&nbsp;(x, y, width, height)</dt>
+<dt><a name="M:addSheet"></a><strong>M:addSheet</strong>&nbsp;(x, y, width, height)</dt>
 <dd>
 シートを追加します.<br> updateSheets()は呼ばれませんので、任意のタイミングで呼んでください.
 
@@ -475,7 +455,7 @@
 
 
 
-<dt><a name="SpriteSheet:getSheetIndex"></a><strong>SpriteSheet:getSheetIndex</strong>&nbsp;()</dt>
+<dt><a name="M:getSheetIndex"></a><strong>M:getSheetIndex</strong>&nbsp;()</dt>
 <dd>
 シート番号を返します. 
 
@@ -492,7 +472,7 @@
 
 
 
-<dt><a name="SpriteSheet:getSheets"></a><strong>SpriteSheet:getSheets</strong>&nbsp;()</dt>
+<dt><a name="M:getSheets"></a><strong>M:getSheets</strong>&nbsp;()</dt>
 <dd>
 全てのシートデータを返します. このテーブルを直接変更しても表示オブジェクトには反映されません.
 
@@ -512,7 +492,7 @@ sheets
 
 
 
-<dt><a name="SpriteSheet:getSheetsAnimations"></a><strong>SpriteSheet:getSheetsAnimations</strong>&nbsp;()</dt>
+<dt><a name="M:getSheetsAnimations"></a><strong>M:getSheetsAnimations</strong>&nbsp;()</dt>
 <dd>
 フレームアニメーションデータを返します. 
 
@@ -529,7 +509,7 @@ sheets
 
 
 
-<dt><a name="SpriteSheet:getTexture"></a><strong>SpriteSheet:getTexture</strong>&nbsp;()</dt>
+<dt><a name="M:getTexture"></a><strong>M:getTexture</strong>&nbsp;()</dt>
 <dd>
 テキスチャを返します.
 
@@ -549,7 +529,33 @@ texture
 
 
 
-<dt><a name="SpriteSheet:loadSheetsFromTile"></a><strong>SpriteSheet:loadSheetsFromTile</strong>&nbsp;(tileX, tileY)</dt>
+<dt><a name="M:init"></a><strong>M:init</strong>&nbsp;(params)</dt>
+<dd>
+コンストラクタです 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  params: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="M:loadSheetsFromTile"></a><strong>M:loadSheetsFromTile</strong>&nbsp;(tileX, tileY)</dt>
 <dd>
 タイル形式のシートデータを設定します.
 
@@ -579,33 +585,7 @@ texture
 
 
 
-<dt><a name="SpriteSheet:new "></a><strong>SpriteSheet:new </strong>&nbsp;(params)</dt>
-<dd>
-コンストラクタです
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  params: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="SpriteSheet:newDeck"></a><strong>SpriteSheet:newDeck</strong>&nbsp;()</dt>
+<dt><a name="M:newDeck"></a><strong>M:newDeck</strong>&nbsp;()</dt>
 <dd>
 MOAIDeckを生成します. 
 
@@ -622,7 +602,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:play"></a><strong>SpriteSheet:play</strong>&nbsp;(name)</dt>
+<dt><a name="M:play"></a><strong>M:play</strong>&nbsp;(name)</dt>
 <dd>
 フレームアニメーションを開始します. 
 
@@ -648,7 +628,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:setSheet"></a><strong>SpriteSheet:setSheet</strong>&nbsp;(index, x, y, width, height)</dt>
+<dt><a name="M:setSheet"></a><strong>M:setSheet</strong>&nbsp;(index, x, y, width, height)</dt>
 <dd>
 シートを設定します.<br> updateSheets()は呼ばれませんので、任意のタイミングで呼んでください. 
 
@@ -690,7 +670,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:setSheetIndex"></a><strong>SpriteSheet:setSheetIndex</strong>&nbsp;(value)</dt>
+<dt><a name="M:setSheetIndex"></a><strong>M:setSheetIndex</strong>&nbsp;(value)</dt>
 <dd>
 シート番号を設定します. 
 
@@ -716,7 +696,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:setSheets"></a><strong>SpriteSheet:setSheets</strong>&nbsp;(value)</dt>
+<dt><a name="M:setSheets"></a><strong>M:setSheets</strong>&nbsp;(value)</dt>
 <dd>
 シートデータを設定します.<br> {x = X座標, y = Y座標, width = 幅, height = 高さ} の形式でテーブルを設定してください.<br> 設定後、updateSheets()が呼ばれます.
 
@@ -742,7 +722,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:setSheetsAnimation"></a><strong>SpriteSheet:setSheetsAnimation</strong>&nbsp;(name, indexes, sec, mode)</dt>
+<dt><a name="M:setSheetsAnimation"></a><strong>M:setSheetsAnimation</strong>&nbsp;(name, indexes, sec, mode)</dt>
 <dd>
 フレームアニメーションデータを設定します. 
 
@@ -780,7 +760,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:setSheetsAnimation"></a><strong>SpriteSheet:setSheetsAnimation</strong>&nbsp;(name, indexes, sec, mode)</dt>
+<dt><a name="M:setSheetsAnimation"></a><strong>M:setSheetsAnimation</strong>&nbsp;(name, indexes, sec, mode)</dt>
 <dd>
 フレームアニメーションデータを設定します. 
 
@@ -818,7 +798,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:setSheetsAnimations"></a><strong>SpriteSheet:setSheetsAnimations</strong>&nbsp;(animations)</dt>
+<dt><a name="M:setSheetsAnimations"></a><strong>M:setSheetsAnimations</strong>&nbsp;(animations)</dt>
 <dd>
 フレームアニメーションデータを設定します. 
 
@@ -844,7 +824,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:setSize"></a><strong>SpriteSheet:setSize</strong>&nbsp;(width, height)</dt>
+<dt><a name="M:setSize"></a><strong>M:setSize</strong>&nbsp;(width, height)</dt>
 <dd>
 表示オブジェクトのサイズを設定します. 
 
@@ -874,7 +854,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:setTexture"></a><strong>SpriteSheet:setTexture</strong>&nbsp;(texture)</dt>
+<dt><a name="M:setTexture"></a><strong>M:setTexture</strong>&nbsp;(texture)</dt>
 <dd>
 テキスチャを設定します. サイズも自動で設定されます. 
 
@@ -900,7 +880,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:stop"></a><strong>SpriteSheet:stop</strong>&nbsp;()</dt>
+<dt><a name="M:stop"></a><strong>M:stop</strong>&nbsp;()</dt>
 <dd>
 フレームアニメーションを停止します. 
 
@@ -917,7 +897,7 @@ MOAIDeckを生成します.
 
 
 
-<dt><a name="SpriteSheet:updateSheets"></a><strong>SpriteSheet:updateSheets</strong>&nbsp;()</dt>
+<dt><a name="M:updateSheets"></a><strong>M:updateSheets</strong>&nbsp;()</dt>
 <dd>
 シートデータを表示オブジェクトに反映します. 
 

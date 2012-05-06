@@ -95,19 +95,11 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/EventPool.html">hs/core/EventPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/FocusManager.html">hs/core/FocusManager.lua</a>
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Font.html">hs/core/Font.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/FontCache.html">hs/core/FontCache.lua</a>
+		<a href="../../../files/hs/core/FontManager.html">hs/core/FontManager.lua</a>
 	</li>
 
 	<li>
@@ -147,10 +139,6 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/ObjectPool.html">hs/core/ObjectPool.lua</a>
-	</li>
-
-	<li>
 		<a href="../../../files/hs/core/Scene.html">hs/core/Scene.lua</a>
 	</li>
 
@@ -177,11 +165,7 @@
 	</li>
 
 	<li>
-		<a href="../../../files/hs/core/Texture.html">hs/core/Texture.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/core/TextureCache.html">hs/core/TextureCache.lua</a>
+		<a href="../../../files/hs/core/TextureManager.html">hs/core/TextureManager.lua</a>
 	</li>
 
 	<li>
@@ -226,10 +210,6 @@
 
 	<li>
 		<a href="../../../files/hs/gui/widget.html">hs/gui/widget.lua</a>
-	</li>
-
-	<li>
-		<a href="../../../files/hs/import.html">hs/import.lua</a>
 	</li>
 
 	<li>
@@ -315,53 +295,53 @@
 <table class="function_list">
 
 	<tr>
-	<td class="name" nowrap><a href="#Sprite:getFlipX">Sprite:getFlipX</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getFlipX">M:getFlipX</a>&nbsp;()</td>
 	<td class="summary">flipXを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Sprite:getFlipY">Sprite:getFlipY</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getFlipY">M:getFlipY</a>&nbsp;()</td>
 	<td class="summary">flipYを返します.</td>
 	</tr>
 
 	<tr>
-	<td class="name" nowrap><a href="#Sprite:getTexture">Sprite:getTexture</a>&nbsp;()</td>
+	<td class="name" nowrap><a href="#M:getTexture">M:getTexture</a>&nbsp;()</td>
 	<td class="summary">テクスチャを返します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#M:newDeck">M:newDeck</a>&nbsp;()</td>
+	<td class="summary">MOAIDeckを生成します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#M:setFlipX">M:setFlipX</a>&nbsp;(value)</td>
+	<td class="summary">flipXを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#M:setFlipY">M:setFlipY</a>&nbsp;(value)</td>
+	<td class="summary">flipYを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#M:setSize">M:setSize</a>&nbsp;(width, height)</td>
+	<td class="summary">表示オブジェクトのサイズを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#M:setTexture">M:setTexture</a>&nbsp;(texture)</td>
+	<td class="summary">テキスチャを設定します.</td>
+	</tr>
+
+	<tr>
+	<td class="name" nowrap><a href="#M:updateUVRect">M:updateUVRect</a>&nbsp;()</td>
+	<td class="summary">UVマッピングを更新します.</td>
 	</tr>
 
 	<tr>
 	<td class="name" nowrap><a href="#Sprite:new">Sprite:new</a>&nbsp;(texture, params)</td>
 	<td class="summary">コンストラクタです.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Sprite:newDeck">Sprite:newDeck</a>&nbsp;()</td>
-	<td class="summary">MOAIDeckを生成します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Sprite:setFlipX">Sprite:setFlipX</a>&nbsp;(value)</td>
-	<td class="summary">flipXを設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Sprite:setFlipY">Sprite:setFlipY</a>&nbsp;(value)</td>
-	<td class="summary">flipYを設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Sprite:setSize">Sprite:setSize</a>&nbsp;(width, height)</td>
-	<td class="summary">表示オブジェクトのサイズを設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Sprite:setTexture">Sprite:setTexture</a>&nbsp;(texture)</td>
-	<td class="summary">テキスチャを設定します.</td>
-	</tr>
-
-	<tr>
-	<td class="name" nowrap><a href="#Sprite:updateUVRect">Sprite:updateUVRect</a>&nbsp;()</td>
-	<td class="summary">UVマッピングを更新します.</td>
 	</tr>
 
 </table>
@@ -392,7 +372,7 @@
 
 
 
-<dt><a name="Sprite:getFlipX"></a><strong>Sprite:getFlipX</strong>&nbsp;()</dt>
+<dt><a name="M:getFlipX"></a><strong>M:getFlipX</strong>&nbsp;()</dt>
 <dd>
 flipXを返します. 
 
@@ -409,7 +389,7 @@ flipXを返します.
 
 
 
-<dt><a name="Sprite:getFlipY"></a><strong>Sprite:getFlipY</strong>&nbsp;()</dt>
+<dt><a name="M:getFlipY"></a><strong>M:getFlipY</strong>&nbsp;()</dt>
 <dd>
 flipYを返します. 
 
@@ -426,9 +406,151 @@ flipYを返します.
 
 
 
-<dt><a name="Sprite:getTexture"></a><strong>Sprite:getTexture</strong>&nbsp;()</dt>
+<dt><a name="M:getTexture"></a><strong>M:getTexture</strong>&nbsp;()</dt>
 <dd>
 テクスチャを返します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="M:newDeck"></a><strong>M:newDeck</strong>&nbsp;()</dt>
+<dd>
+MOAIDeckを生成します. 
+
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="M:setFlipX"></a><strong>M:setFlipX</strong>&nbsp;(value)</dt>
+<dd>
+flipXを設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  value: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="M:setFlipY"></a><strong>M:setFlipY</strong>&nbsp;(value)</dt>
+<dd>
+flipYを設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  value: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="M:setSize"></a><strong>M:setSize</strong>&nbsp;(width, height)</dt>
+<dd>
+表示オブジェクトのサイズを設定します. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  width: 
+	</li>
+	
+	<li>
+	  height: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="M:setTexture"></a><strong>M:setTexture</strong>&nbsp;(texture)</dt>
+<dd>
+テキスチャを設定します. サイズも自動で設定されます. 
+
+
+<h3>Parameters</h3>
+<ul>
+	
+	<li>
+	  texture: 
+	</li>
+	
+</ul>
+
+
+
+
+
+
+
+
+</dd>
+
+
+
+
+<dt><a name="M:updateUVRect"></a><strong>M:updateUVRect</strong>&nbsp;()</dt>
+<dd>
+UVマッピングを更新します. 
 
 
 
@@ -460,148 +582,6 @@ flipYを返します.
 	</li>
 	
 </ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Sprite:newDeck"></a><strong>Sprite:newDeck</strong>&nbsp;()</dt>
-<dd>
-MOAIDeckを生成します. 
-
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Sprite:setFlipX"></a><strong>Sprite:setFlipX</strong>&nbsp;(value)</dt>
-<dd>
-flipXを設定します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  value: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Sprite:setFlipY"></a><strong>Sprite:setFlipY</strong>&nbsp;(value)</dt>
-<dd>
-flipYを設定します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  value: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Sprite:setSize"></a><strong>Sprite:setSize</strong>&nbsp;(width, height)</dt>
-<dd>
-表示オブジェクトのサイズを設定します. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  width: 
-	</li>
-	
-	<li>
-	  height: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Sprite:setTexture"></a><strong>Sprite:setTexture</strong>&nbsp;(texture)</dt>
-<dd>
-テキスチャを設定します. サイズも自動で設定されます. 
-
-
-<h3>Parameters</h3>
-<ul>
-	
-	<li>
-	  texture: 
-	</li>
-	
-</ul>
-
-
-
-
-
-
-
-
-</dd>
-
-
-
-
-<dt><a name="Sprite:updateUVRect"></a><strong>Sprite:updateUVRect</strong>&nbsp;()</dt>
-<dd>
-UVマッピングを更新します. 
-
 
 
 

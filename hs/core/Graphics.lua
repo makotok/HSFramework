@@ -24,14 +24,14 @@ local DisplayObject = require("hs/core/DisplayObject")
 -- @class table
 -- @name Graphics
 --------------------------------------------------------------------------------
-local Graphics = DisplayObject()
+local M = DisplayObject()
 
-function Graphics:init(params)
-    Graphics:super(self, params)
+function M:init(params)
+    M:super(self, params)
     
 end
 
-function Graphics:onInitial()
+function M:onInitial()
     -- 描画コマンド
     self._commands = {}
 end
@@ -39,7 +39,7 @@ end
 ---------------------------------------
 -- MOAIDeckを生成します.
 ---------------------------------------
-function Graphics:newDeck()
+function M:newDeck()
     local deck = MOAIScriptDeck.new()
     deck:setDrawCallback(
         function(index, xOff, yOff, xFlip, yFlip)
@@ -52,7 +52,7 @@ end
 ---------------------------------------
 -- 描画処理を行います.
 ---------------------------------------
-function Graphics:onDraw(index, xOff, yOff, xFlip, yFlip)
+function M:onDraw(index, xOff, yOff, xFlip, yFlip)
     if not self.visible then
         return
     end
@@ -67,7 +67,7 @@ end
 ---------------------------------------
 -- 表示オブジェクトのサイズを設定します.
 ---------------------------------------
-function Graphics:setSize(width, height)
+function M:setSize(width, height)
     DisplayObject.setSize(self, width, height)
     self.deck:setRect(0, 0, width, height)
 end
@@ -80,7 +80,7 @@ end
 -- @param steps 点の数
 -- @return self
 ---------------------------------------
-function Graphics:drawCircle(x, y, r, steps)
+function M:drawCircle(x, y, r, steps)
     steps = steps and steps or 360
     local command = function(self)
         if x and y and r and steps then
@@ -103,7 +103,7 @@ end
 -- @param steps 点の数
 -- @return self
 ---------------------------------------
-function Graphics:drawEllipse(x, y, xRad, yRad, steps)
+function M:drawEllipse(x, y, xRad, yRad, steps)
     steps = steps and steps or 360
     local command = function(self)
         if x and y and xRad and yRad and steps then
@@ -121,12 +121,13 @@ end
 -- @param ... 点の座標.x0, y0, x1, y1...
 -- @return self
 ---------------------------------------
-function Graphics:drawLine(...)
+function M:drawLine(...)
     local args = {...}
     local command = function(self)
         MOAIDraw.drawLine(unpack(args))
     end
     table.insert(self._commands, command)
+    return self
 end
 
 ---------------------------------------
@@ -134,7 +135,7 @@ end
 -- @param ... 点の座標.x0, y0, x1, y1...
 -- @return self
 ---------------------------------------
-function Graphics:drawPoints(...)
+function M:drawPoints(...)
     local args = {...}
     local command = function(self)
         MOAIDraw.drawPoints(unpack(args))
@@ -151,7 +152,7 @@ end
 -- @param dy 線の長さ
 -- @return self
 ---------------------------------------
-function Graphics:drawRay(x, y, dx, dy)
+function M:drawRay(x, y, dx, dy)
     local command = function(self)
         if x and y and dx and dy then
             MOAIDraw.drawRay(x, y, dx, dy)
@@ -172,7 +173,7 @@ end
 -- @param y1 終了のローカル座標
 -- @return self
 ---------------------------------------
-function Graphics:drawRect(x0, y0, x1, y1)
+function M:drawRect(x0, y0, x1, y1)
     local command = function(self)
         if x0 and y0 and x1 and y1 then
             MOAIDraw.drawRect(x0, y0, x1, y1)
@@ -192,7 +193,7 @@ end
 -- @param steps 点の数
 -- @return self
 ---------------------------------------
-function Graphics:fillCircle(x, y, r, steps)
+function M:fillCircle(x, y, r, steps)
     steps = steps and steps or 360
     local command = function(self)
         if x and y and r and steps then
@@ -215,7 +216,7 @@ end
 -- @param steps 点の数
 -- @return self
 ---------------------------------------
-function Graphics:fillEllipse(x, y, xRad, yRad, steps)
+function M:fillEllipse(x, y, xRad, yRad, steps)
     local command = function(self)
         if x and y and xRad and yRad then
             MOAIDraw.fillEllipse(x, y, xRad, yRad, steps)
@@ -233,7 +234,7 @@ end
 -- @param ... 点(x, y).x0, y0, x1, y1...
 -- @return self
 ---------------------------------------
-function Graphics:fillFan(...)
+function M:fillFan(...)
     local args = {...}
     local command = function(self)
         MOAIDraw.fillFan(unpack(args))
@@ -250,7 +251,7 @@ end
 -- @param y1 終了のローカル座標
 -- @return self
 ---------------------------------------
-function Graphics:fillRect(x0, y0, x1, y1)
+function M:fillRect(x0, y0, x1, y1)
     local command = function(self)
         if x0 and y0 and x1 and y1 then
             MOAIDraw.fillRect(x0, y0, x1, y1)
@@ -271,7 +272,7 @@ end
 -- @param a alpha
 -- @return self
 ---------------------------------------
-function Graphics:setPenColor(r, g, b, a)
+function M:setPenColor(r, g, b, a)
     a = a and a or 1
     local command = function(self)
         local red = r * self.red
@@ -289,7 +290,7 @@ end
 -- 設定後に描画したコマンドに反映されます.
 -- @return self
 ---------------------------------------
-function Graphics:setPenWidth(width)
+function M:setPenWidth(width)
     local command = function(self)
         MOAIGfxDevice.setPenWidth(width)
     end
@@ -302,7 +303,7 @@ end
 -- 設定後に描画したコマンドに反映されます.
 -- @return self
 ---------------------------------------
-function Graphics:setPointSize(size)
+function M:setPointSize(size)
     local command = function(self)
         MOAIGfxDevice.setPointSize(size)
     end
@@ -313,8 +314,9 @@ end
 ---------------------------------------
 -- 描画処理をクリアします.
 ---------------------------------------
-function Graphics:clear()
+function M:clear()
     self._commands = {}
+    return self
 end
 
-return Graphics
+return M

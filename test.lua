@@ -8,6 +8,7 @@ require "test/TestUString"
 require "test/TestTMXMapLoader"
 --require "test/TestEventDispatcher"
 require "test.ModuleA"
+require "test/metatest"
 
 -- load classes
 local globals = {}

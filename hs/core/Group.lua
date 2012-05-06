@@ -8,22 +8,22 @@ local Graphics = require("hs/core/Graphics")
 -- @class table
 -- @name Group
 --------------------------------------------------------------------------------
-local Group = DisplayObject()
+local M = DisplayObject()
 
 -- プロパティ定義
-Group:setPropertyName("layout")
-Group:setPropertyName("background")
-Group:setPropertyName("children")
-Group:setPropertyName("autoLayout")
+M:setPropertyName("layout")
+M:setPropertyName("background")
+M:setPropertyName("children")
+M:setPropertyName("autoLayout")
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function Group:init(params)
-    Group:super(self, params)
+function M:init(params)
+    M:super(self, params)
 end
 
-function Group:onInitial()
+function M:onInitial()
     DisplayObject.onInitial(self)
     -- オブジェクト定義
     self._children = {}
@@ -38,28 +38,28 @@ end
 ---------------------------------------
 -- 背景を生成して返します.
 ---------------------------------------
-function Group:newBackground()
+function M:newBackground()
     return Graphics:new()
 end
 
 ---------------------------------------
 -- ダミーなので生成しません.
 ---------------------------------------
-function Group:newDeck()
+function M:newDeck()
     return nil
 end
 
 ---------------------------------------
 -- ダミーなので生成しません.
 ---------------------------------------
-function Group:newProp(deck)
+function M:newProp(deck)
     return nil
 end
 
 ---------------------------------------
 -- 子オブジェクトを追加します.
 ---------------------------------------
-function Group:addChild(child)
+function M:addChild(child)
     if child.prop == nil then
         return
     end
@@ -80,7 +80,7 @@ end
 ---------------------------------------
 -- 子オブジェクトを削除します.
 ---------------------------------------
-function Group:removeChild(child)
+function M:removeChild(child)
     local i = table.indexOf(self.children, child)
     if i > 0 then
         table.remove(self.children, i)
@@ -96,7 +96,7 @@ end
 ---------------------------------------
 -- 子オブジェクトの属性連携を設定します.
 ---------------------------------------
-function Group:setAttrLinkForChild(child)
+function M:setAttrLinkForChild(child)
     child.prop:clearAttrLink(MOAIColor.INHERIT_COLOR)
     child.prop:clearAttrLink(MOAITransform.INHERIT_TRANSFORM)
     if child.parent then
@@ -108,21 +108,21 @@ end
 ---------------------------------------
 -- 子オブジェクトリストを返します.
 ---------------------------------------
-function Group:getChildren()
+function M:getChildren()
     return self._children
 end
 
 ---------------------------------------
 -- 子オブジェクトを返します.
 ---------------------------------------
-function Group:getChildAt(i)
+function M:getChildAt(i)
     return self._children[i]
 end
 
 ---------------------------------------
 -- 一致する名前の子オブジェクトを返します.
 ---------------------------------------
-function Group:findChildByName(name)
+function M:findChildByName(name)
     for i, child in ipairs(self.children) do
         if child.name == name then
             return child
@@ -135,7 +135,7 @@ end
 -- レイヤーをセットします.
 -- 描画オブジェクトをMOAILayerに追加します.
 ---------------------------------------
-function Group:setLayer(layer)
+function M:setLayer(layer)
     self._layer = layer
     self.background.layer = layer
     for i, child in ipairs(self.children) do
@@ -146,7 +146,7 @@ end
 ---------------------------------------
 -- サイズを設定します.
 ---------------------------------------
-function Group:setSize(width, height)
+function M:setSize(width, height)
     DisplayObject.setSize(self, width, height)
     self.background:setSize(width, height)
     
@@ -158,7 +158,7 @@ end
 -- 表示するか反映します.
 ---------------------------------------
 --[[
-function Group:updateVisible()
+function M:updateVisible()
     DisplayObject.updateVisible(self, visible)
     self.background:updateVisible()
     for i, child in ipairs(self.children) do
@@ -169,7 +169,7 @@ end
 ---------------------------------------
 -- 表示するか設定します.
 ---------------------------------------
-function Group:setVisible(visible)
+function M:setVisible(visible)
     DisplayObject.setVisible(self, visible)
     self.background.visible = visible
     for i, child in ipairs(self.children) do
@@ -181,14 +181,14 @@ end
 -- 背景オブジェクトを設定します.
 -- TODO:変更時の子の反映
 ---------------------------------------
-function Group:setBackground(background)
+function M:setBackground(background)
     self._background = background
 end
 
 ---------------------------------------
 -- 背景オブジェクトを返します.
 ---------------------------------------
-function Group:getBackground()
+function M:getBackground()
     return self._background
 end
 
@@ -197,13 +197,13 @@ end
 -- このメソッドは非推奨です.
 -- 設定してもbackgroundのdeckが使用されます.
 ---------------------------------------
-function Group:setDeck(deck)
+function M:setDeck(deck)
 end
 
 ---------------------------------------
 -- MOAIDeckを返します.
 ---------------------------------------
-function Group:getDeck()
+function M:getDeck()
     if self.background then
         return self.background.deck
     else
@@ -216,13 +216,13 @@ end
 -- このメソッドは非推奨です.
 -- 設定してもbackgroundのpropが使用されます.
 ---------------------------------------
-function Group:setProp(prop)
+function M:setProp(prop)
 end
 
 ---------------------------------------
 -- MOAIPropを返します.
 ---------------------------------------
-function Group:getProp()
+function M:getProp()
     if self.background then
         return self.background.prop
     else
@@ -236,7 +236,7 @@ end
 -- nilを設定した場合、親オブジェクトはクリアされます.
 -- TODO:要リファクタリング
 ---------------------------------------
-function Group:setParent(parent)
+function M:setParent(parent)
     DisplayObject.setParent(self, parent)
     for i, child in ipairs(self.children) do
         child.parent = self
@@ -248,7 +248,7 @@ end
 -- レイアウトクラスを設定すると、子オブジェクトの
 -- 座標やサイズを自動的に設定する事が可能になります.
 ---------------------------------------
-function Group:setLayout(layout)
+function M:setLayout(layout)
     self._layout = layout
     
     self._layoutChanged = true
@@ -258,14 +258,14 @@ end
 ---------------------------------------
 -- グループのレイアウトを返します.
 ---------------------------------------
-function Group:getLayout()
+function M:getLayout()
     return self._layout
 end
 
 ---------------------------------------
 -- 自動的にレイアウトを調整するか設定します.
 ---------------------------------------
-function Group:setAutoLayout(value)
+function M:setAutoLayout(value)
     self._autoLayout = value
     if value then
         self._layoutChanged = true
@@ -276,14 +276,14 @@ end
 ---------------------------------------
 -- 自動的にレイアウトを調整するか返します.
 ---------------------------------------
-function Group:getAutoLayout()
+function M:getAutoLayout()
     return self._autoLayout
 end
 
 ---------------------------------------
 -- 子オブジェクトのレイアウトを更新します.
 ---------------------------------------
-function Group:updateLayout()
+function M:updateLayout()
     -- レイアウトを変更した場合
     for i, child in ipairs(self.children) do
         if child.updateLayout then
@@ -299,7 +299,7 @@ end
 ---------------------------------------
 -- 子オブジェクトのレイアウトを更新します.
 ---------------------------------------
-function Group:updateDisplay()
+function M:updateDisplay()
     -- レイアウトを変更した場合
     if self._layoutChanged then
         self:updateLayout()
@@ -309,7 +309,7 @@ end
 ---------------------------------------
 -- 子オブジェクトの表示順を更新します.
 ---------------------------------------
-function Group:updatePriority()
+function M:updatePriority()
     if not self.layer then
         return
     end
@@ -325,8 +325,8 @@ end
 ---------------------------------------
 -- リソースを削除します.
 ---------------------------------------
-function Group:dispose()
+function M:dispose()
     self.parent = nil
 end
 
-return Group
+return M

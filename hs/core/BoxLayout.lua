@@ -7,35 +7,35 @@ local Class = require("hs/lang/Class")
 -- @class table
 -- @name BoxLayout
 --------------------------------------------------------------------------------
-local BoxLayout = Class()
+local M = Class()
 
 -- 定数
 -- hAlign
-BoxLayout.H_LEFT = "left"
-BoxLayout.H_MIDDLE = "middle"
-BoxLayout.H_RIGHT = "right"
+M.H_LEFT = "left"
+M.H_MIDDLE = "middle"
+M.H_RIGHT = "right"
 
-BoxLayout.V_TOP = "top"
-BoxLayout.V_MIDDLE = "middle"
-BoxLayout.V_BOTTOM = "bottom"
+M.V_TOP = "top"
+M.V_MIDDLE = "middle"
+M.V_BOTTOM = "bottom"
 
-BoxLayout.DIRECTION_V = "vertical"
-BoxLayout.DIRECTION_H = "horizotal"
+M.DIRECTION_V = "vertical"
+M.DIRECTION_H = "horizotal"
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function BoxLayout:init(params)
-    self.hAlign = BoxLayout.H_LEFT
+function M:init(params)
+    self.hAlign = M.H_LEFT
     self.hGap = 5
-    self.vAlign = BoxLayout.V_TOP
+    self.vAlign = M.V_TOP
     self.vGap = 5
     self.pTop = 5
     self.pBottom = 5
     self.pLeft = 5
     self.pRight = 5
     self.resizeParentEnabled = true
-    self.direction = BoxLayout.DIRECTION_V
+    self.direction = M.DIRECTION_V
     
     if params then
         table.copy(params, self)
@@ -45,7 +45,7 @@ end
 ---------------------------------------
 -- 上下左右の余白を設定します.
 ---------------------------------------
-function BoxLayout:setPadding(left, top, right, bottom)
+function M:setPadding(left, top, right, bottom)
     self.pLeft = left
     self.pTop = top
     self.pRight = right
@@ -55,10 +55,10 @@ end
 ---------------------------------------
 -- 指定したGroupのレイアウトを更新します.
 ---------------------------------------
-function BoxLayout:update(group)
-    if self.direction == BoxLayout.DIRECTION_V then
+function M:update(group)
+    if self.direction == M.DIRECTION_V then
         self:updateVertical(group)
-    elseif self.direction == BoxLayout.DIRECTION_H then
+    elseif self.direction == M.DIRECTION_H then
         self:updateHorizotal(group)
     end
 end
@@ -67,7 +67,7 @@ end
 -- 指定した四角形内に、
 -- 垂直方向に子オブジェクトを配置します.
 ---------------------------------------
-function BoxLayout:updateVertical(parent)
+function M:updateVertical(parent)
     local children = parent.children
     local childrenWidth, childrenHeight = self:getVerticalLayoutSize(children)
     
@@ -90,7 +90,7 @@ end
 -- 指定した四角形内に、
 -- 水平方向に子オブジェクトを配置します.
 ---------------------------------------
-function BoxLayout:updateHorizotal(parent)
+function M:updateHorizotal(parent)
     local children = parent.children
     local childrenWidth, childrenHeight = self:getHorizotalLayoutSize(children)
     
@@ -112,17 +112,17 @@ end
 ---------------------------------------
 -- 子オブジェクトのX座標を返します.
 ---------------------------------------
-function BoxLayout:getChildX(parentWidth, childWidth)
+function M:getChildX(parentWidth, childWidth)
     -- サイズの計算
     local diffWidth = parentWidth - childWidth
 
     -- Horizotal
     local x
-    if self.hAlign == BoxLayout.H_LEFT then
+    if self.hAlign == M.H_LEFT then
         x = self.pLeft
-    elseif self.hAlign == BoxLayout.H_MIDDLE then
+    elseif self.hAlign == M.H_MIDDLE then
         x = math.floor((diffWidth + self.pLeft - self.pRight) / 2)
-    elseif self.hAlign == BoxLayout.H_RIGHT then
+    elseif self.hAlign == M.H_RIGHT then
         x = diffWidth - self.pRight
     end
 
@@ -132,17 +132,17 @@ end
 ---------------------------------------
 -- 子オブジェクトのY座標を返します.
 ---------------------------------------
-function BoxLayout:getChildY(parentHeight, childHeight)
+function M:getChildY(parentHeight, childHeight)
     -- サイズの計算
     local diffHeight = parentHeight - childHeight
 
     -- Vertical
     local y
-    if self.vAlign == BoxLayout.V_TOP then
+    if self.vAlign == M.V_TOP then
         y = self.pTop
-    elseif self.vAlign == BoxLayout.V_MIDDLE then
+    elseif self.vAlign == M.V_MIDDLE then
         y = math.floor((diffHeight + self.pTop - self.pBottom) / 2)
-    elseif self.vAlign == BoxLayout.V_BOTTOM then
+    elseif self.vAlign == M.V_BOTTOM then
         y = diffWidth - self.pBottom
     end
 
@@ -153,7 +153,7 @@ end
 -- 垂直方向に子オブジェクトを配置した時の
 -- 全体のレイアウトサイズを返します.
 ---------------------------------------
-function BoxLayout:getVerticalLayoutSize(children)
+function M:getVerticalLayoutSize(children)
     local width = 0
     local height = 0
     for i, child in ipairs(children) do
@@ -171,7 +171,7 @@ end
 -- 水平方向に子オブジェクトを配置した時の
 -- 全体のレイアウトサイズを返します.
 ---------------------------------------
-function BoxLayout:getHorizotalLayoutSize(children)
+function M:getHorizotalLayoutSize(children)
     local width = 0
     local height = 0
     for i, child in ipairs(children) do
@@ -185,4 +185,4 @@ function BoxLayout:getHorizotalLayoutSize(children)
     return width, height
 end
 
-return BoxLayout
+return M

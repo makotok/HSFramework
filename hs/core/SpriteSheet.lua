@@ -1,5 +1,5 @@
 local table = require("hs/lang/table")
-local TextureCache = require("hs/core/TextureCache")
+local TextureManager = require("hs/core/TextureManager")
 local DisplayObject = require("hs/core/DisplayObject")
 local Event = require("hs/core/Event")
 
@@ -9,23 +9,22 @@ local Event = require("hs/core/Event")
 -- @class table
 -- @name SpriteSheet
 --------------------------------------------------------------------------------
-local SpriteSheet = DisplayObject()
+local M = DisplayObject()
 
 -- プロパティ定義
-SpriteSheet:setPropertyName("sheets")
-SpriteSheet:setPropertyName("sheetsAnimations")
-SpriteSheet:setPropertyName("sheetIndex")
-SpriteSheet:setPropertyName("texture")
+M:setPropertyName("sheets")
+M:setPropertyName("sheetsAnimations")
+M:setPropertyName("sheetIndex")
+M:setPropertyName("texture")
 
 ---------------------------------------
 -- コンストラクタです
--- @name SpriteSheet:new
 ---------------------------------------
-function SpriteSheet:init(params)
-    SpriteSheet:super(self, params)
+function M:init(params)
+    M:super(self, params)
 end
 
-function SpriteSheet:onInitial()
+function M:onInitial()
     DisplayObject.onInitial(self)
     
     -- オブジェクト定義
@@ -55,7 +54,7 @@ end
 -- このテーブルを直接変更しても表示オブジェクトには反映されません.
 -- @return sheets
 ---------------------------------------
-function SpriteSheet:getSheets()
+function M:getSheets()
     return self._sheets
 end
 
@@ -66,7 +65,7 @@ end
 -- 設定後、updateSheets()が呼ばれます.
 -- @param value シートデータ
 ---------------------------------------
-function SpriteSheet:setSheets(value)
+function M:setSheets(value)
     self._sheets = value
     self:updateSheets()
 end
@@ -76,7 +75,7 @@ end
 -- @param tileX X方向のタイル数
 -- @param tileY Y方向のタイル数
 ---------------------------------------
-function SpriteSheet:loadSheetsFromTile(tileX, tileY)
+function M:loadSheetsFromTile(tileX, tileY)
     self._sheets = {}
     for y = 1, tileY do
         for x = 1, tileX do
@@ -94,7 +93,7 @@ end
 -- @param x 幅
 -- @param x 高さ
 ---------------------------------------
-function SpriteSheet:addSheet(x, y, width, height)
+function M:addSheet(x, y, width, height)
     local rect = {x = x, y = y, width = width, height = height}
     table.insert(self.sheets, rect)
 end
@@ -103,7 +102,7 @@ end
 -- シートを設定します.<br>
 -- updateSheets()は呼ばれませんので、任意のタイミングで呼んでください.
 ---------------------------------------
-function SpriteSheet:setSheet(index, x, y, width, height)
+function M:setSheet(index, x, y, width, height)
     local rect = {x = x, y = y, width = width, height = height}
     self.sheets[index] = rect
 end
@@ -111,7 +110,7 @@ end
 ---------------------------------------
 -- シートデータを表示オブジェクトに反映します.
 ---------------------------------------
-function SpriteSheet:updateSheets()
+function M:updateSheets()
     local texture = self.texture
     if not texture then
         return
@@ -135,7 +134,7 @@ end
 ---------------------------------------
 -- MOAIDeckを生成します.
 ---------------------------------------
-function SpriteSheet:newDeck()
+function M:newDeck()
     return MOAIGfxQuadDeck2D.new()
 end
 
@@ -143,9 +142,9 @@ end
 -- テキスチャを設定します.
 -- サイズも自動で設定されます.
 ---------------------------------------
-function SpriteSheet:setTexture(texture)
+function M:setTexture(texture)
     if type(texture) == "string" then
-        texture = TextureCache:get(texture)
+        texture = TextureManager:get(texture)
     end
 
     local width, height = texture:getSize()
@@ -157,14 +156,14 @@ end
 -- テキスチャを返します.
 -- @return texture
 ---------------------------------------
-function SpriteSheet:getTexture()
+function M:getTexture()
     return self._texture
 end
 
 ---------------------------------------
 -- 表示オブジェクトのサイズを設定します.
 ---------------------------------------
-function SpriteSheet:setSize(width, height)
+function M:setSize(width, height)
     self._width = width
     self._height = height
     self:centerPivot()
@@ -173,7 +172,7 @@ end
 ---------------------------------------
 -- シート番号を設定します.
 ---------------------------------------
-function SpriteSheet:setSheetIndex(value)
+function M:setSheetIndex(value)
     self._sheetIndex = value
     self.prop:setIndex(value)
     
@@ -184,42 +183,42 @@ end
 ---------------------------------------
 -- シート番号を返します.
 ---------------------------------------
-function SpriteSheet:getSheetIndex()
+function M:getSheetIndex()
     return self._sheetIndex
 end
 
 ---------------------------------------
 -- フレームアニメーションデータを返します.
 ---------------------------------------
-function SpriteSheet:getSheetsAnimations()
+function M:getSheetsAnimations()
     return self._sheetsAnimations
 end
 
 ---------------------------------------
 -- フレームアニメーションデータを設定します.
 ---------------------------------------
-function SpriteSheet:setSheetsAnimations(animations)
+function M:setSheetsAnimations(animations)
     self._sheetsAnimations = animations
 end
 
 ---------------------------------------
 -- フレームアニメーションデータを返します.
 ---------------------------------------
-function SpriteSheet:setSheetsAnimation(name)
+function M:setSheetsAnimation(name)
     return self._sheetsAnimations[name]
 end
 
 ---------------------------------------
 -- フレームアニメーションデータを設定します.
 ---------------------------------------
-function SpriteSheet:setSheetsAnimation(name, indexes, sec, mode)
+function M:setSheetsAnimation(name, indexes, sec, mode)
     self._sheetsAnimations[name] = {indexes = indexes, sec = sec, mode = mode}
 end
 
 ---------------------------------------
 -- フレームアニメーションを開始します.
 ---------------------------------------
-function SpriteSheet:play(name)
+function M:play(name)
     local animData = self._sheetsAnimations[name]
     if not animData then
         return
@@ -250,8 +249,8 @@ end
 ---------------------------------------
 -- フレームアニメーションを停止します.
 ---------------------------------------
-function SpriteSheet:stop()
+function M:stop()
     self._sheetAnim:stop()
 end
 
-return SpriteSheet
+return M

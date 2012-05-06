@@ -2,18 +2,18 @@ local table = require("hs/lang/table")
 local PropertySupport = require("hs/lang/PropertySupport")
 local Box2DConfig = require("hs/box2d/Box2DConfig")
 
-local Box2DFixture = PropertySupport()
+local M = PropertySupport()
 
-Box2DFixture:setPropertyName("body")
-Box2DFixture:setPropertyName("density")
-Box2DFixture:setPropertyName("friction")
-Box2DFixture:setPropertyName("restitution")
-Box2DFixture:setPropertyName("sensor", "setSensor", "isSensor")
+M:setPropertyName("body")
+M:setPropertyName("density")
+M:setPropertyName("friction")
+M:setPropertyName("restitution")
+M:setPropertyName("sensor", "setSensor", "isSensor")
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function Box2DFixture:init(body, fixture)
+function M:init(body, fixture)
     self._body = body
     self._fixture = fixture
     self._fixture.hsFixture = self
@@ -25,11 +25,11 @@ end
 -- Functions
 ---------------------------------------
 
-function Box2DFixture:destroy()
+function M:destroy()
     self._fixture:destroy()
 end
 
-function Box2DFixture:setCollisionHandler(handler, phaseMask, categoryMask)
+function M:setCollisionHandler(handler, phaseMask, categoryMask)
     self._fixture:setCollisionHandler(
         function(phase, fixtureA, fixtureB, arbiter)
             handler(phase, fixtureA.hsFixture, fixtureB.hsFixture, arbiter)
@@ -39,7 +39,7 @@ function Box2DFixture:setCollisionHandler(handler, phaseMask, categoryMask)
     )
 end
 
-function Box2DFixture:setFilter(categoryBits, maskBits, groupIndex)
+function M:setFilter(categoryBits, maskBits, groupIndex)
     self._fixture:setFilter(categoryBits, maskBits, groupIndex)
 end
 
@@ -47,7 +47,7 @@ end
 -- Properties
 ---------------------------------------
 
-function Box2DFixture:getBody()
+function M:getBody()
     return self._body
 end
 
@@ -55,11 +55,11 @@ end
 -- density
 ---------------------------------------
 
-function Box2DFixture:getDensity()
+function M:getDensity()
     return self._fixture._density
 end
 
-function Box2DFixture:setDensity(density)
+function M:setDensity(density)
     self._fixture._density = density
     self._fixture:setDensity(density)
 end
@@ -68,11 +68,11 @@ end
 -- friction
 ---------------------------------------
 
-function Box2DFixture:getFriction()
+function M:getFriction()
     return self._fixture._friction
 end
 
-function Box2DFixture:setFriction(friction)
+function M:setFriction(friction)
     self._fixture._friction = friction
     self._fixture:setFriction(friction)
 end
@@ -81,11 +81,11 @@ end
 -- restitution
 ---------------------------------------
 
-function Box2DFixture:getRestitution()
+function M:getRestitution()
     return self._fixture._restitution
 end
 
-function Box2DFixture:setRestitution(restitution)
+function M:setRestitution(restitution)
     self._fixture._restitution = restitution
     self._fixture:setRestitution(restitution)
 end
@@ -94,13 +94,13 @@ end
 -- senser
 ---------------------------------------
 
-function Box2DFixture:isSensor()
+function M:isSensor()
     return self._fixture._sensor
 end
 
-function Box2DFixture:setSensor(senser)
+function M:setSensor(senser)
     self._fixture._sensor = senser
     self._fixture:setSensor(senser)
 end
 
-return Box2DFixture
+return M

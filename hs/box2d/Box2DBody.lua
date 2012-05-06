@@ -11,28 +11,28 @@ local Box2DFixture = require("hs/box2d/Box2DFixture")
 -- @class table
 -- @name Box2DBody
 --------------------------------------------------------------------------------
-local Box2DBody = PropertySupport()
+local M = PropertySupport()
 
-Box2DBody.BODY_TYPES = {
+M.BODY_TYPES = {
     dynamic = MOAIBox2DBody.DYNAMIC,
     static = MOAIBox2DBody.STATIC,
     kinematic = MOAIBox2DBody.KINEMATIC
 }
 
-Box2DBody:setPropertyName("x")
-Box2DBody:setPropertyName("y")
-Box2DBody:setPropertyName("angle")
-Box2DBody:setPropertyName("angularVelocity")
-Box2DBody:setPropertyName("angularDamping")
-Box2DBody:setPropertyName("linearVelocityX")
-Box2DBody:setPropertyName("linearVelocityY")
-Box2DBody:setPropertyName("linearDamping")
-Box2DBody:setPropertyName("awake", "setAwake", "isAwake")
-Box2DBody:setPropertyName("active", "setActive", "isActive")
-Box2DBody:setPropertyName("bullet", "setBullet", "isBullet")
-Box2DBody:setPropertyName("fixedRotation", "setFixedRotation", "isFixedRotation")
+M:setPropertyName("x")
+M:setPropertyName("y")
+M:setPropertyName("angle")
+M:setPropertyName("angularVelocity")
+M:setPropertyName("angularDamping")
+M:setPropertyName("linearVelocityX")
+M:setPropertyName("linearVelocityY")
+M:setPropertyName("linearDamping")
+M:setPropertyName("awake", "setAwake", "isAwake")
+M:setPropertyName("active", "setActive", "isActive")
+M:setPropertyName("bullet", "setBullet", "isBullet")
+M:setPropertyName("fixedRotation", "setFixedRotation", "isFixedRotation")
 
-function Box2DBody:init(world, body)
+function M:init(world, body)
     self.world = world
     self.body = body
     self.body.hsBody = self
@@ -48,7 +48,7 @@ end
 ---------------------------------------
 -- サークルを追加します.
 ---------------------------------------
-function Box2DBody:addCircle(x, y, radius)
+function M:addCircle(x, y, radius)
     local fixture = Box2DFixture:new(body, self.body:addCircle(x, y, radius))
     table.insert(self.fixtures, fixture)
     return fixture
@@ -57,7 +57,7 @@ end
 ---------------------------------------
 -- エッジを追加します.
 ---------------------------------------
-function Box2DBody:addEdges(verts)
+function M:addEdges(verts)
     local fixture = Box2DFixture:new(body, self.body:addEdges(verts))
     table.insert(self.fixtures, fixture)
     return fixture
@@ -66,7 +66,7 @@ end
 ---------------------------------------
 -- ポリゴンを追加します.
 ---------------------------------------
-function Box2DBody:addPolygon(verts)
+function M:addPolygon(verts)
     local fixture = Box2DFixture:new(body, self.body:addPolygon(verts))
     table.insert(self.fixtures, fixture)
     return fixture
@@ -75,7 +75,7 @@ end
 ---------------------------------------
 -- 四角形を追加します.
 ---------------------------------------
-function Box2DBody:addRect(xMin, yMin, xMax, yMax)
+function M:addRect(xMin, yMin, xMax, yMax)
     local fixture = Box2DFixture:new(body, self.body:addRect(xMin, yMin, xMax, yMax))
     table.insert(self.fixtures, fixture)
     return fixture
@@ -84,35 +84,35 @@ end
 ---------------------------------------
 -- applyAngularImpulse.
 ---------------------------------------
-function Box2DBody:applyAngularImpulse(impulse)
+function M:applyAngularImpulse(impulse)
     self.body:applyAngularImpulse(impulse)
 end
 
 ---------------------------------------
 -- applyForce.
 ---------------------------------------
-function Box2DBody:applyForce(forceX, forceY, pointX, pointY)
+function M:applyForce(forceX, forceY, pointX, pointY)
     self.body:applyForce(forceX, forceY, pointX, pointY)
 end
 
 ---------------------------------------
 -- applyLinearImpulse.
 ---------------------------------------
-function Box2DBody:applyLinearImpulse(impulseX, impulseY, pointX, pointY)
+function M:applyLinearImpulse(impulseX, impulseY, pointX, pointY)
     self.body:applyLinearImpulse(impulseX, impulseY, pointX, pointY)
 end
 
 ---------------------------------------
 -- applyTorque.
 ---------------------------------------
-function Box2DBody:applyTorque(torque)
+function M:applyTorque(torque)
     self.body:applyTorque(torque)
 end
 
 ---------------------------------------
 -- destroy.
 ---------------------------------------
-function Box2DBody:destroy()
+function M:destroy()
     self.body:destroy()
 end
 
@@ -124,7 +124,7 @@ end
 -- angleを返します.
 -- @return angle
 ---------------------------------------
-function Box2DBody:getAngle()
+function M:getAngle()
     return self.body:getAngle()
 end
 
@@ -132,35 +132,35 @@ end
 -- angleを設定します.
 -- @param angle angle
 ---------------------------------------
-function Box2DBody:setAngle(angle)
+function M:setAngle(angle)
     self:setTransform(self.x, self.y, angle)
 end
 
 ---------------------------------------
 -- angularVelocityを返します.
 ---------------------------------------
-function Box2DBody:getAngularVelocity()
+function M:getAngularVelocity()
     return self.body:getAngularVelocity()
 end
 
 ---------------------------------------
 -- angularVelocityを設定します.
 ---------------------------------------
-function Box2DBody:setAngularVelocity(omega)
+function M:setAngularVelocity(omega)
     self.body:setAngularVelocity(omega)
 end
 
 ---------------------------------------
 -- angularDampingを返します.
 ---------------------------------------
-function Box2DBody:getAngularDamping()
+function M:getAngularDamping()
     return self.body._angularDamping
 end
 
 ---------------------------------------
 -- angularDampingを設定します.
 ---------------------------------------
-function Box2DBody:setAngularDamping(damping)
+function M:setAngularDamping(damping)
     self.body:setAngularDamping(damping)
     self.body._angularDamping = damping
 end
@@ -168,7 +168,7 @@ end
 ---------------------------------------
 -- inertiaを返します.
 ---------------------------------------
-function Box2DBody:getInertia()
+function M:getInertia()
     return self.body:getInertia()
 end
 
@@ -177,7 +177,7 @@ end
 -- @return LinearVelocityX
 -- @return LinearVelocityY
 ---------------------------------------
-function Box2DBody:getLinearVelocity()
+function M:getLinearVelocity()
     return self.body:getLinearVelocity()
 end
 
@@ -186,7 +186,7 @@ end
 -- @param LinearVelocityX
 -- @param LinearVelocityY
 ---------------------------------------
-function Box2DBody:setLinearVelocity(velocityX, velocityY)
+function M:setLinearVelocity(velocityX, velocityY)
     self.body:setLinearVelocity(velocityX, velocityY)
 end
 
@@ -194,7 +194,7 @@ end
 -- LinearVelocityXを返します.
 -- @return LinearVelocityX
 ---------------------------------------
-function Box2DBody:getLinearVelocityX()
+function M:getLinearVelocityX()
     local x, y = self.body:getLinearVelocity()
     return x
 end
@@ -202,7 +202,7 @@ end
 ---------------------------------------
 -- LinearVelocityXを設定します.
 ---------------------------------------
-function Box2DBody:setLinearVelocityX(velocityX)
+function M:setLinearVelocityX(velocityX)
     self:setLinearVelocity(velocityX, self.linearVelocityY)
 end
 
@@ -210,7 +210,7 @@ end
 -- LinearVelocityYを返します.
 -- @return LinearVelocityY
 ---------------------------------------
-function Box2DBody:getLinearVelocityY()
+function M:getLinearVelocityY()
     local x, y = self.body:getLinearVelocity()
     return y
 end
@@ -218,7 +218,7 @@ end
 ---------------------------------------
 -- LinearVelocityYを設定します.
 ---------------------------------------
-function Box2DBody:setLinearVelocityY(velocityY)
+function M:setLinearVelocityY(velocityY)
     self:setLinearVelocity(self.linearVelocityX, velocityY)
 end
 
@@ -226,14 +226,14 @@ end
 -- linearDampingを返します.
 -- @return linearDamping
 ---------------------------------------
-function Box2DBody:getLinearDamping()
+function M:getLinearDamping()
     return self.body._linearDamping
 end
 
 ---------------------------------------
 -- linearDampingを設定します.
 ---------------------------------------
-function Box2DBody:setLinearDamping(damping)
+function M:setLinearDamping(damping)
     self.body:setLinearDamping(damping)
     self.body._linearDamping = damping
 end
@@ -242,35 +242,35 @@ end
 -- massを返します.
 -- @return mass
 ---------------------------------------
-function Box2DBody:getMass()
+function M:getMass()
     return self.body:getMass()
 end
 
 ---------------------------------------
 -- massを設定します.
 ---------------------------------------
-function Box2DBody:setMass(mass)
+function M:setMass(mass)
     self.body:setMassData(mass)
 end
 
 ---------------------------------------
 -- massDataを設定します.
 ---------------------------------------
-function Box2DBody:setMassData(mass, I, centerX, centerY)
+function M:setMassData(mass, I, centerX, centerY)
     self.body:setMassData(mass, I, centerX, centerY)
 end
 
 ---------------------------------------
 -- massDataをリセットします.
 ---------------------------------------
-function Box2DBody:resetMassData()
+function M:resetMassData()
     self.body:resetMassData()
 end
 
 ---------------------------------------
 -- 座標、回転量を設定します.
 ---------------------------------------
-function Box2DBody:setTransform(positionX, positionY, angle)
+function M:setTransform(positionX, positionY, angle)
     self.body:setTransform(positionX, positionY, angle)
 end
 
@@ -279,7 +279,7 @@ end
 -- @return positionX
 -- @return positionY
 ---------------------------------------
-function Box2DBody:getPosition()
+function M:getPosition()
     return self.body:getPosition()
 end
 
@@ -287,7 +287,7 @@ end
 -- x座標を返します.
 -- @return x
 ---------------------------------------
-function Box2DBody:getX()
+function M:getX()
     local x, y = self:getPosition()
     return x
 end
@@ -295,7 +295,7 @@ end
 ---------------------------------------
 -- x座標を設定します.
 ---------------------------------------
-function Box2DBody:setX(x)
+function M:setX(x)
     self:setTransform(x, self.y, self.angle)
 end
 
@@ -303,7 +303,7 @@ end
 -- y座標を返します.
 -- @return y
 ---------------------------------------
-function Box2DBody:getY()
+function M:getY()
     local x, y = self:getPosition()
     return y
 end
@@ -311,7 +311,7 @@ end
 ---------------------------------------
 -- y座標を設定します.
 ---------------------------------------
-function Box2DBody:setY(y)
+function M:setY(y)
     self:setTransform(self.x, y, self.angle)
 end
 
@@ -320,7 +320,7 @@ end
 -- @return localCenterX
 -- @return localCenterY
 ---------------------------------------
-function Box2DBody:getLocalCenter()
+function M:getLocalCenter()
     return self.body:getLocalCenter()
 end
 
@@ -333,7 +333,7 @@ end
 -- @return worldCenterX
 -- @return worldCenterY
 ---------------------------------------
-function Box2DBody:getWorldCenter()
+function M:getWorldCenter()
     return self.body:getWorldCenter()
 end
 
@@ -341,14 +341,14 @@ end
 -- activeを返します.
 -- @return active
 ---------------------------------------
-function Box2DBody:isActive()
+function M:isActive()
     return self.body:isActive()
 end
 
 ---------------------------------------
 -- activeを設定します.
 ---------------------------------------
-function Box2DBody:setActive(active)
+function M:setActive(active)
     self.body:setActive(active)
 end
 
@@ -356,14 +356,14 @@ end
 -- awakeを返します.
 -- @return awake
 ---------------------------------------
-function Box2DBody:isAwake()
+function M:isAwake()
     return self.body:isAwake()
 end
 
 ---------------------------------------
 -- awakeを設定します.
 ---------------------------------------
-function Box2DBody:setAwake(awake)
+function M:setAwake(awake)
     self.body:setAwake(awake)
 end
 
@@ -371,14 +371,14 @@ end
 -- bulletを返します.
 -- @return bullet
 ---------------------------------------
-function Box2DBody:isBullet()
+function M:isBullet()
     return self.body:isBullet()
 end
 
 ---------------------------------------
 -- bulletを設定します.
 ---------------------------------------
-function Box2DBody:setBullet(bullet)
+function M:setBullet(bullet)
     self.body:setBullet(bullet)
 end
 
@@ -386,15 +386,15 @@ end
 -- fixedRotationを返します.
 -- @return fixedRotation
 ---------------------------------------
-function Box2DBody:isFixedRotation()
+function M:isFixedRotation()
     return self.body:isFixedRotation()
 end
 
 ---------------------------------------
 -- fixedRotationを設定します.
 ---------------------------------------
-function Box2DBody:setFixedRotation(fixedRotation)
+function M:setFixedRotation(fixedRotation)
     self.body:setFixedRotation(fixedRotation)
 end
 
-return Box2DBody
+return M

@@ -1,20 +1,20 @@
-local Logger = {}
+local M = {}
 
 -- 定数
-Logger.LEVEL_NONE = 0
-Logger.LEVEL_INFO = 1
-Logger.LEVEL_WARN = 2
-Logger.LEVEL_ERROR = 3
-Logger.LEVEL_DEBUG = 4
+M.LEVEL_NONE = 0
+M.LEVEL_INFO = 1
+M.LEVEL_WARN = 2
+M.LEVEL_ERROR = 3
+M.LEVEL_DEBUG = 4
 
 -- 変数
-Logger.level = Logger.LEVEL_ERROR
+M.level = M.LEVEL_ERROR
 
 ---------------------------------------
 -- 通常ログを出力します.
 ---------------------------------------
-function Logger.info(...)
-    if Logger.level >= Logger.LEVEL_INFO then
+function M.info(...)
+    if M.level >= M.LEVEL_INFO then
         print("[info]", ...)
     end
 end
@@ -22,8 +22,8 @@ end
 ---------------------------------------
 -- 警告ログを出力します.
 ---------------------------------------
-function Logger.warn(...)
-    if Logger.level >= Logger.LEVEL_WARN then
+function M.warn(...)
+    if M.level >= M.LEVEL_WARN then
         print("[warn]", ...)
     end
 end
@@ -31,8 +31,8 @@ end
 ---------------------------------------
 -- エラーログを出力します.
 ---------------------------------------
-function Logger.error(...)
-    if Logger.level >= Logger.LEVEL_ERROR then
+function M.error(...)
+    if M.level >= M.LEVEL_ERROR then
         print("[error]", ...)
     end
 end
@@ -40,10 +40,10 @@ end
 ---------------------------------------
 -- デバッグログを出力します.
 ---------------------------------------
-function Logger.debug(...)
-    if Logger.level >= Logger.LEVEL_DEBUG then
+function M.debug(...)
+    if M.level >= M.LEVEL_DEBUG then
         print("[debug]", ...)
     end
 end
 
-return Logger
+return M

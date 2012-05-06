@@ -6,14 +6,14 @@ local BoxLayout = require("hs/core/BoxLayout")
 -- @class table
 -- @name HBoxLayout
 ----------------------------------------------------------------
-local HBoxLayout = BoxLayout()
+local M = BoxLayout()
 
 ---------------------------------------
 -- コンストラクタです
 ---------------------------------------
-function HBoxLayout:init(params)
-    HBoxLayout:super(self, params)
+function M:init(params)
+    M:super(self, params)
     self.direction = BoxLayout.DIRECTION_H
 end
 
-return HBoxLayout
+return M

@@ -2,11 +2,10 @@
 --
 -- HSFramework(Hana Saurus Framework)
 -- Makoto
--- Version:0.5.2
+-- Version:0.6.0
 -- MOAI SDK:Moai SDK Version 1.0 
 -------------------------------------------------------------------
 
-[日本語]
 HSFrameworkは、MoaiSDK(http://getmoai.com/moai/moai-sdk)
 で開発を簡単にするためのフレームワークです。
 
@@ -44,5 +43,3 @@ MOAI_HOME=MoaiSDKのトップディレクトリを設定してください。
 5.Windowsの場合は "run.bat"、MacOSXの場合は"run.sh"を実行してサンプルを実行してください。
  後は、サンプルを見てあなたのゲームを作成してください。
 
-[English]
-when -- it is -- moreover 
